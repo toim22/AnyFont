@@ -1,0 +1,425 @@
+# AnyFont user interface: Italian (it-IT). One "English<TAB>translation" pair per line;
+# the keys are docs/strings-en.tsv. Check with: python -I scripts/i18n_check.py
+# --- Title bar --------------------------------------------------------------------------------------------
+AnyFont	AnyFont
+Product Help	Guida del prodotto
+Options	Opzioni
+Updates	Aggiornamenti
+Minimize	Riduci a icona
+Maximize	Ingrandisci
+Restore Down	Ripristina giù
+Close	Chiudi
+# --- Menu bar ---------------------------------------------------------------------------------------------
+&File	&File
+&Edit	&Modifica
+Font	Font
+View	Visualizza
+Help	Guida
+# --- File menu --------------------------------------------------------------------------------------------
+Add Folder...	Aggiungi cartella...
+Add Collection	Aggiungi raccolta
+Get More...	Ottieni altro...
+Remove Folder or Collection	Rimuovi cartella o raccolta
+Import Folders and Collections...	Importa cartelle e raccolte...
+Export Folders and Collections...	Esporta cartelle e raccolte...
+E&xit	&Esci
+Alt+F4	Alt+F4
+# --- Edit menu --------------------------------------------------------------------------------------------
+Select All	Seleziona tutto
+Deselect All	Deseleziona tutto
+Ctrl+A	Ctrl+A
+Ctrl+Shift+A	Ctrl+Shift+A
+# --- Font menu / font context menu ------------------------------------------------------------------------
+Install	Installa
+Uninstall	Disinstalla
+Download	Scarica
+Delete	Elimina
+Add to collection	Aggiungi alla raccolta
+Remove from collection	Rimuovi dalla raccolta
+Remove from {}	Rimuovi da {}
+Show duplicate fonts	Mostra font duplicati
+Hide duplicate fonts	Nascondi font duplicati
+Open font file location	Apri percorso file del font
+# --- View menu --------------------------------------------------------------------------------------------
+Refresh the Font List	Aggiorna l'elenco dei font
+Show font properties	Mostra proprietà font
+Hide font properties	Nascondi proprietà font
+Group by family	Raggruppa per famiglia
+Show recently used fonts	Mostra font usati di recente
+Use font to display font name	Usa il font per visualizzarne il nome
+Show Latin names	Mostra nomi latini
+Hide filter list	Nascondi elenco filtri
+Show filter list	Mostra elenco filtri
+Ctrl+Alt+I	Ctrl+Alt+I
+# --- Help menu --------------------------------------------------------------------------------------------
+&Product Help...	&Guida del prodotto...
+Check for &Updates...	&Verifica aggiornamenti...
+Submit Ideas and Feedback...	Invia idee e commenti...
+Report a &Bug...	Segnala un &bug...
+&About AnyFont...	&Informazioni su AnyFont...
+# --- Libraries context menu -------------------------------------------------------------------------------
+Rename	Rinomina
+# --- Toolbar tooltips (header, then body) -----------------------------------------------------------------
+Add folder	Aggiungi cartella
+Browse to a folder that contains fonts to add it to your Libraries.	Individuare una cartella che contiene font per aggiungerla alle librerie.
+Add collection	Aggiungi raccolta
+Add a collection for easy access to fonts that reside in different folders.	Aggiungere una raccolta per accedere facilmente a font che si trovano in cartelle diverse.
+Get More	Ottieni altro
+Remove	Rimuovi
+Remove a folder or collection from your Libraries.	Rimuove una cartella o una raccolta dalle librerie.
+Install fonts and font families.	Installa font e famiglie di font.
+Uninstall fonts and font families.	Disinstalla font e famiglie di font.
+Download fonts to the AnyFont Content folder.	Scarica i font nella cartella Contenuti di AnyFont.
+Delete font files from your system.	Elimina i file dei font dal sistema.
+Show duplicate font versions.	Mostra le versioni duplicate dei font.
+Hide duplicate font versions.	Nasconde le versioni duplicate dei font.
+Show font details or glyph sets.	Mostra i dettagli del font o i set di glifi.
+# --- Libraries --------------------------------------------------------------------------------------------
+Libraries	Librerie
+Folders	Cartelle
+My fonts	I miei font
+My Collections	Le mie raccolte
+Favorites	Preferiti
+Collection {}	Raccolta {}
+Includes all installed fonts, all fonts in your added folders, and fonts downloaded from the Online library	Include tutti i font installati, tutti i font delle cartelle aggiunte e i font scaricati dalla libreria online
+To populate this collection, drag fonts from an added folder or another collection.	Per popolare questa raccolta, trascinarvi dei font da una cartella aggiunta o da un'altra raccolta.
+# --- Filters ----------------------------------------------------------------------------------------------
+Filters	Filtri
+Clear filters	Cancella filtri
+Remove all selected font filters.	Rimuove tutti i filtri dei font selezionati.
+Font Status	Stato del font
+Installed	Installati
+Not installed	Non installati
+Protected System Fonts	Font di sistema protetti
+Duplicates	Duplicati
+Embedding Rights	Diritti di incorporamento
+Editable	Modificabile
+Installable	Installabile
+Preview and Print	Anteprima e stampa
+Font Technology	Tecnologia del font
+OpenType - TrueType	OpenType - TrueType
+TrueType	TrueType
+Variable Fonts	Font variabili
+Weight	Peso
+Light	Chiaro
+Regular	Normale
+Bold	Grassetto
+Width	Larghezza
+Condensed	Condensato
+Normal	Normale
+Expanded	Espanso
+Style	Stile
+Decorative	Decorativo
+Display	Display
+Monospaced	Monospaziato
+Sans Serif	Senza grazie
+Script	Calligrafico
+Serif	Con grazie
+Symbol	Simbolo
+Character Range	Intervallo di caratteri
+Arabic	Arabo
+Chinese Simplified	Cinese semplificato
+Chinese Traditional	Cinese tradizionale
+Cyrillic	Cirillico
+Devanagari	Devanagari
+Greek	Greco
+Hebrew	Ebraico
+Japanese	Giapponese
+Korean	Coreano
+Latin	Latino
+Turkish	Turco
+OpenType	OpenType
+Alternate Annotation Forms	Forme di annotazione alternative
+Asian Forms	Forme asiatiche
+Asian Vertical Metrics	Metriche verticali asiatiche
+Asian Widths	Larghezze asiatiche
+Capital Spacing	Spaziatura maiuscole
+Capitals	Maiuscole
+Case-Sensitive Forms	Forme sensibili alle maiuscole
+Contextual Alternates	Alternative contestuali
+Contextual Ligatures	Legature contestuali
+Discretionary Ligatures	Legature discrezionali
+Fraction	Frazione
+Historical Forms	Forme storiche
+Horizontal Kana Alternates	Alternative kana orizzontali
+Historical Ligatures	Legature storiche
+Number Styles	Stili numeri
+Ordinals	Ordinali
+Ornaments	Ornamenti
+Position	Posizione
+Slashed Zero	Zero barrato
+Standard Ligatures	Legature standard
+Stylistic Alternate	Alternativa stilistica
+Stylistic Sets	Set stilistici
+Swash Variants	Varianti ornate
+Vertical Alternates and Rotation	Alternative verticali e rotazione
+# --- Font list: search row, empty states, information strip, status bar ------------------------------------
+Enter sample text	Immettere un testo di esempio
+Search	Cerca
+Font Name	Nome del font
+The quick brown fox jumps over the lazy dog.	Quel vituperabile xenofobo zelante assaggia il whisky ed esclama: alleluja!
+No fonts found. Remove or change filters or explore the font packs available in Get More.	Nessun font trovato. Rimuovere o modificare i filtri, oppure esplorare i pacchetti di font disponibili in Ottieni altro.
+No fonts found. Remove or change filters to show fonts.	Nessun font trovato. Rimuovere o modificare i filtri per visualizzare i font.
+No fonts found. Clear the Search box, or type a different keyword.	Nessun font trovato. Svuotare la casella Cerca o digitare una parola chiave diversa.
+No fonts found. Clear the Search box, type a different keyword, or explore the font packs available in Get More.	Nessun font trovato. Svuotare la casella Cerca, digitare una parola chiave diversa oppure esplorare i pacchetti di font disponibili in Ottieni altro.
+Refresh	Aggiorna
+Refresh the font list.	Aggiorna l'elenco dei font.
+{}: {} fonts	{}: {} font
+{} (filtered): {} fonts	{} (filtrati): {} font
+Change the font size in the font list.	Cambia la dimensione del font nell'elenco dei font.
+# --- Font row tooltip -------------------------------------------------------------------------------------
+Online font (Install or download to use)	Font online (installarlo o scaricarlo per usarlo)
+Protected System Font	Font di sistema protetto
+Duplicate(s):	Duplicati:
+# --- Font properties panel ---------------------------------------------------------------------------------
+Glyphs	Glifi
+Font info	Info font
+Variable font	Font variabile
+Preview and filter available glyphs for a selected font.	Visualizza in anteprima e filtra i glifi disponibili del font selezionato.
+Show detailed font information.	Mostra informazioni dettagliate sul font.
+Adjust variable font properties.	Regola le proprietà del font variabile.
+Glyph Filters	Filtri glifi
+Glyph Preview	Anteprima glifi
+Remove all selected glyph filters.	Rimuove tutti i filtri dei glifi selezionati.
+Common	Comune
+Scripts	Sistemi di scrittura
+Currency	Valuta
+Mathematical Symbols	Simboli matematici
+Numbers	Numeri
+Punctuation & Separators	Punteggiatura e separatori
+Symbols	Simboli
+Marks	Segni
+{} glyphs	{} glifi
+Change the glyph size in the Glyph Preview area.	Cambia le dimensioni del glifo nell'area di anteprima glifi.
+Multiple fonts are selected. To view a glyph set, choose only one font.	Sono selezionati più font. Per visualizzare un set di glifi, sceglierne uno solo.
+No matching glyphs	Nessun glifo corrispondente
+Install or download the font to preview glyphs.	Installare o scaricare il font per visualizzare l'anteprima dei glifi.
+Family:	Famiglia:
+Sub-family:	Sottofamiglia:
+File Path:	Percorso file:
+File Size:	Dimensione file:
+Version:	Versione:
+Font technology:	Tecnologia del font:
+Code Page:	Tabella codici:
+Italic:	Corsivo:
+Weight:	Peso:
+Width:	Larghezza:
+Embedding:	Incorporamento:
+Manufacturer:	Produttore:
+Designer:	Designer:
+Copyright:	Copyright:
+Collection:	Raccolta:
+Yes	Sì
+No	No
+OpenType - PostScript	OpenType - PostScript
+No Embedding	Nessun incorporamento
+{} KB	{} KB
+{} MB	{} MB
+You don't have a variable font selected, or you've selected multiple fonts.	Non è selezionato un font variabile oppure sono selezionati più font.
+Choose one variable font to see and adjust its properties.	Scegliere un font variabile per visualizzarne e regolarne le proprietà.
+# --- Edit-box context menu --------------------------------------------------------------------------------
+Undo	Annulla
+Cut	Taglia
+Copy	Copia
+Paste	Incolla
+# --- About / System Info / Legal Notices ------------------------------------------------------------------
+About AnyFont	Informazioni su AnyFont
+Version {} - {} Release	Versione {} - Release {}
+(C) {} AnyFont Team.  All rights reserved.	(C) {} AnyFont Team.  Tutti i diritti riservati.
+Source ID:	ID origine:
+&System Info...	Informazioni di &sistema...
+Legal &Notices...	&Note legali...
+System Info	Informazioni di sistema
+C&hoose a category:	S&cegliere una categoria:
+System	Sistema
+AnyFont EXEs & DLLs	EXE e DLL di AnyFont
+System DLLs	DLL di sistema
+Platform	Piattaforma
+Processor	Processore
+Number of Processors	Numero di processori
+Math Coprocessor	Coprocessore matematico
+Total physical memory	Memoria fisica totale
+Available physical memory	Memoria fisica disponibile
+Total virtual memory	Memoria virtuale totale
+Available virtual memory	Memoria virtuale disponibile
+Total memory used by app	Memoria totale usata dall'applicazione
+GDI Object Count	Numero oggetti GDI
+&Save	&Salva
+Save System Info	Salva informazioni di sistema
+Text (*.txt)	Testo (*.txt)
+System info was saved to {}.	Le informazioni di sistema sono state salvate in {}.
+Unable to save system info to {}.	Impossibile salvare le informazioni di sistema in {}.
+Legal Notices	Note legali
+&Print	&Stampa
+OK	OK
+# --- Options ----------------------------------------------------------------------------------------------
+Appearance	Aspetto
+Size	Dimensioni
+%	%
+&Reset to Default	&Ripristina predefinito
+Hint: The scaling level is relative to the scaling level of the operating system. For example, scaling by 200% will make the application user interface appear twice as large as the UI of the operating system. Note that excessive scaling may cause certain workspace elements to appear cropped.	Suggerimento: il livello di ridimensionamento è relativo a quello del sistema operativo. Ad esempio, un ridimensionamento del 200% fa apparire l'interfaccia dell'applicazione due volte più grande di quella del sistema operativo. Un ridimensionamento eccessivo può causare il taglio di alcuni elementi dell'area di lavoro.
+Color	Colore
+Theme:	Tema:
+Medium	Medio
+Dark	Scuro
+Black	Nero
+Window border:	Bordo finestra:
+Font Matching	Corrispondenza font
+PANOSE Font Matching Preferences...	Preferenze di corrispondenza font PANOSE...
+Network	Rete
+Allow AnyFont to use the Internet	Consenti ad AnyFont di usare Internet
+You need to restart the application to apply these changes.	È necessario riavviare l'applicazione per applicare queste modifiche.
+# --- Confirmations, file dialogs, errors ------------------------------------------------------------------
+Are you sure you want to remove this collection?	Rimuovere questa raccolta?
+Are you sure you want to remove this folder?	Rimuovere questa cartella?
+Do not show this message again	Non mostrare più questo messaggio
+Do not show this message again.	Non mostrare più questo messaggio.
+&Yes	&Sì
+&No	&No
+Add Folder	Aggiungi cartella
+XML - Extensible Markup Language (*.xml)	XML - Extensible Markup Language (*.xml)
+AnyFont Folders and Collections.xml	Cartelle e raccolte di AnyFont.xml
+Folder not found. Please choose another location.	Cartella non trovata. Scegliere un altro percorso.
+This folder has already been added.	Questa cartella è già stata aggiunta.
+This folder has already been added as a subfolder of {}.	Questa cartella è già stata aggiunta come sottocartella di {}.
+We can't find the following:	Impossibile trovare quanto segue:
+Supported font formats: OTF, TTF	Formati di font supportati: OTF, TTF
+Your font database has been corrupted. To reset the database, you must restart AnyFont while holding down Shift.	Il database dei font è danneggiato. Per reimpostarlo, riavviare AnyFont tenendo premuto il tasto MAIUSC.
+# --- Install / uninstall / delete / download ---------------------------------------------------------------
+Installing {}... {}%	Installazione di {}... {}%
+Uninstalling {}... {}%	Disinstallazione di {}... {}%
+Downloading {}... {}%	Download di {}... {}%
+Cancel	Annulla
+Delete fonts	Elimina font
+Are you sure you want to delete this font?\n\nRead-only fonts cannot be deleted.	Eliminare questo font?\n\nI font di sola lettura non possono essere eliminati.
+Are you sure you want to delete these fonts?\n\nRead-only fonts cannot be deleted.	Eliminare questi font?\n\nI font di sola lettura non possono essere eliminati.
+Select all	Seleziona tutto
+The following font cannot be uninstalled because it is in use by one or more applications. To uninstall this font, you must first restart your computer.\n\nDo you want to restart your computer now?	Impossibile disinstallare il font seguente perché è in uso da parte di una o più applicazioni. Per disinstallarlo, è necessario prima riavviare il computer.\n\nRiavviare il computer adesso?
+The following fonts cannot be uninstalled because they are in use by one or more applications. To uninstall these fonts, you must first restart your computer.\n\nDo you want to restart your computer now?\n\nClick Ignore to continue without uninstalling the listed fonts.	Impossibile disinstallare i font seguenti perché sono in uso da parte di una o più applicazioni. Per disinstallarli, è necessario prima riavviare il computer.\n\nRiavviare il computer adesso?\n\nFare clic su Ignora per continuare senza disinstallare i font elencati.
+The following font cannot be deleted because it is in use by one or more applications. To delete this font, you must first restart your computer.\n\nDo you want to restart your computer now?	Impossibile eliminare il font seguente perché è in uso da parte di una o più applicazioni. Per eliminarlo, è necessario prima riavviare il computer.\n\nRiavviare il computer adesso?
+The following fonts cannot be deleted because they are in use by one or more applications. To delete these fonts, you must first restart your computer.\n\nDo you want to restart your computer now?\n\nClick Ignore to continue without deleting the listed fonts.	Impossibile eliminare i font seguenti perché sono in uso da parte di una o più applicazioni. Per eliminarli, è necessario prima riavviare il computer.\n\nRiavviare il computer adesso?\n\nFare clic su Ignora per continuare senza eliminare i font elencati.
+Reboot &now	Riavvia &ora
+Reboot &later	Riavvia &più tardi
+&Ignore	&Ignora
+# --- Message box buttons ----------------------------------------------------------------------------------
+&Abort	In&terrompi
+&Retry	&Riprova
+&Try Again	&Riprova
+&Continue	&Continua
+# --- Get More (online font catalog) -----------------------------------------------------------------------
+Sort by:	Ordina per:
+Featured	In evidenza
+Filter by:	Filtra per:
+Free	Gratuiti
+My Library	La mia libreria
+Downloaded	Scaricati
+Remote font catalog cannot connect to the internet.	Il catalogo remoto dei font non riesce a connettersi a Internet.
+An error occurred while downloading the remote font catalog.	Si è verificato un errore durante il download del catalogo remoto dei font.
+# --- PANOSE font matching ---------------------------------------------------------------------------------
+PANOSE Font Matching Preferences	Preferenze di corrispondenza font PANOSE
+&Text	&Testo
+Text and &styles	Testo e &stili
+&Never show	&Non mostrare mai
+&Default font:	&Font predefinito:
+&Exceptions...	&Eccezioni...
+PANOSE Font Matching Exceptions	Eccezioni di corrispondenza font PANOSE
+&Missing Font:	Font &mancante:
+&Substituted Font:	Font &sostitutivo:
+&Add Exception	&Aggiungi eccezione
+&Remove Exception	&Rimuovi eccezione
+&List of current exceptions:	&Elenco delle eccezioni correnti:
+Missing Font	Font mancante
+Substituted Font	Font sostitutivo
+?	?
+PANOSE Font Matching Results	Risultati della corrispondenza font PANOSE
+Working, please wait...	Elaborazione in corso, attendere...
+Stop	Interrompi
+Stopping will end the PANOSE matching process. All missing fonts will revert to a default selection.	L'interruzione terminerà il processo di corrispondenza PANOSE. Tutti i font mancanti torneranno a una selezione predefinita.
+&Use the PANOSE suggested match	&Usa la corrispondenza suggerita da PANOSE
+Substitute &font with:	Sostituisci il &font con:
+Show &all fonts	&Mostra tutti i font
+&Save this exception for future font matching	&Salva questa eccezione per le corrispondenze future
+Make this substitution:	Effettua questa sostituzione:
+&Permanent - keep these fonts	&Permanente - mantieni questi font
+Te&mporary - use original fonts	&Temporaneo - usa i font originali
+# --- Type 1 fonts -----------------------------------------------------------------------------------------
+Type 1 fonts detected	Rilevati font Type 1
+This document uses Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.	Questo documento usa font Type 1, che in futuro potrebbero non essere più supportati. Per evitare possibili problemi, valutare di aggiornare il testo usando altri font, ad esempio TrueType (TTF) o OpenType (OTF).
+Do not show again	Non mostrare più
+Replace fonts	Sostituisci font
+# --- Rename collection ------------------------------------------------------------------------------------
+Name:	Nome:
+# --- Updates (from AnyVector updater.rs, product name replaced) -------------------------------------------
+Keep the product up to date (recommended)	Mantieni il prodotto aggiornato (consigliato)
+Check for updates and let me choose when to install them	Cerca aggiornamenti e lasciami scegliere quando installarli
+Never check for updates	Non cercare mai aggiornamenti
+Automatically downloads product updates, but prompts you before installing them.	Scarica automaticamente gli aggiornamenti del prodotto, ma chiede conferma prima di installarli.
+AnyFont tells you when a new version is available; you choose when to download and install it.	AnyFont segnala quando è disponibile una nuova versione; l'utente sceglie quando scaricarla e installarla.
+AnyFont never connects to the Internet to look for updates. Help ▸ Check for Updates still checks when you ask.	AnyFont non si connette mai a Internet per cercare aggiornamenti. Guida ▸ Verifica aggiornamenti esegue comunque il controllo su richiesta.
+An Internet connection is required. Please connect to the Internet and try again.	È necessaria una connessione a Internet. Connettersi a Internet e riprovare.
+Invalid answer from the update server: {}	Risposta non valida dal server degli aggiornamenti: {}
+The latest release has no setup for Windows.	La versione più recente non include un programma di installazione per Windows.
+No published release was found at github.com/{}.	Nessuna versione pubblicata trovata su github.com/{}.
+AnyFont Updates	Aggiornamenti di AnyFont
+The update server answered {}.	Il server degli aggiornamenti ha risposto {}.
+The download was interrupted. Please try again.	Il download è stato interrotto. Riprovare.
+The downloaded setup is empty.	Il programma di installazione scaricato è vuoto.
+This release has no notes.	Questa versione non ha note.
+Click Check Now to look for a new version.	Fare clic su Verifica ora per cercare una nuova versione.
+Checking for updates...	Ricerca aggiornamenti in corso...
+AnyFont is up to date.	AnyFont è aggiornato.
+AnyFont {} is available.	È disponibile AnyFont {}.
+Downloading AnyFont {}...	Download di AnyFont {} in corso...
+AnyFont closes to install it as soon as the download finishes.	AnyFont si chiude per installarlo non appena il download termina.
+AnyFont {} is ready to install.	AnyFont {} è pronto per l'installazione.
+AnyFont closes to install it and starts again when it is done.	AnyFont si chiude per installarlo e si riavvia al termine.
+Error: {}	Errore: {}
+You are using AnyFont {}.	Si sta usando AnyFont {}.
+The update will be installed when AnyFont closes.	L'aggiornamento verrà installato alla chiusura di AnyFont.
+Allow product updates:	Consenti aggiornamenti del prodotto:
+Release Notes	Note sulla versione
+Install Now	Installa ora
+Check Now	Verifica ora
+There is a new version of AnyFont available.	È disponibile una nuova versione di AnyFont.
+New version: {}. Your version: {}.	Nuova versione: {}. Versione in uso: {}.
+Click OK to install the new version.	Fare clic su OK per installare la nuova versione.
+# --- Report a Bug / Submit Ideas and Feedback (from AnyVector bugreport.rs, product name replaced) ---------
+Report a Bug	Segnala un bug
+Submit Ideas and Feedback	Invia idee e commenti
+Thank you! Your idea was sent.	Grazie! L'idea è stata inviata.
+Thank you! Your bug report was sent.	Grazie! La segnalazione del bug è stata inviata.
+Almost done: finish in your browser	Quasi fatto: completare nel browser
+Please wait a minute	Attendere un minuto
+Your idea could not be sent	Impossibile inviare l'idea
+The report could not be sent	Impossibile inviare la segnalazione
+The issue was created on the AnyFont project on GitHub:	La segnalazione è stata creata nel progetto AnyFont su GitHub:
+GitHub opened in your browser with your idea already filled in.	GitHub è stato aperto nel browser con l'idea già compilata.
+GitHub opened in your browser with the report already filled in.	GitHub è stato aperto nel browser con la segnalazione già compilata.
+To attach "{}", drag it from the folder that opened into the description box on GitHub.	Per allegare "{}", trascinarlo dalla cartella che si è aperta nella casella della descrizione su GitHub.
+Sign in if asked, review it and click "Create" to send it.	Se richiesto, accedere, verificare e fare clic su "Create" per inviare.
+Several reports were sent from this connection in the last minute. Try again in a minute.	Nell'ultimo minuto sono state inviate diverse segnalazioni da questa connessione. Riprovare tra un minuto.
+Could not open the browser. Please send it at {}	Impossibile aprire il browser. Inviarlo all'indirizzo {}
+Back	Indietro
+Tell us your idea or what you think of AnyFont. It is sent to the AnyFont project on GitHub as a new idea. You don't need a GitHub account.	Raccontaci la tua idea o cosa pensi di AnyFont. Viene inviata al progetto AnyFont su GitHub come nuova idea. Non serve un account GitHub.
+Title (your idea in a few words):	Titolo (l'idea in poche parole):
+Describe your idea or feedback:	Descrivere l'idea o il commento:
+How would it help you? (optional)	In che modo sarebbe utile? (facoltativo)
+Describe the problem. It is sent to the AnyFont project on GitHub as a new issue. You don't need a GitHub account.	Descrivere il problema. Viene inviato al progetto AnyFont su GitHub come nuova segnalazione. Non serve un account GitHub.
+Title (a short summary):	Titolo (breve riepilogo):
+What happened?	Cosa è successo?
+Steps to reproduce (optional):	Passaggi per riprodurre il problema (facoltativo):
+What did you expect to happen? (optional)	Cosa ci si aspettava che accadesse? (facoltativo)
+Include system information	Includi informazioni di sistema
+System information	Informazioni di sistema
+View submitted ideas	Visualizza idee inviate
+View reported bugs	Visualizza bug segnalati
+Attach a file (optional):	Allega un file (facoltativo):
+Attach File...	Allega file...
+Attach a File	Allega un file
+Files GitHub accepts	File accettati da GitHub
+Images	Immagini
+Videos	Video
+Archives (.zip, .gz, .tgz)	Archivi (.zip, .gz, .tgz)
+Images and videos up to 10 MB, other files up to 25 MB, of the types GitHub accepts. Put a font file (.ttf, .otf) in a .zip file.	Immagini e video fino a 10 MB, altri file fino a 25 MB, dei tipi accettati da GitHub. Inserire un file di font (.ttf, .otf) in un file .zip.
+Sending...	Invio in corso...
+Send	Invia

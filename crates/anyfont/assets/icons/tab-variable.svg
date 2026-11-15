@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+  <!-- font properties tab: Variable font (thin A, bold A and a slider) -->
+  <path d="M0.6 10.9L2.9 2.4H3.3L5.6 10.9M1.4 8.3H4.8" fill="none" stroke="#CACED4"/>
+  <path d="M7.8 10.9L10.5 2.6H11.1L13.8 10.9M8.9 8.4H12.7" fill="none" stroke="#CACED4" stroke-width="1.9"/>
+  <path d="M0 13.5H16" fill="none" stroke="#CACED4"/>
+  <circle cx="7" cy="13.5" r="1.6" fill="#CACED4"/>
+</svg>

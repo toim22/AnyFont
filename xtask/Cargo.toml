@@ -1,0 +1,10 @@
+[package]
+name = "xtask"
+version.workspace = true
+edition.workspace = true
+publish = false
+description = "Build helpers: brand assets (icon, logo, banner, splash, installer pictures) and the UI icon contact sheet"
+
+[dependencies]
+resvg = { workspace = true }
+image = { workspace = true }

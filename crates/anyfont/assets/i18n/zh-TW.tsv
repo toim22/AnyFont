@@ -1,0 +1,425 @@
+# AnyFont user interface: Chinese (Traditional) (zh-TW). One "English<TAB>translation" pair per line;
+# the keys are docs/strings-en.tsv. Check with: python -I scripts/i18n_check.py
+# --- Title bar --------------------------------------------------------------------------------------------
+AnyFont	AnyFont
+Product Help	產品說明
+Options	選項
+Updates	更新
+Minimize	最小化
+Maximize	最大化
+Restore Down	還原
+Close	關閉
+# --- Menu bar ---------------------------------------------------------------------------------------------
+&File	檔案(&F)
+&Edit	編輯(&E)
+Font	字型
+View	檢視
+Help	說明
+# --- File menu --------------------------------------------------------------------------------------------
+Add Folder...	新增資料夾...
+Add Collection	新增集合
+Get More...	取得更多...
+Remove Folder or Collection	移除資料夾或集合
+Import Folders and Collections...	匯入資料夾和集合...
+Export Folders and Collections...	匯出資料夾和集合...
+E&xit	結束(&X)
+Alt+F4	Alt+F4
+# --- Edit menu --------------------------------------------------------------------------------------------
+Select All	全選
+Deselect All	全部取消選取
+Ctrl+A	Ctrl+A
+Ctrl+Shift+A	Ctrl+Shift+A
+# --- Font menu / font context menu ------------------------------------------------------------------------
+Install	安裝
+Uninstall	解除安裝
+Download	下載
+Delete	刪除
+Add to collection	新增至集合
+Remove from collection	從集合移除
+Remove from {}	從 {} 移除
+Show duplicate fonts	顯示重複的字型
+Hide duplicate fonts	隱藏重複的字型
+Open font file location	開啟字型檔案位置
+# --- View menu --------------------------------------------------------------------------------------------
+Refresh the Font List	重新整理字型清單
+Show font properties	顯示字型內容
+Hide font properties	隱藏字型內容
+Group by family	依字型家族分組
+Show recently used fonts	顯示最近使用的字型
+Use font to display font name	使用字型本身顯示字型名稱
+Show Latin names	顯示拉丁名稱
+Hide filter list	隱藏篩選清單
+Show filter list	顯示篩選清單
+Ctrl+Alt+I	Ctrl+Alt+I
+# --- Help menu --------------------------------------------------------------------------------------------
+&Product Help...	產品說明(&P)...
+Check for &Updates...	檢查更新(&U)...
+Submit Ideas and Feedback...	提交想法與意見回饋...
+Report a &Bug...	回報錯誤(&B)...
+&About AnyFont...	關於 AnyFont(&A)...
+# --- Libraries context menu -------------------------------------------------------------------------------
+Rename	重新命名
+# --- Toolbar tooltips (header, then body) -----------------------------------------------------------------
+Add folder	新增資料夾
+Browse to a folder that contains fonts to add it to your Libraries.	瀏覽至含有字型的資料夾，將它新增至您的媒體櫃。
+Add collection	新增集合
+Add a collection for easy access to fonts that reside in different folders.	新增集合，以便輕鬆存取位於不同資料夾中的字型。
+Get More	取得更多
+Remove	移除
+Remove a folder or collection from your Libraries.	從您的媒體櫃移除資料夾或集合。
+Install fonts and font families.	安裝字型和字型家族。
+Uninstall fonts and font families.	解除安裝字型和字型家族。
+Download fonts to the AnyFont Content folder.	將字型下載至 AnyFont 內容資料夾。
+Delete font files from your system.	從系統刪除字型檔案。
+Show duplicate font versions.	顯示重複的字型版本。
+Hide duplicate font versions.	隱藏重複的字型版本。
+Show font details or glyph sets.	顯示字型詳細資料或字符集。
+# --- Libraries --------------------------------------------------------------------------------------------
+Libraries	媒體櫃
+Folders	資料夾
+My fonts	我的字型
+My Collections	我的集合
+Favorites	我的最愛
+Collection {}	集合 {}
+Includes all installed fonts, all fonts in your added folders, and fonts downloaded from the Online library	包括所有已安裝的字型、已新增資料夾中的所有字型，以及從線上媒體櫃下載的字型
+To populate this collection, drag fonts from an added folder or another collection.	若要填入此集合，請從已新增的資料夾或其他集合拖曳字型。
+# --- Filters ----------------------------------------------------------------------------------------------
+Filters	篩選
+Clear filters	清除篩選
+Remove all selected font filters.	移除所有選取的字型篩選。
+Font Status	字型狀態
+Installed	已安裝
+Not installed	未安裝
+Protected System Fonts	受保護的系統字型
+Duplicates	重複項目
+Embedding Rights	內嵌權限
+Editable	可編輯
+Installable	可安裝
+Preview and Print	預覽和列印
+Font Technology	字型技術
+OpenType - TrueType	OpenType - TrueType
+TrueType	TrueType
+Variable Fonts	可變字型
+Weight	粗細
+Light	細體
+Regular	標準
+Bold	粗體
+Width	寬度
+Condensed	緊縮
+Normal	一般
+Expanded	加寬
+Style	樣式
+Decorative	裝飾
+Display	標題
+Monospaced	等寬
+Sans Serif	無襯線
+Script	手寫
+Serif	襯線
+Symbol	符號
+Character Range	字元範圍
+Arabic	阿拉伯
+Chinese Simplified	簡體中文
+Chinese Traditional	繁體中文
+Cyrillic	斯拉夫
+Devanagari	天城文
+Greek	希臘文
+Hebrew	希伯來文
+Japanese	日文
+Korean	韓文
+Latin	拉丁
+Turkish	土耳其文
+OpenType	OpenType
+Alternate Annotation Forms	替代註解格式
+Asian Forms	亞洲字形
+Asian Vertical Metrics	亞洲垂直度量
+Asian Widths	亞洲寬度
+Capital Spacing	大寫間距
+Capitals	大寫字母
+Case-Sensitive Forms	區分大小寫的字形
+Contextual Alternates	內容替代字
+Contextual Ligatures	內容連字
+Discretionary Ligatures	選用連字
+Fraction	分數
+Historical Forms	歷史字形
+Horizontal Kana Alternates	水平假名替代字
+Historical Ligatures	歷史連字
+Number Styles	數字樣式
+Ordinals	序數
+Ornaments	裝飾符號
+Position	位置
+Slashed Zero	斜線零
+Standard Ligatures	標準連字
+Stylistic Alternate	樣式替代字
+Stylistic Sets	樣式集
+Swash Variants	花飾變體
+Vertical Alternates and Rotation	垂直替代字和旋轉
+# --- Font list: search row, empty states, information strip, status bar ------------------------------------
+Enter sample text	輸入範例文字
+Search	搜尋
+Font Name	字型名稱
+The quick brown fox jumps over the lazy dog.	敏捷的棕色狐狸跳過了那隻懶狗。
+No fonts found. Remove or change filters or explore the font packs available in Get More.	找不到字型。請移除或變更篩選，或探索「取得更多」中提供的字型套件。
+No fonts found. Remove or change filters to show fonts.	找不到字型。請移除或變更篩選以顯示字型。
+No fonts found. Clear the Search box, or type a different keyword.	找不到字型。請清除「搜尋」方塊，或輸入其他關鍵字。
+No fonts found. Clear the Search box, type a different keyword, or explore the font packs available in Get More.	找不到字型。請清除「搜尋」方塊、輸入其他關鍵字，或探索「取得更多」中提供的字型套件。
+Refresh	重新整理
+Refresh the font list.	重新整理字型清單。
+{}: {} fonts	{}：{} 個字型
+{} (filtered): {} fonts	{} (已篩選)：{} 個字型
+Change the font size in the font list.	變更字型清單中的字型大小。
+# --- Font row tooltip -------------------------------------------------------------------------------------
+Online font (Install or download to use)	線上字型 (安裝或下載後即可使用)
+Protected System Font	受保護的系統字型
+Duplicate(s):	重複項目：
+# --- Font properties panel ---------------------------------------------------------------------------------
+Glyphs	字符
+Font info	字型資訊
+Variable font	可變字型
+Preview and filter available glyphs for a selected font.	預覽並篩選所選字型中可用的字符。
+Show detailed font information.	顯示詳細的字型資訊。
+Adjust variable font properties.	調整可變字型屬性。
+Glyph Filters	字符篩選
+Glyph Preview	字符預覽
+Remove all selected glyph filters.	移除所有選取的字符篩選。
+Common	通用
+Scripts	書寫系統
+Currency	貨幣
+Mathematical Symbols	數學符號
+Numbers	數字
+Punctuation & Separators	標點符號與分隔符號
+Symbols	符號
+Marks	標記
+{} glyphs	{} 個字符
+Change the glyph size in the Glyph Preview area.	變更字符預覽區域中的字符大小。
+Multiple fonts are selected. To view a glyph set, choose only one font.	已選取多個字型。若要檢視字符集，請只選擇一個字型。
+No matching glyphs	沒有相符的字符
+Install or download the font to preview glyphs.	安裝或下載字型以預覽字符。
+Family:	字型家族：
+Sub-family:	子家族：
+File Path:	檔案路徑：
+File Size:	檔案大小：
+Version:	版本：
+Font technology:	字型技術：
+Code Page:	字碼頁：
+Italic:	斜體：
+Weight:	粗細：
+Width:	寬度：
+Embedding:	內嵌：
+Manufacturer:	製造商：
+Designer:	設計者：
+Copyright:	版權：
+Collection:	集合：
+Yes	是
+No	否
+OpenType - PostScript	OpenType - PostScript
+No Embedding	無法內嵌
+{} KB	{} KB
+{} MB	{} MB
+You don't have a variable font selected, or you've selected multiple fonts.	您沒有選取可變字型，或選取了多個字型。
+Choose one variable font to see and adjust its properties.	請選擇一個可變字型以檢視和調整其內容。
+# --- Edit-box context menu --------------------------------------------------------------------------------
+Undo	復原
+Cut	剪下
+Copy	複製
+Paste	貼上
+# --- About / System Info / Legal Notices ------------------------------------------------------------------
+About AnyFont	關於 AnyFont
+Version {} - {} Release	版本 {} - {} 版
+(C) {} AnyFont Team.  All rights reserved.	(C) {} AnyFont Team.  版權所有。
+Source ID:	來源 ID：
+&System Info...	系統資訊(&S)...
+Legal &Notices...	法律聲明(&N)...
+System Info	系統資訊
+C&hoose a category:	選擇類別(&H)：
+System	系統
+AnyFont EXEs & DLLs	AnyFont EXE 與 DLL
+System DLLs	系統 DLL
+Platform	平台
+Processor	處理器
+Number of Processors	處理器數目
+Math Coprocessor	數學輔助處理器
+Total physical memory	實體記憶體總計
+Available physical memory	可用實體記憶體
+Total virtual memory	虛擬記憶體總計
+Available virtual memory	可用虛擬記憶體
+Total memory used by app	應用程式使用的記憶體總計
+GDI Object Count	GDI 物件數
+&Save	儲存(&S)
+Save System Info	儲存系統資訊
+Text (*.txt)	文字 (*.txt)
+System info was saved to {}.	系統資訊已儲存至 {}。
+Unable to save system info to {}.	無法將系統資訊儲存至 {}。
+Legal Notices	法律聲明
+&Print	列印(&P)
+OK	確定
+# --- Options ----------------------------------------------------------------------------------------------
+Appearance	外觀
+Size	大小
+%	%
+&Reset to Default	重設為預設值(&R)
+Hint: The scaling level is relative to the scaling level of the operating system. For example, scaling by 200% will make the application user interface appear twice as large as the UI of the operating system. Note that excessive scaling may cause certain workspace elements to appear cropped.	提示：縮放比例是相對於作業系統的縮放比例。例如，縮放 200% 會讓應用程式介面看起來是作業系統介面的兩倍大。請注意，縮放過度可能導致某些工作區元素顯示不完整。
+Color	色彩
+Theme:	佈景主題：
+Medium	中
+Dark	深色
+Black	黑色
+Window border:	視窗框線：
+Font Matching	字型比對
+PANOSE Font Matching Preferences...	PANOSE 字型比對偏好設定...
+Network	網路
+Allow AnyFont to use the Internet	允許 AnyFont 使用網際網路
+You need to restart the application to apply these changes.	您必須重新啟動應用程式才能套用這些變更。
+# --- Confirmations, file dialogs, errors ------------------------------------------------------------------
+Are you sure you want to remove this collection?	確定要移除此集合嗎？
+Are you sure you want to remove this folder?	確定要移除此資料夾嗎？
+Do not show this message again	不要再顯示此訊息
+Do not show this message again.	不要再顯示此訊息。
+&Yes	是(&Y)
+&No	否(&N)
+Add Folder	新增資料夾
+XML - Extensible Markup Language (*.xml)	XML - 可延伸標記語言 (*.xml)
+AnyFont Folders and Collections.xml	AnyFont 資料夾和集合.xml
+Folder not found. Please choose another location.	找不到資料夾。請選擇其他位置。
+This folder has already been added.	已新增此資料夾。
+This folder has already been added as a subfolder of {}.	此資料夾已新增為 {} 的子資料夾。
+We can't find the following:	找不到下列項目：
+Supported font formats: OTF, TTF	支援的字型格式：OTF、TTF
+Your font database has been corrupted. To reset the database, you must restart AnyFont while holding down Shift.	您的字型資料庫已損毀。若要重設資料庫，必須按住 Shift 鍵重新啟動 AnyFont。
+# --- Install / uninstall / delete / download ---------------------------------------------------------------
+Installing {}... {}%	正在安裝 {}... {}%
+Uninstalling {}... {}%	正在解除安裝 {}... {}%
+Downloading {}... {}%	正在下載 {}... {}%
+Cancel	取消
+Delete fonts	刪除字型
+Are you sure you want to delete this font?\n\nRead-only fonts cannot be deleted.	確定要刪除此字型嗎？\n\n無法刪除唯讀字型。
+Are you sure you want to delete these fonts?\n\nRead-only fonts cannot be deleted.	確定要刪除這些字型嗎？\n\n無法刪除唯讀字型。
+Select all	全選
+The following font cannot be uninstalled because it is in use by one or more applications. To uninstall this font, you must first restart your computer.\n\nDo you want to restart your computer now?	無法解除安裝下列字型，因為有一或多個應用程式正在使用它。若要解除安裝此字型，必須先重新啟動電腦。\n\n要立即重新啟動電腦嗎？
+The following fonts cannot be uninstalled because they are in use by one or more applications. To uninstall these fonts, you must first restart your computer.\n\nDo you want to restart your computer now?\n\nClick Ignore to continue without uninstalling the listed fonts.	無法解除安裝下列字型，因為有一或多個應用程式正在使用它們。若要解除安裝這些字型，必須先重新啟動電腦。\n\n要立即重新啟動電腦嗎？\n\n按一下「忽略」可繼續作業，但不解除安裝列出的字型。
+The following font cannot be deleted because it is in use by one or more applications. To delete this font, you must first restart your computer.\n\nDo you want to restart your computer now?	無法刪除下列字型，因為有一或多個應用程式正在使用它。若要刪除此字型，必須先重新啟動電腦。\n\n要立即重新啟動電腦嗎？
+The following fonts cannot be deleted because they are in use by one or more applications. To delete these fonts, you must first restart your computer.\n\nDo you want to restart your computer now?\n\nClick Ignore to continue without deleting the listed fonts.	無法刪除下列字型，因為有一或多個應用程式正在使用它們。若要刪除這些字型，必須先重新啟動電腦。\n\n要立即重新啟動電腦嗎？\n\n按一下「忽略」可繼續作業，但不刪除列出的字型。
+Reboot &now	立即重新啟動(&N)
+Reboot &later	稍後重新啟動(&L)
+&Ignore	忽略(&I)
+# --- Message box buttons ----------------------------------------------------------------------------------
+&Abort	中止(&A)
+&Retry	重試(&R)
+&Try Again	再試一次(&T)
+&Continue	繼續(&C)
+# --- Get More (online font catalog) -----------------------------------------------------------------------
+Sort by:	排序方式：
+Featured	精選
+Filter by:	篩選依據：
+Free	免費
+My Library	我的媒體櫃
+Downloaded	已下載
+Remote font catalog cannot connect to the internet.	遠端字型目錄無法連線至網際網路。
+An error occurred while downloading the remote font catalog.	下載遠端字型目錄時發生錯誤。
+# --- PANOSE font matching ---------------------------------------------------------------------------------
+PANOSE Font Matching Preferences	PANOSE 字型比對偏好設定
+&Text	文字(&X)
+Text and &styles	文字和樣式(&S)
+&Never show	永不顯示(&N)
+&Default font:	預設字型(&D)：
+&Exceptions...	例外(&E)...
+PANOSE Font Matching Exceptions	PANOSE 字型比對例外
+&Missing Font:	遺失的字型(&M)：
+&Substituted Font:	替代字型(&S)：
+&Add Exception	新增例外(&A)
+&Remove Exception	移除例外(&R)
+&List of current exceptions:	目前的例外清單(&L)：
+Missing Font	遺失的字型
+Substituted Font	替代字型
+?	?
+PANOSE Font Matching Results	PANOSE 字型比對結果
+Working, please wait...	正在處理，請稍候...
+Stop	停止
+Stopping will end the PANOSE matching process. All missing fonts will revert to a default selection.	停止將結束 PANOSE 比對程序。所有遺失的字型都會還原為預設選擇。
+&Use the PANOSE suggested match	使用 PANOSE 建議的相符字型(&U)
+Substitute &font with:	將字型替代為(&F)：
+Show &all fonts	顯示所有字型(&A)
+&Save this exception for future font matching	儲存此例外以供日後字型比對使用(&S)
+Make this substitution:	進行此替代：
+&Permanent - keep these fonts	永久 - 保留這些字型(&P)
+Te&mporary - use original fonts	暫時 - 使用原始字型(&M)
+# --- Type 1 fonts -----------------------------------------------------------------------------------------
+Type 1 fonts detected	偵測到 Type 1 字型
+This document uses Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.	此文件使用的 Type 1 字型未來可能不再受支援。為避免可能的問題，請考慮將文字改用其他字型，例如 TrueType (TTF) 或 OpenType (OTF) 字型。
+Do not show again	不要再顯示
+Replace fonts	取代字型
+# --- Rename collection ------------------------------------------------------------------------------------
+Name:	名稱：
+# --- Updates (from AnyVector updater.rs, product name replaced) -------------------------------------------
+Keep the product up to date (recommended)	定期更新產品 (建議)
+Check for updates and let me choose when to install them	檢查更新資訊，並讓我選擇安裝時機
+Never check for updates	永遠不要檢查更新資訊
+Automatically downloads product updates, but prompts you before installing them.	自動下載產品更新，但會在安裝前提示您。
+AnyFont tells you when a new version is available; you choose when to download and install it.	有新版本時 AnyFont 會通知您；由您選擇何時下載並安裝。
+AnyFont never connects to the Internet to look for updates. Help ▸ Check for Updates still checks when you ask.	AnyFont 永遠不會連線至網際網路尋找更新。當您要求時，說明 ▸ 檢查更新 仍會進行檢查。
+An Internet connection is required. Please connect to the Internet and try again.	您必須有網際網路連線。請連線至網際網路，然後再試一次。
+Invalid answer from the update server: {}	更新伺服器的回應無效：{}
+The latest release has no setup for Windows.	最新版本沒有適用於 Windows 的安裝程式。
+No published release was found at github.com/{}.	在 github.com/{} 找不到已發佈的版本。
+AnyFont Updates	AnyFont 更新
+The update server answered {}.	更新伺服器回應 {}。
+The download was interrupted. Please try again.	下載已中斷。請再試一次。
+The downloaded setup is empty.	下載的安裝程式是空的。
+This release has no notes.	此版本沒有版本資訊。
+Click Check Now to look for a new version.	按一下「立即檢查」以尋找新版本。
+Checking for updates...	正在檢查更新...
+AnyFont is up to date.	AnyFont 已是最新版本。
+AnyFont {} is available.	AnyFont {} 已推出。
+Downloading AnyFont {}...	正在下載 AnyFont {}...
+AnyFont closes to install it as soon as the download finishes.	下載完成後，AnyFont 會立即關閉以進行安裝。
+AnyFont {} is ready to install.	AnyFont {} 已可安裝。
+AnyFont closes to install it and starts again when it is done.	AnyFont 會關閉以進行安裝，完成後再重新啟動。
+Error: {}	錯誤：{}
+You are using AnyFont {}.	您正在使用 AnyFont {}。
+The update will be installed when AnyFont closes.	更新將在 AnyFont 關閉時安裝。
+Allow product updates:	允許產品更新：
+Release Notes	版本資訊
+Install Now	立即安裝
+Check Now	立即檢查
+There is a new version of AnyFont available.	AnyFont 有新版本可用。
+New version: {}. Your version: {}.	新版本：{}。您的版本：{}。
+Click OK to install the new version.	按一下「確定」以安裝新版本。
+# --- Report a Bug / Submit Ideas and Feedback (from AnyVector bugreport.rs, product name replaced) ---------
+Report a Bug	回報錯誤
+Submit Ideas and Feedback	提交想法與意見回饋
+Thank you! Your idea was sent.	謝謝！您的想法已送出。
+Thank you! Your bug report was sent.	謝謝！您的錯誤報告已送出。
+Almost done: finish in your browser	即將完成：請在瀏覽器中完成
+Please wait a minute	請稍候一分鐘
+Your idea could not be sent	無法傳送您的想法
+The report could not be sent	無法傳送報告
+The issue was created on the AnyFont project on GitHub:	已在 GitHub 上的 AnyFont 專案中建立此問題：
+GitHub opened in your browser with your idea already filled in.	已在瀏覽器中開啟 GitHub，並已填入您的想法。
+GitHub opened in your browser with the report already filled in.	已在瀏覽器中開啟 GitHub，並已填入報告內容。
+To attach "{}", drag it from the folder that opened into the description box on GitHub.	若要附加「{}」，請將其從開啟的資料夾拖曳到 GitHub 上的描述方塊中。
+Sign in if asked, review it and click "Create" to send it.	如有要求請登入，檢查內容後按一下 "Create" 送出。
+Several reports were sent from this connection in the last minute. Try again in a minute.	過去一分鐘內已從此連線傳送多份報告。請在一分鐘後再試一次。
+Could not open the browser. Please send it at {}	無法開啟瀏覽器。請至 {} 傳送
+Back	返回
+Tell us your idea or what you think of AnyFont. It is sent to the AnyFont project on GitHub as a new idea. You don't need a GitHub account.	告訴我們您的想法或對 AnyFont 的看法。內容會以新想法的形式傳送至 GitHub 上的 AnyFont 專案。您不需要 GitHub 帳戶。
+Title (your idea in a few words):	標題 (用幾個字描述您的想法)：
+Describe your idea or feedback:	描述您的想法或意見回饋：
+How would it help you? (optional)	這對您有什麼幫助？(選用)
+Describe the problem. It is sent to the AnyFont project on GitHub as a new issue. You don't need a GitHub account.	描述問題。內容會以新問題的形式傳送至 GitHub 上的 AnyFont 專案。您不需要 GitHub 帳戶。
+Title (a short summary):	標題 (簡短摘要)：
+What happened?	發生了什麼事？
+Steps to reproduce (optional):	重現步驟 (選用)：
+What did you expect to happen? (optional)	您原本預期會發生什麼？(選用)
+Include system information	包含系統資訊
+System information	系統資訊
+View submitted ideas	檢視已提交的想法
+View reported bugs	檢視已回報的錯誤
+Attach a file (optional):	附加檔案(選用):
+Attach File...	附加檔案...
+Attach a File	附加檔案
+Files GitHub accepts	GitHub 接受的檔案
+Images	影像
+Videos	影片
+Archives (.zip, .gz, .tgz)	壓縮檔 (.zip、.gz、.tgz)
+Images and videos up to 10 MB, other files up to 25 MB, of the types GitHub accepts. Put a font file (.ttf, .otf) in a .zip file.	GitHub 接受的類型中，影像和影片最大 10 MB，其他檔案最大 25 MB。請將字型檔案 (.ttf、.otf) 放入 .zip 檔案。
+Sending...	正在傳送...
+Send	傳送

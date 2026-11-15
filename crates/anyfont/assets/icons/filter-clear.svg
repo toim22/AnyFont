@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+  <!-- Filters / Glyph Filters: clear filters (funnel with a cross) -->
+  <path d="M9 1.5H0.5L6.5 8.7V15.5H9.5V8.6L11.6 6.2" fill="none" stroke="#CACED4" stroke-linejoin="round"/>
+  <path d="M10.5 0.5L15.5 5.5M15.5 0.5L10.5 5.5" fill="none" stroke="#CACED4"/>
+</svg>

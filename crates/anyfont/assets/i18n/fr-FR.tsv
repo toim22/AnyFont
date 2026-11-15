@@ -1,0 +1,425 @@
+# AnyFont user interface: French (fr-FR). One "English<TAB>translation" pair per line;
+# the keys are docs/strings-en.tsv. Check with: python -I scripts/i18n_check.py
+# --- Title bar --------------------------------------------------------------------------------------------
+AnyFont	AnyFont
+Product Help	Aide du produit
+Options	Options
+Updates	Mises à jour
+Minimize	Réduire
+Maximize	Agrandir
+Restore Down	Niveau inférieur
+Close	Fermer
+# --- Menu bar ---------------------------------------------------------------------------------------------
+&File	&Fichier
+&Edit	&Édition
+Font	Police
+View	Affichage
+Help	Aide
+# --- File menu --------------------------------------------------------------------------------------------
+Add Folder...	Ajouter un dossier...
+Add Collection	Ajouter une collection
+Get More...	Obtenir plus...
+Remove Folder or Collection	Supprimer le dossier ou la collection
+Import Folders and Collections...	Importer des dossiers et des collections...
+Export Folders and Collections...	Exporter des dossiers et des collections...
+E&xit	&Quitter
+Alt+F4	Alt+F4
+# --- Edit menu --------------------------------------------------------------------------------------------
+Select All	Tout sélectionner
+Deselect All	Tout désélectionner
+Ctrl+A	Ctrl+A
+Ctrl+Shift+A	Ctrl+Shift+A
+# --- Font menu / font context menu ------------------------------------------------------------------------
+Install	Installer
+Uninstall	Désinstaller
+Download	Télécharger
+Delete	Supprimer
+Add to collection	Ajouter à la collection
+Remove from collection	Supprimer de la collection
+Remove from {}	Supprimer de {}
+Show duplicate fonts	Afficher les polices en double
+Hide duplicate fonts	Masquer les polices en double
+Open font file location	Ouvrir l'emplacement du fichier de police
+# --- View menu --------------------------------------------------------------------------------------------
+Refresh the Font List	Actualiser la liste des polices
+Show font properties	Afficher les propriétés de la police
+Hide font properties	Masquer les propriétés de la police
+Group by family	Grouper par famille
+Show recently used fonts	Afficher les polices récemment utilisées
+Use font to display font name	Afficher le nom de la police dans la police elle-même
+Show Latin names	Afficher les noms latins
+Hide filter list	Masquer la liste des filtres
+Show filter list	Afficher la liste des filtres
+Ctrl+Alt+I	Ctrl+Alt+I
+# --- Help menu --------------------------------------------------------------------------------------------
+&Product Help...	&Aide du produit...
+Check for &Updates...	Rechercher des &mises à jour...
+Submit Ideas and Feedback...	Envoyer des idées et commentaires...
+Report a &Bug...	Signaler un &bogue...
+&About AnyFont...	À &propos d'AnyFont...
+# --- Libraries context menu -------------------------------------------------------------------------------
+Rename	Renommer
+# --- Toolbar tooltips (header, then body) -----------------------------------------------------------------
+Add folder	Ajouter un dossier
+Browse to a folder that contains fonts to add it to your Libraries.	Accédez à un dossier contenant des polices pour l'ajouter à vos bibliothèques.
+Add collection	Ajouter une collection
+Add a collection for easy access to fonts that reside in different folders.	Ajoutez une collection pour accéder facilement à des polices situées dans différents dossiers.
+Get More	Obtenir plus
+Remove	Supprimer
+Remove a folder or collection from your Libraries.	Supprimer un dossier ou une collection de vos bibliothèques.
+Install fonts and font families.	Installer des polices et des familles de polices.
+Uninstall fonts and font families.	Désinstaller des polices et des familles de polices.
+Download fonts to the AnyFont Content folder.	Télécharger des polices dans le dossier Contenu d'AnyFont.
+Delete font files from your system.	Supprimer des fichiers de police de votre système.
+Show duplicate font versions.	Afficher les versions de police en double.
+Hide duplicate font versions.	Masquer les versions de police en double.
+Show font details or glyph sets.	Afficher les détails de la police ou les jeux de glyphes.
+# --- Libraries --------------------------------------------------------------------------------------------
+Libraries	Bibliothèques
+Folders	Dossiers
+My fonts	Mes polices
+My Collections	Mes collections
+Favorites	Favoris
+Collection {}	Collection {}
+Includes all installed fonts, all fonts in your added folders, and fonts downloaded from the Online library	Comprend toutes les polices installées, toutes les polices de vos dossiers ajoutés et les polices téléchargées depuis la bibliothèque en ligne
+To populate this collection, drag fonts from an added folder or another collection.	Pour remplir cette collection, faites-y glisser des polices depuis un dossier ajouté ou une autre collection.
+# --- Filters ----------------------------------------------------------------------------------------------
+Filters	Filtres
+Clear filters	Effacer les filtres
+Remove all selected font filters.	Supprimer tous les filtres de police sélectionnés.
+Font Status	État de la police
+Installed	Installées
+Not installed	Non installées
+Protected System Fonts	Polices système protégées
+Duplicates	Doublons
+Embedding Rights	Droits d'incorporation
+Editable	Modifiable
+Installable	Installable
+Preview and Print	Aperçu et impression
+Font Technology	Technologie de police
+OpenType - TrueType	OpenType - TrueType
+TrueType	TrueType
+Variable Fonts	Polices variables
+Weight	Graisse
+Light	Maigre
+Regular	Normal
+Bold	Gras
+Width	Largeur
+Condensed	Condensé
+Normal	Normal
+Expanded	Étendu
+Style	Style
+Decorative	Décorative
+Display	Titrage
+Monospaced	Chasse fixe
+Sans Serif	Sans empattement
+Script	Manuscrite
+Serif	Avec empattement
+Symbol	Symbole
+Character Range	Plage de caractères
+Arabic	Arabe
+Chinese Simplified	Chinois simplifié
+Chinese Traditional	Chinois traditionnel
+Cyrillic	Cyrillique
+Devanagari	Dévanagari
+Greek	Grec
+Hebrew	Hébreu
+Japanese	Japonais
+Korean	Coréen
+Latin	Latin
+Turkish	Turc
+OpenType	OpenType
+Alternate Annotation Forms	Formes d'annotation alternatives
+Asian Forms	Formes asiatiques
+Asian Vertical Metrics	Métriques verticales asiatiques
+Asian Widths	Largeurs asiatiques
+Capital Spacing	Espacement des majuscules
+Capitals	Capitales
+Case-Sensitive Forms	Formes sensibles à la casse
+Contextual Alternates	Variantes contextuelles
+Contextual Ligatures	Ligatures contextuelles
+Discretionary Ligatures	Ligatures facultatives
+Fraction	Fraction
+Historical Forms	Formes historiques
+Horizontal Kana Alternates	Variantes horizontales des kana
+Historical Ligatures	Ligatures historiques
+Number Styles	Styles de chiffres
+Ordinals	Ordinaux
+Ornaments	Ornements
+Position	Position
+Slashed Zero	Zéro barré
+Standard Ligatures	Ligatures standard
+Stylistic Alternate	Variante stylistique
+Stylistic Sets	Jeux stylistiques
+Swash Variants	Variantes ornées
+Vertical Alternates and Rotation	Variantes verticales et rotation
+# --- Font list: search row, empty states, information strip, status bar ------------------------------------
+Enter sample text	Saisissez un exemple de texte
+Search	Rechercher
+Font Name	Nom de la police
+The quick brown fox jumps over the lazy dog.	Portez ce vieux whisky au juge blond qui fume.
+No fonts found. Remove or change filters or explore the font packs available in Get More.	Aucune police trouvée. Supprimez ou modifiez les filtres, ou explorez les packs de polices disponibles dans Obtenir plus.
+No fonts found. Remove or change filters to show fonts.	Aucune police trouvée. Supprimez ou modifiez les filtres pour afficher des polices.
+No fonts found. Clear the Search box, or type a different keyword.	Aucune police trouvée. Effacez la zone Rechercher ou saisissez un autre mot-clé.
+No fonts found. Clear the Search box, type a different keyword, or explore the font packs available in Get More.	Aucune police trouvée. Effacez la zone Rechercher, saisissez un autre mot-clé ou explorez les packs de polices disponibles dans Obtenir plus.
+Refresh	Actualiser
+Refresh the font list.	Actualiser la liste des polices.
+{}: {} fonts	{} : {} polices
+{} (filtered): {} fonts	{} (filtré) : {} polices
+Change the font size in the font list.	Modifier la taille de police dans la liste des polices.
+# --- Font row tooltip -------------------------------------------------------------------------------------
+Online font (Install or download to use)	Police en ligne (installez-la ou téléchargez-la pour l'utiliser)
+Protected System Font	Police système protégée
+Duplicate(s):	Double(s) :
+# --- Font properties panel ---------------------------------------------------------------------------------
+Glyphs	Glyphes
+Font info	Infos sur la police
+Variable font	Police variable
+Preview and filter available glyphs for a selected font.	Afficher un aperçu des glyphes disponibles d'une police sélectionnée et les filtrer.
+Show detailed font information.	Afficher des informations détaillées sur la police.
+Adjust variable font properties.	Ajuster les propriétés de la police variable.
+Glyph Filters	Filtres de glyphes
+Glyph Preview	Aperçu des glyphes
+Remove all selected glyph filters.	Supprimer tous les filtres de glyphes sélectionnés.
+Common	Commun
+Scripts	Écritures
+Currency	Devise
+Mathematical Symbols	Symboles mathématiques
+Numbers	Chiffres
+Punctuation & Separators	Ponctuation et séparateurs
+Symbols	Symboles
+Marks	Marques
+{} glyphs	{} glyphes
+Change the glyph size in the Glyph Preview area.	Modifier la taille du glyphe dans la zone d'aperçu des glyphes.
+Multiple fonts are selected. To view a glyph set, choose only one font.	Plusieurs polices sont sélectionnées. Pour afficher un jeu de glyphes, choisissez une seule police.
+No matching glyphs	Aucun glyphe correspondant
+Install or download the font to preview glyphs.	Installez ou téléchargez la police pour afficher un aperçu des glyphes.
+Family:	Famille :
+Sub-family:	Sous-famille :
+File Path:	Chemin du fichier :
+File Size:	Taille du fichier :
+Version:	Version :
+Font technology:	Technologie de police :
+Code Page:	Page de codes :
+Italic:	Italique :
+Weight:	Graisse :
+Width:	Largeur :
+Embedding:	Incorporation :
+Manufacturer:	Fabricant :
+Designer:	Concepteur :
+Copyright:	Copyright :
+Collection:	Collection :
+Yes	Oui
+No	Non
+OpenType - PostScript	OpenType - PostScript
+No Embedding	Pas d'incorporation
+{} KB	{} Ko
+{} MB	{} Mo
+You don't have a variable font selected, or you've selected multiple fonts.	Vous n'avez pas sélectionné de police variable, ou vous avez sélectionné plusieurs polices.
+Choose one variable font to see and adjust its properties.	Choisissez une police variable pour afficher et ajuster ses propriétés.
+# --- Edit-box context menu --------------------------------------------------------------------------------
+Undo	Annuler
+Cut	Couper
+Copy	Copier
+Paste	Coller
+# --- About / System Info / Legal Notices ------------------------------------------------------------------
+About AnyFont	À propos d'AnyFont
+Version {} - {} Release	Version {} - Édition {}
+(C) {} AnyFont Team.  All rights reserved.	(C) {} AnyFont Team.  Tous droits réservés.
+Source ID:	ID de la source :
+&System Info...	Informations &système...
+Legal &Notices...	&Mentions légales...
+System Info	Informations système
+C&hoose a category:	&Choisissez une catégorie :
+System	Système
+AnyFont EXEs & DLLs	EXE et DLL d'AnyFont
+System DLLs	DLL système
+Platform	Plateforme
+Processor	Processeur
+Number of Processors	Nombre de processeurs
+Math Coprocessor	Coprocesseur mathématique
+Total physical memory	Mémoire physique totale
+Available physical memory	Mémoire physique disponible
+Total virtual memory	Mémoire virtuelle totale
+Available virtual memory	Mémoire virtuelle disponible
+Total memory used by app	Mémoire totale utilisée par l'application
+GDI Object Count	Nombre d'objets GDI
+&Save	&Enregistrer
+Save System Info	Enregistrer les informations système
+Text (*.txt)	Texte (*.txt)
+System info was saved to {}.	Les informations système ont été enregistrées dans {}.
+Unable to save system info to {}.	Impossible d'enregistrer les informations système dans {}.
+Legal Notices	Mentions légales
+&Print	&Imprimer
+OK	OK
+# --- Options ----------------------------------------------------------------------------------------------
+Appearance	Apparence
+Size	Taille
+%	%
+&Reset to Default	&Rétablir les valeurs par défaut
+Hint: The scaling level is relative to the scaling level of the operating system. For example, scaling by 200% will make the application user interface appear twice as large as the UI of the operating system. Note that excessive scaling may cause certain workspace elements to appear cropped.	Conseil : le niveau de mise à l'échelle est relatif à celui du système d'exploitation. Par exemple, une mise à l'échelle de 200 % fait apparaître l'interface de l'application deux fois plus grande que celle du système d'exploitation. Notez qu'une mise à l'échelle excessive peut entraîner l'affichage tronqué de certains éléments de l'espace de travail.
+Color	Couleur
+Theme:	Thème :
+Medium	Moyen
+Dark	Sombre
+Black	Noir
+Window border:	Bordure de fenêtre :
+Font Matching	Correspondance des polices
+PANOSE Font Matching Preferences...	Préférences de correspondance des polices PANOSE...
+Network	Réseau
+Allow AnyFont to use the Internet	Autoriser AnyFont à utiliser Internet
+You need to restart the application to apply these changes.	Vous devez redémarrer l'application pour appliquer ces modifications.
+# --- Confirmations, file dialogs, errors ------------------------------------------------------------------
+Are you sure you want to remove this collection?	Voulez-vous vraiment supprimer cette collection ?
+Are you sure you want to remove this folder?	Voulez-vous vraiment supprimer ce dossier ?
+Do not show this message again	Ne plus afficher ce message
+Do not show this message again.	Ne plus afficher ce message.
+&Yes	&Oui
+&No	&Non
+Add Folder	Ajouter un dossier
+XML - Extensible Markup Language (*.xml)	XML - Extensible Markup Language (*.xml)
+AnyFont Folders and Collections.xml	Dossiers et collections AnyFont.xml
+Folder not found. Please choose another location.	Dossier introuvable. Choisissez un autre emplacement.
+This folder has already been added.	Ce dossier a déjà été ajouté.
+This folder has already been added as a subfolder of {}.	Ce dossier a déjà été ajouté en tant que sous-dossier de {}.
+We can't find the following:	Les éléments suivants sont introuvables :
+Supported font formats: OTF, TTF	Formats de police pris en charge : OTF, TTF
+Your font database has been corrupted. To reset the database, you must restart AnyFont while holding down Shift.	Votre base de données de polices est endommagée. Pour la réinitialiser, vous devez redémarrer AnyFont en maintenant la touche Maj enfoncée.
+# --- Install / uninstall / delete / download ---------------------------------------------------------------
+Installing {}... {}%	Installation de {}... {} %
+Uninstalling {}... {}%	Désinstallation de {}... {} %
+Downloading {}... {}%	Téléchargement de {}... {} %
+Cancel	Annuler
+Delete fonts	Supprimer des polices
+Are you sure you want to delete this font?\n\nRead-only fonts cannot be deleted.	Voulez-vous vraiment supprimer cette police ?\n\nLes polices en lecture seule ne peuvent pas être supprimées.
+Are you sure you want to delete these fonts?\n\nRead-only fonts cannot be deleted.	Voulez-vous vraiment supprimer ces polices ?\n\nLes polices en lecture seule ne peuvent pas être supprimées.
+Select all	Tout sélectionner
+The following font cannot be uninstalled because it is in use by one or more applications. To uninstall this font, you must first restart your computer.\n\nDo you want to restart your computer now?	La police suivante ne peut pas être désinstallée, car elle est utilisée par une ou plusieurs applications. Pour la désinstaller, vous devez d'abord redémarrer votre ordinateur.\n\nVoulez-vous redémarrer votre ordinateur maintenant ?
+The following fonts cannot be uninstalled because they are in use by one or more applications. To uninstall these fonts, you must first restart your computer.\n\nDo you want to restart your computer now?\n\nClick Ignore to continue without uninstalling the listed fonts.	Les polices suivantes ne peuvent pas être désinstallées, car elles sont utilisées par une ou plusieurs applications. Pour les désinstaller, vous devez d'abord redémarrer votre ordinateur.\n\nVoulez-vous redémarrer votre ordinateur maintenant ?\n\nCliquez sur Ignorer pour continuer sans désinstaller les polices répertoriées.
+The following font cannot be deleted because it is in use by one or more applications. To delete this font, you must first restart your computer.\n\nDo you want to restart your computer now?	La police suivante ne peut pas être supprimée, car elle est utilisée par une ou plusieurs applications. Pour la supprimer, vous devez d'abord redémarrer votre ordinateur.\n\nVoulez-vous redémarrer votre ordinateur maintenant ?
+The following fonts cannot be deleted because they are in use by one or more applications. To delete these fonts, you must first restart your computer.\n\nDo you want to restart your computer now?\n\nClick Ignore to continue without deleting the listed fonts.	Les polices suivantes ne peuvent pas être supprimées, car elles sont utilisées par une ou plusieurs applications. Pour les supprimer, vous devez d'abord redémarrer votre ordinateur.\n\nVoulez-vous redémarrer votre ordinateur maintenant ?\n\nCliquez sur Ignorer pour continuer sans supprimer les polices répertoriées.
+Reboot &now	Redémarrer &maintenant
+Reboot &later	Redémarrer &plus tard
+&Ignore	&Ignorer
+# --- Message box buttons ----------------------------------------------------------------------------------
+&Abort	&Abandonner
+&Retry	&Recommencer
+&Try Again	&Réessayer
+&Continue	&Continuer
+# --- Get More (online font catalog) -----------------------------------------------------------------------
+Sort by:	Trier par :
+Featured	À la une
+Filter by:	Filtrer par :
+Free	Gratuites
+My Library	Ma bibliothèque
+Downloaded	Téléchargées
+Remote font catalog cannot connect to the internet.	Le catalogue de polices distant ne peut pas se connecter à Internet.
+An error occurred while downloading the remote font catalog.	Une erreur s'est produite lors du téléchargement du catalogue de polices distant.
+# --- PANOSE font matching ---------------------------------------------------------------------------------
+PANOSE Font Matching Preferences	Préférences de correspondance des polices PANOSE
+&Text	&Texte
+Text and &styles	Texte et &styles
+&Never show	&Ne jamais afficher
+&Default font:	&Police par défaut :
+&Exceptions...	&Exceptions...
+PANOSE Font Matching Exceptions	Exceptions de correspondance des polices PANOSE
+&Missing Font:	Police &manquante :
+&Substituted Font:	Police de &substitution :
+&Add Exception	&Ajouter une exception
+&Remove Exception	Supp&rimer l'exception
+&List of current exceptions:	&Liste des exceptions actuelles :
+Missing Font	Police manquante
+Substituted Font	Police de substitution
+?	?
+PANOSE Font Matching Results	Résultats de la correspondance des polices PANOSE
+Working, please wait...	Traitement en cours, veuillez patienter...
+Stop	Arrêter
+Stopping will end the PANOSE matching process. All missing fonts will revert to a default selection.	L'arrêt mettra fin au processus de correspondance PANOSE. Toutes les polices manquantes reviendront à une sélection par défaut.
+&Use the PANOSE suggested match	&Utiliser la correspondance suggérée par PANOSE
+Substitute &font with:	Remplacer la &police par :
+Show &all fonts	&Afficher toutes les polices
+&Save this exception for future font matching	&Enregistrer cette exception pour les correspondances futures
+Make this substitution:	Effectuer cette substitution :
+&Permanent - keep these fonts	Per&manent - conserver ces polices
+Te&mporary - use original fonts	&Temporaire - utiliser les polices d'origine
+# --- Type 1 fonts -----------------------------------------------------------------------------------------
+Type 1 fonts detected	Polices Type 1 détectées
+This document uses Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.	Ce document utilise des polices Type 1, qui pourraient ne plus être prises en charge à l'avenir. Pour éviter d'éventuels problèmes, envisagez de modifier le texte pour utiliser d'autres polices, comme des polices TrueType (TTF) ou OpenType (OTF).
+Do not show again	Ne plus afficher
+Replace fonts	Remplacer les polices
+# --- Rename collection ------------------------------------------------------------------------------------
+Name:	Nom :
+# --- Updates (from AnyVector updater.rs, product name replaced) -------------------------------------------
+Keep the product up to date (recommended)	Garder le produit à jour (recommandé)
+Check for updates and let me choose when to install them	Rechercher les mises à jour et me laisser choisir quand les installer
+Never check for updates	Ne jamais rechercher de mises à jour
+Automatically downloads product updates, but prompts you before installing them.	Télécharge automatiquement les mises à jour produit, mais vous demande confirmation avant de les installer.
+AnyFont tells you when a new version is available; you choose when to download and install it.	AnyFont vous prévient lorsqu'une nouvelle version est disponible ; vous choisissez quand la télécharger et l'installer.
+AnyFont never connects to the Internet to look for updates. Help ▸ Check for Updates still checks when you ask.	AnyFont ne se connecte jamais à Internet pour rechercher des mises à jour. Aide ▸ Rechercher des mises à jour effectue toujours la recherche à votre demande.
+An Internet connection is required. Please connect to the Internet and try again.	Une connexion Internet est nécessaire. Connectez-vous à Internet et réessayez.
+Invalid answer from the update server: {}	Réponse non valide du serveur de mises à jour : {}
+The latest release has no setup for Windows.	La dernière version ne comporte pas de programme d'installation pour Windows.
+No published release was found at github.com/{}.	Aucune version publiée n'a été trouvée sur github.com/{}.
+AnyFont Updates	Mises à jour d'AnyFont
+The update server answered {}.	Le serveur de mises à jour a répondu {}.
+The download was interrupted. Please try again.	Le téléchargement a été interrompu. Veuillez réessayer.
+The downloaded setup is empty.	Le programme d'installation téléchargé est vide.
+This release has no notes.	Cette version n'a pas de notes.
+Click Check Now to look for a new version.	Cliquez sur Rechercher maintenant pour trouver une nouvelle version.
+Checking for updates...	Recherche de mises à jour...
+AnyFont is up to date.	AnyFont est à jour.
+AnyFont {} is available.	AnyFont {} est disponible.
+Downloading AnyFont {}...	Téléchargement d'AnyFont {}...
+AnyFont closes to install it as soon as the download finishes.	AnyFont se ferme pour l'installer dès la fin du téléchargement.
+AnyFont {} is ready to install.	AnyFont {} est prêt à être installé.
+AnyFont closes to install it and starts again when it is done.	AnyFont se ferme pour l'installer et redémarre une fois l'installation terminée.
+Error: {}	Erreur : {}
+You are using AnyFont {}.	Vous utilisez AnyFont {}.
+The update will be installed when AnyFont closes.	La mise à jour sera installée à la fermeture d'AnyFont.
+Allow product updates:	Autoriser les mises à jour de produit :
+Release Notes	Notes de version
+Install Now	Installer maintenant
+Check Now	Rechercher maintenant
+There is a new version of AnyFont available.	Une nouvelle version d'AnyFont est disponible.
+New version: {}. Your version: {}.	Nouvelle version : {}. Votre version : {}.
+Click OK to install the new version.	Cliquez sur OK pour installer la nouvelle version.
+# --- Report a Bug / Submit Ideas and Feedback (from AnyVector bugreport.rs, product name replaced) ---------
+Report a Bug	Signaler un bogue
+Submit Ideas and Feedback	Envoyer des idées et commentaires
+Thank you! Your idea was sent.	Merci ! Votre idée a été envoyée.
+Thank you! Your bug report was sent.	Merci ! Votre rapport de bogue a été envoyé.
+Almost done: finish in your browser	Presque terminé : finalisez dans votre navigateur
+Please wait a minute	Veuillez patienter une minute
+Your idea could not be sent	Impossible d'envoyer votre idée
+The report could not be sent	Impossible d'envoyer le rapport
+The issue was created on the AnyFont project on GitHub:	Le ticket a été créé dans le projet AnyFont sur GitHub :
+GitHub opened in your browser with your idea already filled in.	GitHub s'est ouvert dans votre navigateur avec votre idée déjà remplie.
+GitHub opened in your browser with the report already filled in.	GitHub s'est ouvert dans votre navigateur avec le rapport déjà rempli.
+To attach "{}", drag it from the folder that opened into the description box on GitHub.	Pour joindre « {} », faites-le glisser du dossier qui s'est ouvert vers la zone de description sur GitHub.
+Sign in if asked, review it and click "Create" to send it.	Connectez-vous si on vous le demande, relisez-le et cliquez sur « Create » pour l'envoyer.
+Several reports were sent from this connection in the last minute. Try again in a minute.	Plusieurs rapports ont été envoyés depuis cette connexion au cours de la dernière minute. Réessayez dans une minute.
+Could not open the browser. Please send it at {}	Impossible d'ouvrir le navigateur. Envoyez-la à l'adresse {}
+Back	Retour
+Tell us your idea or what you think of AnyFont. It is sent to the AnyFont project on GitHub as a new idea. You don't need a GitHub account.	Faites-nous part de votre idée ou de votre avis sur AnyFont. Elle est envoyée au projet AnyFont sur GitHub comme nouvelle idée. Aucun compte GitHub n'est nécessaire.
+Title (your idea in a few words):	Titre (votre idée en quelques mots) :
+Describe your idea or feedback:	Décrivez votre idée ou votre commentaire :
+How would it help you? (optional)	En quoi cela vous aiderait-il ? (facultatif)
+Describe the problem. It is sent to the AnyFont project on GitHub as a new issue. You don't need a GitHub account.	Décrivez le problème. Il est envoyé au projet AnyFont sur GitHub comme nouveau ticket. Aucun compte GitHub n'est nécessaire.
+Title (a short summary):	Titre (bref résumé) :
+What happened?	Que s'est-il passé ?
+Steps to reproduce (optional):	Étapes pour reproduire (facultatif) :
+What did you expect to happen? (optional)	Qu'attendiez-vous ? (facultatif)
+Include system information	Inclure les informations système
+System information	Informations système
+View submitted ideas	Voir les idées envoyées
+View reported bugs	Voir les bogues signalés
+Attach a file (optional):	Joindre un fichier (facultatif) :
+Attach File...	Joindre un fichier...
+Attach a File	Joindre un fichier
+Files GitHub accepts	Fichiers acceptés par GitHub
+Images	Images
+Videos	Vidéos
+Archives (.zip, .gz, .tgz)	Archives (.zip, .gz, .tgz)
+Images and videos up to 10 MB, other files up to 25 MB, of the types GitHub accepts. Put a font file (.ttf, .otf) in a .zip file.	Images et vidéos jusqu'à 10 Mo, autres fichiers jusqu'à 25 Mo, des types acceptés par GitHub. Placez un fichier de police (.ttf, .otf) dans un fichier .zip.
+Sending...	Envoi...
+Send	Envoyer

@@ -1,0 +1,425 @@
+# AnyFont user interface: Dutch (nl-NL). One "English<TAB>translation" pair per line;
+# the keys are docs/strings-en.tsv. Check with: python -I scripts/i18n_check.py
+# --- Title bar --------------------------------------------------------------------------------------------
+AnyFont	AnyFont
+Product Help	Producthelp
+Options	Opties
+Updates	Updates
+Minimize	Minimaliseren
+Maximize	Maximaliseren
+Restore Down	Vorige grootte
+Close	Sluiten
+# --- Menu bar ---------------------------------------------------------------------------------------------
+&File	&Bestand
+&Edit	Be&werken
+Font	Lettertype
+View	Beeld
+Help	Help
+# --- File menu --------------------------------------------------------------------------------------------
+Add Folder...	Map toevoegen...
+Add Collection	Verzameling toevoegen
+Get More...	Meer ophalen...
+Remove Folder or Collection	Map of verzameling verwijderen
+Import Folders and Collections...	Mappen en verzamelingen importeren...
+Export Folders and Collections...	Mappen en verzamelingen exporteren...
+E&xit	&Afsluiten
+Alt+F4	Alt+F4
+# --- Edit menu --------------------------------------------------------------------------------------------
+Select All	Alles selecteren
+Deselect All	Alles deselecteren
+Ctrl+A	Ctrl+A
+Ctrl+Shift+A	Ctrl+Shift+A
+# --- Font menu / font context menu ------------------------------------------------------------------------
+Install	Installeren
+Uninstall	Deïnstalleren
+Download	Downloaden
+Delete	Verwijderen
+Add to collection	Toevoegen aan verzameling
+Remove from collection	Verwijderen uit verzameling
+Remove from {}	Verwijderen uit {}
+Show duplicate fonts	Dubbele lettertypen weergeven
+Hide duplicate fonts	Dubbele lettertypen verbergen
+Open font file location	Bestandslocatie van lettertype openen
+# --- View menu --------------------------------------------------------------------------------------------
+Refresh the Font List	Lettertypelijst vernieuwen
+Show font properties	Lettertype-eigenschappen weergeven
+Hide font properties	Lettertype-eigenschappen verbergen
+Group by family	Groeperen op familie
+Show recently used fonts	Recent gebruikte lettertypen weergeven
+Use font to display font name	Lettertypenaam in het lettertype zelf weergeven
+Show Latin names	Latijnse namen weergeven
+Hide filter list	Filterlijst verbergen
+Show filter list	Filterlijst weergeven
+Ctrl+Alt+I	Ctrl+Alt+I
+# --- Help menu --------------------------------------------------------------------------------------------
+&Product Help...	&Producthelp...
+Check for &Updates...	Controleren op &updates...
+Submit Ideas and Feedback...	Ideeën en feedback verzenden...
+Report a &Bug...	Een &fout melden...
+&About AnyFont...	&Over AnyFont...
+# --- Libraries context menu -------------------------------------------------------------------------------
+Rename	Naam wijzigen
+# --- Toolbar tooltips (header, then body) -----------------------------------------------------------------
+Add folder	Map toevoegen
+Browse to a folder that contains fonts to add it to your Libraries.	Blader naar een map met lettertypen om deze aan uw bibliotheken toe te voegen.
+Add collection	Verzameling toevoegen
+Add a collection for easy access to fonts that reside in different folders.	Voeg een verzameling toe voor eenvoudige toegang tot lettertypen die in verschillende mappen staan.
+Get More	Meer ophalen
+Remove	Verwijderen
+Remove a folder or collection from your Libraries.	Een map of verzameling uit uw bibliotheken verwijderen.
+Install fonts and font families.	Lettertypen en lettertypefamilies installeren.
+Uninstall fonts and font families.	Lettertypen en lettertypefamilies deïnstalleren.
+Download fonts to the AnyFont Content folder.	Lettertypen downloaden naar de map AnyFont-inhoud.
+Delete font files from your system.	Lettertypebestanden van uw systeem verwijderen.
+Show duplicate font versions.	Dubbele lettertypeversies weergeven.
+Hide duplicate font versions.	Dubbele lettertypeversies verbergen.
+Show font details or glyph sets.	Lettertypedetails of glyphsets weergeven.
+# --- Libraries --------------------------------------------------------------------------------------------
+Libraries	Bibliotheken
+Folders	Mappen
+My fonts	Mijn lettertypen
+My Collections	Mijn verzamelingen
+Favorites	Favorieten
+Collection {}	Verzameling {}
+Includes all installed fonts, all fonts in your added folders, and fonts downloaded from the Online library	Bevat alle geïnstalleerde lettertypen, alle lettertypen in uw toegevoegde mappen en lettertypen die zijn gedownload uit de onlinebibliotheek
+To populate this collection, drag fonts from an added folder or another collection.	Sleep lettertypen uit een toegevoegde map of een andere verzameling om deze verzameling te vullen.
+# --- Filters ----------------------------------------------------------------------------------------------
+Filters	Filters
+Clear filters	Filters wissen
+Remove all selected font filters.	Alle geselecteerde lettertypefilters verwijderen.
+Font Status	Lettertypestatus
+Installed	Geïnstalleerd
+Not installed	Niet geïnstalleerd
+Protected System Fonts	Beveiligde systeemlettertypen
+Duplicates	Duplicaten
+Embedding Rights	Insluitingsrechten
+Editable	Bewerkbaar
+Installable	Installeerbaar
+Preview and Print	Voorbeeld en afdrukken
+Font Technology	Lettertypetechnologie
+OpenType - TrueType	OpenType - TrueType
+TrueType	TrueType
+Variable Fonts	Variabele lettertypen
+Weight	Gewicht
+Light	Licht
+Regular	Normaal
+Bold	Vet
+Width	Breedte
+Condensed	Versmald
+Normal	Normaal
+Expanded	Verbreed
+Style	Stijl
+Decorative	Decoratief
+Display	Display
+Monospaced	Monospace
+Sans Serif	Schreefloos
+Script	Schrijfletter
+Serif	Schreef
+Symbol	Symbool
+Character Range	Tekenbereik
+Arabic	Arabisch
+Chinese Simplified	Chinees (vereenvoudigd)
+Chinese Traditional	Chinees (traditioneel)
+Cyrillic	Cyrillisch
+Devanagari	Devanagari
+Greek	Grieks
+Hebrew	Hebreeuws
+Japanese	Japans
+Korean	Koreaans
+Latin	Latijn
+Turkish	Turks
+OpenType	OpenType
+Alternate Annotation Forms	Alternatieve annotatievormen
+Asian Forms	Aziatische vormen
+Asian Vertical Metrics	Aziatische verticale metrieken
+Asian Widths	Aziatische breedten
+Capital Spacing	Hoofdletterspatiëring
+Capitals	Hoofdletters
+Case-Sensitive Forms	Hoofdlettergevoelige vormen
+Contextual Alternates	Contextuele alternatieven
+Contextual Ligatures	Contextuele ligaturen
+Discretionary Ligatures	Optionele ligaturen
+Fraction	Breuk
+Historical Forms	Historische vormen
+Horizontal Kana Alternates	Horizontale kana-alternatieven
+Historical Ligatures	Historische ligaturen
+Number Styles	Cijferstijlen
+Ordinals	Rangtelwoorden
+Ornaments	Ornamenten
+Position	Positie
+Slashed Zero	Nul met schuine streep
+Standard Ligatures	Standaardligaturen
+Stylistic Alternate	Stilistisch alternatief
+Stylistic Sets	Stilistische sets
+Swash Variants	Swashvarianten
+Vertical Alternates and Rotation	Verticale alternatieven en rotatie
+# --- Font list: search row, empty states, information strip, status bar ------------------------------------
+Enter sample text	Voorbeeldtekst invoeren
+Search	Zoeken
+Font Name	Lettertypenaam
+The quick brown fox jumps over the lazy dog.	Pa's wijze lynx bezag vroom het fikse aquaduct.
+No fonts found. Remove or change filters or explore the font packs available in Get More.	Geen lettertypen gevonden. Verwijder of wijzig filters of verken de lettertypepakketten die beschikbaar zijn in Meer ophalen.
+No fonts found. Remove or change filters to show fonts.	Geen lettertypen gevonden. Verwijder of wijzig filters om lettertypen weer te geven.
+No fonts found. Clear the Search box, or type a different keyword.	Geen lettertypen gevonden. Wis het zoekvak of typ een ander trefwoord.
+No fonts found. Clear the Search box, type a different keyword, or explore the font packs available in Get More.	Geen lettertypen gevonden. Wis het zoekvak, typ een ander trefwoord of verken de lettertypepakketten die beschikbaar zijn in Meer ophalen.
+Refresh	Vernieuwen
+Refresh the font list.	De lettertypelijst vernieuwen.
+{}: {} fonts	{}: {} lettertypen
+{} (filtered): {} fonts	{} (gefilterd): {} lettertypen
+Change the font size in the font list.	De lettergrootte in de lettertypelijst wijzigen.
+# --- Font row tooltip -------------------------------------------------------------------------------------
+Online font (Install or download to use)	Onlinelettertype (installeren of downloaden om te gebruiken)
+Protected System Font	Beveiligd systeemlettertype
+Duplicate(s):	Duplica(a)t(en):
+# --- Font properties panel ---------------------------------------------------------------------------------
+Glyphs	Glyphs
+Font info	Lettertype-info
+Variable font	Variabel lettertype
+Preview and filter available glyphs for a selected font.	Beschikbare glyphs van een geselecteerd lettertype bekijken en filteren.
+Show detailed font information.	Gedetailleerde lettertype-informatie weergeven.
+Adjust variable font properties.	Eigenschappen van variabel lettertype aanpassen.
+Glyph Filters	Glyphfilters
+Glyph Preview	Glyphvoorbeeld
+Remove all selected glyph filters.	Alle geselecteerde glyphfilters verwijderen.
+Common	Algemeen
+Scripts	Schriften
+Currency	Valuta
+Mathematical Symbols	Wiskundige symbolen
+Numbers	Cijfers
+Punctuation & Separators	Interpunctie en scheidingstekens
+Symbols	Symbolen
+Marks	Tekens
+{} glyphs	{} glyphs
+Change the glyph size in the Glyph Preview area.	De glyphgrootte in het glyphvoorbeeldgebied wijzigen.
+Multiple fonts are selected. To view a glyph set, choose only one font.	Er zijn meerdere lettertypen geselecteerd. Kies één lettertype om een glyphset te bekijken.
+No matching glyphs	Geen overeenkomende glyphs
+Install or download the font to preview glyphs.	Installeer of download het lettertype om een voorbeeld van de glyphs te bekijken.
+Family:	Familie:
+Sub-family:	Subfamilie:
+File Path:	Bestandspad:
+File Size:	Bestandsgrootte:
+Version:	Versie:
+Font technology:	Lettertypetechnologie:
+Code Page:	Codetabel:
+Italic:	Cursief:
+Weight:	Gewicht:
+Width:	Breedte:
+Embedding:	Insluiten:
+Manufacturer:	Fabrikant:
+Designer:	Ontwerper:
+Copyright:	Copyright:
+Collection:	Verzameling:
+Yes	Ja
+No	Nee
+OpenType - PostScript	OpenType - PostScript
+No Embedding	Geen insluiting
+{} KB	{} KB
+{} MB	{} MB
+You don't have a variable font selected, or you've selected multiple fonts.	U hebt geen variabel lettertype geselecteerd, of u hebt meerdere lettertypen geselecteerd.
+Choose one variable font to see and adjust its properties.	Kies één variabel lettertype om de eigenschappen ervan te bekijken en aan te passen.
+# --- Edit-box context menu --------------------------------------------------------------------------------
+Undo	Ongedaan maken
+Cut	Knippen
+Copy	Kopiëren
+Paste	Plakken
+# --- About / System Info / Legal Notices ------------------------------------------------------------------
+About AnyFont	Over AnyFont
+Version {} - {} Release	Versie {} - {}
+(C) {} AnyFont Team.  All rights reserved.	(C) {} AnyFont Team.  Alle rechten voorbehouden.
+Source ID:	Bron-id:
+&System Info...	&Systeeminformatie...
+Legal &Notices...	&Juridische kennisgevingen...
+System Info	Systeeminformatie
+C&hoose a category:	&Kies een categorie:
+System	Systeem
+AnyFont EXEs & DLLs	AnyFont EXE's en DLL's
+System DLLs	Systeem-DLL's
+Platform	Platform
+Processor	Processor
+Number of Processors	Aantal processors
+Math Coprocessor	Wiskundige coprocessor
+Total physical memory	Totaal fysiek geheugen
+Available physical memory	Beschikbaar fysiek geheugen
+Total virtual memory	Totaal virtueel geheugen
+Available virtual memory	Beschikbaar virtueel geheugen
+Total memory used by app	Totaal geheugen gebruikt door app
+GDI Object Count	Aantal GDI-objecten
+&Save	&Opslaan
+Save System Info	Systeeminformatie opslaan
+Text (*.txt)	Tekst (*.txt)
+System info was saved to {}.	Systeeminformatie is opgeslagen in {}.
+Unable to save system info to {}.	Kan systeeminformatie niet opslaan in {}.
+Legal Notices	Juridische kennisgevingen
+&Print	&Afdrukken
+OK	OK
+# --- Options ----------------------------------------------------------------------------------------------
+Appearance	Weergave
+Size	Formaat
+%	%
+&Reset to Default	&Standaardwaarden herstellen
+Hint: The scaling level is relative to the scaling level of the operating system. For example, scaling by 200% will make the application user interface appear twice as large as the UI of the operating system. Note that excessive scaling may cause certain workspace elements to appear cropped.	Tip: het schaalniveau is relatief ten opzichte van het schaalniveau van het besturingssysteem. Bij een schaal van 200% lijkt de gebruikersinterface van de toepassing bijvoorbeeld twee keer zo groot als die van het besturingssysteem. Houd er rekening mee dat bij overmatig schalen sommige elementen van de werkruimte afgesneden kunnen worden weergegeven.
+Color	Kleur
+Theme:	Thema:
+Medium	Normaal
+Dark	Donker
+Black	Zwart
+Window border:	Vensterrand:
+Font Matching	Lettertypevergelijking
+PANOSE Font Matching Preferences...	Voorkeuren voor PANOSE-lettertypevergelijking...
+Network	Netwerk
+Allow AnyFont to use the Internet	AnyFont toestaan internet te gebruiken
+You need to restart the application to apply these changes.	U moet de toepassing opnieuw starten om deze wijzigingen toe te passen.
+# --- Confirmations, file dialogs, errors ------------------------------------------------------------------
+Are you sure you want to remove this collection?	Weet u zeker dat u deze verzameling wilt verwijderen?
+Are you sure you want to remove this folder?	Weet u zeker dat u deze map wilt verwijderen?
+Do not show this message again	Dit bericht niet meer weergeven
+Do not show this message again.	Dit bericht niet meer weergeven.
+&Yes	&Ja
+&No	&Nee
+Add Folder	Map toevoegen
+XML - Extensible Markup Language (*.xml)	XML - Extensible Markup Language (*.xml)
+AnyFont Folders and Collections.xml	AnyFont-mappen en -verzamelingen.xml
+Folder not found. Please choose another location.	Map niet gevonden. Kies een andere locatie.
+This folder has already been added.	Deze map is al toegevoegd.
+This folder has already been added as a subfolder of {}.	Deze map is al toegevoegd als submap van {}.
+We can't find the following:	Het volgende kan niet worden gevonden:
+Supported font formats: OTF, TTF	Ondersteunde lettertype-indelingen: OTF, TTF
+Your font database has been corrupted. To reset the database, you must restart AnyFont while holding down Shift.	Uw lettertypedatabase is beschadigd. Als u de database opnieuw wilt instellen, moet u AnyFont opnieuw starten terwijl u Shift ingedrukt houdt.
+# --- Install / uninstall / delete / download ---------------------------------------------------------------
+Installing {}... {}%	{} installeren... {}%
+Uninstalling {}... {}%	{} deïnstalleren... {}%
+Downloading {}... {}%	{} downloaden... {}%
+Cancel	Annuleren
+Delete fonts	Lettertypen verwijderen
+Are you sure you want to delete this font?\n\nRead-only fonts cannot be deleted.	Weet u zeker dat u dit lettertype wilt verwijderen?\n\nAlleen-lezen lettertypen kunnen niet worden verwijderd.
+Are you sure you want to delete these fonts?\n\nRead-only fonts cannot be deleted.	Weet u zeker dat u deze lettertypen wilt verwijderen?\n\nAlleen-lezen lettertypen kunnen niet worden verwijderd.
+Select all	Alles selecteren
+The following font cannot be uninstalled because it is in use by one or more applications. To uninstall this font, you must first restart your computer.\n\nDo you want to restart your computer now?	Het volgende lettertype kan niet worden gedeïnstalleerd omdat het door een of meer toepassingen wordt gebruikt. Als u dit lettertype wilt deïnstalleren, moet u eerst de computer opnieuw opstarten.\n\nWilt u de computer nu opnieuw opstarten?
+The following fonts cannot be uninstalled because they are in use by one or more applications. To uninstall these fonts, you must first restart your computer.\n\nDo you want to restart your computer now?\n\nClick Ignore to continue without uninstalling the listed fonts.	De volgende lettertypen kunnen niet worden gedeïnstalleerd omdat ze door een of meer toepassingen worden gebruikt. Als u deze lettertypen wilt deïnstalleren, moet u eerst de computer opnieuw opstarten.\n\nWilt u de computer nu opnieuw opstarten?\n\nKlik op Negeren om door te gaan zonder de vermelde lettertypen te deïnstalleren.
+The following font cannot be deleted because it is in use by one or more applications. To delete this font, you must first restart your computer.\n\nDo you want to restart your computer now?	Het volgende lettertype kan niet worden verwijderd omdat het door een of meer toepassingen wordt gebruikt. Als u dit lettertype wilt verwijderen, moet u eerst de computer opnieuw opstarten.\n\nWilt u de computer nu opnieuw opstarten?
+The following fonts cannot be deleted because they are in use by one or more applications. To delete these fonts, you must first restart your computer.\n\nDo you want to restart your computer now?\n\nClick Ignore to continue without deleting the listed fonts.	De volgende lettertypen kunnen niet worden verwijderd omdat ze door een of meer toepassingen worden gebruikt. Als u deze lettertypen wilt verwijderen, moet u eerst de computer opnieuw opstarten.\n\nWilt u de computer nu opnieuw opstarten?\n\nKlik op Negeren om door te gaan zonder de vermelde lettertypen te verwijderen.
+Reboot &now	Nu &opnieuw opstarten
+Reboot &later	&Later opnieuw opstarten
+&Ignore	&Negeren
+# --- Message box buttons ----------------------------------------------------------------------------------
+&Abort	&Afbreken
+&Retry	&Opnieuw
+&Try Again	Opnieuw &proberen
+&Continue	&Doorgaan
+# --- Get More (online font catalog) -----------------------------------------------------------------------
+Sort by:	Sorteren op:
+Featured	Uitgelicht
+Filter by:	Filteren op:
+Free	Gratis
+My Library	Mijn bibliotheek
+Downloaded	Gedownload
+Remote font catalog cannot connect to the internet.	De externe lettertypecatalogus kan geen verbinding maken met internet.
+An error occurred while downloading the remote font catalog.	Er is een fout opgetreden bij het downloaden van de externe lettertypecatalogus.
+# --- PANOSE font matching ---------------------------------------------------------------------------------
+PANOSE Font Matching Preferences	Voorkeuren voor PANOSE-lettertypevergelijking
+&Text	&Tekst
+Text and &styles	Tekst en &stijlen
+&Never show	&Nooit weergeven
+&Default font:	Standaard&lettertype:
+&Exceptions...	&Uitzonderingen...
+PANOSE Font Matching Exceptions	Uitzonderingen voor PANOSE-lettertypevergelijking
+&Missing Font:	&Ontbrekend lettertype:
+&Substituted Font:	&Vervangend lettertype:
+&Add Exception	Uitzondering &toevoegen
+&Remove Exception	Uitzondering ve&rwijderen
+&List of current exceptions:	&Lijst met huidige uitzonderingen:
+Missing Font	Ontbrekend lettertype
+Substituted Font	Vervangend lettertype
+?	?
+PANOSE Font Matching Results	Resultaten van PANOSE-lettertypevergelijking
+Working, please wait...	Bezig, even geduld...
+Stop	Stoppen
+Stopping will end the PANOSE matching process. All missing fonts will revert to a default selection.	Als u stopt, wordt het PANOSE-vergelijkingsproces beëindigd. Alle ontbrekende lettertypen worden teruggezet naar een standaardselectie.
+&Use the PANOSE suggested match	&Door PANOSE voorgestelde overeenkomst gebruiken
+Substitute &font with:	&Lettertype vervangen door:
+Show &all fonts	&Alle lettertypen weergeven
+&Save this exception for future font matching	Deze uitzondering &opslaan voor toekomstige lettertypevergelijking
+Make this substitution:	Deze vervanging uitvoeren:
+&Permanent - keep these fonts	&Permanent - deze lettertypen behouden
+Te&mporary - use original fonts	&Tijdelijk - oorspronkelijke lettertypen gebruiken
+# --- Type 1 fonts -----------------------------------------------------------------------------------------
+Type 1 fonts detected	Type 1-lettertypen gedetecteerd
+This document uses Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.	Dit document gebruikt Type 1-lettertypen, die in de toekomst mogelijk niet meer worden ondersteund. Om mogelijke problemen te voorkomen, kunt u overwegen de tekst bij te werken naar andere lettertypen, zoals TrueType (TTF) of OpenType (OTF).
+Do not show again	Niet meer weergeven
+Replace fonts	Lettertypen vervangen
+# --- Rename collection ------------------------------------------------------------------------------------
+Name:	Naam:
+# --- Updates (from AnyVector updater.rs, product name replaced) -------------------------------------------
+Keep the product up to date (recommended)	Het product up-to-date houden (aanbevolen)
+Check for updates and let me choose when to install them	Controleren op updates en mij laten kiezen wanneer ze worden geïnstalleerd
+Never check for updates	Nooit controleren op updates
+Automatically downloads product updates, but prompts you before installing them.	Downloadt productupdates automatisch, maar vraagt het u voordat ze worden geïnstalleerd.
+AnyFont tells you when a new version is available; you choose when to download and install it.	AnyFont laat u weten wanneer er een nieuwe versie beschikbaar is; u kiest zelf wanneer u deze downloadt en installeert.
+AnyFont never connects to the Internet to look for updates. Help ▸ Check for Updates still checks when you ask.	AnyFont maakt nooit verbinding met internet om naar updates te zoeken. Help ▸ Controleren op updates controleert nog steeds wanneer u daarom vraagt.
+An Internet connection is required. Please connect to the Internet and try again.	Een internetverbinding is vereist. Maak verbinding met internet en probeer het opnieuw.
+Invalid answer from the update server: {}	Ongeldig antwoord van de updateserver: {}
+The latest release has no setup for Windows.	De nieuwste release heeft geen installatieprogramma voor Windows.
+No published release was found at github.com/{}.	Geen gepubliceerde release gevonden op github.com/{}.
+AnyFont Updates	AnyFont-updates
+The update server answered {}.	De updateserver antwoordde {}.
+The download was interrupted. Please try again.	Het downloaden is onderbroken. Probeer het opnieuw.
+The downloaded setup is empty.	Het gedownloade installatieprogramma is leeg.
+This release has no notes.	Deze release heeft geen opmerkingen.
+Click Check Now to look for a new version.	Klik op Nu controleren om naar een nieuwe versie te zoeken.
+Checking for updates...	Controleren op updates...
+AnyFont is up to date.	AnyFont is up-to-date.
+AnyFont {} is available.	AnyFont {} is beschikbaar.
+Downloading AnyFont {}...	AnyFont {} downloaden...
+AnyFont closes to install it as soon as the download finishes.	AnyFont wordt gesloten om de update te installeren zodra het downloaden voltooid is.
+AnyFont {} is ready to install.	AnyFont {} is klaar om te worden geïnstalleerd.
+AnyFont closes to install it and starts again when it is done.	AnyFont wordt gesloten om de update te installeren en start opnieuw wanneer dit voltooid is.
+Error: {}	Fout: {}
+You are using AnyFont {}.	U gebruikt AnyFont {}.
+The update will be installed when AnyFont closes.	De update wordt geïnstalleerd wanneer AnyFont wordt gesloten.
+Allow product updates:	Productupdates toestaan:
+Release Notes	Releaseopmerkingen
+Install Now	Nu installeren
+Check Now	Nu controleren
+There is a new version of AnyFont available.	Er is een nieuwe versie van AnyFont beschikbaar.
+New version: {}. Your version: {}.	Nieuwe versie: {}. Uw versie: {}.
+Click OK to install the new version.	Klik op OK om de nieuwe versie te installeren.
+# --- Report a Bug / Submit Ideas and Feedback (from AnyVector bugreport.rs, product name replaced) ---------
+Report a Bug	Een fout melden
+Submit Ideas and Feedback	Ideeën en feedback verzenden
+Thank you! Your idea was sent.	Bedankt! Uw idee is verzonden.
+Thank you! Your bug report was sent.	Bedankt! Uw foutrapport is verzonden.
+Almost done: finish in your browser	Bijna klaar: voltooi het in uw browser
+Please wait a minute	Een ogenblik geduld
+Your idea could not be sent	Uw idee kan niet worden verzonden
+The report could not be sent	Het rapport kan niet worden verzonden
+The issue was created on the AnyFont project on GitHub:	Het item is gemaakt in het AnyFont-project op GitHub:
+GitHub opened in your browser with your idea already filled in.	GitHub is geopend in uw browser met uw idee al ingevuld.
+GitHub opened in your browser with the report already filled in.	GitHub is geopend in uw browser met het rapport al ingevuld.
+To attach "{}", drag it from the folder that opened into the description box on GitHub.	Sleep "{}" uit de map die is geopend naar het beschrijvingsvak op GitHub om het bij te voegen.
+Sign in if asked, review it and click "Create" to send it.	Meld u aan als daarom wordt gevraagd, controleer het en klik op "Create" om het te verzenden.
+Several reports were sent from this connection in the last minute. Try again in a minute.	Er zijn in de afgelopen minuut meerdere rapporten vanaf deze verbinding verzonden. Probeer het over een minuut opnieuw.
+Could not open the browser. Please send it at {}	Kan de browser niet openen. Verzend het via {}
+Back	Terug
+Tell us your idea or what you think of AnyFont. It is sent to the AnyFont project on GitHub as a new idea. You don't need a GitHub account.	Vertel ons uw idee of wat u van AnyFont vindt. Het wordt als nieuw idee naar het AnyFont-project op GitHub gestuurd. U hebt geen GitHub-account nodig.
+Title (your idea in a few words):	Titel (uw idee in een paar woorden):
+Describe your idea or feedback:	Beschrijf uw idee of feedback:
+How would it help you? (optional)	Hoe zou het u helpen? (optioneel)
+Describe the problem. It is sent to the AnyFont project on GitHub as a new issue. You don't need a GitHub account.	Beschrijf het probleem. Het wordt als nieuw item naar het AnyFont-project op GitHub gestuurd. U hebt geen GitHub-account nodig.
+Title (a short summary):	Titel (een korte samenvatting):
+What happened?	Wat is er gebeurd?
+Steps to reproduce (optional):	Stappen om te reproduceren (optioneel):
+What did you expect to happen? (optional)	Wat had u verwacht? (optioneel)
+Include system information	Systeeminformatie opnemen
+System information	Systeeminformatie
+View submitted ideas	Ingediende ideeën bekijken
+View reported bugs	Gemelde fouten bekijken
+Attach a file (optional):	Een bestand bijvoegen (optioneel):
+Attach File...	Bestand bijvoegen...
+Attach a File	Een bestand bijvoegen
+Files GitHub accepts	Bestanden die GitHub accepteert
+Images	Afbeeldingen
+Videos	Video's
+Archives (.zip, .gz, .tgz)	Archieven (.zip, .gz, .tgz)
+Images and videos up to 10 MB, other files up to 25 MB, of the types GitHub accepts. Put a font file (.ttf, .otf) in a .zip file.	Afbeeldingen en video's tot 10 MB, andere bestanden tot 25 MB, van de typen die GitHub accepteert. Zet een lettertypebestand (.ttf, .otf) in een .zip-bestand.
+Sending...	Bezig met verzenden...
+Send	Verzenden

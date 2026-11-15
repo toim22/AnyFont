@@ -1,0 +1,7 @@
+/target/
+/dist/
+*.pdb
+/services/issue-relay/node_modules/
+/services/issue-relay/secrets.env
+/services/issue-relay/*.pem
+/.claude/worktrees/

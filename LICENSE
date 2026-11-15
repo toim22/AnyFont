@@ -1,0 +1,25 @@
+AnyFont
+Copyright (c) 2026 AnyFont Team. All rights reserved.
+
+AnyFont is proprietary software. The source code in this repository is published so
+that it can be read and reviewed; publishing it grants no licence to copy, modify,
+distribute, sublicense or sell it, in whole or in part, without the prior written
+permission of the AnyFont Team.
+
+You may download the official AnyFont releases from
+https://github.com/toim22/AnyFont/releases and use them free of charge.
+
+AnyFont includes open-source components. Each one is used under its own licence,
+listed in THIRD-PARTY-NOTICES.txt (installed in the "legal" folder of the program
+and shown in Help > About AnyFont > Legal Notices). Nothing in this notice limits
+the rights those licences give you.
+
+Fonts are not part of AnyFont. Fonts you install, download or manage with AnyFont
+remain under their own licences.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
+OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

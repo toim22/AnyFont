@@ -1,0 +1,425 @@
+# AnyFont user interface: Czech (cs-CZ). One "English<TAB>translation" pair per line;
+# the keys are docs/strings-en.tsv. Check with: python -I scripts/i18n_check.py
+# --- Title bar --------------------------------------------------------------------------------------------
+AnyFont	AnyFont
+Product Help	Nápověda k produktu
+Options	Možnosti
+Updates	Aktualizace
+Minimize	Minimalizovat
+Maximize	Maximalizovat
+Restore Down	Obnovit z maximalizace
+Close	Zavřít
+# --- Menu bar ---------------------------------------------------------------------------------------------
+&File	&Soubor
+&Edit	Úpr&avy
+Font	Písmo
+View	Zobrazit
+Help	Nápověda
+# --- File menu --------------------------------------------------------------------------------------------
+Add Folder...	Přidat složku...
+Add Collection	Přidat kolekci
+Get More...	Získat další...
+Remove Folder or Collection	Odebrat složku nebo kolekci
+Import Folders and Collections...	Importovat složky a kolekce...
+Export Folders and Collections...	Exportovat složky a kolekce...
+E&xit	&Konec
+Alt+F4	Alt+F4
+# --- Edit menu --------------------------------------------------------------------------------------------
+Select All	Vybrat vše
+Deselect All	Zrušit výběr všeho
+Ctrl+A	Ctrl+A
+Ctrl+Shift+A	Ctrl+Shift+A
+# --- Font menu / font context menu ------------------------------------------------------------------------
+Install	Nainstalovat
+Uninstall	Odinstalovat
+Download	Stáhnout
+Delete	Odstranit
+Add to collection	Přidat do kolekce
+Remove from collection	Odebrat z kolekce
+Remove from {}	Odebrat z: {}
+Show duplicate fonts	Zobrazit duplicitní písma
+Hide duplicate fonts	Skrýt duplicitní písma
+Open font file location	Otevřít umístění souboru písma
+# --- View menu --------------------------------------------------------------------------------------------
+Refresh the Font List	Aktualizovat seznam písem
+Show font properties	Zobrazit vlastnosti písma
+Hide font properties	Skrýt vlastnosti písma
+Group by family	Seskupit podle rodiny
+Show recently used fonts	Zobrazit nedávno použitá písma
+Use font to display font name	Zobrazit název písma tímto písmem
+Show Latin names	Zobrazit latinské názvy
+Hide filter list	Skrýt seznam filtrů
+Show filter list	Zobrazit seznam filtrů
+Ctrl+Alt+I	Ctrl+Alt+I
+# --- Help menu --------------------------------------------------------------------------------------------
+&Product Help...	&Nápověda k produktu...
+Check for &Updates...	&Vyhledat aktualizace...
+Submit Ideas and Feedback...	Odeslat nápady a zpětnou vazbu...
+Report a &Bug...	Nahlásit &chybu...
+&About AnyFont...	&O aplikaci AnyFont...
+# --- Libraries context menu -------------------------------------------------------------------------------
+Rename	Přejmenovat
+# --- Toolbar tooltips (header, then body) -----------------------------------------------------------------
+Add folder	Přidat složku
+Browse to a folder that contains fonts to add it to your Libraries.	Vyhledejte složku s písmy a přidejte ji do svých knihoven.
+Add collection	Přidat kolekci
+Add a collection for easy access to fonts that reside in different folders.	Přidejte kolekci pro snadný přístup k písmům, která jsou uložena v různých složkách.
+Get More	Získat další
+Remove	Odebrat
+Remove a folder or collection from your Libraries.	Odebere složku nebo kolekci z vašich knihoven.
+Install fonts and font families.	Nainstaluje písma a rodiny písem.
+Uninstall fonts and font families.	Odinstaluje písma a rodiny písem.
+Download fonts to the AnyFont Content folder.	Stáhne písma do složky Obsah aplikace AnyFont.
+Delete font files from your system.	Odstraní soubory písem ze systému.
+Show duplicate font versions.	Zobrazí duplicitní verze písem.
+Hide duplicate font versions.	Skryje duplicitní verze písem.
+Show font details or glyph sets.	Zobrazí podrobnosti o písmu nebo sady glyfů.
+# --- Libraries --------------------------------------------------------------------------------------------
+Libraries	Knihovny
+Folders	Složky
+My fonts	Moje písma
+My Collections	Moje kolekce
+Favorites	Oblíbené
+Collection {}	Kolekce {}
+Includes all installed fonts, all fonts in your added folders, and fonts downloaded from the Online library	Zahrnuje všechna nainstalovaná písma, všechna písma v přidaných složkách a písma stažená z online knihovny
+To populate this collection, drag fonts from an added folder or another collection.	Chcete-li tuto kolekci naplnit, přetáhněte do ní písma z přidané složky nebo jiné kolekce.
+# --- Filters ----------------------------------------------------------------------------------------------
+Filters	Filtry
+Clear filters	Vymazat filtry
+Remove all selected font filters.	Odebere všechny vybrané filtry písem.
+Font Status	Stav písma
+Installed	Nainstalováno
+Not installed	Nenainstalováno
+Protected System Fonts	Chráněná systémová písma
+Duplicates	Duplikáty
+Embedding Rights	Práva pro vkládání
+Editable	Upravitelné
+Installable	Instalovatelné
+Preview and Print	Náhled a tisk
+Font Technology	Technologie písma
+OpenType - TrueType	OpenType - TrueType
+TrueType	TrueType
+Variable Fonts	Proměnná písma
+Weight	Tloušťka
+Light	Slabé
+Regular	Normální
+Bold	Tučné
+Width	Šířka
+Condensed	Zúžené
+Normal	Normální
+Expanded	Rozšířené
+Style	Styl
+Decorative	Dekorativní
+Display	Titulková
+Monospaced	Neproporcionální
+Sans Serif	Bezpatková
+Script	Psací
+Serif	Patková
+Symbol	Symbol
+Character Range	Rozsah znaků
+Arabic	Arabské písmo
+Chinese Simplified	Čínština (zjednodušená)
+Chinese Traditional	Čínština (tradiční)
+Cyrillic	Cyrilice
+Devanagari	Dévanágarí
+Greek	Řečtina
+Hebrew	Hebrejština
+Japanese	Japonština
+Korean	Korejština
+Latin	Latinka
+Turkish	Turečtina
+OpenType	OpenType
+Alternate Annotation Forms	Alternativní anotační tvary
+Asian Forms	Asijské tvary
+Asian Vertical Metrics	Asijské svislé metriky
+Asian Widths	Asijské šířky
+Capital Spacing	Prostrkání velkých písmen
+Capitals	Velká písmena
+Case-Sensitive Forms	Tvary citlivé na velikost písmen
+Contextual Alternates	Kontextové alternativy
+Contextual Ligatures	Kontextové ligatury
+Discretionary Ligatures	Volitelné ligatury
+Fraction	Zlomek
+Historical Forms	Historické tvary
+Horizontal Kana Alternates	Vodorovné alternativy kany
+Historical Ligatures	Historické ligatury
+Number Styles	Styly číslic
+Ordinals	Řadové číslovky
+Ornaments	Ornamenty
+Position	Poloha
+Slashed Zero	Přeškrtnutá nula
+Standard Ligatures	Standardní ligatury
+Stylistic Alternate	Stylistická alternativa
+Stylistic Sets	Stylistické sady
+Swash Variants	Ozdobné varianty
+Vertical Alternates and Rotation	Svislé alternativy a otočení
+# --- Font list: search row, empty states, information strip, status bar ------------------------------------
+Enter sample text	Zadejte ukázkový text
+Search	Hledat
+Font Name	Název písma
+The quick brown fox jumps over the lazy dog.	Příliš žluťoučký kůň úpěl ďábelské ódy.
+No fonts found. Remove or change filters or explore the font packs available in Get More.	Nebyla nalezena žádná písma. Odeberte nebo změňte filtry nebo prozkoumejte balíčky písem dostupné v části Získat další.
+No fonts found. Remove or change filters to show fonts.	Nebyla nalezena žádná písma. Chcete-li zobrazit písma, odeberte nebo změňte filtry.
+No fonts found. Clear the Search box, or type a different keyword.	Nebyla nalezena žádná písma. Vymažte pole Hledat nebo zadejte jiné klíčové slovo.
+No fonts found. Clear the Search box, type a different keyword, or explore the font packs available in Get More.	Nebyla nalezena žádná písma. Vymažte pole Hledat, zadejte jiné klíčové slovo nebo prozkoumejte balíčky písem dostupné v části Získat další.
+Refresh	Obnovit
+Refresh the font list.	Aktualizuje seznam písem.
+{}: {} fonts	{}: počet písem: {}
+{} (filtered): {} fonts	{} (filtrováno): počet písem: {}
+Change the font size in the font list.	Změní velikost písma v seznamu písem.
+# --- Font row tooltip -------------------------------------------------------------------------------------
+Online font (Install or download to use)	Online písmo (k použití jej nainstalujte nebo stáhněte)
+Protected System Font	Chráněné systémové písmo
+Duplicate(s):	Duplikáty:
+# --- Font properties panel ---------------------------------------------------------------------------------
+Glyphs	Glyfy
+Font info	Informace o písmu
+Variable font	Proměnné písmo
+Preview and filter available glyphs for a selected font.	Zobrazí náhled a filtruje glyfy dostupné ve vybraném písmu.
+Show detailed font information.	Zobrazí podrobné informace o písmu.
+Adjust variable font properties.	Upravit vlastnosti proměnného písma.
+Glyph Filters	Filtry glyfů
+Glyph Preview	Náhled glyfů
+Remove all selected glyph filters.	Odebere všechny vybrané filtry glyfů.
+Common	Společné
+Scripts	Písma
+Currency	Měna
+Mathematical Symbols	Matematické symboly
+Numbers	Číslice
+Punctuation & Separators	Interpunkce a oddělovače
+Symbols	Symboly
+Marks	Značky
+{} glyphs	Počet glyfů: {}
+Change the glyph size in the Glyph Preview area.	Změnit velikost glyfu v oblasti náhledu glyfů.
+Multiple fonts are selected. To view a glyph set, choose only one font.	Je vybráno více písem. Chcete-li zobrazit sadu glyfů, vyberte pouze jedno písmo.
+No matching glyphs	Žádné odpovídající glyfy
+Install or download the font to preview glyphs.	Chcete-li zobrazit náhled glyfů, nainstalujte nebo stáhněte písmo.
+Family:	Rodina:
+Sub-family:	Podrodina:
+File Path:	Cesta k souboru:
+File Size:	Velikost souboru:
+Version:	Verze:
+Font technology:	Technologie písma:
+Code Page:	Znaková stránka:
+Italic:	Kurzíva:
+Weight:	Tloušťka:
+Width:	Šířka:
+Embedding:	Vkládání:
+Manufacturer:	Výrobce:
+Designer:	Návrhář:
+Copyright:	Autorská práva:
+Collection:	Kolekce:
+Yes	Ano
+No	Ne
+OpenType - PostScript	OpenType - PostScript
+No Embedding	Bez vkládání
+{} KB	{} KB
+{} MB	{} MB
+You don't have a variable font selected, or you've selected multiple fonts.	Nemáte vybráno proměnné písmo, nebo jste vybrali více písem.
+Choose one variable font to see and adjust its properties.	Chcete-li zobrazit a upravit vlastnosti, vyberte jedno proměnné písmo.
+# --- Edit-box context menu --------------------------------------------------------------------------------
+Undo	Zpět
+Cut	Vyjmout
+Copy	Kopírovat
+Paste	Vložit
+# --- About / System Info / Legal Notices ------------------------------------------------------------------
+About AnyFont	O aplikaci AnyFont
+Version {} - {} Release	Verze {} – vydání {}
+(C) {} AnyFont Team.  All rights reserved.	(C) {} AnyFont Team.  Všechna práva vyhrazena.
+Source ID:	ID zdroje:
+&System Info...	&Informace o systému...
+Legal &Notices...	&Právní upozornění...
+System Info	Informace o systému
+C&hoose a category:	&Vyberte kategorii:
+System	Systémová
+AnyFont EXEs & DLLs	Soubory EXE a DLL aplikace AnyFont
+System DLLs	Systémové knihovny DLL
+Platform	Platforma
+Processor	Procesor
+Number of Processors	Počet procesorů
+Math Coprocessor	Matematický koprocesor
+Total physical memory	Celková fyzická paměť
+Available physical memory	Dostupná fyzická paměť
+Total virtual memory	Celková virtuální paměť
+Available virtual memory	Dostupná virtuální paměť
+Total memory used by app	Celková paměť používaná aplikací
+GDI Object Count	Počet objektů GDI
+&Save	&Uložit
+Save System Info	Uložit informace o systému
+Text (*.txt)	Text (*.txt)
+System info was saved to {}.	Informace o systému byly uloženy do {}.
+Unable to save system info to {}.	Informace o systému nelze uložit do {}.
+Legal Notices	Právní upozornění
+&Print	&Tisk
+OK	OK
+# --- Options ----------------------------------------------------------------------------------------------
+Appearance	Vzhled
+Size	Velikost
+%	%
+&Reset to Default	&Obnovit výchozí
+Hint: The scaling level is relative to the scaling level of the operating system. For example, scaling by 200% will make the application user interface appear twice as large as the UI of the operating system. Note that excessive scaling may cause certain workspace elements to appear cropped.	Tip: Úroveň měřítka je relativní vůči úrovni měřítka operačního systému. Například při měřítku 200 % bude uživatelské rozhraní aplikace vypadat dvakrát větší než rozhraní operačního systému. Příliš velké měřítko může způsobit, že některé prvky pracovní plochy budou oříznuté.
+Color	Barva
+Theme:	Motiv:
+Medium	Střední
+Dark	Tmavý
+Black	Černá
+Window border:	Okraj okna:
+Font Matching	Párování písem
+PANOSE Font Matching Preferences...	Předvolby párování písem PANOSE...
+Network	Síť
+Allow AnyFont to use the Internet	Povolit aplikaci AnyFont používat Internet
+You need to restart the application to apply these changes.	Chcete-li tyto změny použít, musíte aplikaci restartovat.
+# --- Confirmations, file dialogs, errors ------------------------------------------------------------------
+Are you sure you want to remove this collection?	Opravdu chcete tuto kolekci odebrat?
+Are you sure you want to remove this folder?	Opravdu chcete tuto složku odebrat?
+Do not show this message again	Tuto zprávu znovu nezobrazovat
+Do not show this message again.	Tuto zprávu znovu nezobrazovat.
+&Yes	&Ano
+&No	&Ne
+Add Folder	Přidat složku
+XML - Extensible Markup Language (*.xml)	XML - Extensible Markup Language (*.xml)
+AnyFont Folders and Collections.xml	Složky a kolekce AnyFont.xml
+Folder not found. Please choose another location.	Složka nebyla nalezena. Vyberte jiné umístění.
+This folder has already been added.	Tato složka již byla přidána.
+This folder has already been added as a subfolder of {}.	Tato složka již byla přidána jako podsložka složky {}.
+We can't find the following:	Následující položky nelze najít:
+Supported font formats: OTF, TTF	Podporované formáty písem: OTF, TTF
+Your font database has been corrupted. To reset the database, you must restart AnyFont while holding down Shift.	Databáze písem je poškozena. Chcete-li databázi obnovit, musíte aplikaci AnyFont restartovat se stisknutou klávesou Shift.
+# --- Install / uninstall / delete / download ---------------------------------------------------------------
+Installing {}... {}%	Instalace {}... {} %
+Uninstalling {}... {}%	Odinstalace {}... {} %
+Downloading {}... {}%	Stahování {}... {} %
+Cancel	Storno
+Delete fonts	Odstranit písma
+Are you sure you want to delete this font?\n\nRead-only fonts cannot be deleted.	Opravdu chcete toto písmo odstranit?\n\nPísma jen pro čtení nelze odstranit.
+Are you sure you want to delete these fonts?\n\nRead-only fonts cannot be deleted.	Opravdu chcete tato písma odstranit?\n\nPísma jen pro čtení nelze odstranit.
+Select all	Vybrat vše
+The following font cannot be uninstalled because it is in use by one or more applications. To uninstall this font, you must first restart your computer.\n\nDo you want to restart your computer now?	Následující písmo nelze odinstalovat, protože jej používá jedna nebo více aplikací. Chcete-li toto písmo odinstalovat, musíte nejprve restartovat počítač.\n\nChcete počítač restartovat nyní?
+The following fonts cannot be uninstalled because they are in use by one or more applications. To uninstall these fonts, you must first restart your computer.\n\nDo you want to restart your computer now?\n\nClick Ignore to continue without uninstalling the listed fonts.	Následující písma nelze odinstalovat, protože je používá jedna nebo více aplikací. Chcete-li tato písma odinstalovat, musíte nejprve restartovat počítač.\n\nChcete počítač restartovat nyní?\n\nKliknutím na Ignorovat budete pokračovat bez odinstalace uvedených písem.
+The following font cannot be deleted because it is in use by one or more applications. To delete this font, you must first restart your computer.\n\nDo you want to restart your computer now?	Následující písmo nelze odstranit, protože jej používá jedna nebo více aplikací. Chcete-li toto písmo odstranit, musíte nejprve restartovat počítač.\n\nChcete počítač restartovat nyní?
+The following fonts cannot be deleted because they are in use by one or more applications. To delete these fonts, you must first restart your computer.\n\nDo you want to restart your computer now?\n\nClick Ignore to continue without deleting the listed fonts.	Následující písma nelze odstranit, protože je používá jedna nebo více aplikací. Chcete-li tato písma odstranit, musíte nejprve restartovat počítač.\n\nChcete počítač restartovat nyní?\n\nKliknutím na Ignorovat budete pokračovat bez odstranění uvedených písem.
+Reboot &now	Restartovat &nyní
+Reboot &later	Restartovat &později
+&Ignore	&Ignorovat
+# --- Message box buttons ----------------------------------------------------------------------------------
+&Abort	&Přerušit
+&Retry	&Opakovat
+&Try Again	Zkusit &znovu
+&Continue	&Pokračovat
+# --- Get More (online font catalog) -----------------------------------------------------------------------
+Sort by:	Seřadit podle:
+Featured	Doporučené
+Filter by:	Filtrovat podle:
+Free	Zdarma
+My Library	Moje knihovna
+Downloaded	Stažené
+Remote font catalog cannot connect to the internet.	Vzdálený katalog písem se nemůže připojit k Internetu.
+An error occurred while downloading the remote font catalog.	Při stahování vzdáleného katalogu písem došlo k chybě.
+# --- PANOSE font matching ---------------------------------------------------------------------------------
+PANOSE Font Matching Preferences	Předvolby párování písem PANOSE
+&Text	&Text
+Text and &styles	Text a &styly
+&Never show	&Nikdy nezobrazovat
+&Default font:	Výchozí &písmo:
+&Exceptions...	&Výjimky...
+PANOSE Font Matching Exceptions	Výjimky párování písem PANOSE
+&Missing Font:	&Chybějící písmo:
+&Substituted Font:	&Náhradní písmo:
+&Add Exception	&Přidat výjimku
+&Remove Exception	&Odebrat výjimku
+&List of current exceptions:	&Seznam aktuálních výjimek:
+Missing Font	Chybějící písmo
+Substituted Font	Náhradní písmo
+?	?
+PANOSE Font Matching Results	Výsledky párování písem PANOSE
+Working, please wait...	Probíhá zpracování, čekejte prosím...
+Stop	Zastavit
+Stopping will end the PANOSE matching process. All missing fonts will revert to a default selection.	Zastavením ukončíte proces párování PANOSE. Všechna chybějící písma se vrátí k výchozímu výběru.
+&Use the PANOSE suggested match	Po&užít shodu navrženou systémem PANOSE
+Substitute &font with:	Nahradit &písmo písmem:
+Show &all fonts	Zobrazit &všechna písma
+&Save this exception for future font matching	Ul&ožit tuto výjimku pro budoucí párování písem
+Make this substitution:	Provést toto nahrazení:
+&Permanent - keep these fonts	&Trvale - ponechat tato písma
+Te&mporary - use original fonts	&Dočasně - použít původní písma
+# --- Type 1 fonts -----------------------------------------------------------------------------------------
+Type 1 fonts detected	Byla zjištěna písma Type 1
+This document uses Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.	Tento dokument používá písma Type 1, která v budoucnu nemusí být podporována. Abyste předešli možným potížím, zvažte úpravu textu tak, aby používal jiná písma, například TrueType (TTF) nebo OpenType (OTF).
+Do not show again	Znovu nezobrazovat
+Replace fonts	Nahradit písma
+# --- Rename collection ------------------------------------------------------------------------------------
+Name:	Název:
+# --- Updates (from AnyVector updater.rs, product name replaced) -------------------------------------------
+Keep the product up to date (recommended)	Udržovat produkt aktuální (doporučeno)
+Check for updates and let me choose when to install them	Vyhledávat aktualizace a nechat mě zvolit, kdy je nainstalovat
+Never check for updates	Nikdy nevyhledávat aktualizace
+Automatically downloads product updates, but prompts you before installing them.	Automaticky stahuje aktualizace produktu, ale před instalací se zeptá.
+AnyFont tells you when a new version is available; you choose when to download and install it.	AnyFont vás upozorní, když je k dispozici nová verze; vy zvolíte, kdy ji stáhnout a nainstalovat.
+AnyFont never connects to the Internet to look for updates. Help ▸ Check for Updates still checks when you ask.	AnyFont se nikdy nepřipojuje k Internetu kvůli hledání aktualizací. Nápověda ▸ Vyhledat aktualizace je i tak vyhledá, když o to požádáte.
+An Internet connection is required. Please connect to the Internet and try again.	Je vyžadováno připojení k Internetu. Připojte se k Internetu a zkuste to znovu.
+Invalid answer from the update server: {}	Neplatná odpověď aktualizačního serveru: {}
+The latest release has no setup for Windows.	Nejnovější verze nemá instalační program pro Windows.
+No published release was found at github.com/{}.	Na github.com/{} nebyla nalezena žádná publikovaná verze.
+AnyFont Updates	Aktualizace AnyFont
+The update server answered {}.	Aktualizační server odpověděl {}.
+The download was interrupted. Please try again.	Stahování bylo přerušeno. Zkuste to znovu.
+The downloaded setup is empty.	Stažený instalační program je prázdný.
+This release has no notes.	Tato verze nemá poznámky.
+Click Check Now to look for a new version.	Kliknutím na Zkontrolovat nyní vyhledáte novou verzi.
+Checking for updates...	Vyhledávání aktualizací...
+AnyFont is up to date.	AnyFont je aktuální.
+AnyFont {} is available.	K dispozici je AnyFont {}.
+Downloading AnyFont {}...	Stahování AnyFont {}...
+AnyFont closes to install it as soon as the download finishes.	AnyFont se kvůli instalaci zavře ihned po dokončení stahování.
+AnyFont {} is ready to install.	AnyFont {} je připraven k instalaci.
+AnyFont closes to install it and starts again when it is done.	AnyFont se kvůli instalaci zavře a po dokončení se znovu spustí.
+Error: {}	Chyba: {}
+You are using AnyFont {}.	Používáte AnyFont {}.
+The update will be installed when AnyFont closes.	Aktualizace se nainstaluje po zavření aplikace AnyFont.
+Allow product updates:	Povolit aktualizace produktu:
+Release Notes	Poznámky k verzi
+Install Now	Nainstalovat nyní
+Check Now	Zkontrolovat nyní
+There is a new version of AnyFont available.	K dispozici je nová verze aplikace AnyFont.
+New version: {}. Your version: {}.	Nová verze: {}. Vaše verze: {}.
+Click OK to install the new version.	Kliknutím na OK nainstalujete novou verzi.
+# --- Report a Bug / Submit Ideas and Feedback (from AnyVector bugreport.rs, product name replaced) ---------
+Report a Bug	Nahlásit chybu
+Submit Ideas and Feedback	Odeslat nápady a zpětnou vazbu
+Thank you! Your idea was sent.	Děkujeme! Váš nápad byl odeslán.
+Thank you! Your bug report was sent.	Děkujeme! Vaše hlášení chyby bylo odesláno.
+Almost done: finish in your browser	Téměř hotovo: dokončete to v prohlížeči
+Please wait a minute	Počkejte prosím minutu
+Your idea could not be sent	Váš nápad nelze odeslat
+The report could not be sent	Hlášení nelze odeslat
+The issue was created on the AnyFont project on GitHub:	Položka byla vytvořena v projektu AnyFont na GitHub:
+GitHub opened in your browser with your idea already filled in.	V prohlížeči se otevřel GitHub s již vyplněným nápadem.
+GitHub opened in your browser with the report already filled in.	V prohlížeči se otevřel GitHub s již vyplněným hlášením.
+To attach "{}", drag it from the folder that opened into the description box on GitHub.	Chcete-li připojit „{}“, přetáhněte ho z otevřené složky do pole popisu na GitHubu.
+Sign in if asked, review it and click "Create" to send it.	Pokud budete vyzváni, přihlaste se, zkontrolujte text a kliknutím na „Create“ jej odešlete.
+Several reports were sent from this connection in the last minute. Try again in a minute.	Z tohoto připojení bylo během poslední minuty odesláno několik hlášení. Zkuste to znovu za minutu.
+Could not open the browser. Please send it at {}	Prohlížeč nelze otevřít. Odešlete to prosím na {}
+Back	Zpět
+Tell us your idea or what you think of AnyFont. It is sent to the AnyFont project on GitHub as a new idea. You don't need a GitHub account.	Napište nám svůj nápad nebo názor na AnyFont. Odešle se do projektu AnyFont na GitHub jako nový nápad. Účet GitHub nepotřebujete.
+Title (your idea in a few words):	Název (váš nápad v několika slovech):
+Describe your idea or feedback:	Popište svůj nápad nebo zpětnou vazbu:
+How would it help you? (optional)	Jak by vám to pomohlo? (volitelné)
+Describe the problem. It is sent to the AnyFont project on GitHub as a new issue. You don't need a GitHub account.	Popište problém. Odešle se do projektu AnyFont na GitHub jako nová položka. Účet GitHub nepotřebujete.
+Title (a short summary):	Název (stručné shrnutí):
+What happened?	Co se stalo?
+Steps to reproduce (optional):	Postup reprodukce (volitelné):
+What did you expect to happen? (optional)	Co jste očekávali, že se stane? (volitelné)
+Include system information	Zahrnout informace o systému
+System information	Informace o systému
+View submitted ideas	Zobrazit odeslané nápady
+View reported bugs	Zobrazit nahlášené chyby
+Attach a file (optional):	Připojit soubor (volitelné):
+Attach File...	Připojit soubor...
+Attach a File	Připojit soubor
+Files GitHub accepts	Soubory, které GitHub přijímá
+Images	Obrázky
+Videos	Videa
+Archives (.zip, .gz, .tgz)	Archivy (.zip, .gz, .tgz)
+Images and videos up to 10 MB, other files up to 25 MB, of the types GitHub accepts. Put a font file (.ttf, .otf) in a .zip file.	Obrázky a videa do 10 MB, ostatní soubory do 25 MB, v typech, které GitHub přijímá. Soubor písma (.ttf, .otf) vložte do souboru .zip.
+Sending...	Odesílání...
+Send	Odeslat

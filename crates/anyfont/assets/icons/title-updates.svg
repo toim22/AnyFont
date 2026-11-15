@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+  <!-- title bar: updates (a box with a down arrow and a small circular-arrow badge) -->
+  <path d="M10 3.5H2.5V15.5H14.5V10" fill="none" stroke="#CACED4"/>
+  <path d="M7.6 6H9.4V9.4H11.2L8.5 12.6L5.8 9.4H7.6Z" fill="#CACED4"/>
+  <path d="M15.2 4.6A2.6 2.6 0 1 1 13.3 1.4" fill="none" stroke="#CACED4"/>
+  <path d="M12.6 0.1L15 1.5L12.6 2.9Z" fill="#CACED4"/>
+</svg>

@@ -1,0 +1,425 @@
+# AnyFont user interface: German (de-DE). One "English<TAB>translation" pair per line;
+# the keys are docs/strings-en.tsv. Check with: python -I scripts/i18n_check.py
+# --- Title bar --------------------------------------------------------------------------------------------
+AnyFont	AnyFont
+Product Help	Produkthilfe
+Options	Optionen
+Updates	Updates
+Minimize	Minimieren
+Maximize	Maximieren
+Restore Down	Verkleinern
+Close	Schließen
+# --- Menu bar ---------------------------------------------------------------------------------------------
+&File	&Datei
+&Edit	&Bearbeiten
+Font	Schriftart
+View	Ansicht
+Help	Hilfe
+# --- File menu --------------------------------------------------------------------------------------------
+Add Folder...	Ordner hinzufügen...
+Add Collection	Sammlung hinzufügen
+Get More...	Mehr erhalten...
+Remove Folder or Collection	Ordner oder Sammlung entfernen
+Import Folders and Collections...	Ordner und Sammlungen importieren...
+Export Folders and Collections...	Ordner und Sammlungen exportieren...
+E&xit	&Beenden
+Alt+F4	Alt+F4
+# --- Edit menu --------------------------------------------------------------------------------------------
+Select All	Alles auswählen
+Deselect All	Auswahl aufheben
+Ctrl+A	Ctrl+A
+Ctrl+Shift+A	Ctrl+Shift+A
+# --- Font menu / font context menu ------------------------------------------------------------------------
+Install	Installieren
+Uninstall	Deinstallieren
+Download	Herunterladen
+Delete	Löschen
+Add to collection	Zu Sammlung hinzufügen
+Remove from collection	Aus Sammlung entfernen
+Remove from {}	Aus {} entfernen
+Show duplicate fonts	Doppelte Schriftarten anzeigen
+Hide duplicate fonts	Doppelte Schriftarten ausblenden
+Open font file location	Speicherort der Schriftartdatei öffnen
+# --- View menu --------------------------------------------------------------------------------------------
+Refresh the Font List	Schriftartenliste aktualisieren
+Show font properties	Schriftarteigenschaften anzeigen
+Hide font properties	Schriftarteigenschaften ausblenden
+Group by family	Nach Familie gruppieren
+Show recently used fonts	Zuletzt verwendete Schriftarten anzeigen
+Use font to display font name	Schriftartnamen in der Schriftart selbst anzeigen
+Show Latin names	Lateinische Namen anzeigen
+Hide filter list	Filterliste ausblenden
+Show filter list	Filterliste anzeigen
+Ctrl+Alt+I	Ctrl+Alt+I
+# --- Help menu --------------------------------------------------------------------------------------------
+&Product Help...	&Produkthilfe...
+Check for &Updates...	Nach &Updates suchen...
+Submit Ideas and Feedback...	Ideen und Feedback senden...
+Report a &Bug...	&Fehler melden...
+&About AnyFont...	Ü&ber AnyFont...
+# --- Libraries context menu -------------------------------------------------------------------------------
+Rename	Umbenennen
+# --- Toolbar tooltips (header, then body) -----------------------------------------------------------------
+Add folder	Ordner hinzufügen
+Browse to a folder that contains fonts to add it to your Libraries.	Navigieren Sie zu einem Ordner mit Schriftarten, um ihn Ihren Bibliotheken hinzuzufügen.
+Add collection	Sammlung hinzufügen
+Add a collection for easy access to fonts that reside in different folders.	Fügen Sie eine Sammlung hinzu, um einfach auf Schriftarten zuzugreifen, die sich in verschiedenen Ordnern befinden.
+Get More	Mehr erhalten
+Remove	Entfernen
+Remove a folder or collection from your Libraries.	Einen Ordner oder eine Sammlung aus Ihren Bibliotheken entfernen.
+Install fonts and font families.	Schriftarten und Schriftfamilien installieren.
+Uninstall fonts and font families.	Schriftarten und Schriftfamilien deinstallieren.
+Download fonts to the AnyFont Content folder.	Schriftarten in den AnyFont-Inhaltsordner herunterladen.
+Delete font files from your system.	Schriftartdateien von Ihrem System löschen.
+Show duplicate font versions.	Doppelte Schriftartversionen anzeigen.
+Hide duplicate font versions.	Doppelte Schriftartversionen ausblenden.
+Show font details or glyph sets.	Schriftartdetails oder Glyphensätze anzeigen.
+# --- Libraries --------------------------------------------------------------------------------------------
+Libraries	Bibliotheken
+Folders	Ordner
+My fonts	Meine Schriftarten
+My Collections	Meine Sammlungen
+Favorites	Favoriten
+Collection {}	Sammlung {}
+Includes all installed fonts, all fonts in your added folders, and fonts downloaded from the Online library	Enthält alle installierten Schriftarten, alle Schriftarten in Ihren hinzugefügten Ordnern und aus der Onlinebibliothek heruntergeladene Schriftarten
+To populate this collection, drag fonts from an added folder or another collection.	Ziehen Sie Schriftarten aus einem hinzugefügten Ordner oder einer anderen Sammlung, um diese Sammlung zu füllen.
+# --- Filters ----------------------------------------------------------------------------------------------
+Filters	Filter
+Clear filters	Filter löschen
+Remove all selected font filters.	Alle ausgewählten Schriftartfilter entfernen.
+Font Status	Schriftartstatus
+Installed	Installiert
+Not installed	Nicht installiert
+Protected System Fonts	Geschützte Systemschriftarten
+Duplicates	Duplikate
+Embedding Rights	Einbettungsrechte
+Editable	Bearbeitbar
+Installable	Installierbar
+Preview and Print	Vorschau und Druck
+Font Technology	Schriftarttechnologie
+OpenType - TrueType	OpenType - TrueType
+TrueType	TrueType
+Variable Fonts	Variable Schriftarten
+Weight	Stärke
+Light	Leicht
+Regular	Normal
+Bold	Fett
+Width	Breite
+Condensed	Schmal
+Normal	Normal
+Expanded	Breit
+Style	Stil
+Decorative	Dekorativ
+Display	Display
+Monospaced	Nichtproportional
+Sans Serif	Serifenlos
+Script	Schreibschrift
+Serif	Serifen
+Symbol	Symbol
+Character Range	Zeichenbereich
+Arabic	Arabisch
+Chinese Simplified	Chinesisch (vereinfacht)
+Chinese Traditional	Chinesisch (traditionell)
+Cyrillic	Kyrillisch
+Devanagari	Devanagari
+Greek	Griechisch
+Hebrew	Hebräisch
+Japanese	Japanisch
+Korean	Koreanisch
+Latin	Lateinisch
+Turkish	Türkisch
+OpenType	OpenType
+Alternate Annotation Forms	Alternative Anmerkungsformen
+Asian Forms	Asiatische Formen
+Asian Vertical Metrics	Asiatische vertikale Metriken
+Asian Widths	Asiatische Breiten
+Capital Spacing	Versalabstand
+Capitals	Großbuchstaben
+Case-Sensitive Forms	Groß-/Kleinschreibungsabhängige Formen
+Contextual Alternates	Kontextbedingte Varianten
+Contextual Ligatures	Kontextbedingte Ligaturen
+Discretionary Ligatures	Bedingte Ligaturen
+Fraction	Bruch
+Historical Forms	Historische Formen
+Horizontal Kana Alternates	Horizontale Kana-Varianten
+Historical Ligatures	Historische Ligaturen
+Number Styles	Ziffernstile
+Ordinals	Ordinalzahlen
+Ornaments	Ornamente
+Position	Position
+Slashed Zero	Durchgestrichene Null
+Standard Ligatures	Standardligaturen
+Stylistic Alternate	Stilistische Variante
+Stylistic Sets	Stilistische Sätze
+Swash Variants	Schwungvarianten
+Vertical Alternates and Rotation	Vertikale Varianten und Drehung
+# --- Font list: search row, empty states, information strip, status bar ------------------------------------
+Enter sample text	Beispieltext eingeben
+Search	Suchen
+Font Name	Schriftartname
+The quick brown fox jumps over the lazy dog.	Victor jagt zwölf Boxkämpfer quer über den großen Sylter Deich.
+No fonts found. Remove or change filters or explore the font packs available in Get More.	Keine Schriftarten gefunden. Entfernen oder ändern Sie Filter, oder erkunden Sie die unter „Mehr erhalten“ verfügbaren Schriftartpakete.
+No fonts found. Remove or change filters to show fonts.	Keine Schriftarten gefunden. Entfernen oder ändern Sie Filter, um Schriftarten anzuzeigen.
+No fonts found. Clear the Search box, or type a different keyword.	Keine Schriftarten gefunden. Leeren Sie das Suchfeld, oder geben Sie ein anderes Stichwort ein.
+No fonts found. Clear the Search box, type a different keyword, or explore the font packs available in Get More.	Keine Schriftarten gefunden. Leeren Sie das Suchfeld, geben Sie ein anderes Stichwort ein, oder erkunden Sie die unter „Mehr erhalten“ verfügbaren Schriftartpakete.
+Refresh	Aktualisieren
+Refresh the font list.	Schriftartenliste aktualisieren.
+{}: {} fonts	{}: {} Schriftarten
+{} (filtered): {} fonts	{} (gefiltert): {} Schriftarten
+Change the font size in the font list.	Schriftgröße in der Schriftartenliste ändern.
+# --- Font row tooltip -------------------------------------------------------------------------------------
+Online font (Install or download to use)	Onlineschriftart (zur Verwendung installieren oder herunterladen)
+Protected System Font	Geschützte Systemschriftart
+Duplicate(s):	Duplikat(e):
+# --- Font properties panel ---------------------------------------------------------------------------------
+Glyphs	Glyphen
+Font info	Schriftartinfo
+Variable font	Variable Schriftart
+Preview and filter available glyphs for a selected font.	Verfügbare Glyphen einer ausgewählten Schriftart anzeigen und filtern.
+Show detailed font information.	Detaillierte Schriftartinformationen anzeigen.
+Adjust variable font properties.	Eigenschaften der variablen Schrift anpassen.
+Glyph Filters	Glyphenfilter
+Glyph Preview	Glyphenvorschau
+Remove all selected glyph filters.	Alle ausgewählten Glyphenfilter entfernen.
+Common	Allgemein
+Scripts	Schriftsysteme
+Currency	Währung
+Mathematical Symbols	Mathematische Symbole
+Numbers	Zahlen
+Punctuation & Separators	Satzzeichen und Trennzeichen
+Symbols	Symbole
+Marks	Zeichen
+{} glyphs	{} Glyphen
+Change the glyph size in the Glyph Preview area.	Glyphengröße im Bereich der Glyphenvorschau ändern.
+Multiple fonts are selected. To view a glyph set, choose only one font.	Es sind mehrere Schriftarten ausgewählt. Wählen Sie nur eine Schriftart aus, um einen Glyphensatz anzuzeigen.
+No matching glyphs	Keine passenden Glyphen
+Install or download the font to preview glyphs.	Installieren Sie die Schriftart oder laden Sie sie herunter, um eine Vorschau der Glyphen anzuzeigen.
+Family:	Familie:
+Sub-family:	Unterfamilie:
+File Path:	Dateipfad:
+File Size:	Dateigröße:
+Version:	Version:
+Font technology:	Schriftarttechnologie:
+Code Page:	Codepage:
+Italic:	Kursiv:
+Weight:	Stärke:
+Width:	Breite:
+Embedding:	Einbettung:
+Manufacturer:	Hersteller:
+Designer:	Designer:
+Copyright:	Copyright:
+Collection:	Sammlung:
+Yes	Ja
+No	Nein
+OpenType - PostScript	OpenType - PostScript
+No Embedding	Keine Einbettung
+{} KB	{} KB
+{} MB	{} MB
+You don't have a variable font selected, or you've selected multiple fonts.	Sie haben keine variable Schriftart oder mehrere Schriftarten ausgewählt.
+Choose one variable font to see and adjust its properties.	Wählen Sie eine variable Schriftart aus, um ihre Eigenschaften anzuzeigen und anzupassen.
+# --- Edit-box context menu --------------------------------------------------------------------------------
+Undo	Rückgängig
+Cut	Ausschneiden
+Copy	Kopieren
+Paste	Einfügen
+# --- About / System Info / Legal Notices ------------------------------------------------------------------
+About AnyFont	Über AnyFont
+Version {} - {} Release	Version {} - {}-Release
+(C) {} AnyFont Team.  All rights reserved.	(C) {} AnyFont Team.  Alle Rechte vorbehalten.
+Source ID:	Quell-ID:
+&System Info...	&Systeminfo...
+Legal &Notices...	Rechtliche &Hinweise...
+System Info	Systeminfo
+C&hoose a category:	&Kategorie auswählen:
+System	System
+AnyFont EXEs & DLLs	AnyFont-EXEs und -DLLs
+System DLLs	System-DLLs
+Platform	Plattform
+Processor	Prozessor
+Number of Processors	Anzahl der Prozessoren
+Math Coprocessor	Mathematischer Koprozessor
+Total physical memory	Physischer Speicher gesamt
+Available physical memory	Verfügbarer physischer Speicher
+Total virtual memory	Virtueller Speicher gesamt
+Available virtual memory	Verfügbarer virtueller Speicher
+Total memory used by app	Von der Anwendung belegter Speicher
+GDI Object Count	Anzahl GDI-Objekte
+&Save	&Speichern
+Save System Info	Systeminfo speichern
+Text (*.txt)	Text (*.txt)
+System info was saved to {}.	Die Systeminfo wurde in {} gespeichert.
+Unable to save system info to {}.	Die Systeminfo konnte nicht in {} gespeichert werden.
+Legal Notices	Rechtliche Hinweise
+&Print	&Drucken
+OK	OK
+# --- Options ----------------------------------------------------------------------------------------------
+Appearance	Darstellung
+Size	Größe
+%	%
+&Reset to Default	Auf Standard &zurücksetzen
+Hint: The scaling level is relative to the scaling level of the operating system. For example, scaling by 200% will make the application user interface appear twice as large as the UI of the operating system. Note that excessive scaling may cause certain workspace elements to appear cropped.	Hinweis: Die Skalierungsstufe ist relativ zur Skalierungsstufe des Betriebssystems. Bei einer Skalierung von 200 % erscheint die Benutzeroberfläche der Anwendung beispielsweise doppelt so groß wie die des Betriebssystems. Beachten Sie, dass eine zu starke Skalierung dazu führen kann, dass bestimmte Elemente des Arbeitsbereichs abgeschnitten angezeigt werden.
+Color	Farbe
+Theme:	Design:
+Medium	Mittel
+Dark	Dunkel
+Black	Schwarz
+Window border:	Fensterrahmen:
+Font Matching	Schriftartzuordnung
+PANOSE Font Matching Preferences...	Einstellungen für die PANOSE-Schriftartzuordnung...
+Network	Netzwerk
+Allow AnyFont to use the Internet	AnyFont die Nutzung des Internets erlauben
+You need to restart the application to apply these changes.	Sie müssen die Anwendung neu starten, um diese Änderungen zu übernehmen.
+# --- Confirmations, file dialogs, errors ------------------------------------------------------------------
+Are you sure you want to remove this collection?	Möchten Sie diese Sammlung wirklich entfernen?
+Are you sure you want to remove this folder?	Möchten Sie diesen Ordner wirklich entfernen?
+Do not show this message again	Diese Meldung nicht mehr anzeigen
+Do not show this message again.	Diese Meldung nicht mehr anzeigen.
+&Yes	&Ja
+&No	&Nein
+Add Folder	Ordner hinzufügen
+XML - Extensible Markup Language (*.xml)	XML - Extensible Markup Language (*.xml)
+AnyFont Folders and Collections.xml	AnyFont-Ordner und -Sammlungen.xml
+Folder not found. Please choose another location.	Ordner nicht gefunden. Wählen Sie einen anderen Speicherort aus.
+This folder has already been added.	Dieser Ordner wurde bereits hinzugefügt.
+This folder has already been added as a subfolder of {}.	Dieser Ordner wurde bereits als Unterordner von {} hinzugefügt.
+We can't find the following:	Folgendes wurde nicht gefunden:
+Supported font formats: OTF, TTF	Unterstützte Schriftartformate: OTF, TTF
+Your font database has been corrupted. To reset the database, you must restart AnyFont while holding down Shift.	Ihre Schriftartdatenbank ist beschädigt. Um die Datenbank zurückzusetzen, müssen Sie AnyFont bei gedrückter Umschalttaste neu starten.
+# --- Install / uninstall / delete / download ---------------------------------------------------------------
+Installing {}... {}%	{} wird installiert... {} %
+Uninstalling {}... {}%	{} wird deinstalliert... {} %
+Downloading {}... {}%	{} wird heruntergeladen... {} %
+Cancel	Abbrechen
+Delete fonts	Schriftarten löschen
+Are you sure you want to delete this font?\n\nRead-only fonts cannot be deleted.	Möchten Sie diese Schriftart wirklich löschen?\n\nSchreibgeschützte Schriftarten können nicht gelöscht werden.
+Are you sure you want to delete these fonts?\n\nRead-only fonts cannot be deleted.	Möchten Sie diese Schriftarten wirklich löschen?\n\nSchreibgeschützte Schriftarten können nicht gelöscht werden.
+Select all	Alles auswählen
+The following font cannot be uninstalled because it is in use by one or more applications. To uninstall this font, you must first restart your computer.\n\nDo you want to restart your computer now?	Die folgende Schriftart kann nicht deinstalliert werden, weil sie von einer oder mehreren Anwendungen verwendet wird. Um diese Schriftart zu deinstallieren, müssen Sie zuerst den Computer neu starten.\n\nMöchten Sie den Computer jetzt neu starten?
+The following fonts cannot be uninstalled because they are in use by one or more applications. To uninstall these fonts, you must first restart your computer.\n\nDo you want to restart your computer now?\n\nClick Ignore to continue without uninstalling the listed fonts.	Die folgenden Schriftarten können nicht deinstalliert werden, weil sie von einer oder mehreren Anwendungen verwendet werden. Um diese Schriftarten zu deinstallieren, müssen Sie zuerst den Computer neu starten.\n\nMöchten Sie den Computer jetzt neu starten?\n\nKlicken Sie auf „Ignorieren“, um fortzufahren, ohne die aufgeführten Schriftarten zu deinstallieren.
+The following font cannot be deleted because it is in use by one or more applications. To delete this font, you must first restart your computer.\n\nDo you want to restart your computer now?	Die folgende Schriftart kann nicht gelöscht werden, weil sie von einer oder mehreren Anwendungen verwendet wird. Um diese Schriftart zu löschen, müssen Sie zuerst den Computer neu starten.\n\nMöchten Sie den Computer jetzt neu starten?
+The following fonts cannot be deleted because they are in use by one or more applications. To delete these fonts, you must first restart your computer.\n\nDo you want to restart your computer now?\n\nClick Ignore to continue without deleting the listed fonts.	Die folgenden Schriftarten können nicht gelöscht werden, weil sie von einer oder mehreren Anwendungen verwendet werden. Um diese Schriftarten zu löschen, müssen Sie zuerst den Computer neu starten.\n\nMöchten Sie den Computer jetzt neu starten?\n\nKlicken Sie auf „Ignorieren“, um fortzufahren, ohne die aufgeführten Schriftarten zu löschen.
+Reboot &now	&Jetzt neu starten
+Reboot &later	&Später neu starten
+&Ignore	&Ignorieren
+# --- Message box buttons ----------------------------------------------------------------------------------
+&Abort	&Abbrechen
+&Retry	&Wiederholen
+&Try Again	Erneut &versuchen
+&Continue	&Weiter
+# --- Get More (online font catalog) -----------------------------------------------------------------------
+Sort by:	Sortieren nach:
+Featured	Empfohlen
+Filter by:	Filtern nach:
+Free	Kostenlos
+My Library	Meine Bibliothek
+Downloaded	Heruntergeladen
+Remote font catalog cannot connect to the internet.	Der Remote-Schriftartkatalog kann keine Verbindung zum Internet herstellen.
+An error occurred while downloading the remote font catalog.	Beim Herunterladen des Remote-Schriftartkatalogs ist ein Fehler aufgetreten.
+# --- PANOSE font matching ---------------------------------------------------------------------------------
+PANOSE Font Matching Preferences	Einstellungen für die PANOSE-Schriftartzuordnung
+&Text	&Text
+Text and &styles	Text und &Stile
+&Never show	&Nie anzeigen
+&Default font:	Stan&dardschriftart:
+&Exceptions...	&Ausnahmen...
+PANOSE Font Matching Exceptions	Ausnahmen für die PANOSE-Schriftartzuordnung
+&Missing Font:	&Fehlende Schriftart:
+&Substituted Font:	&Ersatzschriftart:
+&Add Exception	Ausnahme &hinzufügen
+&Remove Exception	Ausnahme entfe&rnen
+&List of current exceptions:	&Liste der aktuellen Ausnahmen:
+Missing Font	Fehlende Schriftart
+Substituted Font	Ersatzschriftart
+?	?
+PANOSE Font Matching Results	Ergebnisse der PANOSE-Schriftartzuordnung
+Working, please wait...	Wird bearbeitet, bitte warten...
+Stop	Anhalten
+Stopping will end the PANOSE matching process. All missing fonts will revert to a default selection.	Durch das Anhalten wird die PANOSE-Zuordnung beendet. Für alle fehlenden Schriftarten wird wieder eine Standardauswahl verwendet.
+&Use the PANOSE suggested match	&Von PANOSE vorgeschlagene Entsprechung verwenden
+Substitute &font with:	Schriftart &ersetzen durch:
+Show &all fonts	&Alle Schriftarten anzeigen
+&Save this exception for future font matching	Diese Ausnahme für künftige Schriftartzuordnungen &speichern
+Make this substitution:	Diese Ersetzung vornehmen:
+&Permanent - keep these fonts	&Dauerhaft - diese Schriftarten beibehalten
+Te&mporary - use original fonts	&Temporär - Originalschriftarten verwenden
+# --- Type 1 fonts -----------------------------------------------------------------------------------------
+Type 1 fonts detected	Type 1-Schriftarten erkannt
+This document uses Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.	Dieses Dokument verwendet Type 1-Schriftarten, die in Zukunft möglicherweise nicht mehr unterstützt werden. Um mögliche Probleme zu vermeiden, sollten Sie den Text auf andere Schriftarten umstellen, z. B. TrueType- (TTF) oder OpenType-Schriftarten (OTF).
+Do not show again	Nicht mehr anzeigen
+Replace fonts	Schriftarten ersetzen
+# --- Rename collection ------------------------------------------------------------------------------------
+Name:	Name:
+# --- Updates (from AnyVector updater.rs, product name replaced) -------------------------------------------
+Keep the product up to date (recommended)	Produkt auf dem neuesten Stand halten (empfohlen)
+Check for updates and let me choose when to install them	Nach Updates suchen und mich entscheiden lassen, wann sie installiert werden
+Never check for updates	Nie nach Updates suchen
+Automatically downloads product updates, but prompts you before installing them.	Lädt Produktupdates automatisch herunter, fragt aber vor der Installation nach.
+AnyFont tells you when a new version is available; you choose when to download and install it.	AnyFont meldet, wenn eine neue Version verfügbar ist; Sie entscheiden, wann sie heruntergeladen und installiert wird.
+AnyFont never connects to the Internet to look for updates. Help ▸ Check for Updates still checks when you ask.	AnyFont stellt nie eine Internetverbindung her, um nach Updates zu suchen. Hilfe ▸ Nach Updates suchen sucht weiterhin, wenn Sie es anfordern.
+An Internet connection is required. Please connect to the Internet and try again.	Eine Internetverbindung ist erforderlich. Stellen Sie eine Verbindung zum Internet her und versuchen Sie es erneut.
+Invalid answer from the update server: {}	Ungültige Antwort vom Updateserver: {}
+The latest release has no setup for Windows.	Die neueste Version hat kein Setup für Windows.
+No published release was found at github.com/{}.	Unter github.com/{} wurde keine veröffentlichte Version gefunden.
+AnyFont Updates	AnyFont-Updates
+The update server answered {}.	Der Updateserver hat {} geantwortet.
+The download was interrupted. Please try again.	Der Download wurde unterbrochen. Bitte versuchen Sie es erneut.
+The downloaded setup is empty.	Das heruntergeladene Setup ist leer.
+This release has no notes.	Diese Version hat keine Versionshinweise.
+Click Check Now to look for a new version.	Klicken Sie auf „Jetzt suchen“, um nach einer neuen Version zu suchen.
+Checking for updates...	Suche nach Updates...
+AnyFont is up to date.	AnyFont ist auf dem neuesten Stand.
+AnyFont {} is available.	AnyFont {} ist verfügbar.
+Downloading AnyFont {}...	AnyFont {} wird heruntergeladen...
+AnyFont closes to install it as soon as the download finishes.	AnyFont wird zur Installation geschlossen, sobald der Download abgeschlossen ist.
+AnyFont {} is ready to install.	AnyFont {} ist bereit zur Installation.
+AnyFont closes to install it and starts again when it is done.	AnyFont wird zur Installation geschlossen und danach neu gestartet.
+Error: {}	Fehler: {}
+You are using AnyFont {}.	Sie verwenden AnyFont {}.
+The update will be installed when AnyFont closes.	Das Update wird beim Schließen von AnyFont installiert.
+Allow product updates:	Produktupdates zulassen:
+Release Notes	Versionshinweise
+Install Now	Jetzt installieren
+Check Now	Jetzt suchen
+There is a new version of AnyFont available.	Eine neue Version von AnyFont ist verfügbar.
+New version: {}. Your version: {}.	Neue Version: {}. Ihre Version: {}.
+Click OK to install the new version.	Klicken Sie auf „OK“, um die neue Version zu installieren.
+# --- Report a Bug / Submit Ideas and Feedback (from AnyVector bugreport.rs, product name replaced) ---------
+Report a Bug	Fehler melden
+Submit Ideas and Feedback	Ideen und Feedback senden
+Thank you! Your idea was sent.	Vielen Dank! Ihre Idee wurde gesendet.
+Thank you! Your bug report was sent.	Vielen Dank! Ihr Fehlerbericht wurde gesendet.
+Almost done: finish in your browser	Fast fertig: Schließen Sie den Vorgang im Browser ab
+Please wait a minute	Bitte warten Sie eine Minute
+Your idea could not be sent	Ihre Idee konnte nicht gesendet werden
+The report could not be sent	Der Bericht konnte nicht gesendet werden
+The issue was created on the AnyFont project on GitHub:	Das Issue wurde im AnyFont-Projekt auf GitHub erstellt:
+GitHub opened in your browser with your idea already filled in.	GitHub wurde im Browser geöffnet, Ihre Idee ist bereits eingetragen.
+GitHub opened in your browser with the report already filled in.	GitHub wurde im Browser geöffnet, der Bericht ist bereits eingetragen.
+To attach "{}", drag it from the folder that opened into the description box on GitHub.	Um „{}“ anzuhängen, ziehen Sie die Datei aus dem geöffneten Ordner in das Beschreibungsfeld auf GitHub.
+Sign in if asked, review it and click "Create" to send it.	Melden Sie sich bei Aufforderung an, prüfen Sie den Eintrag und klicken Sie auf „Create“, um ihn zu senden.
+Several reports were sent from this connection in the last minute. Try again in a minute.	Von dieser Verbindung wurden in der letzten Minute mehrere Berichte gesendet. Versuchen Sie es in einer Minute erneut.
+Could not open the browser. Please send it at {}	Der Browser konnte nicht geöffnet werden. Bitte senden Sie es unter {}
+Back	Zurück
+Tell us your idea or what you think of AnyFont. It is sent to the AnyFont project on GitHub as a new idea. You don't need a GitHub account.	Teilen Sie uns Ihre Idee mit oder was Sie von AnyFont halten. Sie wird als neue Idee an das AnyFont-Projekt auf GitHub gesendet. Sie benötigen kein GitHub-Konto.
+Title (your idea in a few words):	Titel (Ihre Idee in wenigen Worten):
+Describe your idea or feedback:	Beschreiben Sie Ihre Idee oder Ihr Feedback:
+How would it help you? (optional)	Wie würde Ihnen das helfen? (optional)
+Describe the problem. It is sent to the AnyFont project on GitHub as a new issue. You don't need a GitHub account.	Beschreiben Sie das Problem. Es wird als neues Issue an das AnyFont-Projekt auf GitHub gesendet. Sie benötigen kein GitHub-Konto.
+Title (a short summary):	Titel (eine kurze Zusammenfassung):
+What happened?	Was ist passiert?
+Steps to reproduce (optional):	Schritte zum Reproduzieren (optional):
+What did you expect to happen? (optional)	Was haben Sie erwartet? (optional)
+Include system information	Systeminformationen einbeziehen
+System information	Systeminformationen
+View submitted ideas	Eingereichte Ideen anzeigen
+View reported bugs	Gemeldete Fehler anzeigen
+Attach a file (optional):	Datei anhängen (optional):
+Attach File...	Datei anhängen...
+Attach a File	Datei anhängen
+Files GitHub accepts	Von GitHub akzeptierte Dateien
+Images	Bilder
+Videos	Videos
+Archives (.zip, .gz, .tgz)	Archive (.zip, .gz, .tgz)
+Images and videos up to 10 MB, other files up to 25 MB, of the types GitHub accepts. Put a font file (.ttf, .otf) in a .zip file.	Bilder und Videos bis 10 MB, andere Dateien bis 25 MB, in den von GitHub akzeptierten Typen. Legen Sie eine Schriftartdatei (.ttf, .otf) in eine .zip-Datei.
+Sending...	Wird gesendet...
+Send	Senden

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+  <!-- letter A with a small bulleted list (Show font properties) -->
+  <path d="M2.4 10L5.3 2.2H5.7L8.6 10M3.5 7H7.5" fill="none" stroke="#CACED4" stroke-width="1.1"/>
+  <path d="M10.5 10V16" stroke="#CACED4" stroke-opacity="0.4"/>
+  <path fill="#CACED4" d="M9 11H11V12H9ZM9 13H11V14H9ZM9 15H11V16H9ZM12 11H16V12H12ZM12 13H16V14H12ZM12 15H14V16H12Z"/>
+</svg>

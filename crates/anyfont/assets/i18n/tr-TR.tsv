@@ -1,0 +1,425 @@
+# AnyFont user interface: Turkish (tr-TR). One "English<TAB>translation" pair per line;
+# the keys are docs/strings-en.tsv. Check with: python -I scripts/i18n_check.py
+# --- Title bar --------------------------------------------------------------------------------------------
+AnyFont	AnyFont
+Product Help	Ürün Yardımı
+Options	Seçenekler
+Updates	Güncelleştirmeler
+Minimize	Simge Durumuna Küçült
+Maximize	Ekranı Kapla
+Restore Down	Aşağı Geri Getir
+Close	Kapat
+# --- Menu bar ---------------------------------------------------------------------------------------------
+&File	&Dosya
+&Edit	Dü&zen
+Font	Yazı Tipi
+View	Görünüm
+Help	Yardım
+# --- File menu --------------------------------------------------------------------------------------------
+Add Folder...	Klasör Ekle...
+Add Collection	Koleksiyon Ekle
+Get More...	Daha Fazlasını Al...
+Remove Folder or Collection	Klasörü veya Koleksiyonu Kaldır
+Import Folders and Collections...	Klasörleri ve Koleksiyonları İçeri Aktar...
+Export Folders and Collections...	Klasörleri ve Koleksiyonları Dışarı Aktar...
+E&xit	Çı&kış
+Alt+F4	Alt+F4
+# --- Edit menu --------------------------------------------------------------------------------------------
+Select All	Tümünü Seç
+Deselect All	Tüm Seçimleri Kaldır
+Ctrl+A	Ctrl+A
+Ctrl+Shift+A	Ctrl+Shift+A
+# --- Font menu / font context menu ------------------------------------------------------------------------
+Install	Yükle
+Uninstall	Kaldır
+Download	İndir
+Delete	Sil
+Add to collection	Koleksiyona ekle
+Remove from collection	Koleksiyondan kaldır
+Remove from {}	{} öğesinden kaldır
+Show duplicate fonts	Yinelenen yazı tiplerini göster
+Hide duplicate fonts	Yinelenen yazı tiplerini gizle
+Open font file location	Yazı tipi dosyasının konumunu aç
+# --- View menu --------------------------------------------------------------------------------------------
+Refresh the Font List	Yazı Tipi Listesini Yenile
+Show font properties	Yazı tipi özelliklerini göster
+Hide font properties	Yazı tipi özelliklerini gizle
+Group by family	Aileye göre grupla
+Show recently used fonts	Son kullanılan yazı tiplerini göster
+Use font to display font name	Yazı tipi adını o yazı tipiyle göster
+Show Latin names	Latin adları göster
+Hide filter list	Filtre listesini gizle
+Show filter list	Filtre listesini göster
+Ctrl+Alt+I	Ctrl+Alt+I
+# --- Help menu --------------------------------------------------------------------------------------------
+&Product Help...	Ürün &Yardımı...
+Check for &Updates...	&Güncelleştirmeleri Denetle...
+Submit Ideas and Feedback...	Fikir ve Geri Bildirim Gönder...
+Report a &Bug...	&Hata Bildir...
+&About AnyFont...	AnyFont H&akkında...
+# --- Libraries context menu -------------------------------------------------------------------------------
+Rename	Yeniden Adlandır
+# --- Toolbar tooltips (header, then body) -----------------------------------------------------------------
+Add folder	Klasör ekle
+Browse to a folder that contains fonts to add it to your Libraries.	Kitaplıklarınıza eklemek için yazı tipleri içeren bir klasöre göz atın.
+Add collection	Koleksiyon ekle
+Add a collection for easy access to fonts that reside in different folders.	Farklı klasörlerde bulunan yazı tiplerine kolayca erişmek için bir koleksiyon ekleyin.
+Get More	Daha Fazlasını Al
+Remove	Kaldır
+Remove a folder or collection from your Libraries.	Kitaplıklarınızdan bir klasörü veya koleksiyonu kaldırın.
+Install fonts and font families.	Yazı tiplerini ve yazı tipi ailelerini yükleyin.
+Uninstall fonts and font families.	Yazı tiplerini ve yazı tipi ailelerini kaldırın.
+Download fonts to the AnyFont Content folder.	Yazı tiplerini AnyFont İçerik klasörüne indirin.
+Delete font files from your system.	Yazı tipi dosyalarını sisteminizden silin.
+Show duplicate font versions.	Yinelenen yazı tipi sürümlerini göster.
+Hide duplicate font versions.	Yinelenen yazı tipi sürümlerini gizle.
+Show font details or glyph sets.	Yazı tipi ayrıntılarını veya glif kümelerini göster.
+# --- Libraries --------------------------------------------------------------------------------------------
+Libraries	Kitaplıklar
+Folders	Klasörler
+My fonts	Yazı tiplerim
+My Collections	Koleksiyonlarım
+Favorites	Sık Kullanılanlar
+Collection {}	Koleksiyon {}
+Includes all installed fonts, all fonts in your added folders, and fonts downloaded from the Online library	Tüm yüklü yazı tiplerini, eklenen klasörlerinizdeki tüm yazı tiplerini ve Çevrimiçi kitaplıktan indirilen yazı tiplerini içerir
+To populate this collection, drag fonts from an added folder or another collection.	Bu koleksiyonu doldurmak için eklenen bir klasörden veya başka bir koleksiyondan yazı tiplerini sürükleyin.
+# --- Filters ----------------------------------------------------------------------------------------------
+Filters	Filtreler
+Clear filters	Filtreleri temizle
+Remove all selected font filters.	Seçili tüm yazı tipi filtrelerini kaldırın.
+Font Status	Yazı Tipi Durumu
+Installed	Yüklü
+Not installed	Yüklü değil
+Protected System Fonts	Korumalı Sistem Yazı Tipleri
+Duplicates	Yinelenenler
+Embedding Rights	Katıştırma Hakları
+Editable	Düzenlenebilir
+Installable	Yüklenebilir
+Preview and Print	Önizleme ve Yazdırma
+Font Technology	Yazı Tipi Teknolojisi
+OpenType - TrueType	OpenType - TrueType
+TrueType	TrueType
+Variable Fonts	Değişken Yazı Tipleri
+Weight	Kalınlık
+Light	İnce
+Regular	Normal
+Bold	Kalın
+Width	Genişlik
+Condensed	Dar
+Normal	Normal
+Expanded	Geniş
+Style	Stil
+Decorative	Dekoratif
+Display	Başlık
+Monospaced	Eş aralıklı
+Sans Serif	Tırnaksız
+Script	El yazısı
+Serif	Tırnaklı
+Symbol	Sembol
+Character Range	Karakter Aralığı
+Arabic	Arapça
+Chinese Simplified	Basitleştirilmiş Çince
+Chinese Traditional	Geleneksel Çince
+Cyrillic	Kiril
+Devanagari	Devanagari
+Greek	Yunanca
+Hebrew	İbranice
+Japanese	Japonca
+Korean	Korece
+Latin	Latin
+Turkish	Türkçe
+OpenType	OpenType
+Alternate Annotation Forms	Alternatif Ek Açıklama Biçimleri
+Asian Forms	Asya Biçimleri
+Asian Vertical Metrics	Asya Dikey Ölçüleri
+Asian Widths	Asya Genişlikleri
+Capital Spacing	Büyük Harf Aralığı
+Capitals	Büyük Harfler
+Case-Sensitive Forms	Büyük/Küçük Harfe Duyarlı Biçimler
+Contextual Alternates	Bağlamsal Alternatifler
+Contextual Ligatures	Bağlamsal Bitişik Harfler
+Discretionary Ligatures	İsteğe Bağlı Bitişik Harfler
+Fraction	Kesir
+Historical Forms	Tarihsel Biçimler
+Horizontal Kana Alternates	Yatay Kana Alternatifleri
+Historical Ligatures	Tarihsel Bitişik Harfler
+Number Styles	Sayı Stilleri
+Ordinals	Sıra Sayıları
+Ornaments	Süslemeler
+Position	Konum
+Slashed Zero	Eğik Çizgili Sıfır
+Standard Ligatures	Standart Bitişik Harfler
+Stylistic Alternate	Stil Alternatifi
+Stylistic Sets	Stil Kümeleri
+Swash Variants	Kuyruklu Varyantlar
+Vertical Alternates and Rotation	Dikey Alternatifler ve Döndürme
+# --- Font list: search row, empty states, information strip, status bar ------------------------------------
+Enter sample text	Örnek metin girin
+Search	Ara
+Font Name	Yazı Tipi Adı
+The quick brown fox jumps over the lazy dog.	Pijamalı hasta yağız şoföre çabucak güvendi.
+No fonts found. Remove or change filters or explore the font packs available in Get More.	Yazı tipi bulunamadı. Filtreleri kaldırın veya değiştirin ya da Daha Fazlasını Al bölümündeki yazı tipi paketlerini keşfedin.
+No fonts found. Remove or change filters to show fonts.	Yazı tipi bulunamadı. Yazı tiplerini göstermek için filtreleri kaldırın veya değiştirin.
+No fonts found. Clear the Search box, or type a different keyword.	Yazı tipi bulunamadı. Arama kutusunu temizleyin veya farklı bir anahtar sözcük yazın.
+No fonts found. Clear the Search box, type a different keyword, or explore the font packs available in Get More.	Yazı tipi bulunamadı. Arama kutusunu temizleyin, farklı bir anahtar sözcük yazın ya da Daha Fazlasını Al bölümündeki yazı tipi paketlerini keşfedin.
+Refresh	Yenile
+Refresh the font list.	Yazı tipi listesini yenileyin.
+{}: {} fonts	{}: {} yazı tipi
+{} (filtered): {} fonts	{} (filtrelenmiş): {} yazı tipi
+Change the font size in the font list.	Yazı tipi listesindeki yazı tipi boyutunu değiştirin.
+# --- Font row tooltip -------------------------------------------------------------------------------------
+Online font (Install or download to use)	Çevrimiçi yazı tipi (kullanmak için yükleyin veya indirin)
+Protected System Font	Korumalı Sistem Yazı Tipi
+Duplicate(s):	Yinelenen(ler):
+# --- Font properties panel ---------------------------------------------------------------------------------
+Glyphs	Glifler
+Font info	Yazı tipi bilgileri
+Variable font	Değişken yazı tipi
+Preview and filter available glyphs for a selected font.	Seçili yazı tipinde bulunan glifleri önizleyin ve filtreleyin.
+Show detailed font information.	Ayrıntılı yazı tipi bilgilerini göster.
+Adjust variable font properties.	Değişken yazı tipi özelliklerini ayarlayın.
+Glyph Filters	Glif Filtreleri
+Glyph Preview	Glif Önizleme
+Remove all selected glyph filters.	Seçili tüm glif filtrelerini kaldırın.
+Common	Ortak
+Scripts	Yazı Sistemleri
+Currency	Para Birimi
+Mathematical Symbols	Matematik Simgeleri
+Numbers	Rakamlar
+Punctuation & Separators	Noktalama ve Ayırıcılar
+Symbols	Semboller
+Marks	İşaretler
+{} glyphs	{} glif
+Change the glyph size in the Glyph Preview area.	Glif Önizleme alanındaki glif boyutunu değiştirin.
+Multiple fonts are selected. To view a glyph set, choose only one font.	Birden çok yazı tipi seçili. Bir glif kümesini görüntülemek için yalnızca bir yazı tipi seçin.
+No matching glyphs	Eşleşen glif yok
+Install or download the font to preview glyphs.	Glifleri önizlemek için yazı tipini yükleyin veya indirin.
+Family:	Aile:
+Sub-family:	Alt aile:
+File Path:	Dosya Yolu:
+File Size:	Dosya Boyutu:
+Version:	Sürüm:
+Font technology:	Yazı tipi teknolojisi:
+Code Page:	Kod Sayfası:
+Italic:	İtalik:
+Weight:	Kalınlık:
+Width:	Genişlik:
+Embedding:	Katıştırma:
+Manufacturer:	Üretici:
+Designer:	Tasarımcı:
+Copyright:	Telif hakkı:
+Collection:	Koleksiyon:
+Yes	Evet
+No	Hayır
+OpenType - PostScript	OpenType - PostScript
+No Embedding	Katıştırma Yok
+{} KB	{} KB
+{} MB	{} MB
+You don't have a variable font selected, or you've selected multiple fonts.	Değişken yazı tipi seçmediniz veya birden çok yazı tipi seçtiniz.
+Choose one variable font to see and adjust its properties.	Özelliklerini görmek ve ayarlamak için bir değişken yazı tipi seçin.
+# --- Edit-box context menu --------------------------------------------------------------------------------
+Undo	Geri Al
+Cut	Kes
+Copy	Kopyala
+Paste	Yapıştır
+# --- About / System Info / Legal Notices ------------------------------------------------------------------
+About AnyFont	AnyFont Hakkında
+Version {} - {} Release	Sürüm {} - {} Sürümü
+(C) {} AnyFont Team.  All rights reserved.	(C) {} AnyFont Ekibi.  Tüm hakları saklıdır.
+Source ID:	Kaynak Kimliği:
+&System Info...	&Sistem Bilgileri...
+Legal &Notices...	&Yasal Bildirimler...
+System Info	Sistem Bilgileri
+C&hoose a category:	&Bir kategori seçin:
+System	Sistem
+AnyFont EXEs & DLLs	AnyFont EXE ve DLL'leri
+System DLLs	Sistem DLL'leri
+Platform	Platform
+Processor	İşlemci
+Number of Processors	İşlemci Sayısı
+Math Coprocessor	Matematik İşlemcisi
+Total physical memory	Toplam fiziksel bellek
+Available physical memory	Kullanılabilir fiziksel bellek
+Total virtual memory	Toplam sanal bellek
+Available virtual memory	Kullanılabilir sanal bellek
+Total memory used by app	Uygulamanın kullandığı toplam bellek
+GDI Object Count	GDI Nesne Sayısı
+&Save	&Kaydet
+Save System Info	Sistem Bilgilerini Kaydet
+Text (*.txt)	Metin (*.txt)
+System info was saved to {}.	Sistem bilgileri {} konumuna kaydedildi.
+Unable to save system info to {}.	Sistem bilgileri {} konumuna kaydedilemedi.
+Legal Notices	Yasal Bildirimler
+&Print	&Yazdır
+OK	Tamam
+# --- Options ----------------------------------------------------------------------------------------------
+Appearance	Görünüm
+Size	Boyut
+%	%
+&Reset to Default	&Varsayılana Sıfırla
+Hint: The scaling level is relative to the scaling level of the operating system. For example, scaling by 200% will make the application user interface appear twice as large as the UI of the operating system. Note that excessive scaling may cause certain workspace elements to appear cropped.	İpucu: Ölçekleme düzeyi, işletim sisteminin ölçekleme düzeyine göredir. Örneğin, %200 ölçekleme uygulama kullanıcı arabiriminin işletim sistemi kullanıcı arabiriminden iki kat büyük görünmesini sağlar. Aşırı ölçeklemenin bazı çalışma alanı öğelerinin kırpılmış görünmesine neden olabileceğini unutmayın.
+Color	Renk
+Theme:	Tema:
+Medium	Orta
+Dark	Koyu
+Black	Siyah
+Window border:	Pencere kenarlığı:
+Font Matching	Yazı Tipi Eşleştirme
+PANOSE Font Matching Preferences...	PANOSE Yazı Tipi Eşleştirme Tercihleri...
+Network	Ağ
+Allow AnyFont to use the Internet	AnyFont'un İnternet'i kullanmasına izin ver
+You need to restart the application to apply these changes.	Bu değişiklikleri uygulamak için uygulamayı yeniden başlatmanız gerekir.
+# --- Confirmations, file dialogs, errors ------------------------------------------------------------------
+Are you sure you want to remove this collection?	Bu koleksiyonu kaldırmak istediğinizden emin misiniz?
+Are you sure you want to remove this folder?	Bu klasörü kaldırmak istediğinizden emin misiniz?
+Do not show this message again	Bu iletiyi bir daha gösterme
+Do not show this message again.	Bu iletiyi bir daha gösterme.
+&Yes	&Evet
+&No	&Hayır
+Add Folder	Klasör Ekle
+XML - Extensible Markup Language (*.xml)	XML - Extensible Markup Language (*.xml)
+AnyFont Folders and Collections.xml	AnyFont Klasörleri ve Koleksiyonları.xml
+Folder not found. Please choose another location.	Klasör bulunamadı. Lütfen başka bir konum seçin.
+This folder has already been added.	Bu klasör zaten eklenmiş.
+This folder has already been added as a subfolder of {}.	Bu klasör zaten {} klasörünün alt klasörü olarak eklenmiş.
+We can't find the following:	Aşağıdakiler bulunamıyor:
+Supported font formats: OTF, TTF	Desteklenen yazı tipi biçimleri: OTF, TTF
+Your font database has been corrupted. To reset the database, you must restart AnyFont while holding down Shift.	Yazı tipi veritabanınız bozuldu. Veritabanını sıfırlamak için Shift tuşunu basılı tutarak AnyFont'u yeniden başlatmanız gerekir.
+# --- Install / uninstall / delete / download ---------------------------------------------------------------
+Installing {}... {}%	{} yükleniyor... %{}
+Uninstalling {}... {}%	{} kaldırılıyor... %{}
+Downloading {}... {}%	{} indiriliyor... %{}
+Cancel	İptal
+Delete fonts	Yazı tiplerini sil
+Are you sure you want to delete this font?\n\nRead-only fonts cannot be deleted.	Bu yazı tipini silmek istediğinizden emin misiniz?\n\nSalt okunur yazı tipleri silinemez.
+Are you sure you want to delete these fonts?\n\nRead-only fonts cannot be deleted.	Bu yazı tiplerini silmek istediğinizden emin misiniz?\n\nSalt okunur yazı tipleri silinemez.
+Select all	Tümünü seç
+The following font cannot be uninstalled because it is in use by one or more applications. To uninstall this font, you must first restart your computer.\n\nDo you want to restart your computer now?	Aşağıdaki yazı tipi bir veya daha fazla uygulama tarafından kullanıldığından kaldırılamıyor. Bu yazı tipini kaldırmak için önce bilgisayarınızı yeniden başlatmanız gerekir.\n\nBilgisayarınızı şimdi yeniden başlatmak istiyor musunuz?
+The following fonts cannot be uninstalled because they are in use by one or more applications. To uninstall these fonts, you must first restart your computer.\n\nDo you want to restart your computer now?\n\nClick Ignore to continue without uninstalling the listed fonts.	Aşağıdaki yazı tipleri bir veya daha fazla uygulama tarafından kullanıldığından kaldırılamıyor. Bu yazı tiplerini kaldırmak için önce bilgisayarınızı yeniden başlatmanız gerekir.\n\nBilgisayarınızı şimdi yeniden başlatmak istiyor musunuz?\n\nListelenen yazı tiplerini kaldırmadan devam etmek için Yoksay'a tıklayın.
+The following font cannot be deleted because it is in use by one or more applications. To delete this font, you must first restart your computer.\n\nDo you want to restart your computer now?	Aşağıdaki yazı tipi bir veya daha fazla uygulama tarafından kullanıldığından silinemiyor. Bu yazı tipini silmek için önce bilgisayarınızı yeniden başlatmanız gerekir.\n\nBilgisayarınızı şimdi yeniden başlatmak istiyor musunuz?
+The following fonts cannot be deleted because they are in use by one or more applications. To delete these fonts, you must first restart your computer.\n\nDo you want to restart your computer now?\n\nClick Ignore to continue without deleting the listed fonts.	Aşağıdaki yazı tipleri bir veya daha fazla uygulama tarafından kullanıldığından silinemiyor. Bu yazı tiplerini silmek için önce bilgisayarınızı yeniden başlatmanız gerekir.\n\nBilgisayarınızı şimdi yeniden başlatmak istiyor musunuz?\n\nListelenen yazı tiplerini silmeden devam etmek için Yoksay'a tıklayın.
+Reboot &now	Şimdi &yeniden başlat
+Reboot &later	&Daha sonra yeniden başlat
+&Ignore	Y&oksay
+# --- Message box buttons ----------------------------------------------------------------------------------
+&Abort	&Durdur
+&Retry	&Yeniden Dene
+&Try Again	&Tekrar Dene
+&Continue	De&vam
+# --- Get More (online font catalog) -----------------------------------------------------------------------
+Sort by:	Sıralama ölçütü:
+Featured	Öne Çıkanlar
+Filter by:	Filtre ölçütü:
+Free	Ücretsiz
+My Library	Kitaplığım
+Downloaded	İndirilenler
+Remote font catalog cannot connect to the internet.	Uzak yazı tipi kataloğu İnternet'e bağlanamıyor.
+An error occurred while downloading the remote font catalog.	Uzak yazı tipi kataloğu indirilirken bir hata oluştu.
+# --- PANOSE font matching ---------------------------------------------------------------------------------
+PANOSE Font Matching Preferences	PANOSE Yazı Tipi Eşleştirme Tercihleri
+&Text	&Metin
+Text and &styles	Metin ve &stiller
+&Never show	&Hiçbir zaman gösterme
+&Default font:	&Varsayılan yazı tipi:
+&Exceptions...	Ö&zel durumlar...
+PANOSE Font Matching Exceptions	PANOSE Yazı Tipi Eşleştirme Özel Durumları
+&Missing Font:	&Eksik Yazı Tipi:
+&Substituted Font:	&Yerine Kullanılan Yazı Tipi:
+&Add Exception	Özel Durum Ek&le
+&Remove Exception	Özel Durumu &Kaldır
+&List of current exceptions:	&Geçerli özel durumların listesi:
+Missing Font	Eksik Yazı Tipi
+Substituted Font	Yerine Kullanılan Yazı Tipi
+?	?
+PANOSE Font Matching Results	PANOSE Yazı Tipi Eşleştirme Sonuçları
+Working, please wait...	Çalışıyor, lütfen bekleyin...
+Stop	Durdur
+Stopping will end the PANOSE matching process. All missing fonts will revert to a default selection.	Durdurmak PANOSE eşleştirme işlemini sonlandırır. Tüm eksik yazı tipleri varsayılan bir seçime döner.
+&Use the PANOSE suggested match	PANOSE'un önerdiği &eşleşmeyi kullan
+Substitute &font with:	Yazı tipini &şununla değiştir:
+Show &all fonts	&Tüm yazı tiplerini göster
+&Save this exception for future font matching	Bu özel durumu gelecekteki yazı tipi eşleştirmeleri için &kaydet
+Make this substitution:	Bu değiştirmeyi yap:
+&Permanent - keep these fonts	Ka&lıcı - bu yazı tiplerini koru
+Te&mporary - use original fonts	&Geçici - özgün yazı tiplerini kullan
+# --- Type 1 fonts -----------------------------------------------------------------------------------------
+Type 1 fonts detected	Type 1 yazı tipleri algılandı
+This document uses Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.	Bu belge, gelecekte desteklenmeyebilecek Type 1 yazı tiplerini kullanıyor. Olası sorunları önlemek için metni TrueType (TTF) veya OpenType (OTF) gibi farklı yazı tiplerini kullanacak şekilde güncellemeyi düşünün.
+Do not show again	Bir daha gösterme
+Replace fonts	Yazı tiplerini değiştir
+# --- Rename collection ------------------------------------------------------------------------------------
+Name:	Ad:
+# --- Updates (from AnyVector updater.rs, product name replaced) -------------------------------------------
+Keep the product up to date (recommended)	Ürünü güncel tut (önerilir)
+Check for updates and let me choose when to install them	Güncelleştirmeleri denetle ve ne zaman yükleneceklerini bana bırak
+Never check for updates	Güncelleştirmeleri hiçbir zaman denetleme
+Automatically downloads product updates, but prompts you before installing them.	Ürün güncelleştirmelerini otomatik olarak indirir, ancak yüklemeden önce size sorar.
+AnyFont tells you when a new version is available; you choose when to download and install it.	AnyFont yeni bir sürüm çıktığında size bildirir; ne zaman indirip yükleyeceğinize siz karar verirsiniz.
+AnyFont never connects to the Internet to look for updates. Help ▸ Check for Updates still checks when you ask.	AnyFont güncelleştirme aramak için hiçbir zaman İnternet'e bağlanmaz. Yardım ▸ Güncelleştirmeleri Denetle, siz istediğinizde yine denetler.
+An Internet connection is required. Please connect to the Internet and try again.	İnternet bağlantısı gerekiyor. Lütfen İnternet'e bağlanın ve yeniden deneyin.
+Invalid answer from the update server: {}	Güncelleştirme sunucusundan geçersiz yanıt: {}
+The latest release has no setup for Windows.	En son sürümde Windows için kurulum programı yok.
+No published release was found at github.com/{}.	github.com/{} adresinde yayımlanmış bir sürüm bulunamadı.
+AnyFont Updates	AnyFont Güncelleştirmeleri
+The update server answered {}.	Güncelleştirme sunucusu {} yanıtını verdi.
+The download was interrupted. Please try again.	İndirme kesildi. Lütfen yeniden deneyin.
+The downloaded setup is empty.	İndirilen kurulum programı boş.
+This release has no notes.	Bu sürümün notu yok.
+Click Check Now to look for a new version.	Yeni bir sürüm aramak için Şimdi Denetle'ye tıklayın.
+Checking for updates...	Güncelleştirmeler denetleniyor...
+AnyFont is up to date.	AnyFont güncel.
+AnyFont {} is available.	AnyFont {} kullanılabilir.
+Downloading AnyFont {}...	AnyFont {} indiriliyor...
+AnyFont closes to install it as soon as the download finishes.	AnyFont, indirme biter bitmez yüklemek için kapanır.
+AnyFont {} is ready to install.	AnyFont {} yüklenmeye hazır.
+AnyFont closes to install it and starts again when it is done.	AnyFont yüklemek için kapanır ve işlem bitince yeniden başlar.
+Error: {}	Hata: {}
+You are using AnyFont {}.	AnyFont {} sürümünü kullanıyorsunuz.
+The update will be installed when AnyFont closes.	Güncelleştirme AnyFont kapandığında yüklenecek.
+Allow product updates:	Ürün güncelleştirmelerine izin ver:
+Release Notes	Sürüm Notları
+Install Now	Şimdi Yükle
+Check Now	Şimdi Denetle
+There is a new version of AnyFont available.	AnyFont'ün yeni bir sürümü kullanılabilir.
+New version: {}. Your version: {}.	Yeni sürüm: {}. Sizin sürümünüz: {}.
+Click OK to install the new version.	Yeni sürümü yüklemek için Tamam'a tıklayın.
+# --- Report a Bug / Submit Ideas and Feedback (from AnyVector bugreport.rs, product name replaced) ---------
+Report a Bug	Hata Bildir
+Submit Ideas and Feedback	Fikir ve Geri Bildirim Gönder
+Thank you! Your idea was sent.	Teşekkürler! Fikriniz gönderildi.
+Thank you! Your bug report was sent.	Teşekkürler! Hata raporunuz gönderildi.
+Almost done: finish in your browser	Neredeyse bitti: işlemi tarayıcınızda tamamlayın
+Please wait a minute	Lütfen bir dakika bekleyin
+Your idea could not be sent	Fikriniz gönderilemedi
+The report could not be sent	Rapor gönderilemedi
+The issue was created on the AnyFont project on GitHub:	Kayıt, GitHub'daki AnyFont projesinde oluşturuldu:
+GitHub opened in your browser with your idea already filled in.	GitHub, fikriniz önceden doldurulmuş olarak tarayıcınızda açıldı.
+GitHub opened in your browser with the report already filled in.	GitHub, rapor önceden doldurulmuş olarak tarayıcınızda açıldı.
+To attach "{}", drag it from the folder that opened into the description box on GitHub.	"{}" dosyasını eklemek için açılan klasörden GitHub'daki açıklama kutusuna sürükleyin.
+Sign in if asked, review it and click "Create" to send it.	İstenirse oturum açın, gözden geçirin ve göndermek için "Create" düğmesine tıklayın.
+Several reports were sent from this connection in the last minute. Try again in a minute.	Son bir dakika içinde bu bağlantıdan birkaç rapor gönderildi. Bir dakika sonra yeniden deneyin.
+Could not open the browser. Please send it at {}	Tarayıcı açılamadı. Lütfen şu adresten gönderin: {}
+Back	Geri
+Tell us your idea or what you think of AnyFont. It is sent to the AnyFont project on GitHub as a new idea. You don't need a GitHub account.	Fikrinizi veya AnyFont hakkındaki düşüncelerinizi bize iletin. GitHub'daki AnyFont projesine yeni bir fikir olarak gönderilir. GitHub hesabınızın olması gerekmez.
+Title (your idea in a few words):	Başlık (birkaç sözcükle fikriniz):
+Describe your idea or feedback:	Fikrinizi veya geri bildiriminizi açıklayın:
+How would it help you? (optional)	Bunun size ne faydası olur? (isteğe bağlı)
+Describe the problem. It is sent to the AnyFont project on GitHub as a new issue. You don't need a GitHub account.	Sorunu açıklayın. GitHub'daki AnyFont projesine yeni bir kayıt olarak gönderilir. GitHub hesabınızın olması gerekmez.
+Title (a short summary):	Başlık (kısa bir özet):
+What happened?	Ne oldu?
+Steps to reproduce (optional):	Yeniden oluşturma adımları (isteğe bağlı):
+What did you expect to happen? (optional)	Ne olmasını bekliyordunuz? (isteğe bağlı)
+Include system information	Sistem bilgilerini ekle
+System information	Sistem bilgileri
+View submitted ideas	Gönderilen fikirleri görüntüle
+View reported bugs	Bildirilen hataları görüntüle
+Attach a file (optional):	Dosya ekle (isteğe bağlı):
+Attach File...	Dosya Ekle...
+Attach a File	Dosya Ekle
+Files GitHub accepts	GitHub'ın kabul ettiği dosyalar
+Images	Görüntüler
+Videos	Videolar
+Archives (.zip, .gz, .tgz)	Arşivler (.zip, .gz, .tgz)
+Images and videos up to 10 MB, other files up to 25 MB, of the types GitHub accepts. Put a font file (.ttf, .otf) in a .zip file.	GitHub'ın kabul ettiği türlerde, 10 MB'a kadar resim ve video, 25 MB'a kadar diğer dosyalar. Bir yazı tipi dosyasını (.ttf, .otf) bir .zip dosyasına koyun.
+Sending...	Gönderiliyor...
+Send	Gönder

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+  <!-- arrow down into a tray (Download from the online catalog) -->
+  <path d="M8.5 1V13" fill="none" stroke="#CACED4"/>
+  <path d="M5.3 10.2L8.5 13.4L11.7 10.2" fill="none" stroke="#CACED4"/>
+  <path d="M1.5 12V13.4Q1.5 15.5 3.6 15.5H13.4Q15.5 15.5 15.5 13.4V12" fill="none" stroke="#CACED4"/>
+</svg>

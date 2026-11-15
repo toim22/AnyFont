@@ -1,0 +1,161 @@
+{
+ "source_context": "temp-folder-font-selected",
+ "matrix": {
+  "all-selected": {
+   "Add Folder": true,
+   "Add Collection": true,
+   "Get More": true,
+   "Remove Folder or Collection": false,
+   "Install": false,
+   "Uninstall": true,
+   "Download": false,
+   "Delete": true,
+   "Show duplicate fonts": true,
+   "Show font properties": true
+  },
+  "deselect-all": {
+   "Add Folder": true,
+   "Add Collection": true,
+   "Get More": true,
+   "Remove Folder or Collection": false,
+   "Install": false,
+   "Uninstall": false,
+   "Download": false,
+   "Delete": false,
+   "Show duplicate fonts": true,
+   "Show font properties": true
+  },
+  "duplicates-shown": {
+   "Add Folder": true,
+   "Add Collection": true,
+   "Get More": true,
+   "Remove Folder or Collection": false,
+   "Install": false,
+   "Uninstall": false,
+   "Download": false,
+   "Delete": false,
+   "Show duplicate fonts": true,
+   "Show font properties": true
+  },
+  "family-header-selected": {
+   "Add Folder": true,
+   "Add Collection": true,
+   "Get More": true,
+   "Remove Folder or Collection": false,
+   "Install": false,
+   "Uninstall": false,
+   "Download": false,
+   "Delete": false,
+   "Show duplicate fonts": true,
+   "Show font properties": true
+  },
+  "favorites-library": {
+   "Add Folder": true,
+   "Add Collection": true,
+   "Get More": true,
+   "Remove Folder or Collection": true,
+   "Install": false,
+   "Uninstall": false,
+   "Download": false,
+   "Delete": false,
+   "Show duplicate fonts": true,
+   "Show font properties": true
+  },
+  "filter-no-results": {
+   "Add Folder": true,
+   "Add Collection": true,
+   "Get More": true,
+   "Remove Folder or Collection": false,
+   "Install": false,
+   "Uninstall": false,
+   "Download": false,
+   "Delete": false,
+   "Show duplicate fonts": true,
+   "Show font properties": true
+  },
+  "font-properties-shown": {
+   "Add Folder": true,
+   "Add Collection": true,
+   "Get More": true,
+   "Remove Folder or Collection": false,
+   "Install": false,
+   "Uninstall": true,
+   "Download": false,
+   "Delete": true,
+   "Show duplicate fonts": true,
+   "Show font properties": true
+  },
+  "font-selected": {
+   "Add Folder": true,
+   "Add Collection": true,
+   "Get More": true,
+   "Remove Folder or Collection": false,
+   "Install": false,
+   "Uninstall": true,
+   "Download": false,
+   "Delete": true,
+   "Show duplicate fonts": true,
+   "Show font properties": true
+  },
+  "system-font-selected": {
+   "Add Folder": true,
+   "Add Collection": true,
+   "Get More": true,
+   "Remove Folder or Collection": false,
+   "Install": false,
+   "Uninstall": false,
+   "Download": false,
+   "Delete": false,
+   "Show duplicate fonts": true,
+   "Show font properties": true
+  },
+  "temp-folder-font-selected": {
+   "Add Folder": true,
+   "Add Collection": true,
+   "Get More": true,
+   "Remove Folder or Collection": true,
+   "Install": false,
+   "Uninstall": true,
+   "Download": false,
+   "Delete": true,
+   "Show duplicate fonts": true,
+   "Show font properties": true
+  },
+  "temp-folder-library": {
+   "Add Folder": true,
+   "Add Collection": true,
+   "Get More": true,
+   "Remove Folder or Collection": true,
+   "Install": false,
+   "Uninstall": true,
+   "Download": false,
+   "Delete": true,
+   "Show duplicate fonts": true,
+   "Show font properties": true
+  },
+  "user-collection-font-selected": {
+   "Add Folder": true,
+   "Add Collection": true,
+   "Get More": true,
+   "Remove Folder or Collection": true,
+   "Install": false,
+   "Uninstall": true,
+   "Download": false,
+   "Delete": true,
+   "Show duplicate fonts": true,
+   "Show font properties": true
+  },
+  "user-collection-library": {
+   "Add Folder": true,
+   "Add Collection": true,
+   "Get More": true,
+   "Remove Folder or Collection": true,
+   "Install": false,
+   "Uninstall": true,
+   "Download": false,
+   "Delete": true,
+   "Show duplicate fonts": true,
+   "Show font properties": true
+  }
+ }
+}

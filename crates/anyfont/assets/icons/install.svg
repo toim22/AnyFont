@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+  <!-- font document with a letter A, green badge with a down arrow (cut-out) -->
+  <path d="M9 0.5H3.5L0.5 3.5V15.5H11.5V7" fill="none" stroke="#CACED4"/>
+  <path d="M3 13L5.6 5.2H6.4L9 13M3.8 9.5H8.2" fill="none" stroke="#CACED4" stroke-width="1.1"/>
+  <path fill="#1BB474" fill-rule="evenodd" d="M9 0H16V7H9ZM12 1V3.8H10.6L12.5 6L14.4 3.8H13V1Z"/>
+</svg>

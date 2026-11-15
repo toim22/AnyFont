@@ -1,0 +1,15 @@
+Test fixtures of anyfont-core and where they come from.
+
+Hack-Regular.ttf       Hack 3.x, from the epaint_default_fonts crate. MIT / Bitstream Vera licence:
+                       licenses/Hack-Regular-LICENSE.txt
+TTC.ttc                Two-face TrueType collection from the ttf-parser crate examples. MIT:
+                       licenses/TTC-LICENSE-MIT.txt
+colr_1_variable.ttf    COLRv1 variable test font from the ttf-parser crate tests. Apache-2.0:
+                       licenses/colr_1_variable-LICENSE.txt
+Tuffy.ttf              Tuffy by Thatcher Ulrich, from the fontdb crate tests. Public domain:
+                       licenses/Tuffy-LICENSE.txt
+toolbar-states.json    Toolbar enable states captured from the original program (13 selection
+                       contexts), from the reverse-engineering dossier (06-ui/screenshots/90-reports).
+
+Tests may also read C:\Windows\Fonts read-only when it exists (tests skip otherwise). No test installs,
+uninstalls or deletes fonts of the machine.

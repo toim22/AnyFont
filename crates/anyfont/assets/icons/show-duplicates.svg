@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+  <!-- two stacked pages, a small letter A and an eye -->
+  <path d="M6.5 5.6V4.5H0.5V12.5H2.2" fill="none" stroke="#CACED4"/>
+  <path d="M9.5 9.6V7.5H3.5V15.5H6.2" fill="none" stroke="#CACED4"/>
+  <path d="M7.2 15.9L9.3 11H9.7L11.8 15.9M7.9 14.3H11.1" fill="none" stroke="#CACED4"/>
+  <path fill="#CACED4" fill-rule="evenodd" d="M6.8 2.7Q11.4 -3 16 2.7Q11.4 8.4 6.8 2.7ZM11.4 1.1A1.6 1.6 0 1 0 11.4 4.3A1.6 1.6 0 1 0 11.4 1.1ZM11.4 2A0.7 0.7 0 1 1 11.4 3.4A0.7 0.7 0 1 1 11.4 2Z"/>
+</svg>

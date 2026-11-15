@@ -1,0 +1,425 @@
+# AnyFont user interface: Swedish (sv-SE). One "English<TAB>translation" pair per line;
+# the keys are docs/strings-en.tsv. Check with: python -I scripts/i18n_check.py
+# --- Title bar --------------------------------------------------------------------------------------------
+AnyFont	AnyFont
+Product Help	Produkthjälp
+Options	Alternativ
+Updates	Uppdateringar
+Minimize	Minimera
+Maximize	Maximera
+Restore Down	Återställ nedåt
+Close	Stäng
+# --- Menu bar ---------------------------------------------------------------------------------------------
+&File	&Arkiv
+&Edit	&Redigera
+Font	Teckensnitt
+View	Visa
+Help	Hjälp
+# --- File menu --------------------------------------------------------------------------------------------
+Add Folder...	Lägg till mapp...
+Add Collection	Lägg till samling
+Get More...	Hämta mer...
+Remove Folder or Collection	Ta bort mapp eller samling
+Import Folders and Collections...	Importera mappar och samlingar...
+Export Folders and Collections...	Exportera mappar och samlingar...
+E&xit	&Avsluta
+Alt+F4	Alt+F4
+# --- Edit menu --------------------------------------------------------------------------------------------
+Select All	Markera allt
+Deselect All	Avmarkera alla
+Ctrl+A	Ctrl+A
+Ctrl+Shift+A	Ctrl+Shift+A
+# --- Font menu / font context menu ------------------------------------------------------------------------
+Install	Installera
+Uninstall	Avinstallera
+Download	Hämta
+Delete	Ta bort
+Add to collection	Lägg till i samling
+Remove from collection	Ta bort från samling
+Remove from {}	Ta bort från {}
+Show duplicate fonts	Visa dubblettteckensnitt
+Hide duplicate fonts	Dölj dubblettteckensnitt
+Open font file location	Öppna teckensnittsfilens plats
+# --- View menu --------------------------------------------------------------------------------------------
+Refresh the Font List	Uppdatera teckensnittslistan
+Show font properties	Visa teckensnittsegenskaper
+Hide font properties	Dölj teckensnittsegenskaper
+Group by family	Gruppera efter familj
+Show recently used fonts	Visa senast använda teckensnitt
+Use font to display font name	Visa teckensnittsnamnet med teckensnittet
+Show Latin names	Visa latinska namn
+Hide filter list	Dölj filterlistan
+Show filter list	Visa filterlistan
+Ctrl+Alt+I	Ctrl+Alt+I
+# --- Help menu --------------------------------------------------------------------------------------------
+&Product Help...	&Produkthjälp...
+Check for &Updates...	Sök efter &uppdateringar...
+Submit Ideas and Feedback...	Skicka idéer och feedback...
+Report a &Bug...	Rapportera ett &fel...
+&About AnyFont...	&Om AnyFont...
+# --- Libraries context menu -------------------------------------------------------------------------------
+Rename	Byt namn
+# --- Toolbar tooltips (header, then body) -----------------------------------------------------------------
+Add folder	Lägg till mapp
+Browse to a folder that contains fonts to add it to your Libraries.	Bläddra till en mapp som innehåller teckensnitt för att lägga till den i dina bibliotek.
+Add collection	Lägg till samling
+Add a collection for easy access to fonts that reside in different folders.	Lägg till en samling för att enkelt komma åt teckensnitt som finns i olika mappar.
+Get More	Hämta mer
+Remove	Ta bort
+Remove a folder or collection from your Libraries.	Ta bort en mapp eller samling från dina bibliotek.
+Install fonts and font families.	Installera teckensnitt och teckensnittsfamiljer.
+Uninstall fonts and font families.	Avinstallera teckensnitt och teckensnittsfamiljer.
+Download fonts to the AnyFont Content folder.	Hämta teckensnitt till mappen AnyFont-innehåll.
+Delete font files from your system.	Ta bort teckensnittsfiler från systemet.
+Show duplicate font versions.	Visa dubbletter av teckensnittsversioner.
+Hide duplicate font versions.	Dölj dubbletter av teckensnittsversioner.
+Show font details or glyph sets.	Visa teckensnittsinformation eller glyfuppsättningar.
+# --- Libraries --------------------------------------------------------------------------------------------
+Libraries	Bibliotek
+Folders	Mappar
+My fonts	Mina teckensnitt
+My Collections	Mina samlingar
+Favorites	Favoriter
+Collection {}	Samling {}
+Includes all installed fonts, all fonts in your added folders, and fonts downloaded from the Online library	Omfattar alla installerade teckensnitt, alla teckensnitt i dina tillagda mappar och teckensnitt som hämtats från onlinebiblioteket
+To populate this collection, drag fonts from an added folder or another collection.	Fyll den här samlingen genom att dra teckensnitt från en tillagd mapp eller en annan samling.
+# --- Filters ----------------------------------------------------------------------------------------------
+Filters	Filter
+Clear filters	Rensa filter
+Remove all selected font filters.	Ta bort alla markerade teckensnittsfilter.
+Font Status	Teckensnittsstatus
+Installed	Installerade
+Not installed	Inte installerade
+Protected System Fonts	Skyddade systemteckensnitt
+Duplicates	Dubbletter
+Embedding Rights	Inbäddningsrättigheter
+Editable	Redigerbara
+Installable	Installerbara
+Preview and Print	Förhandsgranskning och utskrift
+Font Technology	Teckensnittsteknik
+OpenType - TrueType	OpenType - TrueType
+TrueType	TrueType
+Variable Fonts	Variabla teckensnitt
+Weight	Vikt
+Light	Tunn
+Regular	Normal
+Bold	Fet
+Width	Bredd
+Condensed	Smal
+Normal	Normal
+Expanded	Bred
+Style	Stil
+Decorative	Dekorativ
+Display	Display
+Monospaced	Fast teckenbredd
+Sans Serif	Sans serif
+Script	Skrivstil
+Serif	Serif
+Symbol	Symbol
+Character Range	Teckenintervall
+Arabic	Arabisk
+Chinese Simplified	Kinesiska (förenklad)
+Chinese Traditional	Kinesiska (traditionell)
+Cyrillic	Kyrillisk
+Devanagari	Devanagari
+Greek	Grekiska
+Hebrew	Hebreiska
+Japanese	Japanska
+Korean	Koreanska
+Latin	Latinsk
+Turkish	Turkiska
+OpenType	OpenType
+Alternate Annotation Forms	Alternativa anteckningsformer
+Asian Forms	Asiatiska former
+Asian Vertical Metrics	Asiatiska vertikala mått
+Asian Widths	Asiatiska bredder
+Capital Spacing	Versalavstånd
+Capitals	Versaler
+Case-Sensitive Forms	Skiftlägeskänsliga former
+Contextual Alternates	Kontextuella alternativ
+Contextual Ligatures	Kontextuella ligaturer
+Discretionary Ligatures	Valfria ligaturer
+Fraction	Bråk
+Historical Forms	Historiska former
+Horizontal Kana Alternates	Horisontella kana-alternativ
+Historical Ligatures	Historiska ligaturer
+Number Styles	Sifferformat
+Ordinals	Ordningstal
+Ornaments	Ornament
+Position	Position
+Slashed Zero	Nolla med snedstreck
+Standard Ligatures	Standardligaturer
+Stylistic Alternate	Stilistiskt alternativ
+Stylistic Sets	Stilistiska uppsättningar
+Swash Variants	Snirkelvarianter
+Vertical Alternates and Rotation	Vertikala alternativ och rotation
+# --- Font list: search row, empty states, information strip, status bar ------------------------------------
+Enter sample text	Ange exempeltext
+Search	Sök
+Font Name	Teckensnittsnamn
+The quick brown fox jumps over the lazy dog.	Flygande bäckasiner söka hwila på mjuka tuvor.
+No fonts found. Remove or change filters or explore the font packs available in Get More.	Inga teckensnitt hittades. Ta bort eller ändra filter eller utforska teckensnittspaketen som finns i Hämta mer.
+No fonts found. Remove or change filters to show fonts.	Inga teckensnitt hittades. Ta bort eller ändra filter för att visa teckensnitt.
+No fonts found. Clear the Search box, or type a different keyword.	Inga teckensnitt hittades. Rensa sökrutan eller skriv ett annat nyckelord.
+No fonts found. Clear the Search box, type a different keyword, or explore the font packs available in Get More.	Inga teckensnitt hittades. Rensa sökrutan, skriv ett annat nyckelord eller utforska teckensnittspaketen som finns i Hämta mer.
+Refresh	Uppdatera
+Refresh the font list.	Uppdatera teckensnittslistan.
+{}: {} fonts	{}: {} teckensnitt
+{} (filtered): {} fonts	{} (filtrerat): {} teckensnitt
+Change the font size in the font list.	Ändra teckenstorleken i teckensnittslistan.
+# --- Font row tooltip -------------------------------------------------------------------------------------
+Online font (Install or download to use)	Onlineteckensnitt (installera eller hämta för att använda)
+Protected System Font	Skyddat systemteckensnitt
+Duplicate(s):	Dubbletter:
+# --- Font properties panel ---------------------------------------------------------------------------------
+Glyphs	Glyfer
+Font info	Teckensnittsinfo
+Variable font	Variabelt teckensnitt
+Preview and filter available glyphs for a selected font.	Förhandsgranska och filtrera tillgängliga glyfer för ett markerat teckensnitt.
+Show detailed font information.	Visa detaljerad teckensnittsinformation.
+Adjust variable font properties.	Justera egenskaper för variabla teckensnitt.
+Glyph Filters	Glyffilter
+Glyph Preview	Förhandsgranskning av glyfer
+Remove all selected glyph filters.	Ta bort alla markerade glyffilter.
+Common	Vanliga
+Scripts	Skriftsystem
+Currency	Valuta
+Mathematical Symbols	Matematiska symboler
+Numbers	Siffror
+Punctuation & Separators	Skiljetecken och avgränsare
+Symbols	Symboler
+Marks	Märken
+{} glyphs	{} glyfer
+Change the glyph size in the Glyph Preview area.	Ändra glyfstorleken i området för förhandsgranskning av glyfer.
+Multiple fonts are selected. To view a glyph set, choose only one font.	Flera teckensnitt är markerade. Välj bara ett teckensnitt om du vill visa en glyfuppsättning.
+No matching glyphs	Inga matchande glyfer
+Install or download the font to preview glyphs.	Installera eller hämta teckensnittet för att förhandsgranska glyfer.
+Family:	Familj:
+Sub-family:	Underfamilj:
+File Path:	Filsökväg:
+File Size:	Filstorlek:
+Version:	Version:
+Font technology:	Teckensnittsteknik:
+Code Page:	Teckentabell:
+Italic:	Kursiv:
+Weight:	Vikt:
+Width:	Bredd:
+Embedding:	Inbäddning:
+Manufacturer:	Tillverkare:
+Designer:	Formgivare:
+Copyright:	Upphovsrätt:
+Collection:	Samling:
+Yes	Ja
+No	Nej
+OpenType - PostScript	OpenType - PostScript
+No Embedding	Ingen inbäddning
+{} KB	{} kB
+{} MB	{} MB
+You don't have a variable font selected, or you've selected multiple fonts.	Du har inte markerat något variabelt teckensnitt, eller så har du markerat flera teckensnitt.
+Choose one variable font to see and adjust its properties.	Välj ett variabelt teckensnitt för att visa och justera dess egenskaper.
+# --- Edit-box context menu --------------------------------------------------------------------------------
+Undo	Ångra
+Cut	Klipp ut
+Copy	Kopiera
+Paste	Klistra in
+# --- About / System Info / Legal Notices ------------------------------------------------------------------
+About AnyFont	Om AnyFont
+Version {} - {} Release	Version {} - {}-utgåva
+(C) {} AnyFont Team.  All rights reserved.	(C) {} AnyFont Team.  Med ensamrätt.
+Source ID:	Käll-ID:
+&System Info...	&Systeminformation...
+Legal &Notices...	&Juridisk information...
+System Info	Systeminformation
+C&hoose a category:	&Välj en kategori:
+System	System
+AnyFont EXEs & DLLs	AnyFont EXE- och DLL-filer
+System DLLs	System-DLL-filer
+Platform	Plattform
+Processor	Processor
+Number of Processors	Antal processorer
+Math Coprocessor	Matematisk samprocessor
+Total physical memory	Totalt fysiskt minne
+Available physical memory	Tillgängligt fysiskt minne
+Total virtual memory	Totalt virtuellt minne
+Available virtual memory	Tillgängligt virtuellt minne
+Total memory used by app	Totalt minne som används av programmet
+GDI Object Count	Antal GDI-objekt
+&Save	&Spara
+Save System Info	Spara systeminformation
+Text (*.txt)	Text (*.txt)
+System info was saved to {}.	Systeminformationen sparades i {}.
+Unable to save system info to {}.	Det gick inte att spara systeminformationen i {}.
+Legal Notices	Juridisk information
+&Print	&Skriv ut
+OK	OK
+# --- Options ----------------------------------------------------------------------------------------------
+Appearance	Utseende
+Size	Storlek
+%	%
+&Reset to Default	&Återställ till standard
+Hint: The scaling level is relative to the scaling level of the operating system. For example, scaling by 200% will make the application user interface appear twice as large as the UI of the operating system. Note that excessive scaling may cause certain workspace elements to appear cropped.	Tips: Skalningsnivån är relativ till operativsystemets skalningsnivå. Vid skalning till 200 % ser till exempel programmets användargränssnitt dubbelt så stort ut som operativsystemets. Observera att för kraftig skalning kan göra att vissa element i arbetsytan visas beskurna.
+Color	Färg
+Theme:	Tema:
+Medium	Medel
+Dark	Mörkt
+Black	Svart
+Window border:	Fönsterkant:
+Font Matching	Teckensnittsmatchning
+PANOSE Font Matching Preferences...	Inställningar för PANOSE-teckensnittsmatchning...
+Network	Nätverk
+Allow AnyFont to use the Internet	Tillåt AnyFont att använda Internet
+You need to restart the application to apply these changes.	Du måste starta om programmet för att tillämpa ändringarna.
+# --- Confirmations, file dialogs, errors ------------------------------------------------------------------
+Are you sure you want to remove this collection?	Vill du ta bort den här samlingen?
+Are you sure you want to remove this folder?	Vill du ta bort den här mappen?
+Do not show this message again	Visa inte det här meddelandet igen
+Do not show this message again.	Visa inte det här meddelandet igen.
+&Yes	&Ja
+&No	&Nej
+Add Folder	Lägg till mapp
+XML - Extensible Markup Language (*.xml)	XML - Extensible Markup Language (*.xml)
+AnyFont Folders and Collections.xml	AnyFont-mappar och -samlingar.xml
+Folder not found. Please choose another location.	Mappen hittades inte. Välj en annan plats.
+This folder has already been added.	Den här mappen har redan lagts till.
+This folder has already been added as a subfolder of {}.	Den här mappen har redan lagts till som en undermapp till {}.
+We can't find the following:	Följande kunde inte hittas:
+Supported font formats: OTF, TTF	Teckensnittsformat som stöds: OTF, TTF
+Your font database has been corrupted. To reset the database, you must restart AnyFont while holding down Shift.	Teckensnittsdatabasen är skadad. Om du vill återställa databasen måste du starta om AnyFont medan du håller ned Skift.
+# --- Install / uninstall / delete / download ---------------------------------------------------------------
+Installing {}... {}%	Installerar {}... {} %
+Uninstalling {}... {}%	Avinstallerar {}... {} %
+Downloading {}... {}%	Hämtar {}... {} %
+Cancel	Avbryt
+Delete fonts	Ta bort teckensnitt
+Are you sure you want to delete this font?\n\nRead-only fonts cannot be deleted.	Vill du ta bort det här teckensnittet?\n\nSkrivskyddade teckensnitt kan inte tas bort.
+Are you sure you want to delete these fonts?\n\nRead-only fonts cannot be deleted.	Vill du ta bort de här teckensnitten?\n\nSkrivskyddade teckensnitt kan inte tas bort.
+Select all	Markera alla
+The following font cannot be uninstalled because it is in use by one or more applications. To uninstall this font, you must first restart your computer.\n\nDo you want to restart your computer now?	Följande teckensnitt kan inte avinstalleras eftersom det används av ett eller flera program. Om du vill avinstallera teckensnittet måste du först starta om datorn.\n\nVill du starta om datorn nu?
+The following fonts cannot be uninstalled because they are in use by one or more applications. To uninstall these fonts, you must first restart your computer.\n\nDo you want to restart your computer now?\n\nClick Ignore to continue without uninstalling the listed fonts.	Följande teckensnitt kan inte avinstalleras eftersom de används av ett eller flera program. Om du vill avinstallera teckensnitten måste du först starta om datorn.\n\nVill du starta om datorn nu?\n\nKlicka på Ignorera om du vill fortsätta utan att avinstallera de listade teckensnitten.
+The following font cannot be deleted because it is in use by one or more applications. To delete this font, you must first restart your computer.\n\nDo you want to restart your computer now?	Följande teckensnitt kan inte tas bort eftersom det används av ett eller flera program. Om du vill ta bort teckensnittet måste du först starta om datorn.\n\nVill du starta om datorn nu?
+The following fonts cannot be deleted because they are in use by one or more applications. To delete these fonts, you must first restart your computer.\n\nDo you want to restart your computer now?\n\nClick Ignore to continue without deleting the listed fonts.	Följande teckensnitt kan inte tas bort eftersom de används av ett eller flera program. Om du vill ta bort teckensnitten måste du först starta om datorn.\n\nVill du starta om datorn nu?\n\nKlicka på Ignorera om du vill fortsätta utan att ta bort de listade teckensnitten.
+Reboot &now	Starta om &nu
+Reboot &later	Starta om &senare
+&Ignore	&Ignorera
+# --- Message box buttons ----------------------------------------------------------------------------------
+&Abort	&Avbryt
+&Retry	&Försök igen
+&Try Again	Försök &igen
+&Continue	&Fortsätt
+# --- Get More (online font catalog) -----------------------------------------------------------------------
+Sort by:	Sortera efter:
+Featured	Utvalda
+Filter by:	Filtrera efter:
+Free	Kostnadsfria
+My Library	Mitt bibliotek
+Downloaded	Hämtade
+Remote font catalog cannot connect to the internet.	Fjärrkatalogen för teckensnitt kan inte ansluta till Internet.
+An error occurred while downloading the remote font catalog.	Ett fel uppstod när fjärrkatalogen för teckensnitt hämtades.
+# --- PANOSE font matching ---------------------------------------------------------------------------------
+PANOSE Font Matching Preferences	Inställningar för PANOSE-teckensnittsmatchning
+&Text	&Text
+Text and &styles	Text och &format
+&Never show	&Visa aldrig
+&Default font:	Stan&dardteckensnitt:
+&Exceptions...	&Undantag...
+PANOSE Font Matching Exceptions	Undantag för PANOSE-teckensnittsmatchning
+&Missing Font:	&Saknat teckensnitt:
+&Substituted Font:	&Ersättningsteckensnitt:
+&Add Exception	&Lägg till undantag
+&Remove Exception	&Ta bort undantag
+&List of current exceptions:	L&ista över aktuella undantag:
+Missing Font	Saknat teckensnitt
+Substituted Font	Ersättningsteckensnitt
+?	?
+PANOSE Font Matching Results	Resultat av PANOSE-teckensnittsmatchning
+Working, please wait...	Arbetar, vänta...
+Stop	Stoppa
+Stopping will end the PANOSE matching process. All missing fonts will revert to a default selection.	Om du stoppar avslutas PANOSE-matchningen. Alla saknade teckensnitt återgår till ett standardval.
+&Use the PANOSE suggested match	&Använd matchningen som PANOSE föreslår
+Substitute &font with:	Ersätt &teckensnitt med:
+Show &all fonts	&Visa alla teckensnitt
+&Save this exception for future font matching	&Spara det här undantaget för framtida teckensnittsmatchning
+Make this substitution:	Gör den här ersättningen:
+&Permanent - keep these fonts	&Permanent - behåll de här teckensnitten
+Te&mporary - use original fonts	T&illfälligt - använd de ursprungliga teckensnitten
+# --- Type 1 fonts -----------------------------------------------------------------------------------------
+Type 1 fonts detected	Type 1-teckensnitt identifierades
+This document uses Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.	Det här dokumentet använder Type 1-teckensnitt, som kanske inte stöds i framtiden. Undvik eventuella problem genom att överväga att uppdatera texten så att den använder andra teckensnitt, till exempel TrueType (TTF) eller OpenType (OTF).
+Do not show again	Visa inte igen
+Replace fonts	Ersätt teckensnitt
+# --- Rename collection ------------------------------------------------------------------------------------
+Name:	Namn:
+# --- Updates (from AnyVector updater.rs, product name replaced) -------------------------------------------
+Keep the product up to date (recommended)	Håll produkten uppdaterad (rekommenderas)
+Check for updates and let me choose when to install them	Sök efter uppdateringar och låt mig välja när de ska installeras
+Never check for updates	Sök aldrig efter uppdateringar
+Automatically downloads product updates, but prompts you before installing them.	Hämtar produktuppdateringar automatiskt, men frågar innan de installeras.
+AnyFont tells you when a new version is available; you choose when to download and install it.	AnyFont meddelar dig när en ny version finns. Du väljer när den ska hämtas och installeras.
+AnyFont never connects to the Internet to look for updates. Help ▸ Check for Updates still checks when you ask.	AnyFont ansluter aldrig till Internet för att söka efter uppdateringar. Hjälp ▸ Sök efter uppdateringar söker ändå när du ber om det.
+An Internet connection is required. Please connect to the Internet and try again.	En Internetanslutning krävs. Anslut till Internet och försök igen.
+Invalid answer from the update server: {}	Ogiltigt svar från uppdateringsservern: {}
+The latest release has no setup for Windows.	Den senaste versionen har inget installationsprogram för Windows.
+No published release was found at github.com/{}.	Ingen publicerad version hittades på github.com/{}.
+AnyFont Updates	AnyFont-uppdateringar
+The update server answered {}.	Uppdateringsservern svarade {}.
+The download was interrupted. Please try again.	Hämtningen avbröts. Försök igen.
+The downloaded setup is empty.	Det hämtade installationsprogrammet är tomt.
+This release has no notes.	Den här versionen saknar viktig information.
+Click Check Now to look for a new version.	Klicka på Sök nu för att leta efter en ny version.
+Checking for updates...	Söker efter uppdateringar...
+AnyFont is up to date.	AnyFont är uppdaterat.
+AnyFont {} is available.	AnyFont {} finns tillgängligt.
+Downloading AnyFont {}...	Hämtar AnyFont {}...
+AnyFont closes to install it as soon as the download finishes.	AnyFont stängs för att installera den så snart hämtningen är klar.
+AnyFont {} is ready to install.	AnyFont {} är klart att installeras.
+AnyFont closes to install it and starts again when it is done.	AnyFont stängs för att installera den och startar igen när den är klar.
+Error: {}	Fel: {}
+You are using AnyFont {}.	Du använder AnyFont {}.
+The update will be installed when AnyFont closes.	Uppdateringen installeras när AnyFont stängs.
+Allow product updates:	Tillåt produktuppdateringar:
+Release Notes	Viktig information
+Install Now	Installera nu
+Check Now	Sök nu
+There is a new version of AnyFont available.	Det finns en ny version av AnyFont.
+New version: {}. Your version: {}.	Ny version: {}. Din version: {}.
+Click OK to install the new version.	Klicka på OK för att installera den nya versionen.
+# --- Report a Bug / Submit Ideas and Feedback (from AnyVector bugreport.rs, product name replaced) ---------
+Report a Bug	Rapportera ett fel
+Submit Ideas and Feedback	Skicka idéer och feedback
+Thank you! Your idea was sent.	Tack! Din idé har skickats.
+Thank you! Your bug report was sent.	Tack! Din felrapport har skickats.
+Almost done: finish in your browser	Nästan klart: slutför i webbläsaren
+Please wait a minute	Vänta en minut
+Your idea could not be sent	Det gick inte att skicka din idé
+The report could not be sent	Det gick inte att skicka rapporten
+The issue was created on the AnyFont project on GitHub:	Ärendet skapades i AnyFont-projektet på GitHub:
+GitHub opened in your browser with your idea already filled in.	GitHub öppnades i webbläsaren med din idé redan ifylld.
+GitHub opened in your browser with the report already filled in.	GitHub öppnades i webbläsaren med rapporten redan ifylld.
+To attach "{}", drag it from the folder that opened into the description box on GitHub.	Bifoga "{}" genom att dra den från mappen som öppnades till beskrivningsrutan på GitHub.
+Sign in if asked, review it and click "Create" to send it.	Logga in om du ombeds, granska och klicka på "Create" för att skicka.
+Several reports were sent from this connection in the last minute. Try again in a minute.	Flera rapporter har skickats från den här anslutningen under den senaste minuten. Försök igen om en minut.
+Could not open the browser. Please send it at {}	Det gick inte att öppna webbläsaren. Skicka den på {}
+Back	Tillbaka
+Tell us your idea or what you think of AnyFont. It is sent to the AnyFont project on GitHub as a new idea. You don't need a GitHub account.	Berätta om din idé eller vad du tycker om AnyFont. Den skickas till AnyFont-projektet på GitHub som en ny idé. Du behöver inget GitHub-konto.
+Title (your idea in a few words):	Rubrik (din idé med några få ord):
+Describe your idea or feedback:	Beskriv din idé eller feedback:
+How would it help you? (optional)	Hur skulle det hjälpa dig? (valfritt)
+Describe the problem. It is sent to the AnyFont project on GitHub as a new issue. You don't need a GitHub account.	Beskriv problemet. Det skickas till AnyFont-projektet på GitHub som ett nytt ärende. Du behöver inget GitHub-konto.
+Title (a short summary):	Rubrik (en kort sammanfattning):
+What happened?	Vad hände?
+Steps to reproduce (optional):	Steg för att återskapa (valfritt):
+What did you expect to happen? (optional)	Vad förväntade du dig skulle hända? (valfritt)
+Include system information	Inkludera systeminformation
+System information	Systeminformation
+View submitted ideas	Visa skickade idéer
+View reported bugs	Visa rapporterade fel
+Attach a file (optional):	Bifoga en fil (valfritt):
+Attach File...	Bifoga fil...
+Attach a File	Bifoga en fil
+Files GitHub accepts	Filer som GitHub godtar
+Images	Bilder
+Videos	Videor
+Archives (.zip, .gz, .tgz)	Arkiv (.zip, .gz, .tgz)
+Images and videos up to 10 MB, other files up to 25 MB, of the types GitHub accepts. Put a font file (.ttf, .otf) in a .zip file.	Bilder och videor upp till 10 MB, andra filer upp till 25 MB, av de typer som GitHub godtar. Lägg en teckensnittsfil (.ttf, .otf) i en .zip-fil.
+Sending...	Skickar...
+Send	Skicka

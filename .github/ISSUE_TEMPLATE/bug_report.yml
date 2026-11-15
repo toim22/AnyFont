@@ -1,0 +1,50 @@
+name: Report a bug
+description: Something in AnyFont does not work as it should.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! You can write in English or Portuguese. Help › Report a Bug inside AnyFont sends the
+        report for you, with the versions already filled in, and needs no GitHub account.
+        Please leave out anything private from logs and screenshots. To share a font file, put it in a .zip first
+        and attach only fonts whose licence allows sharing them.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What went wrong?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Select the font …
+        2. Click …
+        3. …
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What did you expect to happen instead?
+  - type: input
+    id: version
+    attributes:
+      label: AnyFont version
+      description: Help › About AnyFont.
+      placeholder: "0.1.0"
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version
+      placeholder: "Windows 11 25H2 (build 26200.1234)"
+  - type: textarea
+    id: logs
+    attributes:
+      label: Log or screenshots
+      description: Paste the last lines of a log, or drag screenshots or a .zip here.
+      render: text

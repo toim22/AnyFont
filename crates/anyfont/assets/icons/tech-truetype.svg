@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <!-- font list: TrueType (two serif T's) -->
+  <defs><path id="t" d="M3 2H13V5.3H12.4Q12.1 4 11 3.8H9.3V14.4L10.7 15V16H5.3V15L6.7 14.4V3.8H5Q3.9 4 3.6 5.3H3Z"/></defs>
+  <use href="#t" fill="#CACED4"/>
+  <use href="#t" fill="#CACED4" transform="translate(8 6)"/>
+</svg>

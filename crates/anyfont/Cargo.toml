@@ -1,0 +1,11 @@
+[package]
+name = "anyfont"
+version.workspace = true
+edition.workspace = true
+description = "AnyFont - font manager"
+
+[[bin]]
+name = "anyfont"
+path = "src/main.rs"
+
+[dependencies]

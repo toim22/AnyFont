@@ -1,0 +1,134 @@
+# Builds and tests AnyFont on GitHub Actions with the same build.bat used locally, and keeps the program folder, the
+# portable .zip and the installer as artifacts. A tag v<version> also publishes the GitHub release that the in-app
+# updater reads (docs/RELEASING.md): the setup (AnyFont-<version>-setup.exe), the .zip and SHA256SUMS.txt.
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+    tags: [ 'v*' ]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Rust (stable, MSVC x64)
+        shell: pwsh
+        run: |
+          rustup toolchain install stable --profile minimal --target x86_64-pc-windows-msvc
+          rustup default stable
+          rustc --version
+
+      - uses: Swatinem/rust-cache@v2
+
+      # the installer's Windows 11 style needs Inno Setup 6.7 or later, and the runner's own copy may be older (its
+      # executables carry no version number to check): installs or upgrades it to the current one
+      - name: Install Inno Setup 6.7+
+        shell: pwsh
+        run: choco upgrade innosetup -y --no-progress
+
+      # a release tag must name the version in Cargo.toml, or the updater would offer the wrong version
+      - name: Check the tag against Cargo.toml
+        if: startsWith(github.ref, 'refs/tags/v')
+        shell: pwsh
+        run: |
+          $ver = (Select-String -Path Cargo.toml -Pattern '^version\s*=\s*"([^"]+)"' | Select-Object -First 1).Matches[0].Groups[1].Value
+          if ("v$ver" -ne "${{ github.ref_name }}") { throw "tag ${{ github.ref_name }} does not match version $ver in Cargo.toml" }
+
+      - name: Tests
+        shell: cmd
+        run: cargo test --locked --workspace
+
+      - name: Build and package
+        shell: cmd
+        run: build.bat
+
+      - name: Check outputs
+        shell: pwsh
+        run: |
+          foreach ($pattern in 'dist\AnyFont\anyfont.exe', 'dist\AnyFont\legal\THIRD-PARTY-NOTICES.txt',
+                               'dist\AnyFont-*-win-x64.zip', 'dist\AnyFont-*-setup.exe') {
+            if (-not (Test-Path $pattern)) { throw "missing: $pattern" }
+          }
+          Get-ChildItem dist\AnyFont-* -File | ForEach-Object {
+            "{0}  {1}" -f (Get-FileHash $_.FullName -Algorithm SHA256).Hash, $_.Name
+          } | Tee-Object dist\SHA256SUMS.txt
+
+      - name: Upload program folder
+        uses: actions/upload-artifact@v7
+        with:
+          name: AnyFont-program
+          path: dist/AnyFont/
+          if-no-files-found: error
+
+      - name: Upload packages
+        uses: actions/upload-artifact@v7
+        with:
+          name: AnyFont-packages
+          path: |
+            dist/AnyFont-*-win-x64.zip
+            dist/AnyFont-*-setup.exe
+            dist/SHA256SUMS.txt
+          if-no-files-found: error
+
+      - name: Upload symbols
+        uses: actions/upload-artifact@v7
+        with:
+          name: AnyFont-symbols
+          path: dist/symbols/
+          if-no-files-found: warn
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: windows-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/download-artifact@v7
+        with:
+          name: AnyFont-packages
+          path: packages
+
+      # The notes are the version's section of CHANGELOG.md ("## 0.1.0 ..." up to the next "## "). A release the owner
+      # already made by hand (gh release create, docs/RELEASING.md) is left untouched.
+      - name: Publish the GitHub release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          $ver = $env:TAG.TrimStart('v')
+          $notes = New-Object System.Collections.Generic.List[string]
+          $inside = $false
+          foreach ($line in Get-Content CHANGELOG.md -Encoding utf8) {
+            if ($line -match '^## ') {
+              if ($inside) { break }
+              $inside = $line -match "^## \[?v?$([regex]::Escape($ver))\]?(\s|$)"
+              continue
+            }
+            if ($inside) { $notes.Add($line) }
+          }
+          # HTML comments (notes to the team) stay out: the in-app update prompt would show them as text
+          $body = (($notes -join "`n") -replace '(?s)<!--.*?-->', '').Trim()
+          if (-not $body) { $body = "AnyFont $ver" }
+          Set-Content -Path release-notes.md -Value $body -Encoding utf8
+          $files = Get-ChildItem packages -File | ForEach-Object { $_.FullName }
+          gh release view $env:TAG --repo ${{ github.repository }} *> $null
+          if ($LASTEXITCODE -ne 0) {
+            gh release create $env:TAG @files --repo ${{ github.repository }} --title "AnyFont $ver" --notes-file release-notes.md --verify-tag
+            if ($LASTEXITCODE -ne 0) { throw "gh release create failed" }
+          } else {
+            # its files (and their checksums) are the owner's; CI's builds stay in the workflow's artifacts
+            Write-Host "::notice::The release $env:TAG already exists; left as it is."
+            $global:LASTEXITCODE = 0
+          }

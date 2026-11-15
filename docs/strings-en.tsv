@@ -1,0 +1,454 @@
+# AnyFont user interface: every English string AnyFont shows (the translation keys).
+# One string per line, deduplicated. Wording follows the dossier (06-ui, 08-localization/strings-en.csv) with
+# "AnyFont" in place of the original product name. {} is a value of a format string (in order); \n is a line
+# break. In menu captions, & goes before the access key. Lines starting with # are comments.
+# Translations: crates/anyfont/assets/i18n/<code>.tsv, one "English<TAB>translation" pair per line.
+#
+# --- Title bar --------------------------------------------------------------------------------------------
+AnyFont
+Product Help
+Options
+Updates
+Minimize
+Maximize
+Restore Down
+Close
+#
+# --- Menu bar ---------------------------------------------------------------------------------------------
+&File
+&Edit
+Font
+View
+Help
+#
+# --- File menu --------------------------------------------------------------------------------------------
+Add Folder...
+Add Collection
+Get More...
+Remove Folder or Collection
+Import Folders and Collections...
+Export Folders and Collections...
+E&xit
+Alt+F4
+#
+# --- Edit menu --------------------------------------------------------------------------------------------
+Select All
+Deselect All
+Ctrl+A
+Ctrl+Shift+A
+#
+# --- Font menu / font context menu ------------------------------------------------------------------------
+Install
+Uninstall
+Download
+Delete
+Add to collection
+Remove from collection
+Remove from {}
+Show duplicate fonts
+Hide duplicate fonts
+Open font file location
+#
+# --- View menu --------------------------------------------------------------------------------------------
+Refresh the Font List
+Show font properties
+Hide font properties
+Group by family
+Show recently used fonts
+Use font to display font name
+Show Latin names
+Hide filter list
+Show filter list
+Ctrl+Alt+I
+#
+# --- Help menu --------------------------------------------------------------------------------------------
+&Product Help...
+Check for &Updates...
+Submit Ideas and Feedback...
+Report a &Bug...
+&About AnyFont...
+#
+# --- Libraries context menu -------------------------------------------------------------------------------
+Rename
+#
+# --- Toolbar tooltips (header, then body) -----------------------------------------------------------------
+Add folder
+Browse to a folder that contains fonts to add it to your Libraries.
+Add collection
+Add a collection for easy access to fonts that reside in different folders.
+Get More
+Remove
+Remove a folder or collection from your Libraries.
+Install fonts and font families.
+Uninstall fonts and font families.
+Download fonts to the AnyFont Content folder.
+Delete font files from your system.
+Show duplicate font versions.
+Hide duplicate font versions.
+Show font details or glyph sets.
+#
+# --- Libraries --------------------------------------------------------------------------------------------
+Libraries
+Folders
+My fonts
+My Collections
+Favorites
+Collection {}
+Includes all installed fonts, all fonts in your added folders, and fonts downloaded from the Online library
+To populate this collection, drag fonts from an added folder or another collection.
+#
+# --- Filters ----------------------------------------------------------------------------------------------
+Filters
+Clear filters
+Remove all selected font filters.
+Font Status
+Installed
+Not installed
+Protected System Fonts
+Duplicates
+Embedding Rights
+Editable
+Installable
+Preview and Print
+Font Technology
+OpenType - TrueType
+TrueType
+Variable Fonts
+Weight
+Light
+Regular
+Bold
+Width
+Condensed
+Normal
+Expanded
+Style
+Decorative
+Display
+Monospaced
+Sans Serif
+Script
+Serif
+Symbol
+Character Range
+Arabic
+Chinese Simplified
+Chinese Traditional
+Cyrillic
+Devanagari
+Greek
+Hebrew
+Japanese
+Korean
+Latin
+Turkish
+OpenType
+Alternate Annotation Forms
+Asian Forms
+Asian Vertical Metrics
+Asian Widths
+Capital Spacing
+Capitals
+Case-Sensitive Forms
+Contextual Alternates
+Contextual Ligatures
+Discretionary Ligatures
+Fraction
+Historical Forms
+Horizontal Kana Alternates
+Historical Ligatures
+Number Styles
+Ordinals
+Ornaments
+Position
+Slashed Zero
+Standard Ligatures
+Stylistic Alternate
+Stylistic Sets
+Swash Variants
+Vertical Alternates and Rotation
+#
+# --- Font list: search row, empty states, information strip, status bar ------------------------------------
+Enter sample text
+Search
+Font Name
+The quick brown fox jumps over the lazy dog.
+No fonts found. Remove or change filters or explore the font packs available in Get More.
+No fonts found. Remove or change filters to show fonts.
+No fonts found. Clear the Search box, or type a different keyword.
+No fonts found. Clear the Search box, type a different keyword, or explore the font packs available in Get More.
+Refresh
+Refresh the font list.
+{}: {} fonts
+{} (filtered): {} fonts
+Change the font size in the font list.
+#
+# --- Font row tooltip -------------------------------------------------------------------------------------
+Online font (Install or download to use)
+Protected System Font
+Duplicate(s):
+#
+# --- Font properties panel ---------------------------------------------------------------------------------
+Glyphs
+Font info
+Variable font
+Preview and filter available glyphs for a selected font.
+Show detailed font information.
+Adjust variable font properties.
+Glyph Filters
+Glyph Preview
+Remove all selected glyph filters.
+Common
+Scripts
+Currency
+Mathematical Symbols
+Numbers
+Punctuation & Separators
+Symbols
+Marks
+{} glyphs
+Change the glyph size in the Glyph Preview area.
+Multiple fonts are selected. To view a glyph set, choose only one font.
+No matching glyphs
+Install or download the font to preview glyphs.
+Family:
+Sub-family:
+File Path:
+File Size:
+Version:
+Font technology:
+Code Page:
+Italic:
+Weight:
+Width:
+Embedding:
+Manufacturer:
+Designer:
+Copyright:
+Collection:
+Yes
+No
+OpenType - PostScript
+No Embedding
+{} KB
+{} MB
+You don't have a variable font selected, or you've selected multiple fonts.
+Choose one variable font to see and adjust its properties.
+#
+# --- Edit-box context menu --------------------------------------------------------------------------------
+Undo
+Cut
+Copy
+Paste
+#
+# --- About / System Info / Legal Notices ------------------------------------------------------------------
+About AnyFont
+Version {} - {} Release
+(C) {} AnyFont Team.  All rights reserved.
+Source ID:
+&System Info...
+Legal &Notices...
+System Info
+C&hoose a category:
+System
+AnyFont EXEs & DLLs
+System DLLs
+Platform
+Processor
+Number of Processors
+Math Coprocessor
+Total physical memory
+Available physical memory
+Total virtual memory
+Available virtual memory
+Total memory used by app
+GDI Object Count
+&Save
+Save System Info
+Text (*.txt)
+System info was saved to {}.
+Unable to save system info to {}.
+Legal Notices
+&Print
+OK
+#
+# --- Options ----------------------------------------------------------------------------------------------
+Appearance
+Size
+%
+&Reset to Default
+Hint: The scaling level is relative to the scaling level of the operating system. For example, scaling by 200% will make the application user interface appear twice as large as the UI of the operating system. Note that excessive scaling may cause certain workspace elements to appear cropped.
+Color
+Theme:
+Medium
+Dark
+Black
+Window border:
+Font Matching
+PANOSE Font Matching Preferences...
+Network
+Allow AnyFont to use the Internet
+You need to restart the application to apply these changes.
+#
+# --- Confirmations, file dialogs, errors ------------------------------------------------------------------
+Are you sure you want to remove this collection?
+Are you sure you want to remove this folder?
+Do not show this message again
+Do not show this message again.
+&Yes
+&No
+Add Folder
+XML - Extensible Markup Language (*.xml)
+AnyFont Folders and Collections.xml
+Folder not found. Please choose another location.
+This folder has already been added.
+This folder has already been added as a subfolder of {}.
+We can't find the following:
+Supported font formats: OTF, TTF
+Your font database has been corrupted. To reset the database, you must restart AnyFont while holding down Shift.
+#
+# --- Install / uninstall / delete / download ---------------------------------------------------------------
+Installing {}... {}%
+Uninstalling {}... {}%
+Downloading {}... {}%
+Cancel
+Delete fonts
+Are you sure you want to delete this font?\n\nRead-only fonts cannot be deleted.
+Are you sure you want to delete these fonts?\n\nRead-only fonts cannot be deleted.
+Select all
+The following font cannot be uninstalled because it is in use by one or more applications. To uninstall this font, you must first restart your computer.\n\nDo you want to restart your computer now?
+The following fonts cannot be uninstalled because they are in use by one or more applications. To uninstall these fonts, you must first restart your computer.\n\nDo you want to restart your computer now?\n\nClick Ignore to continue without uninstalling the listed fonts.
+The following font cannot be deleted because it is in use by one or more applications. To delete this font, you must first restart your computer.\n\nDo you want to restart your computer now?
+The following fonts cannot be deleted because they are in use by one or more applications. To delete these fonts, you must first restart your computer.\n\nDo you want to restart your computer now?\n\nClick Ignore to continue without deleting the listed fonts.
+Reboot &now
+Reboot &later
+&Ignore
+#
+# --- Message box buttons ----------------------------------------------------------------------------------
+&Abort
+&Retry
+&Try Again
+&Continue
+#
+# --- Get More (online font catalog) -----------------------------------------------------------------------
+Sort by:
+Featured
+Filter by:
+Free
+My Library
+Downloaded
+Remote font catalog cannot connect to the internet.
+An error occurred while downloading the remote font catalog.
+#
+# --- PANOSE font matching ---------------------------------------------------------------------------------
+PANOSE Font Matching Preferences
+&Text
+Text and &styles
+&Never show
+&Default font:
+&Exceptions...
+PANOSE Font Matching Exceptions
+&Missing Font:
+&Substituted Font:
+&Add Exception
+&Remove Exception
+&List of current exceptions:
+Missing Font
+Substituted Font
+?
+PANOSE Font Matching Results
+Working, please wait...
+Stop
+Stopping will end the PANOSE matching process. All missing fonts will revert to a default selection.
+&Use the PANOSE suggested match
+Substitute &font with:
+Show &all fonts
+&Save this exception for future font matching
+Make this substitution:
+&Permanent - keep these fonts
+Te&mporary - use original fonts
+#
+# --- Type 1 fonts -----------------------------------------------------------------------------------------
+Type 1 fonts detected
+This document uses Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.
+Do not show again
+Replace fonts
+#
+# --- Rename collection ------------------------------------------------------------------------------------
+Name:
+#
+# --- Updates (from AnyVector updater.rs, product name replaced) -------------------------------------------
+Keep the product up to date (recommended)
+Check for updates and let me choose when to install them
+Never check for updates
+Automatically downloads product updates, but prompts you before installing them.
+AnyFont tells you when a new version is available; you choose when to download and install it.
+AnyFont never connects to the Internet to look for updates. Help ▸ Check for Updates still checks when you ask.
+An Internet connection is required. Please connect to the Internet and try again.
+Invalid answer from the update server: {}
+The latest release has no setup for Windows.
+No published release was found at github.com/{}.
+AnyFont Updates
+The update server answered {}.
+The download was interrupted. Please try again.
+The downloaded setup is empty.
+This release has no notes.
+Click Check Now to look for a new version.
+Checking for updates...
+AnyFont is up to date.
+AnyFont {} is available.
+Downloading AnyFont {}...
+AnyFont closes to install it as soon as the download finishes.
+AnyFont {} is ready to install.
+AnyFont closes to install it and starts again when it is done.
+Error: {}
+You are using AnyFont {}.
+The update will be installed when AnyFont closes.
+Allow product updates:
+Release Notes
+Install Now
+Check Now
+There is a new version of AnyFont available.
+New version: {}. Your version: {}.
+Click OK to install the new version.
+#
+# --- Report a Bug / Submit Ideas and Feedback (from AnyVector bugreport.rs, product name replaced) ---------
+Report a Bug
+Submit Ideas and Feedback
+Thank you! Your idea was sent.
+Thank you! Your bug report was sent.
+Almost done: finish in your browser
+Please wait a minute
+Your idea could not be sent
+The report could not be sent
+The issue was created on the AnyFont project on GitHub:
+GitHub opened in your browser with your idea already filled in.
+GitHub opened in your browser with the report already filled in.
+To attach "{}", drag it from the folder that opened into the description box on GitHub.
+Sign in if asked, review it and click "Create" to send it.
+Several reports were sent from this connection in the last minute. Try again in a minute.
+Could not open the browser. Please send it at {}
+Back
+Tell us your idea or what you think of AnyFont. It is sent to the AnyFont project on GitHub as a new idea. You don't need a GitHub account.
+Title (your idea in a few words):
+Describe your idea or feedback:
+How would it help you? (optional)
+Describe the problem. It is sent to the AnyFont project on GitHub as a new issue. You don't need a GitHub account.
+Title (a short summary):
+What happened?
+Steps to reproduce (optional):
+What did you expect to happen? (optional)
+Include system information
+System information
+View submitted ideas
+View reported bugs
+Attach a file (optional):
+Attach File...
+Attach a File
+Files GitHub accepts
+Images
+Videos
+Archives (.zip, .gz, .tgz)
+Images and videos up to 10 MB, other files up to 25 MB, of the types GitHub accepts. Put a font file (.ttf, .otf) in a .zip file.
+Sending...
+Send

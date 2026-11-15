@@ -1,0 +1,425 @@
+# AnyFont user interface: Russian (ru-RU). One "English<TAB>translation" pair per line;
+# the keys are docs/strings-en.tsv. Check with: python -I scripts/i18n_check.py
+# --- Title bar --------------------------------------------------------------------------------------------
+AnyFont	AnyFont
+Product Help	Справка по продукту
+Options	Параметры
+Updates	Обновления
+Minimize	Свернуть
+Maximize	Развернуть
+Restore Down	Свернуть в окно
+Close	Закрыть
+# --- Menu bar ---------------------------------------------------------------------------------------------
+&File	&Файл
+&Edit	&Правка
+Font	Шрифт
+View	Вид
+Help	Справка
+# --- File menu --------------------------------------------------------------------------------------------
+Add Folder...	Добавить папку...
+Add Collection	Добавить коллекцию
+Get More...	Получить еще...
+Remove Folder or Collection	Удалить папку или коллекцию
+Import Folders and Collections...	Импортировать папки и коллекции...
+Export Folders and Collections...	Экспортировать папки и коллекции...
+E&xit	В&ыход
+Alt+F4	Alt+F4
+# --- Edit menu --------------------------------------------------------------------------------------------
+Select All	Выделить все
+Deselect All	Снять выделение
+Ctrl+A	Ctrl+A
+Ctrl+Shift+A	Ctrl+Shift+A
+# --- Font menu / font context menu ------------------------------------------------------------------------
+Install	Установить
+Uninstall	Отменить установку
+Download	Загрузить
+Delete	Удалить
+Add to collection	Добавить в коллекцию
+Remove from collection	Удалить из коллекции
+Remove from {}	Удалить из «{}»
+Show duplicate fonts	Показать повторяющиеся шрифты
+Hide duplicate fonts	Скрыть повторяющиеся шрифты
+Open font file location	Открыть расположение файла шрифта
+# --- View menu --------------------------------------------------------------------------------------------
+Refresh the Font List	Обновить список шрифтов
+Show font properties	Показать свойства шрифта
+Hide font properties	Скрыть свойства шрифта
+Group by family	Группировать по семействам
+Show recently used fonts	Показать недавно использованные шрифты
+Use font to display font name	Показывать имя шрифта этим же шрифтом
+Show Latin names	Показать латинские имена
+Hide filter list	Скрыть список фильтров
+Show filter list	Показать список фильтров
+Ctrl+Alt+I	Ctrl+Alt+I
+# --- Help menu --------------------------------------------------------------------------------------------
+&Product Help...	&Справка по продукту...
+Check for &Updates...	Проверить &обновления...
+Submit Ideas and Feedback...	Отправить идеи и отзывы...
+Report a &Bug...	Сообщить об о&шибке...
+&About AnyFont...	О &программе AnyFont...
+# --- Libraries context menu -------------------------------------------------------------------------------
+Rename	Переименовать
+# --- Toolbar tooltips (header, then body) -----------------------------------------------------------------
+Add folder	Добавить папку
+Browse to a folder that contains fonts to add it to your Libraries.	Перейдите к папке со шрифтами, чтобы добавить ее в свои библиотеки.
+Add collection	Добавить коллекцию
+Add a collection for easy access to fonts that reside in different folders.	Добавьте коллекцию для удобного доступа к шрифтам, которые находятся в разных папках.
+Get More	Получить еще
+Remove	Удалить
+Remove a folder or collection from your Libraries.	Удалить папку или коллекцию из ваших библиотек.
+Install fonts and font families.	Установить шрифты и семейства шрифтов.
+Uninstall fonts and font families.	Отменить установку шрифтов и семейств шрифтов.
+Download fonts to the AnyFont Content folder.	Загрузить шрифты в папку содержимого AnyFont.
+Delete font files from your system.	Удалить файлы шрифтов из системы.
+Show duplicate font versions.	Показать повторяющиеся версии шрифтов.
+Hide duplicate font versions.	Скрыть повторяющиеся версии шрифтов.
+Show font details or glyph sets.	Показать сведения о шрифте или наборы глифов.
+# --- Libraries --------------------------------------------------------------------------------------------
+Libraries	Библиотеки
+Folders	Папки
+My fonts	Мои шрифты
+My Collections	Мои коллекции
+Favorites	Избранное
+Collection {}	Коллекция {}
+Includes all installed fonts, all fonts in your added folders, and fonts downloaded from the Online library	Включает все установленные шрифты, все шрифты из добавленных папок и шрифты, загруженные из онлайн-библиотеки
+To populate this collection, drag fonts from an added folder or another collection.	Чтобы заполнить эту коллекцию, перетащите в нее шрифты из добавленной папки или другой коллекции.
+# --- Filters ----------------------------------------------------------------------------------------------
+Filters	Фильтры
+Clear filters	Очистить фильтры
+Remove all selected font filters.	Удалить все выбранные фильтры шрифтов.
+Font Status	Состояние шрифта
+Installed	Установленные
+Not installed	Не установленные
+Protected System Fonts	Защищенные системные шрифты
+Duplicates	Дубликаты
+Embedding Rights	Права на внедрение
+Editable	Редактируемые
+Installable	Устанавливаемые
+Preview and Print	Просмотр и печать
+Font Technology	Технология шрифта
+OpenType - TrueType	OpenType - TrueType
+TrueType	TrueType
+Variable Fonts	Вариативные шрифты
+Weight	Насыщенность
+Light	Светлый
+Regular	Обычный
+Bold	Полужирный
+Width	Ширина
+Condensed	Узкий
+Normal	Обычный
+Expanded	Широкий
+Style	Стиль
+Decorative	Декоративный
+Display	Заголовочный
+Monospaced	Моноширинный
+Sans Serif	Без засечек
+Script	Рукописный
+Serif	С засечками
+Symbol	Символ
+Character Range	Диапазон символов
+Arabic	Арабский
+Chinese Simplified	Китайский (упрощенное письмо)
+Chinese Traditional	Китайский (традиционное письмо)
+Cyrillic	Кириллица
+Devanagari	Деванагари
+Greek	Греческий
+Hebrew	Иврит
+Japanese	Японский
+Korean	Корейский
+Latin	Латиница
+Turkish	Турецкий
+OpenType	OpenType
+Alternate Annotation Forms	Альтернативные формы аннотаций
+Asian Forms	Азиатские формы
+Asian Vertical Metrics	Азиатские вертикальные метрики
+Asian Widths	Азиатская ширина
+Capital Spacing	Интервал прописных
+Capitals	Прописные
+Case-Sensitive Forms	Формы с учетом регистра
+Contextual Alternates	Контекстные варианты
+Contextual Ligatures	Контекстные лигатуры
+Discretionary Ligatures	Дополнительные лигатуры
+Fraction	Дробь
+Historical Forms	Исторические формы
+Horizontal Kana Alternates	Горизонтальные варианты каны
+Historical Ligatures	Исторические лигатуры
+Number Styles	Стили цифр
+Ordinals	Порядковые
+Ornaments	Орнаменты
+Position	Положение
+Slashed Zero	Перечеркнутый ноль
+Standard Ligatures	Стандартные лигатуры
+Stylistic Alternate	Стилистический вариант
+Stylistic Sets	Стилистические наборы
+Swash Variants	Варианты с росчерками
+Vertical Alternates and Rotation	Вертикальные варианты и поворот
+# --- Font list: search row, empty states, information strip, status bar ------------------------------------
+Enter sample text	Введите образец текста
+Search	Поиск
+Font Name	Имя шрифта
+The quick brown fox jumps over the lazy dog.	Съешь же ещё этих мягких французских булок, да выпей чаю.
+No fonts found. Remove or change filters or explore the font packs available in Get More.	Шрифты не найдены. Удалите или измените фильтры либо ознакомьтесь с наборами шрифтов, доступными в разделе «Получить еще».
+No fonts found. Remove or change filters to show fonts.	Шрифты не найдены. Удалите или измените фильтры, чтобы отобразить шрифты.
+No fonts found. Clear the Search box, or type a different keyword.	Шрифты не найдены. Очистите поле поиска или введите другое ключевое слово.
+No fonts found. Clear the Search box, type a different keyword, or explore the font packs available in Get More.	Шрифты не найдены. Очистите поле поиска, введите другое ключевое слово либо ознакомьтесь с наборами шрифтов, доступными в разделе «Получить еще».
+Refresh	Обновить
+Refresh the font list.	Обновить список шрифтов.
+{}: {} fonts	{}: шрифтов: {}
+{} (filtered): {} fonts	{} (с фильтром): шрифтов: {}
+Change the font size in the font list.	Изменить размер шрифта в списке шрифтов.
+# --- Font row tooltip -------------------------------------------------------------------------------------
+Online font (Install or download to use)	Онлайн-шрифт (установите или загрузите, чтобы использовать)
+Protected System Font	Защищенный системный шрифт
+Duplicate(s):	Дубликаты:
+# --- Font properties panel ---------------------------------------------------------------------------------
+Glyphs	Глифы
+Font info	Сведения о шрифте
+Variable font	Вариативный шрифт
+Preview and filter available glyphs for a selected font.	Просмотреть и отфильтровать глифы, доступные в выбранном шрифте.
+Show detailed font information.	Показать подробные сведения о шрифте.
+Adjust variable font properties.	Настроить свойства вариативного шрифта.
+Glyph Filters	Фильтры глифов
+Glyph Preview	Просмотр глифов
+Remove all selected glyph filters.	Удалить все выбранные фильтры глифов.
+Common	Общие
+Scripts	Письменности
+Currency	Валюта
+Mathematical Symbols	Математические символы
+Numbers	Цифры
+Punctuation & Separators	Пунктуация и разделители
+Symbols	Символы
+Marks	Знаки
+{} glyphs	Глифов: {}
+Change the glyph size in the Glyph Preview area.	Изменить размер глифа в области просмотра глифов.
+Multiple fonts are selected. To view a glyph set, choose only one font.	Выбрано несколько шрифтов. Чтобы просмотреть набор глифов, выберите только один шрифт.
+No matching glyphs	Нет подходящих глифов
+Install or download the font to preview glyphs.	Установите или загрузите шрифт, чтобы просмотреть глифы.
+Family:	Семейство:
+Sub-family:	Подсемейство:
+File Path:	Путь к файлу:
+File Size:	Размер файла:
+Version:	Версия:
+Font technology:	Технология шрифта:
+Code Page:	Кодовая страница:
+Italic:	Курсив:
+Weight:	Насыщенность:
+Width:	Ширина:
+Embedding:	Внедрение:
+Manufacturer:	Производитель:
+Designer:	Дизайнер:
+Copyright:	Авторские права:
+Collection:	Коллекция:
+Yes	Да
+No	Нет
+OpenType - PostScript	OpenType - PostScript
+No Embedding	Без внедрения
+{} KB	{} КБ
+{} MB	{} МБ
+You don't have a variable font selected, or you've selected multiple fonts.	Вариативный шрифт не выбран или выбрано несколько шрифтов.
+Choose one variable font to see and adjust its properties.	Выберите один вариативный шрифт, чтобы просмотреть и настроить его свойства.
+# --- Edit-box context menu --------------------------------------------------------------------------------
+Undo	Отменить
+Cut	Вырезать
+Copy	Копировать
+Paste	Вставить
+# --- About / System Info / Legal Notices ------------------------------------------------------------------
+About AnyFont	О программе AnyFont
+Version {} - {} Release	Версия {} — выпуск {}
+(C) {} AnyFont Team.  All rights reserved.	(C) {} AnyFont Team.  Все права защищены.
+Source ID:	Идентификатор источника:
+&System Info...	&Сведения о системе...
+Legal &Notices...	&Юридическая информация...
+System Info	Сведения о системе
+C&hoose a category:	&Выберите категорию:
+System	Системная
+AnyFont EXEs & DLLs	EXE и DLL AnyFont
+System DLLs	Системные DLL
+Platform	Платформа
+Processor	Процессор
+Number of Processors	Число процессоров
+Math Coprocessor	Математический сопроцессор
+Total physical memory	Всего физической памяти
+Available physical memory	Доступно физической памяти
+Total virtual memory	Всего виртуальной памяти
+Available virtual memory	Доступно виртуальной памяти
+Total memory used by app	Всего памяти использует приложение
+GDI Object Count	Число объектов GDI
+&Save	&Сохранить
+Save System Info	Сохранить сведения о системе
+Text (*.txt)	Текст (*.txt)
+System info was saved to {}.	Сведения о системе сохранены в {}.
+Unable to save system info to {}.	Не удалось сохранить сведения о системе в {}.
+Legal Notices	Юридическая информация
+&Print	&Печать
+OK	ОК
+# --- Options ----------------------------------------------------------------------------------------------
+Appearance	Внешний вид
+Size	Размер
+%	%
+&Reset to Default	&Восстановить значения по умолчанию
+Hint: The scaling level is relative to the scaling level of the operating system. For example, scaling by 200% will make the application user interface appear twice as large as the UI of the operating system. Note that excessive scaling may cause certain workspace elements to appear cropped.	Подсказка. Уровень масштабирования задается относительно уровня масштабирования операционной системы. Например, при масштабе 200% интерфейс приложения будет выглядеть вдвое крупнее интерфейса операционной системы. Учтите, что при чрезмерном масштабировании некоторые элементы рабочей области могут отображаться обрезанными.
+Color	Цвет
+Theme:	Тема:
+Medium	Средний
+Dark	Темное
+Black	Черный
+Window border:	Граница окна:
+Font Matching	Подбор шрифтов
+PANOSE Font Matching Preferences...	Параметры подбора шрифтов PANOSE...
+Network	Сеть
+Allow AnyFont to use the Internet	Разрешить AnyFont использовать Интернет
+You need to restart the application to apply these changes.	Чтобы применить эти изменения, перезапустите приложение.
+# --- Confirmations, file dialogs, errors ------------------------------------------------------------------
+Are you sure you want to remove this collection?	Удалить эту коллекцию?
+Are you sure you want to remove this folder?	Удалить эту папку?
+Do not show this message again	Больше не показывать это сообщение
+Do not show this message again.	Больше не показывать это сообщение.
+&Yes	&Да
+&No	&Нет
+Add Folder	Добавить папку
+XML - Extensible Markup Language (*.xml)	XML - Extensible Markup Language (*.xml)
+AnyFont Folders and Collections.xml	Папки и коллекции AnyFont.xml
+Folder not found. Please choose another location.	Папка не найдена. Выберите другое расположение.
+This folder has already been added.	Эта папка уже добавлена.
+This folder has already been added as a subfolder of {}.	Эта папка уже добавлена как вложенная папка «{}».
+We can't find the following:	Не удается найти следующее:
+Supported font formats: OTF, TTF	Поддерживаемые форматы шрифтов: OTF, TTF
+Your font database has been corrupted. To reset the database, you must restart AnyFont while holding down Shift.	База данных шрифтов повреждена. Чтобы сбросить базу данных, перезапустите AnyFont, удерживая клавишу Shift.
+# --- Install / uninstall / delete / download ---------------------------------------------------------------
+Installing {}... {}%	Установка {}... {}%
+Uninstalling {}... {}%	Отмена установки {}... {}%
+Downloading {}... {}%	Загрузка {}... {}%
+Cancel	Отмена
+Delete fonts	Удаление шрифтов
+Are you sure you want to delete this font?\n\nRead-only fonts cannot be deleted.	Удалить этот шрифт?\n\nШрифты, доступные только для чтения, удалить нельзя.
+Are you sure you want to delete these fonts?\n\nRead-only fonts cannot be deleted.	Удалить эти шрифты?\n\nШрифты, доступные только для чтения, удалить нельзя.
+Select all	Выбрать все
+The following font cannot be uninstalled because it is in use by one or more applications. To uninstall this font, you must first restart your computer.\n\nDo you want to restart your computer now?	Невозможно отменить установку следующего шрифта, так как он используется одним или несколькими приложениями. Чтобы отменить установку этого шрифта, сначала перезагрузите компьютер.\n\nПерезагрузить компьютер сейчас?
+The following fonts cannot be uninstalled because they are in use by one or more applications. To uninstall these fonts, you must first restart your computer.\n\nDo you want to restart your computer now?\n\nClick Ignore to continue without uninstalling the listed fonts.	Невозможно отменить установку следующих шрифтов, так как они используются одним или несколькими приложениями. Чтобы отменить установку этих шрифтов, сначала перезагрузите компьютер.\n\nПерезагрузить компьютер сейчас?\n\nНажмите «Пропустить», чтобы продолжить, не отменяя установку перечисленных шрифтов.
+The following font cannot be deleted because it is in use by one or more applications. To delete this font, you must first restart your computer.\n\nDo you want to restart your computer now?	Невозможно удалить следующий шрифт, так как он используется одним или несколькими приложениями. Чтобы удалить этот шрифт, сначала перезагрузите компьютер.\n\nПерезагрузить компьютер сейчас?
+The following fonts cannot be deleted because they are in use by one or more applications. To delete these fonts, you must first restart your computer.\n\nDo you want to restart your computer now?\n\nClick Ignore to continue without deleting the listed fonts.	Невозможно удалить следующие шрифты, так как они используются одним или несколькими приложениями. Чтобы удалить эти шрифты, сначала перезагрузите компьютер.\n\nПерезагрузить компьютер сейчас?\n\nНажмите «Пропустить», чтобы продолжить, не удаляя перечисленные шрифты.
+Reboot &now	Перезагрузить &сейчас
+Reboot &later	Перезагрузить &позже
+&Ignore	Проп&устить
+# --- Message box buttons ----------------------------------------------------------------------------------
+&Abort	&Прервать
+&Retry	П&овторить
+&Try Again	Повторить &попытку
+&Continue	П&родолжить
+# --- Get More (online font catalog) -----------------------------------------------------------------------
+Sort by:	Сортировать по:
+Featured	Рекомендуемые
+Filter by:	Фильтр:
+Free	Бесплатные
+My Library	Моя библиотека
+Downloaded	Загруженные
+Remote font catalog cannot connect to the internet.	Удаленный каталог шрифтов не может подключиться к Интернету.
+An error occurred while downloading the remote font catalog.	При загрузке удаленного каталога шрифтов произошла ошибка.
+# --- PANOSE font matching ---------------------------------------------------------------------------------
+PANOSE Font Matching Preferences	Параметры подбора шрифтов PANOSE
+&Text	&Текст
+Text and &styles	Текст и &стили
+&Never show	&Никогда не показывать
+&Default font:	Шрифт по &умолчанию:
+&Exceptions...	&Исключения...
+PANOSE Font Matching Exceptions	Исключения подбора шрифтов PANOSE
+&Missing Font:	&Отсутствующий шрифт:
+&Substituted Font:	&Заменяющий шрифт:
+&Add Exception	&Добавить исключение
+&Remove Exception	&Удалить исключение
+&List of current exceptions:	&Список текущих исключений:
+Missing Font	Отсутствующий шрифт
+Substituted Font	Заменяющий шрифт
+?	?
+PANOSE Font Matching Results	Результаты подбора шрифтов PANOSE
+Working, please wait...	Выполняется обработка, подождите...
+Stop	Остановить
+Stopping will end the PANOSE matching process. All missing fonts will revert to a default selection.	Остановка прервет процесс подбора PANOSE. Для всех отсутствующих шрифтов будет восстановлен выбор по умолчанию.
+&Use the PANOSE suggested match	&Использовать соответствие, предложенное PANOSE
+Substitute &font with:	Заменить &шрифт на:
+Show &all fonts	Показать &все шрифты
+&Save this exception for future font matching	&Сохранить это исключение для последующего подбора шрифтов
+Make this substitution:	Выполнить эту замену:
+&Permanent - keep these fonts	&Постоянно - сохранить эти шрифты
+Te&mporary - use original fonts	Вр&еменно - использовать исходные шрифты
+# --- Type 1 fonts -----------------------------------------------------------------------------------------
+Type 1 fonts detected	Обнаружены шрифты Type 1
+This document uses Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.	В этом документе используются шрифты Type 1, поддержка которых в будущем может быть прекращена. Чтобы избежать возможных проблем, рекомендуется перевести текст на другие шрифты, например TrueType (TTF) или OpenType (OTF).
+Do not show again	Больше не показывать
+Replace fonts	Заменить шрифты
+# --- Rename collection ------------------------------------------------------------------------------------
+Name:	Имя:
+# --- Updates (from AnyVector updater.rs, product name replaced) -------------------------------------------
+Keep the product up to date (recommended)	Поддерживать продукт в актуальном состоянии (рекомендуется)
+Check for updates and let me choose when to install them	Проверять обновления и давать мне выбрать время установки
+Never check for updates	Никогда не проверять обновления
+Automatically downloads product updates, but prompts you before installing them.	Автоматически загружает обновления продукта, но спрашивает перед установкой.
+AnyFont tells you when a new version is available; you choose when to download and install it.	AnyFont сообщает о выходе новой версии; вы сами выбираете, когда загрузить и установить ее.
+AnyFont never connects to the Internet to look for updates. Help ▸ Check for Updates still checks when you ask.	AnyFont никогда не подключается к Интернету для поиска обновлений. Справка ▸ Проверить обновления по-прежнему проверяет их по вашему запросу.
+An Internet connection is required. Please connect to the Internet and try again.	Требуется подключение к Интернету. Подключитесь к Интернету и повторите попытку.
+Invalid answer from the update server: {}	Недопустимый ответ сервера обновлений: {}
+The latest release has no setup for Windows.	В последнем выпуске нет установщика для Windows.
+No published release was found at github.com/{}.	Опубликованные выпуски не найдены на github.com/{}.
+AnyFont Updates	Обновления AnyFont
+The update server answered {}.	Сервер обновлений ответил {}.
+The download was interrupted. Please try again.	Загрузка прервана. Повторите попытку.
+The downloaded setup is empty.	Загруженный установщик пуст.
+This release has no notes.	У этого выпуска нет заметок.
+Click Check Now to look for a new version.	Нажмите «Проверить», чтобы найти новую версию.
+Checking for updates...	Проверка обновлений...
+AnyFont is up to date.	У вас последняя версия AnyFont.
+AnyFont {} is available.	Доступна версия AnyFont {}.
+Downloading AnyFont {}...	Загрузка AnyFont {}...
+AnyFont closes to install it as soon as the download finishes.	AnyFont закроется для установки сразу после завершения загрузки.
+AnyFont {} is ready to install.	AnyFont {} готов к установке.
+AnyFont closes to install it and starts again when it is done.	AnyFont закроется для установки и снова запустится по ее завершении.
+Error: {}	Ошибка: {}
+You are using AnyFont {}.	Вы используете AnyFont {}.
+The update will be installed when AnyFont closes.	Обновление будет установлено при закрытии AnyFont.
+Allow product updates:	Разрешить обновления продукта:
+Release Notes	Заметки о выпуске
+Install Now	Установить
+Check Now	Проверить
+There is a new version of AnyFont available.	Доступна новая версия AnyFont.
+New version: {}. Your version: {}.	Новая версия: {}. Ваша версия: {}.
+Click OK to install the new version.	Нажмите «ОК», чтобы установить новую версию.
+# --- Report a Bug / Submit Ideas and Feedback (from AnyVector bugreport.rs, product name replaced) ---------
+Report a Bug	Сообщить об ошибке
+Submit Ideas and Feedback	Отправить идеи и отзывы
+Thank you! Your idea was sent.	Спасибо! Ваша идея отправлена.
+Thank you! Your bug report was sent.	Спасибо! Ваш отчет об ошибке отправлен.
+Almost done: finish in your browser	Почти готово: завершите в браузере
+Please wait a minute	Подождите минуту
+Your idea could not be sent	Не удалось отправить вашу идею
+The report could not be sent	Не удалось отправить отчет
+The issue was created on the AnyFont project on GitHub:	Запись создана в проекте AnyFont на GitHub:
+GitHub opened in your browser with your idea already filled in.	GitHub открыт в браузере, ваша идея уже заполнена.
+GitHub opened in your browser with the report already filled in.	GitHub открыт в браузере, отчет уже заполнен.
+To attach "{}", drag it from the folder that opened into the description box on GitHub.	Чтобы прикрепить «{}», перетащите его из открывшейся папки в поле описания на GitHub.
+Sign in if asked, review it and click "Create" to send it.	При необходимости войдите, проверьте текст и нажмите «Create», чтобы отправить.
+Several reports were sent from this connection in the last minute. Try again in a minute.	С этого подключения за последнюю минуту отправлено несколько отчетов. Повторите попытку через минуту.
+Could not open the browser. Please send it at {}	Не удалось открыть браузер. Отправьте по адресу {}
+Back	Назад
+Tell us your idea or what you think of AnyFont. It is sent to the AnyFont project on GitHub as a new idea. You don't need a GitHub account.	Расскажите о своей идее или о том, что вы думаете об AnyFont. Она будет отправлена в проект AnyFont на GitHub как новая идея. Учетная запись GitHub не нужна.
+Title (your idea in a few words):	Заголовок (идея в нескольких словах):
+Describe your idea or feedback:	Опишите идею или отзыв:
+How would it help you? (optional)	Чем это вам поможет? (необязательно)
+Describe the problem. It is sent to the AnyFont project on GitHub as a new issue. You don't need a GitHub account.	Опишите проблему. Она будет отправлена в проект AnyFont на GitHub как новая запись. Учетная запись GitHub не нужна.
+Title (a short summary):	Заголовок (кратко):
+What happened?	Что произошло?
+Steps to reproduce (optional):	Шаги для воспроизведения (необязательно):
+What did you expect to happen? (optional)	Что вы ожидали? (необязательно)
+Include system information	Включить сведения о системе
+System information	Сведения о системе
+View submitted ideas	Просмотреть отправленные идеи
+View reported bugs	Просмотреть отправленные ошибки
+Attach a file (optional):	Прикрепить файл (необязательно):
+Attach File...	Прикрепить файл...
+Attach a File	Прикрепить файл
+Files GitHub accepts	Файлы, которые принимает GitHub
+Images	Изображения
+Videos	Видео
+Archives (.zip, .gz, .tgz)	Архивы (.zip, .gz, .tgz)
+Images and videos up to 10 MB, other files up to 25 MB, of the types GitHub accepts. Put a font file (.ttf, .otf) in a .zip file.	Изображения и видео до 10 МБ, другие файлы до 25 МБ, тех типов, которые принимает GitHub. Поместите файл шрифта (.ttf, .otf) в файл .zip.
+Sending...	Отправка...
+Send	Отправить

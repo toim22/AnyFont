@@ -1,0 +1,6 @@
+AnyFont is built with the open-source components listed below.
+Each one is used under the license shown next to it. The license texts
+are published with each component at the address given.
+
+0 components. Licenses used:
+

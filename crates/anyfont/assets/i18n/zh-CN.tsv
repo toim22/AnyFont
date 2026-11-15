@@ -1,0 +1,425 @@
+# AnyFont user interface: Chinese (Simplified) (zh-CN). One "English<TAB>translation" pair per line;
+# the keys are docs/strings-en.tsv. Check with: python -I scripts/i18n_check.py
+# --- Title bar --------------------------------------------------------------------------------------------
+AnyFont	AnyFont
+Product Help	产品帮助
+Options	选项
+Updates	更新
+Minimize	最小化
+Maximize	最大化
+Restore Down	向下还原
+Close	关闭
+# --- Menu bar ---------------------------------------------------------------------------------------------
+&File	文件(&F)
+&Edit	编辑(&E)
+Font	字体
+View	查看
+Help	帮助
+# --- File menu --------------------------------------------------------------------------------------------
+Add Folder...	添加文件夹...
+Add Collection	添加集合
+Get More...	获取更多...
+Remove Folder or Collection	移除文件夹或集合
+Import Folders and Collections...	导入文件夹和集合...
+Export Folders and Collections...	导出文件夹和集合...
+E&xit	退出(&X)
+Alt+F4	Alt+F4
+# --- Edit menu --------------------------------------------------------------------------------------------
+Select All	全选
+Deselect All	全部取消选择
+Ctrl+A	Ctrl+A
+Ctrl+Shift+A	Ctrl+Shift+A
+# --- Font menu / font context menu ------------------------------------------------------------------------
+Install	安装
+Uninstall	卸载
+Download	下载
+Delete	删除
+Add to collection	添加到集合
+Remove from collection	从集合中移除
+Remove from {}	从 {} 中移除
+Show duplicate fonts	显示重复字体
+Hide duplicate fonts	隐藏重复字体
+Open font file location	打开字体文件位置
+# --- View menu --------------------------------------------------------------------------------------------
+Refresh the Font List	刷新字体列表
+Show font properties	显示字体属性
+Hide font properties	隐藏字体属性
+Group by family	按字体系列分组
+Show recently used fonts	显示最近使用的字体
+Use font to display font name	使用字体本身显示字体名称
+Show Latin names	显示拉丁文名称
+Hide filter list	隐藏筛选器列表
+Show filter list	显示筛选器列表
+Ctrl+Alt+I	Ctrl+Alt+I
+# --- Help menu --------------------------------------------------------------------------------------------
+&Product Help...	产品帮助(&P)...
+Check for &Updates...	检查更新(&U)...
+Submit Ideas and Feedback...	提交想法和反馈...
+Report a &Bug...	报告错误(&B)...
+&About AnyFont...	关于 AnyFont(&A)...
+# --- Libraries context menu -------------------------------------------------------------------------------
+Rename	重命名
+# --- Toolbar tooltips (header, then body) -----------------------------------------------------------------
+Add folder	添加文件夹
+Browse to a folder that contains fonts to add it to your Libraries.	浏览到包含字体的文件夹，将其添加到库中。
+Add collection	添加集合
+Add a collection for easy access to fonts that reside in different folders.	添加集合，以便轻松访问位于不同文件夹中的字体。
+Get More	获取更多
+Remove	移除
+Remove a folder or collection from your Libraries.	从库中移除文件夹或集合。
+Install fonts and font families.	安装字体和字体系列。
+Uninstall fonts and font families.	卸载字体和字体系列。
+Download fonts to the AnyFont Content folder.	将字体下载到 AnyFont 内容文件夹。
+Delete font files from your system.	从系统中删除字体文件。
+Show duplicate font versions.	显示重复的字体版本。
+Hide duplicate font versions.	隐藏重复的字体版本。
+Show font details or glyph sets.	显示字体详细信息或字形集。
+# --- Libraries --------------------------------------------------------------------------------------------
+Libraries	库
+Folders	文件夹
+My fonts	我的字体
+My Collections	我的集合
+Favorites	收藏夹
+Collection {}	集合 {}
+Includes all installed fonts, all fonts in your added folders, and fonts downloaded from the Online library	包括所有已安装的字体、已添加文件夹中的所有字体以及从联机库下载的字体
+To populate this collection, drag fonts from an added folder or another collection.	若要填充此集合，请从已添加的文件夹或其他集合中拖入字体。
+# --- Filters ----------------------------------------------------------------------------------------------
+Filters	筛选器
+Clear filters	清除筛选器
+Remove all selected font filters.	移除所有选定的字体筛选器。
+Font Status	字体状态
+Installed	已安装
+Not installed	未安装
+Protected System Fonts	受保护的系统字体
+Duplicates	重复项
+Embedding Rights	嵌入权限
+Editable	可编辑
+Installable	可安装
+Preview and Print	预览和打印
+Font Technology	字体技术
+OpenType - TrueType	OpenType - TrueType
+TrueType	TrueType
+Variable Fonts	可变字体
+Weight	粗细
+Light	细体
+Regular	常规
+Bold	粗体
+Width	宽度
+Condensed	紧缩
+Normal	正常
+Expanded	加宽
+Style	样式
+Decorative	装饰
+Display	标题
+Monospaced	等宽
+Sans Serif	无衬线
+Script	手写
+Serif	衬线
+Symbol	符号
+Character Range	字符范围
+Arabic	阿拉伯文
+Chinese Simplified	简体中文
+Chinese Traditional	繁体中文
+Cyrillic	西里尔文
+Devanagari	天城文
+Greek	希腊语
+Hebrew	希伯来语
+Japanese	日语
+Korean	韩语
+Latin	拉丁文
+Turkish	土耳其语
+OpenType	OpenType
+Alternate Annotation Forms	替代注释形式
+Asian Forms	亚洲字形
+Asian Vertical Metrics	亚洲竖排度量
+Asian Widths	亚洲宽度
+Capital Spacing	大写字母间距
+Capitals	大写字母
+Case-Sensitive Forms	区分大小写的字形
+Contextual Alternates	上下文替代
+Contextual Ligatures	上下文连字
+Discretionary Ligatures	自选连字
+Fraction	分数
+Historical Forms	历史字形
+Horizontal Kana Alternates	横排假名替代
+Historical Ligatures	历史连字
+Number Styles	数字样式
+Ordinals	序数
+Ornaments	装饰符号
+Position	位置
+Slashed Zero	带斜线的零
+Standard Ligatures	标准连字
+Stylistic Alternate	样式替代
+Stylistic Sets	样式集
+Swash Variants	花饰变体
+Vertical Alternates and Rotation	竖排替代和旋转
+# --- Font list: search row, empty states, information strip, status bar ------------------------------------
+Enter sample text	输入示例文本
+Search	搜索
+Font Name	字体名称
+The quick brown fox jumps over the lazy dog.	敏捷的棕色狐狸跳过了那只懒狗。
+No fonts found. Remove or change filters or explore the font packs available in Get More.	未找到字体。请移除或更改筛选器，或浏览“获取更多”中提供的字体包。
+No fonts found. Remove or change filters to show fonts.	未找到字体。请移除或更改筛选器以显示字体。
+No fonts found. Clear the Search box, or type a different keyword.	未找到字体。请清除“搜索”框，或键入其他关键字。
+No fonts found. Clear the Search box, type a different keyword, or explore the font packs available in Get More.	未找到字体。请清除“搜索”框、键入其他关键字，或浏览“获取更多”中提供的字体包。
+Refresh	刷新
+Refresh the font list.	刷新字体列表。
+{}: {} fonts	{}：{} 个字体
+{} (filtered): {} fonts	{} (已筛选)：{} 个字体
+Change the font size in the font list.	更改字体列表中的字体大小。
+# --- Font row tooltip -------------------------------------------------------------------------------------
+Online font (Install or download to use)	联机字体(安装或下载后使用)
+Protected System Font	受保护的系统字体
+Duplicate(s):	重复项：
+# --- Font properties panel ---------------------------------------------------------------------------------
+Glyphs	字形
+Font info	字体信息
+Variable font	可变字体
+Preview and filter available glyphs for a selected font.	预览并筛选所选字体中可用的字形。
+Show detailed font information.	显示详细的字体信息。
+Adjust variable font properties.	调整可变字体属性。
+Glyph Filters	字形筛选器
+Glyph Preview	字形预览
+Remove all selected glyph filters.	移除所有选定的字形筛选器。
+Common	常用
+Scripts	书写系统
+Currency	货币
+Mathematical Symbols	数学符号
+Numbers	数字
+Punctuation & Separators	标点和分隔符
+Symbols	符号
+Marks	标记
+{} glyphs	{} 个字形
+Change the glyph size in the Glyph Preview area.	更改字形预览区域中字形的大小。
+Multiple fonts are selected. To view a glyph set, choose only one font.	选择了多个字体。若要查看字形集，请只选择一个字体。
+No matching glyphs	没有匹配的字形
+Install or download the font to preview glyphs.	安装或下载该字体以预览字形。
+Family:	字体系列：
+Sub-family:	子系列：
+File Path:	文件路径：
+File Size:	文件大小：
+Version:	版本：
+Font technology:	字体技术：
+Code Page:	代码页：
+Italic:	斜体：
+Weight:	粗细：
+Width:	宽度：
+Embedding:	嵌入：
+Manufacturer:	制造商：
+Designer:	设计者：
+Copyright:	版权：
+Collection:	集合：
+Yes	是
+No	否
+OpenType - PostScript	OpenType - PostScript
+No Embedding	不可嵌入
+{} KB	{} KB
+{} MB	{} MB
+You don't have a variable font selected, or you've selected multiple fonts.	您没有选择可变字体，或者选择了多个字体。
+Choose one variable font to see and adjust its properties.	请选择一个可变字体以查看和调整其属性。
+# --- Edit-box context menu --------------------------------------------------------------------------------
+Undo	撤销
+Cut	剪切
+Copy	复制
+Paste	粘贴
+# --- About / System Info / Legal Notices ------------------------------------------------------------------
+About AnyFont	关于 AnyFont
+Version {} - {} Release	版本 {} - {} 版
+(C) {} AnyFont Team.  All rights reserved.	(C) {} AnyFont Team。保留所有权利。
+Source ID:	源 ID：
+&System Info...	系统信息(&S)...
+Legal &Notices...	法律声明(&N)...
+System Info	系统信息
+C&hoose a category:	选择类别(&H)：
+System	系统
+AnyFont EXEs & DLLs	AnyFont EXE 和 DLL
+System DLLs	系统 DLL
+Platform	平台
+Processor	处理器
+Number of Processors	处理器数目
+Math Coprocessor	数学协处理器
+Total physical memory	总物理内存
+Available physical memory	可用物理内存
+Total virtual memory	总虚拟内存
+Available virtual memory	可用虚拟内存
+Total memory used by app	应用程序使用的总内存
+GDI Object Count	GDI 对象数
+&Save	保存(&S)
+Save System Info	保存系统信息
+Text (*.txt)	文本 (*.txt)
+System info was saved to {}.	系统信息已保存到 {}。
+Unable to save system info to {}.	无法将系统信息保存到 {}。
+Legal Notices	法律声明
+&Print	打印(&P)
+OK	确定
+# --- Options ----------------------------------------------------------------------------------------------
+Appearance	外观
+Size	大小
+%	%
+&Reset to Default	重置为默认值(&R)
+Hint: The scaling level is relative to the scaling level of the operating system. For example, scaling by 200% will make the application user interface appear twice as large as the UI of the operating system. Note that excessive scaling may cause certain workspace elements to appear cropped.	提示：缩放级别是相对于操作系统的缩放级别而言的。例如，缩放 200% 会使应用程序界面看起来是操作系统界面的两倍大。请注意，缩放过度可能导致某些工作区元素显示不全。
+Color	颜色
+Theme:	主题：
+Medium	中
+Dark	深色
+Black	黑色
+Window border:	窗口边框：
+Font Matching	字体匹配
+PANOSE Font Matching Preferences...	PANOSE 字体匹配首选项...
+Network	网络
+Allow AnyFont to use the Internet	允许 AnyFont 使用互联网
+You need to restart the application to apply these changes.	您需要重新启动应用程序才能应用这些更改。
+# --- Confirmations, file dialogs, errors ------------------------------------------------------------------
+Are you sure you want to remove this collection?	确定要移除此集合吗？
+Are you sure you want to remove this folder?	确定要移除此文件夹吗？
+Do not show this message again	不再显示此消息
+Do not show this message again.	不再显示此消息。
+&Yes	是(&Y)
+&No	否(&N)
+Add Folder	添加文件夹
+XML - Extensible Markup Language (*.xml)	XML - 可扩展标记语言 (*.xml)
+AnyFont Folders and Collections.xml	AnyFont 文件夹和集合.xml
+Folder not found. Please choose another location.	找不到文件夹。请选择其他位置。
+This folder has already been added.	已添加此文件夹。
+This folder has already been added as a subfolder of {}.	此文件夹已作为 {} 的子文件夹添加。
+We can't find the following:	找不到以下内容：
+Supported font formats: OTF, TTF	支持的字体格式：OTF、TTF
+Your font database has been corrupted. To reset the database, you must restart AnyFont while holding down Shift.	字体数据库已损坏。若要重置数据库，必须按住 Shift 键重新启动 AnyFont。
+# --- Install / uninstall / delete / download ---------------------------------------------------------------
+Installing {}... {}%	正在安装 {}... {}%
+Uninstalling {}... {}%	正在卸载 {}... {}%
+Downloading {}... {}%	正在下载 {}... {}%
+Cancel	取消
+Delete fonts	删除字体
+Are you sure you want to delete this font?\n\nRead-only fonts cannot be deleted.	确定要删除此字体吗？\n\n无法删除只读字体。
+Are you sure you want to delete these fonts?\n\nRead-only fonts cannot be deleted.	确定要删除这些字体吗？\n\n无法删除只读字体。
+Select all	全选
+The following font cannot be uninstalled because it is in use by one or more applications. To uninstall this font, you must first restart your computer.\n\nDo you want to restart your computer now?	无法卸载以下字体，因为一个或多个应用程序正在使用它。若要卸载此字体，必须先重新启动计算机。\n\n是否立即重新启动计算机？
+The following fonts cannot be uninstalled because they are in use by one or more applications. To uninstall these fonts, you must first restart your computer.\n\nDo you want to restart your computer now?\n\nClick Ignore to continue without uninstalling the listed fonts.	无法卸载以下字体，因为一个或多个应用程序正在使用它们。若要卸载这些字体，必须先重新启动计算机。\n\n是否立即重新启动计算机？\n\n单击“忽略”可继续操作而不卸载列出的字体。
+The following font cannot be deleted because it is in use by one or more applications. To delete this font, you must first restart your computer.\n\nDo you want to restart your computer now?	无法删除以下字体，因为一个或多个应用程序正在使用它。若要删除此字体，必须先重新启动计算机。\n\n是否立即重新启动计算机？
+The following fonts cannot be deleted because they are in use by one or more applications. To delete these fonts, you must first restart your computer.\n\nDo you want to restart your computer now?\n\nClick Ignore to continue without deleting the listed fonts.	无法删除以下字体，因为一个或多个应用程序正在使用它们。若要删除这些字体，必须先重新启动计算机。\n\n是否立即重新启动计算机？\n\n单击“忽略”可继续操作而不删除列出的字体。
+Reboot &now	立即重新启动(&N)
+Reboot &later	稍后重新启动(&L)
+&Ignore	忽略(&I)
+# --- Message box buttons ----------------------------------------------------------------------------------
+&Abort	中止(&A)
+&Retry	重试(&R)
+&Try Again	重试(&T)
+&Continue	继续(&C)
+# --- Get More (online font catalog) -----------------------------------------------------------------------
+Sort by:	排序方式：
+Featured	精选
+Filter by:	筛选依据：
+Free	免费
+My Library	我的库
+Downloaded	已下载
+Remote font catalog cannot connect to the internet.	远程字体目录无法连接到互联网。
+An error occurred while downloading the remote font catalog.	下载远程字体目录时出错。
+# --- PANOSE font matching ---------------------------------------------------------------------------------
+PANOSE Font Matching Preferences	PANOSE 字体匹配首选项
+&Text	文本(&T)
+Text and &styles	文本和样式(&S)
+&Never show	从不显示(&N)
+&Default font:	默认字体(&D)：
+&Exceptions...	例外(&E)...
+PANOSE Font Matching Exceptions	PANOSE 字体匹配例外
+&Missing Font:	缺失字体(&M)：
+&Substituted Font:	替代字体(&S)：
+&Add Exception	添加例外(&A)
+&Remove Exception	移除例外(&R)
+&List of current exceptions:	当前例外列表(&L)：
+Missing Font	缺失字体
+Substituted Font	替代字体
+?	?
+PANOSE Font Matching Results	PANOSE 字体匹配结果
+Working, please wait...	正在处理，请稍候...
+Stop	停止
+Stopping will end the PANOSE matching process. All missing fonts will revert to a default selection.	停止将结束 PANOSE 匹配过程。所有缺失字体将恢复为默认选择。
+&Use the PANOSE suggested match	使用 PANOSE 建议的匹配(&U)
+Substitute &font with:	将字体替换为(&F)：
+Show &all fonts	显示所有字体(&A)
+&Save this exception for future font matching	保存此例外以用于今后的字体匹配(&S)
+Make this substitution:	进行此替换：
+&Permanent - keep these fonts	永久 - 保留这些字体(&P)
+Te&mporary - use original fonts	临时 - 使用原始字体(&M)
+# --- Type 1 fonts -----------------------------------------------------------------------------------------
+Type 1 fonts detected	检测到 Type 1 字体
+This document uses Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.	此文档使用的 Type 1 字体将来可能不再受支持。为避免潜在问题，请考虑将文本改用其他字体，例如 TrueType (TTF) 或 OpenType (OTF) 字体。
+Do not show again	不再显示
+Replace fonts	替换字体
+# --- Rename collection ------------------------------------------------------------------------------------
+Name:	名称：
+# --- Updates (from AnyVector updater.rs, product name replaced) -------------------------------------------
+Keep the product up to date (recommended)	保持产品为最新版本(建议)
+Check for updates and let me choose when to install them	检查更新，并让我选择安装更新的时间
+Never check for updates	从不检查更新
+Automatically downloads product updates, but prompts you before installing them.	自动下载产品更新，但在安装之前提示您。
+AnyFont tells you when a new version is available; you choose when to download and install it.	有新版本可用时 AnyFont 会通知您；由您选择何时下载和安装。
+AnyFont never connects to the Internet to look for updates. Help ▸ Check for Updates still checks when you ask.	AnyFont 从不连接互联网查找更新。您主动请求时，“帮助 ▸ 检查更新”仍会检查。
+An Internet connection is required. Please connect to the Internet and try again.	您必须有网络连接。请连接网络后再次尝试。
+Invalid answer from the update server: {}	更新服务器返回的应答无效：{}
+The latest release has no setup for Windows.	最新版本没有适用于 Windows 的安装程序。
+No published release was found at github.com/{}.	在 github.com/{} 上未找到已发布的版本。
+AnyFont Updates	AnyFont 更新
+The update server answered {}.	更新服务器返回了 {}。
+The download was interrupted. Please try again.	下载已中断。请重试。
+The downloaded setup is empty.	下载的安装程序为空。
+This release has no notes.	此版本没有说明。
+Click Check Now to look for a new version.	单击“立即检查”查找新版本。
+Checking for updates...	正在检查更新...
+AnyFont is up to date.	AnyFont 已是最新版本。
+AnyFont {} is available.	AnyFont {} 可用。
+Downloading AnyFont {}...	正在下载 AnyFont {}...
+AnyFont closes to install it as soon as the download finishes.	下载完成后，AnyFont 将立即关闭以进行安装。
+AnyFont {} is ready to install.	AnyFont {} 已准备好安装。
+AnyFont closes to install it and starts again when it is done.	AnyFont 将关闭以进行安装，完成后重新启动。
+Error: {}	错误：{}
+You are using AnyFont {}.	您正在使用 AnyFont {}。
+The update will be installed when AnyFont closes.	更新将在 AnyFont 关闭时安装。
+Allow product updates:	允许产品更新：
+Release Notes	发行说明
+Install Now	立即安装
+Check Now	立即检查
+There is a new version of AnyFont available.	有新版本的 AnyFont 可用。
+New version: {}. Your version: {}.	新版本：{}。您的版本：{}。
+Click OK to install the new version.	单击“确定”安装新版本。
+# --- Report a Bug / Submit Ideas and Feedback (from AnyVector bugreport.rs, product name replaced) ---------
+Report a Bug	报告错误
+Submit Ideas and Feedback	提交想法和反馈
+Thank you! Your idea was sent.	谢谢！您的想法已发送。
+Thank you! Your bug report was sent.	谢谢！您的错误报告已发送。
+Almost done: finish in your browser	即将完成：请在浏览器中完成
+Please wait a minute	请稍候一分钟
+Your idea could not be sent	无法发送您的想法
+The report could not be sent	无法发送报告
+The issue was created on the AnyFont project on GitHub:	已在 GitHub 上的 AnyFont 项目中创建问题：
+GitHub opened in your browser with your idea already filled in.	已在浏览器中打开 GitHub，并已填好您的想法。
+GitHub opened in your browser with the report already filled in.	已在浏览器中打开 GitHub，并已填好报告。
+To attach "{}", drag it from the folder that opened into the description box on GitHub.	要附加“{}”，请将其从打开的文件夹拖到 GitHub 上的描述框中。
+Sign in if asked, review it and click "Create" to send it.	如有提示请登录，检查内容后单击“Create”即可发送。
+Several reports were sent from this connection in the last minute. Try again in a minute.	过去一分钟内从此连接发送了多份报告。请一分钟后重试。
+Could not open the browser. Please send it at {}	无法打开浏览器。请在 {} 发送
+Back	返回
+Tell us your idea or what you think of AnyFont. It is sent to the AnyFont project on GitHub as a new idea. You don't need a GitHub account.	告诉我们您的想法或您对 AnyFont 的看法。它将作为新想法发送到 GitHub 上的 AnyFont 项目。您无需 GitHub 帐户。
+Title (your idea in a few words):	标题(用几个字概括您的想法)：
+Describe your idea or feedback:	描述您的想法或反馈：
+How would it help you? (optional)	它对您有何帮助？(可选)
+Describe the problem. It is sent to the AnyFont project on GitHub as a new issue. You don't need a GitHub account.	描述问题。它将作为新问题发送到 GitHub 上的 AnyFont 项目。您无需 GitHub 帐户。
+Title (a short summary):	标题(简短摘要)：
+What happened?	发生了什么？
+Steps to reproduce (optional):	重现步骤(可选)：
+What did you expect to happen? (optional)	您期望发生什么？(可选)
+Include system information	包括系统信息
+System information	系统信息
+View submitted ideas	查看已提交的想法
+View reported bugs	查看已报告的错误
+Attach a file (optional):	附加文件(可选):
+Attach File...	附加文件...
+Attach a File	附加文件
+Files GitHub accepts	GitHub 接受的文件
+Images	图像
+Videos	视频
+Archives (.zip, .gz, .tgz)	压缩文件 (.zip、.gz、.tgz)
+Images and videos up to 10 MB, other files up to 25 MB, of the types GitHub accepts. Put a font file (.ttf, .otf) in a .zip file.	GitHub 接受的类型中，图像和视频最大 10 MB，其他文件最大 25 MB。请将字体文件 (.ttf、.otf) 放入 .zip 文件。
+Sending...	正在发送...
+Send	发送

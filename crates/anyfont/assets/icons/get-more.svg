@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+  <!-- store front: awning with a filled middle stripe, walls and a door -->
+  <path d="M2.5 1.5H13.5L15.5 7.5H0.5Z" fill="none" stroke="#CACED4" stroke-linejoin="round"/>
+  <path d="M5.2 1H10.8L11.2 7.5H4.8Z" fill="#CACED4"/>
+  <path d="M0.6 7.6Q2.6 9.6 4.8 7.6Q8 9.8 11.2 7.6Q13.4 9.6 15.4 7.6" fill="none" stroke="#CACED4" stroke-width="0.9"/>
+  <path d="M1.5 8.5V15.5H14.5V8.5" fill="none" stroke="#CACED4"/>
+  <path d="M6.5 15.5V10.5H9.5V15.5" fill="none" stroke="#CACED4"/>
+</svg>

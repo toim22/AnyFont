@@ -1,0 +1,25 @@
+name: Suggest an idea or send feedback
+description: An idea, something that could work better, or anything you would like to tell us.
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the feedback! You can write in English or Portuguese. Help › Submit Ideas and Feedback inside
+        AnyFont sends it for you and needs no GitHub account.
+  - type: textarea
+    id: idea
+    attributes:
+      label: Your idea or feedback
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why would it help?
+      description: What are you trying to do? How do you work around it today?
+  - type: input
+    id: version
+    attributes:
+      label: AnyFont version
+      placeholder: "0.1.0"

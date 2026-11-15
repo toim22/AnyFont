@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+  <!-- folder with a letter A, green "+" badge (cut-out plus) -->
+  <path d="M0 3.3Q0 2 1.3 2H6.4L7.9 3.5V5H0Z" fill="#CACED4"/>
+  <path d="M0.5 4.5V14.6Q0.5 15.5 1.4 15.5H14.6Q15.5 15.5 15.5 14.6V8" fill="none" stroke="#CACED4"/>
+  <path d="M4 14L6.6 6.2H7.4L10 14M4.8 10.5H9.2" fill="none" stroke="#CACED4" stroke-width="1.1"/>
+  <path fill="#1BB474" fill-rule="evenodd" d="M9 0H16V7H9ZM12 1V3H10V4H12V6H13V4H15V3H13V1Z"/>
+</svg>
