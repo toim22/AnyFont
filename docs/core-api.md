@@ -210,14 +210,21 @@ A selected family header enables the `menu_*` fields but not the toolbar buttons
 Get the glyph list with `glyphs::enumerate_file(path, face_index)`. It returns
 `Option<GlyphList { glyphs: Vec<GlyphEntry> }>`, or `None` if the file cannot be read. Order of the list:
 
-1. encoded glyphs in code-point order;
-2. after each one, its GSUB single, alternate and ligature outputs (`GlyphOrigin::Alternate`);
-3. the unencoded glyphs.
+1. one entry per encoded character, in code-point order (two characters that map to the same glyph get a
+   cell each, as in the original: Algerian lists its capitals again after the backquote);
+2. after each one, its GSUB single, alternate and ligature outputs depth-first (`GlyphOrigin::Alternate`,
+   `codepoint` = the base character), even when an output is itself encoded (Bahnschrift's "0 ⁰ 0 0");
+3. the glyphs no character or substitution reaches (`GlyphOrigin::Unencoded`), except `.notdef` and glyphs
+   that draw nothing (`.null`, CR).
+
+So the count can exceed the font's glyph count (Bahnschrift: 986 cells for 961 glyphs in the capture).
 
 Fields of `GlyphEntry`:
 
 - `glyph_id`
 - `codepoint`
+- `alternates: Vec<u16>` (on an encoded entry: the glyph ids of the alternate entries that follow it; the
+  shell's corner triangle and pop-up use it)
 - `name`
 - `origin`
 - `script` ("Common", "Latin" … or `UNENCODED_GROUP`)

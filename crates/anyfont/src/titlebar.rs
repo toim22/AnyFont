@@ -26,14 +26,20 @@ pub fn draw(app: &mut AnyFontApp, ui: &mut Ui, rect: Rect, maximized: bool, fram
     let gear = upd.translate(vec2(-cust_w, 0.0));
     let help = gear.translate(vec2(-cust_w, 0.0));
 
-    // icon and title
+    // icon and title, on whole pixels (the maximized band is 25 px tall; captured: icon rows 4-19)
+    let cy = rect.center().y.floor();
+    // the button glyphs sit one pixel higher than the icon when maximized (captured rows 3-18)
+    let by = if maximized { cy - 1.0 } else { cy };
+    // ... and, maximized, the custom glyphs one pixel left and the window glyphs one pixel right of their
+    // buttons' centres (captured columns)
+    let (cust_dx, win_dx) = if maximized { (-1.0, 1.0) } else { (0.0, 0.0) };
     let icon_x = if maximized { 4.0 } else { 8.0 };
-    let ir = Rect::from_min_size(pos2(rect.left() + icon_x, rect.center().y - 8.0), vec2(16.0, 16.0));
+    let ir = Rect::from_min_size(pos2(rect.left() + icon_x, cy - 8.0), vec2(16.0, 16.0));
     if let Some(tex) = icons::app_icon(&ctx, 16.0, !active) {
         p.image(tex.id(), ir, Rect::from_min_max(pos2(0.0, 0.0), pos2(1.0, 1.0)), Color32::WHITE);
     }
     let title_c = if active { t().title_text } else { t().title_text_inactive };
-    widgets::ui_text(p, pos2(ir.right() + 8.0, rect.center().y), Align2::LEFT_CENTER, "AnyFont", theme::body(theme::UI_SIZE), title_c);
+    widgets::ui_text(p, pos2(ir.right() + 8.0, cy), Align2::LEFT_CENTER, "AnyFont", theme::body(theme::UI_SIZE), title_c);
 
     let glyph_look = |hot: bool| if active || hot { Look::Color(t().title_text) } else { Look::TitleBar };
     let win_look = |hot: bool| if active || hot { Look::Color(t().title_text) } else { Look::Window };
@@ -45,7 +51,7 @@ pub fn draw(app: &mut AnyFontApp, ui: &mut Ui, rect: Rect, maximized: bool, fram
         if resp.hovered() {
             ui.painter().rect_filled(r, 0.0, t().title_hot);
         }
-        icons::paint(ui, icon, Rect::from_center_size(r.center(), vec2(16.0, 16.0)), 16.0, glyph_look(resp.hovered()));
+        icons::paint(ui, icon, Rect::from_center_size(pos2(r.center().x + cust_dx, by), vec2(16.0, 16.0)), 16.0, glyph_look(resp.hovered()));
         if icon == "title-updates" && app.updater.update_available() {
             ui.painter().circle_filled(r.center() + vec2(6.0, -6.0), 3.0, t().accent);
         }
@@ -59,7 +65,7 @@ pub fn draw(app: &mut AnyFontApp, ui: &mut Ui, rect: Rect, maximized: bool, fram
     if resp.hovered() {
         ui.painter().rect_filled(minb, 0.0, t().title_hot);
     }
-    icons::paint(ui, "window-minimize", Rect::from_center_size(minb.center(), vec2(16.0, 16.0)), 16.0, win_look(resp.hovered()));
+    icons::paint(ui, "window-minimize", Rect::from_center_size(pos2(minb.center().x + win_dx, by), vec2(16.0, 16.0)), 16.0, win_look(resp.hovered()));
     widgets::a11y(&resp, Role::Button, true, "Minimize");
     if widgets::tooltip(resp, "Minimize", None).clicked() {
         ctx.send_viewport_cmd(ViewportCommand::Minimized(true));
@@ -73,7 +79,7 @@ pub fn draw(app: &mut AnyFontApp, ui: &mut Ui, rect: Rect, maximized: bool, fram
         ui.painter().rect_filled(maxb, 0.0, t().title_hot);
     }
     let window_max = ctx.input(|i| i.viewport().maximized.unwrap_or(false));
-    icons::paint(ui, if window_max { "window-restore" } else { "window-maximize" }, Rect::from_center_size(maxb.center(), vec2(16.0, 16.0)), 16.0, win_look(hot));
+    icons::paint(ui, if window_max { "window-restore" } else { "window-maximize" }, Rect::from_center_size(pos2(maxb.center().x + win_dx, by), vec2(16.0, 16.0)), 16.0, win_look(hot));
     let max_label = if window_max { "Restore Down" } else { "Maximize" };
     widgets::a11y(&resp, Role::Button, true, max_label);
     if widgets::tooltip(resp, max_label, None).clicked() {
@@ -87,7 +93,7 @@ pub fn draw(app: &mut AnyFontApp, ui: &mut Ui, rect: Rect, maximized: bool, fram
     if resp.hovered() {
         ui.painter().rect_filled(close, 0.0, t().close_hot);
     }
-    icons::paint(ui, "window-close", Rect::from_center_size(close.center(), vec2(16.0, 16.0)), 16.0, if resp.hovered() { Look::Color(Color32::WHITE) } else { win_look(false) });
+    icons::paint(ui, "window-close", Rect::from_center_size(pos2(close.center().x + win_dx, by), vec2(16.0, 16.0)), 16.0, if resp.hovered() { Look::Color(Color32::WHITE) } else { win_look(false) });
     widgets::a11y(&resp, Role::Button, true, "Close");
     if widgets::tooltip(resp, "Close", None).clicked() {
         ctx.send_viewport_cmd(ViewportCommand::Close);

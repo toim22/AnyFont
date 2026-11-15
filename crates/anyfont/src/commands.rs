@@ -286,10 +286,8 @@ impl AnyFontApp {
         log::debug!("command {cmd:?}");
         match cmd {
             Cmd::AddFolder => {
-                if self.test_mode {
-                    return;
-                }
-                if let Some(dir) = rfd::FileDialog::new().set_title(crate::tr("Add Folder")).pick_folder() {
+                let test_mode = self.test_mode;
+                if let Some(dir) = crate::testing::pick(|| if test_mode { None } else { rfd::FileDialog::new().set_title(crate::tr("Add Folder")).pick_folder() }) {
                     self.add_folder(&dir);
                 }
             }
@@ -306,22 +304,23 @@ impl AnyFontApp {
                 }
             }
             Cmd::Import => {
-                if self.test_mode {
-                    return;
-                }
-                let f = rfd::FileDialog::new().add_filter(crate::tr("XML - Extensible Markup Language (*.xml)"), &["xml"]).pick_file();
+                let test_mode = self.test_mode;
+                let f = crate::testing::pick(|| if test_mode { None } else { rfd::FileDialog::new().add_filter(crate::tr("XML - Extensible Markup Language (*.xml)"), &["xml"]).pick_file() });
                 if let Some(path) = f {
                     self.import(&path);
                 }
             }
             Cmd::Export => {
-                if self.test_mode {
-                    return;
-                }
-                let f = rfd::FileDialog::new()
-                    .add_filter(crate::tr("XML - Extensible Markup Language (*.xml)"), &["xml"])
-                    .set_file_name(crate::tr("AnyFont Folders and Collections.xml"))
-                    .save_file();
+                let test_mode = self.test_mode;
+                let f = crate::testing::pick(|| {
+                    if test_mode {
+                        return None;
+                    }
+                    rfd::FileDialog::new()
+                        .add_filter(crate::tr("XML - Extensible Markup Language (*.xml)"), &["xml"])
+                        .set_file_name(crate::tr("AnyFont Folders and Collections.xml"))
+                        .save_file()
+                });
                 if let Some(path) = f {
                     self.export(&path);
                 }
@@ -394,6 +393,7 @@ impl AnyFontApp {
             Cmd::ProductHelp => {
                 if self.test_mode {
                     log::info!("product help: {}", crate::help::help_url());
+                    crate::testing::intercept(crate::testing::External::Url(crate::help::help_url()));
                 } else {
                     crate::help::open_product_help();
                 }

@@ -42,7 +42,7 @@ the UI connection can use it at the same time.
 
 | AnyFont table | Original | Notes |
 |---|---|---|
-| `properties(key, value)` | `DBPROPERTIES` | `schema_version`, `last_scan` |
+| `properties(key, value)` | `DBPROPERTIES` | `schema_version` (2: `fonts.file_size` added; opening a version 1 file adds the column and fills it from `files.size`), `last_scan` |
 | `files(path NOCASE UNIQUE, size, mtime, sha, format, error, scanned_at)` | `FONTSDATA.DBPaths` | one row per file location. Path, size and mtime drive the incremental rescan. All rows with the same `sha` are one font's `DBPaths` |
 | `fonts(...)` | `FONTSDATA` | one row per face and per named instance. `key = "<sha>:<face>:<instance or ->"` is the `DBShaID` equivalent. Column mapping in §1.1 |
 | `font_names(font_id, language, family, subfamily, full_name, typographic_family, typographic_subfamily)` | `DBLocales` + `KEYWORDS_<lang>` | localised names from the `name` table. They drive "Show Latin names" and localised search |

@@ -99,6 +99,9 @@ pub struct Rename {
     pub started_frame: u64,
 }
 
+/// Files confirmed in Delete fonts (with the font names for the progress line and the faces).
+pub(crate) type PendingDelete = (Vec<PathBuf>, std::collections::HashMap<PathBuf, String>, Vec<FontId>);
+
 pub struct AnyFontApp {
     pub(crate) fs: Arc<dyn FontSystem>,
     pub(crate) paths: Paths,
@@ -159,7 +162,7 @@ pub struct AnyFontApp {
     /// A folder just added: look for Type 1 fonts in it when the scan is done (UI-SPEC §11 #14).
     pub(crate) type1_check: Option<FolderId>,
     /// Files confirmed in Delete fonts, deleted on the next frame.
-    pub(crate) pending_delete: Option<(Vec<PathBuf>, std::collections::HashMap<PathBuf, String>, Vec<FontId>)>,
+    pub(crate) pending_delete: Option<PendingDelete>,
 }
 
 /// The Windows LCID of a UI language (localised family names, `FontQuery::language`).

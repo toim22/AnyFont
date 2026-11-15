@@ -49,6 +49,7 @@ pub fn caption_parts(caption: &str) -> (String, Option<usize>) {
 }
 
 /// Paints a caption, underlining its access key when `underline`.
+#[allow(clippy::too_many_arguments)]
 pub fn caption_text(ui: &Ui, painter: &egui::Painter, pos: Pos2, align: Align2, caption: &str, font: FontId, color: Color32, underline: bool) -> Rect {
     let (text, key) = caption_parts(caption);
     let g = data_galley(ui, &text, font.clone(), color);

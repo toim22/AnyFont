@@ -78,7 +78,7 @@ pub fn show(app: &mut AnyFontApp, ctx: &egui::Context) {
         app.settings.core.ui_scale_percent = v.clamp(SCALE_MIN, SCALE_MAX);
         let hint = Rect::from_min_max(pos2(x0, y0 + 98.0), pos2(body.right(), y0 + 180.0));
         dlg::at(ui, hint, |ui| {
-            ui.add(egui::Label::new(egui::RichText::new("Hint: The scaling level is relative to the scaling level of the operating system. For example, scaling by 200% will make the application user interface appear twice as large as the UI of the operating system. Note that excessive scaling may cause certain workspace elements to appear cropped.").color(t().text)).wrap());
+            ui.add(egui::Label::new(egui::RichText::new("Hint: The scaling level is relative to the scaling level of the operating system. For example, scaling by 200% will make the application user interface appear twice as large as the UI of the operating system. Note that excessive scaling may cause certain workspace elements to appear cropped.").font(theme::body(theme::UI_SIZE)).color(t().text)).wrap());
         });
 
         header_at(ui, pos2(x0, y0 + 202.0), "Color", theme::UI_SIZE);

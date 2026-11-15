@@ -298,6 +298,7 @@ fn user_agent() -> String {
 }
 
 fn get_bytes(url: &str, secs: u64) -> Result<Vec<u8>, String> {
+    let url = &crate::testing::redirect(url);
     let mut r = agent(secs).get(url).header("User-Agent", &user_agent()).call().map_err(|_| NO_INTERNET.to_string())?;
     if r.status().as_u16() != 200 {
         return Err(format!("HTTP {}", r.status().as_u16()));

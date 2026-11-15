@@ -26,10 +26,11 @@ pub fn status_text(app: &AnyFontApp) -> String {
 
 pub fn draw(app: &mut AnyFontApp, ui: &mut Ui, rect: Rect) {
     let text = if !app.db_ready && app.result.rows.is_empty() { crate::tr("Loading fonts...") } else { status_text(app) };
-    widgets::data_text(ui, ui.painter(), pos2(rect.left(), rect.center().y), Align2::LEFT_CENTER, &text, theme::body(theme::UI_SIZE), t().text);
+    // captured: the caption sits 2 px and the size control 3 px below the band centre
+    widgets::data_text(ui, ui.painter(), pos2(rect.left(), rect.center().y + 2.0), Align2::LEFT_CENTER, &text, theme::body(theme::UI_SIZE), t().text);
     let enabled = app.settings.core.render_name_in_font;
     let tip = "Change the font size in the font list.";
-    let (changed, v) = size_control(ui, rect, "preview-size", app.settings.core.preview_size, PREVIEW_MIN, PREVIEW_MAX, enabled, tip);
+    let (changed, v) = size_control(ui, rect.translate(vec2(0.0, 3.0)), "preview-size", app.settings.core.preview_size, PREVIEW_MIN, PREVIEW_MAX, enabled, tip);
     if changed {
         app.settings.core.preview_size = v;
         app.layout = crate::fontlist::Layout::build(&app.result.rows, v);
@@ -40,7 +41,7 @@ pub fn draw(app: &mut AnyFontApp, ui: &mut Ui, rect: Rect) {
 #[allow(clippy::too_many_arguments)]
 pub fn size_control(ui: &mut Ui, rect: Rect, id: &str, value: f32, min: f32, max: f32, enabled: bool, tip: &str) -> (bool, f32) {
     let cy = rect.center().y;
-    let small = Rect::from_center_size(pos2(rect.right() - 153.0, cy), vec2(16.0, 16.0));
+    let small = Rect::from_center_size(pos2(rect.right() - 151.0, cy), vec2(16.0, 16.0));
     let big = Rect::from_center_size(pos2(rect.right() - 12.0, cy), vec2(16.0, 16.0));
     let track = Rect::from_min_max(pos2(rect.right() - 122.0, cy - 6.0), pos2(rect.right() - 42.0, cy + 6.0));
     let mut v = value;

@@ -93,7 +93,22 @@ fn system_fonts_parse_when_available() {
 fn glyph_list_of_real_font() {
     let l = glyphs::enumerate_file(&fixture("Hack-Regular.ttf"), 0).unwrap();
     let f = &parse::parse_font_file(&fixture("Hack-Regular.ttf")).faces[0];
-    assert_eq!(l.glyphs.len() as u32, f.glyph_count, "every glyph listed once (encoded, alternates, unencoded)");
+    // every glyph but .notdef is reachable from the grid (encoded, alternate or unencoded) ...
+    let listed: std::collections::BTreeSet<u16> = l.glyphs.iter().map(|g| g.glyph_id).collect();
+    assert!(!listed.contains(&0), ".notdef is not listed");
+    assert!((listed.len() as u32) < f.glyph_count);
+    // ... and every encoded character has exactly one cell of its own
+    let encoded = l.glyphs.iter().filter(|g| g.origin == glyphs::GlyphOrigin::Encoded).count();
+    let chars: std::collections::BTreeSet<char> =
+        l.glyphs.iter().filter(|g| g.origin == glyphs::GlyphOrigin::Encoded).filter_map(|g| g.codepoint).collect();
+    assert_eq!(encoded, chars.len());
+    // alternates follow their base and are recorded on it
+    for (i, g) in l.glyphs.iter().enumerate() {
+        if !g.alternates.is_empty() {
+            let next: Vec<u16> = l.glyphs[i + 1..i + 1 + g.alternates.len()].iter().map(|a| a.glyph_id).collect();
+            assert_eq!(next, g.alternates);
+        }
+    }
     let pos = |c: char| {
         l.glyphs.iter().position(|g| g.codepoint == Some(c) && g.origin == glyphs::GlyphOrigin::Encoded).unwrap()
     };
@@ -102,6 +117,28 @@ fn glyph_list_of_real_font() {
     let filters = l.available_filters();
     assert_eq!(filters[0].0, "Common");
     assert!(filters.iter().any(|(s, c)| s == "Latin" && c.contains(&glyphs::GlyphCategory::Uppercase)));
+}
+
+/// The counts of the captured Glyph Preview: Algerian "262 glyphs" (236 characters, a-z drawn with the
+/// capitals, + 26 unencoded glyphs without .notdef/.null/nonmarkingreturn) and Bahnschrift's "0 ⁰ 0 …"
+/// (alternates follow their character, encoded or not).
+#[test]
+fn glyph_list_matches_the_captures() {
+    if let Some(p) = windows_font("ALGER.TTF") {
+        let l = glyphs::enumerate_file(&p, 0).unwrap();
+        assert_eq!(l.count_text(), "262 glyphs");
+        let caps: Vec<Option<char>> = l.glyphs.iter().map(|g| g.codepoint).collect();
+        let a = caps.iter().position(|c| *c == Some('a')).unwrap();
+        assert_eq!(caps[a - 1], Some('`'));
+        assert_eq!(l.glyphs[a].glyph_id, l.glyphs[caps.iter().position(|c| *c == Some('A')).unwrap()].glyph_id);
+    }
+    if let Some(p) = windows_font("bahnschrift.ttf") {
+        let l = glyphs::enumerate_file(&p, 0).unwrap();
+        let zero = l.glyphs.iter().position(|g| g.codepoint == Some('0')).unwrap();
+        assert!(!l.glyphs[zero].alternates.is_empty());
+        assert_eq!(l.glyphs[zero + 1].origin, glyphs::GlyphOrigin::Alternate);
+        assert_eq!(l.glyphs[zero + 1].codepoint, Some('0'));
+    }
 }
 
 #[test]
@@ -338,7 +375,7 @@ fn parse_every_windows_font() {
         }
         if let Some(f) = parsed.faces.first().filter(|f| f.corrupt.is_none() && f.technology != Technology::Type1) {
             let g = glyphs::enumerate_file(&p, f.face_index).expect("glyphs of a good font");
-            assert_eq!(g.glyphs.len() as u32, f.glyph_count, "{}", p.display());
+            assert!(g.glyphs.iter().all(|e| e.glyph_id != 0 && (e.glyph_id as u32) < f.glyph_count), "{}", p.display());
         }
     }
     println!("{files} files, {faces} faces, {} corrupt", corrupt.len());

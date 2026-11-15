@@ -188,6 +188,14 @@ fn info_strip(app: &mut AnyFontApp, ui: &mut Ui, r: Rect) {
     }
 }
 
+/// The child ui an edit box of the list header lives in. egui paints the hint text in the visuals' weak
+/// text colour whatever colour the hint asks for, so the captured placeholder grey goes there.
+fn hint_ui(ui: &mut Ui, edit_rect: Rect) -> Ui {
+    let mut child = ui.new_child(egui::UiBuilder::new().max_rect(edit_rect));
+    child.visuals_mut().weak_text_color = Some(t().text_placeholder);
+    child
+}
+
 fn sample_combo(app: &mut AnyFontApp, ui: &mut Ui, r: Rect) {
     let id = EditTarget::Sample.id();
     let ctx = ui.ctx().clone();
@@ -199,14 +207,14 @@ fn sample_combo(app: &mut AnyFontApp, ui: &mut Ui, r: Rect) {
     let before = app.sample.clone();
     let out = egui::TextEdit::singleline(&mut app.sample)
         .id(id)
-        .hint_text(egui::RichText::new("Enter sample text").color(t().text_placeholder))
+        .hint_text(egui::RichText::new("Enter sample text").font(theme::body(theme::UI_SIZE)))
         .frame(egui::Frame::NONE)
         .margin(egui::Margin::ZERO)
         .desired_width(edit_rect.width())
         .align(egui::Align2::LEFT_CENTER)
         .text_color(t().text)
         .font(theme::body(theme::UI_SIZE))
-        .show(&mut ui.new_child(egui::UiBuilder::new().max_rect(edit_rect)));
+        .show(&mut hint_ui(ui, edit_rect));
     widgets::a11y(&out.response, Role::TextInput, true, "Enter sample text");
     crate::commands::remember_selection(&ctx, EditTarget::Sample);
     if out.response.gained_focus() {
@@ -286,14 +294,14 @@ fn search_box(app: &mut AnyFontApp, ui: &mut Ui, r: Rect) {
     let before = app.search.clone();
     let out = egui::TextEdit::singleline(&mut app.search)
         .id(id)
-        .hint_text(egui::RichText::new("Search").color(t().text_placeholder))
+        .hint_text(egui::RichText::new("Search").font(theme::body(theme::UI_SIZE)))
         .frame(egui::Frame::NONE)
         .margin(egui::Margin::ZERO)
         .desired_width(edit_rect.width())
         .align(egui::Align2::LEFT_CENTER)
         .text_color(t().text)
         .font(theme::body(theme::UI_SIZE))
-        .show(&mut ui.new_child(egui::UiBuilder::new().max_rect(edit_rect)));
+        .show(&mut hint_ui(ui, edit_rect));
     widgets::a11y(&out.response, Role::TextInput, true, "Search");
     crate::commands::remember_selection(&ctx, EditTarget::Search);
     // Esc clears the box (the edit gives up the focus on that same Esc)
@@ -442,7 +450,7 @@ fn draw_list(app: &mut AnyFontApp, ui: &mut Ui, list: Rect, track: Rect) {
     let mut drag_start: Option<usize> = None;
     let mut tooltip_row: Option<(usize, egui::Response)> = None;
     let rows = app.result.rows.clone();
-    for i in first..rows.len() {
+    for (i, row) in rows.iter().enumerate().skip(first) {
         let top = list.top() + app.layout.tops[i] - app.list.scroll;
         if top > list.bottom() {
             break;
@@ -452,9 +460,9 @@ fn draw_list(app: &mut AnyFontApp, ui: &mut Ui, list: Rect, track: Rect) {
             continue;
         }
         let r = Rect::from_min_size(pos2(list.left(), top), vec2(list.width(), h));
-        let key = row_key(&rows[i]);
+        let key = row_key(row);
         let selected = key.as_ref().map(|k| app.sel.keys.contains(k)).unwrap_or(false);
-        let is_current = matches!((&rows[i], app.sel.current), (ListRow::Font { id, .. }, Some(c)) if *id == c) && app.sel.keys.is_empty();
+        let is_current = matches!((row, app.sel.current), (ListRow::Font { id, .. }, Some(c)) if *id == c) && app.sel.keys.is_empty();
         let resp = ui.interact(r.intersect(list), Id::unique(("font-row", i)), Sense::click_and_drag());
         if selected || is_current {
             painter.rect_filled(r, 0.0, t().list_selected);
@@ -464,7 +472,7 @@ fn draw_list(app: &mut AnyFontApp, ui: &mut Ui, list: Rect, track: Rect) {
         if app.layout.sep_before[i] {
             painter.hline(list.left() + 2.0..=list.right(), r.top() + 0.5, Stroke::new(1.0, t().line_strong));
         }
-        match &rows[i] {
+        match row {
             ListRow::RecentHeader { .. } => {}
             ListRow::FamilyHeader { family, style_count, fonts } => {
                 widgets::data_text(ui, &painter, pos2(r.left() + 2.0, r.center().y), Align2::LEFT_CENTER, family, theme::light(27.0), t().text);
@@ -537,13 +545,13 @@ fn draw_list(app: &mut AnyFontApp, ui: &mut Ui, list: Rect, track: Rect) {
         } else if resp.secondary_clicked() {
             clicked = Some((i, modifiers, true));
         } else if resp.double_clicked() {
-            if let ListRow::Font { id, .. } = &rows[i] {
+            if let ListRow::Font { id, .. } = row {
                 if let Some(f) = app.catalog.font(*id) {
                     let _ = app.db.touch_mru(&f.key, app.settings.core.mru_size.max(1));
                 }
             }
         }
-        if resp.drag_started() && matches!(rows[i], ListRow::Font { .. } | ListRow::FamilyHeader { .. }) {
+        if resp.drag_started() && matches!(row, ListRow::Font { .. } | ListRow::FamilyHeader { .. }) {
             drag_start = Some(i);
         }
     }

@@ -36,6 +36,8 @@ pub struct Outcome {
     pub in_use: Vec<PathBuf>,
     pub reboot_required: bool,
     pub elevation_cancelled: bool,
+    /// The files that were not processed because the UAC prompt was cancelled.
+    pub elevation_cancelled_files: Vec<PathBuf>,
     pub cancelled: bool,
 }
 
@@ -47,6 +49,8 @@ enum Msg {
 /// A running (or just finished) operation.
 pub struct Running {
     pub kind: OpKind,
+    /// Install only: where the fonts go.
+    pub scope: Scope,
     pub used: UsedFontAction,
     pub total: usize,
     pub done: usize,
@@ -59,10 +63,12 @@ pub struct Running {
 
 impl Running {
     /// Starts `kind` for `files` on a worker thread. `names` maps a file to the font name shown in the
-    /// progress line.
+    /// progress line; `scope` is where Install puts the fonts (see [`install_scope`]).
+    #[allow(clippy::too_many_arguments)]
     pub fn start(
         fs: Arc<dyn FontSystem>,
         kind: OpKind,
+        scope: Scope,
         files: Vec<PathBuf>,
         used: UsedFontAction,
         names: HashMap<PathBuf, String>,
@@ -83,7 +89,7 @@ impl Running {
                 log::info!("{kind:?} {} file(s), {used:?}", files.len());
                 let outcome = match kind {
                     OpKind::Install => {
-                        let r = fs.install_with(&files, install_scope(fs.as_ref()), used, &mut progress);
+                        let r = fs.install_with(&files, scope, used, &mut progress);
                         outcome_of(&r.results, &r.in_use, r.reboot_required, r.elevation_cancelled())
                     }
                     OpKind::Uninstall => {
@@ -105,7 +111,7 @@ impl Running {
                 ctx.request_repaint();
             })
             .expect("operation thread");
-        Running { kind, used, total, done: 0, current: String::new(), outcome: None, cancel, rx, names }
+        Running { kind, scope, used, total, done: 0, current: String::new(), outcome: None, cancel, rx, names }
     }
 
     /// Takes the worker's messages. Returns true when the operation just finished.
@@ -147,7 +153,9 @@ impl Running {
     }
 }
 
-/// Install for all users, like the original (UAC through the elevated helper when needed).
+/// Install for all users, like the original: one UAC prompt per operation through the elevated helper when
+/// AnyFont is not elevated. When the prompt is cancelled the shell offers "Install only for me"
+/// ([`Scope::CurrentUser`], no administrator rights), see `dialogs::finish`.
 pub fn install_scope(_fs: &dyn FontSystem) -> Scope {
     Scope::AllUsers
 }
@@ -168,7 +176,10 @@ fn outcome_of<T>(
                 }
             }
             Err(FontOpError::Cancelled) => o.cancelled = true,
-            Err(FontOpError::ElevationCancelled) => o.elevation_cancelled = true,
+            Err(FontOpError::ElevationCancelled) => {
+                o.elevation_cancelled = true;
+                o.elevation_cancelled_files.push(r.path.clone());
+            }
             Err(e) => o.failures.push((r.path.clone(), e.clone())),
         }
     }

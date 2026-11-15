@@ -211,6 +211,7 @@ Change the glyph size in the Glyph Preview area.
 Multiple fonts are selected. To view a glyph set, choose only one font.
 No matching glyphs
 Install or download the font to preview glyphs.
+Show glyph alternates.
 Family:
 Sub-family:
 File Path:
@@ -496,6 +497,8 @@ Loading fonts...
 Version {}
 AnyFont closed unexpectedly the last time. Do you want to send a bug report?
 Insufficient Permissions
+AnyFont could not get administrator permission to install the fonts for all users.\n\nDo you want to install them only for you? They will not be available to other users of this computer.
+&Install for me
 Some fonts could not be processed:
 Font list
 Scroll bar

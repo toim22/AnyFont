@@ -73,6 +73,7 @@ Keep the `PrimaryGuard` alive for the whole run, because dropping it releases th
 | `ANYFONT_SANDBOX_ROOT` | Folder for the sandbox. It is created and seeded on first use and reused afterwards. |
 | `ANYFONT_SANDBOX_SEED` | `;`-separated file names copied from `%WINDIR%\Fonts` into the sandbox's "Windows" fonts folder and registered as protected all-users fonts. `none` means no seed. The default is `arial.ttf;arialbd.ttf;times.ttf;cour.ttf;segoeui.ttf;cambria.ttc`. |
 | `ANYFONT_SANDBOX_OPEN_EXPLORER` | When set, the sandbox's `open_location` really opens Explorer. Otherwise it only records the call. |
+| `ANYFONT_SANDBOX_DECLINE_UAC` | When set, the sandbox acts as if the user cancelled every UAC prompt: an all-users install fails with `ElevationCancelled` (the shell then offers "Install for me"). `SandboxFontSystem::set_decline_elevation` does the same from a test. |
 | `ANYFONT_LOG` | Log level: `error`, `warn`, `info` (default), `debug` or `trace`. |
 
 The sandbox layout under `<root>` is:

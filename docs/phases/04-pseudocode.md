@@ -215,9 +215,10 @@ import: add missing folders; each group -> Favorites / existing collection (merg
 `glyphs::enumerate_file` builds the list:
 
 ```text
-cmap (all Unicode subtables + (3,0)) -> code point -> glyph, code-point order, one entry per glyph
-for each encoded glyph: depth-first GSUB outputs (single, alternate, ligature) not themselves encoded
-then every glyph id not reached (unencoded)
+cmap (all Unicode subtables + (3,0)) -> code point -> glyph, code-point order, one entry per code point
+after each one: its depth-first GSUB outputs (single, alternate, ligature), encoded or not, no repeats
+                within the chain; their ids also go into the entry's `alternates`
+then every glyph id not reached (unencoded), except .notdef and glyphs that draw nothing
 classification: Unicode script (Common/Inherited -> "Common") x general category
                 (Uppercase, Lowercase, Numbers, Punctuation & Separators, Currency, Mathematical Symbols,
                  Marks, Symbols, Other)

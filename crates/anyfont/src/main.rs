@@ -38,6 +38,9 @@ fn main() -> eframe::Result<()> {
         let _ = anyfont_sys::logging::init();
         std::process::exit(anyfont_sys::helper::helper_main(&request));
     }
+    if let Some(script) = cl.value("SelfTest") {
+        std::process::exit(anyfont::testing::selftest::run(std::path::Path::new(script)));
+    }
     if let Err(e) = anyfont_sys::logging::init() {
         eprintln!("AnyFont: cannot open the log file: {e}");
     }

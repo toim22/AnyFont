@@ -9,7 +9,7 @@ use crate::theme::{self, t};
 use crate::widgets;
 use anyfont_core::catalog::LibraryRef;
 use anyfont_core::model::FontId;
-use anyfont_sys::UsedFontAction;
+use anyfont_sys::{Scope, UsedFontAction};
 use egui::{pos2, vec2, Color32, Rect, Stroke};
 use std::collections::HashMap;
 use std::path::PathBuf;
@@ -19,6 +19,8 @@ pub enum Dialog {
     RemoveLibrary { lib: LibraryRef, dont_show: bool },
     DeleteFonts { files: Vec<(PathBuf, bool)>, ids: Vec<FontId>, dont_show: bool },
     Reboot { kind: OpKind, files: Vec<PathBuf> },
+    /// The UAC prompt of an all-users install was cancelled: offer to install only for the current user.
+    InstallForMe { files: Vec<PathBuf>, names: HashMap<PathBuf, String>, ids: Vec<FontId> },
     Missing { items: Vec<String> },
     Failures { lines: Vec<String> },
     CrashOffer { path: PathBuf },
@@ -30,10 +32,18 @@ impl Dialog {
     }
 }
 
+/// What a dialog's button does once the dialog is closed.
+type DialogAction = Box<dyn FnOnce(&mut AnyFontApp, &egui::Context)>;
+
+/// The fallback offered when the UAC prompt of an all-users install is cancelled.
+pub const INSTALL_FOR_ME_TEXT: &str = "AnyFont could not get administrator permission to install the fonts for all users.\n\nDo you want to install them only for you? They will not be available to other users of this computer.";
+
 /// An operation in progress and what it needs for its second pass.
 pub struct OpFlow {
     pub ids: Vec<FontId>,
     pub names: HashMap<PathBuf, String>,
+    /// Install scope of the operation (the reboot prompt's second pass keeps it).
+    pub scope: Scope,
 }
 
 /// Starts Install / Uninstall for faces (only the eligible ones; nothing happens when none is).
@@ -69,15 +79,17 @@ pub fn start_fonts_op(app: &mut AnyFontApp, ctx: &egui::Context, kind: OpKind, i
     if files.is_empty() {
         return;
     }
-    run_files(app, ctx, kind, files, UsedFontAction::Ask, names, used_ids);
+    let scope = crate::ops::install_scope(app.fs.as_ref());
+    run_files(app, ctx, kind, scope, files, UsedFontAction::Ask, names, used_ids);
 }
 
-fn run_files(app: &mut AnyFontApp, ctx: &egui::Context, kind: OpKind, files: Vec<PathBuf>, used: UsedFontAction, names: HashMap<PathBuf, String>, ids: Vec<FontId>) {
+#[allow(clippy::too_many_arguments)]
+fn run_files(app: &mut AnyFontApp, ctx: &egui::Context, kind: OpKind, scope: Scope, files: Vec<PathBuf>, used: UsedFontAction, names: HashMap<PathBuf, String>, ids: Vec<FontId>) {
     if app.op.is_some() {
         return;
     }
-    app.op = Some(Running::start(app.fs.clone(), kind, files, used, names.clone(), ctx.clone()));
-    app.op_flow = Some(OpFlow { ids, names });
+    app.op = Some(Running::start(app.fs.clone(), kind, scope, files, used, names.clone(), ctx.clone()));
+    app.op_flow = Some(OpFlow { ids, names, scope });
 }
 
 /// Edit ▸ Delete: the confirmation (unless switched off), then the operation.
@@ -124,7 +136,7 @@ fn names_of(app: &AnyFontApp, ids: &[FontId]) -> HashMap<PathBuf, String> {
 /// Takes the operation's progress; at its end, the reboot prompt, the failure list and a rescan.
 pub fn poll_operation(app: &mut AnyFontApp, ctx: &egui::Context) {
     if let Some((files, names, ids)) = app.pending_delete.take() {
-        run_files(app, ctx, OpKind::Delete, files, UsedFontAction::Ask, names, ids);
+        run_files(app, ctx, OpKind::Delete, Scope::AllUsers, files, UsedFontAction::Ask, names, ids);
     }
     let Some(op) = &mut app.op else { return };
     if !op.poll() {
@@ -133,11 +145,12 @@ pub fn poll_operation(app: &mut AnyFontApp, ctx: &egui::Context) {
     let outcome = op.outcome.clone().unwrap_or_default();
     let used = op.used;
     let kind = op.kind;
+    let scope = op.scope;
     app.op = None;
-    finish(app, kind, used, outcome);
+    finish(app, kind, scope, used, outcome);
 }
 
-fn finish(app: &mut AnyFontApp, kind: OpKind, used: UsedFontAction, o: Outcome) {
+fn finish(app: &mut AnyFontApp, kind: OpKind, scope: Scope, used: UsedFontAction, o: Outcome) {
     if kind == OpKind::Install && o.succeeded > 0 {
         if let Some(flow) = &app.op_flow {
             for id in &flow.ids {
@@ -155,7 +168,11 @@ fn finish(app: &mut AnyFontApp, kind: OpKind, used: UsedFontAction, o: Outcome) 
             log::error!("reboot: {e}");
         }
     }
-    if o.elevation_cancelled {
+    if kind == OpKind::Install && scope == Scope::AllUsers && !o.elevation_cancelled_files.is_empty() {
+        // the UAC prompt was cancelled: offer the per-user install, which needs no administrator rights
+        let (names, ids) = app.op_flow.as_ref().map(|f| (f.names.clone(), f.ids.clone())).unwrap_or_default();
+        app.dialogs.push_back(Dialog::InstallForMe { files: o.elevation_cancelled_files.clone(), names, ids });
+    } else if o.elevation_cancelled {
         app.dialogs.push_back(Dialog::message("AnyFont", &crate::tr("Insufficient Permissions")));
     }
     if !o.failures.is_empty() {
@@ -167,7 +184,7 @@ fn finish(app: &mut AnyFontApp, kind: OpKind, used: UsedFontAction, o: Outcome) 
             .collect();
         app.dialogs.push_back(Dialog::Failures { lines });
     }
-    if app.dialogs.iter().all(|d| !matches!(d, Dialog::Reboot { .. })) {
+    if app.dialogs.iter().all(|d| !matches!(d, Dialog::Reboot { .. } | Dialog::InstallForMe { .. })) {
         app.op_flow = None;
     }
     app.start_scan(false);
@@ -216,7 +233,7 @@ pub fn show(app: &mut AnyFontApp, ctx: &egui::Context) {
     }
     let Some(d) = app.dialogs.front_mut() else { return };
     let mut close = false;
-    let mut action: Option<Box<dyn FnOnce(&mut AnyFontApp, &egui::Context)>> = None;
+    let mut action: Option<DialogAction> = None;
     match d {
         Dialog::Message { title, text } => {
             close = dlg::Message::new(crate::tr(title), crate::tr(text)).ui(ctx, "shell-message");
@@ -359,10 +376,38 @@ pub fn show(app: &mut AnyFontApp, ctx: &egui::Context) {
                 action = Some(Box::new(move |app, ctx| {
                     let flow = app.op_flow.take();
                     if matches!(c, UsedFontAction::RebootNow | UsedFontAction::RebootLater) {
-                        let (names, ids) = flow.map(|f| (f.names, f.ids)).unwrap_or_default();
-                        run_files(app, ctx, kind, files, c, names, ids);
+                        let (names, ids, scope) = flow.map(|f| (f.names, f.ids, f.scope)).unwrap_or((HashMap::new(), Vec::new(), Scope::AllUsers));
+                        run_files(app, ctx, kind, scope, files, c, names, ids);
                     }
                 }));
+            }
+        }
+        Dialog::InstallForMe { files, names, ids } => {
+            let ((me, cancel), dismissed) = dlg::window(ctx, "install-for-me", &crate::tr("AnyFont"), vec2(460.0, 200.0), |ui| {
+                let (top, bar) = dlg::split_bottom(ui, dlg::BUTTON_H);
+                dlg::at(ui, top, |ui| {
+                    ui.add_space(10.0);
+                    ui.add(egui::Label::new(crate::tr(INSTALL_FOR_ME_TEXT)).wrap());
+                });
+                dlg::at_right(ui, bar, |ui| {
+                    let cancel = widgets::push_button(ui, "Cancel", false, true).clicked();
+                    ui.add_space(8.0);
+                    let me = widgets::push_button(ui, "&Install for me", true, true).clicked()
+                        || dlg::enter_pressed(ui)
+                        || ui.input(|i| i.modifiers.alt && i.key_pressed(egui::Key::I));
+                    (me, cancel)
+                })
+            });
+            if me {
+                let (files, names, ids) = (files.clone(), names.clone(), ids.clone());
+                action = Some(Box::new(move |app, ctx| {
+                    app.op_flow = None;
+                    run_files(app, ctx, OpKind::Install, Scope::CurrentUser, files, UsedFontAction::Ask, names, ids);
+                }));
+                close = true;
+            } else if cancel || dismissed {
+                app.op_flow = None;
+                close = true;
             }
         }
         Dialog::Missing { items } => {

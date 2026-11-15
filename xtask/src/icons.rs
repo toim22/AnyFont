@@ -34,9 +34,14 @@ const TOOLBAR: [(&str, u32, u32, bool); 10] = [
 ];
 const TOOLBAR_SEPARATORS: [u32; 5] = [101, 142, 247, 288, 329];
 
+/// Where an icon sits in a reference screenshot: (file, x, y).
+type RefSpot<'a> = (&'a str, i32, i32);
+/// One icon of the sheet: name, reference spot, background, note.
+type SheetEntry = (&'static str, Option<RefSpot<'static>>, &'static str, &'static str);
+
 /// Icon order on the sheet, with the reference spot: (file, x, y) of the icon grid's top-left corner
 /// (the crop has the size of the icon's viewBox), the background to draw on, and a note.
-fn entries() -> Vec<(&'static str, Option<(&'static str, i32, i32)>, &'static str, &'static str)> {
+fn entries() -> Vec<SheetEntry> {
     let main = r"02-main-window\Main window - restored size.png";
     let maxi = r"02-main-window\Main window - maximized (default state).png";
     let file = r"03-menus\deselect-all\File.png";
@@ -182,7 +187,7 @@ pub fn run() -> Result<()> {
     // Icons not in the list above still get a row (at the end), so none is forgotten.
     let listed: Vec<&str> = list.iter().map(|e| e.0).collect();
     let extra: Vec<String> = names.iter().filter(|n| !listed.contains(&n.as_str())).cloned().collect();
-    let mut rows: Vec<(String, Option<(&str, i32, i32)>, &str, String)> =
+    let mut rows: Vec<(String, Option<RefSpot<'_>>, &str, String)> =
         list.iter().map(|(n, r, bg, note)| (n.to_string(), *r, *bg, note.to_string())).collect();
     for n in extra {
         rows.push((n, None, BG, String::new()));

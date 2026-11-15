@@ -37,6 +37,9 @@ pub mod help;
 pub mod matching;
 pub mod updater;
 
+// --- test seams (end-to-end tests, `/SelfTest:`) ---
+pub mod testing;
+
 pub use app::{AnyFontApp, TestConfig};
 
 /// Translates a UI string (`docs/strings-en.tsv` key) into the current language.

@@ -25,7 +25,11 @@ use std::path::{Path, PathBuf};
 pub const FAVORITES_NAME: &str = "Favorites";
 
 /// Schema version stored in `properties`.
-pub const SCHEMA_VERSION: i64 = 1;
+///
+/// - 1: first release layout.
+/// - 2: `fonts.file_size` (the Font info tab's File Size). Older databases get the column and a backfill
+///   from `files.size` when they are opened (see `FontDatabase::migrate`).
+pub const SCHEMA_VERSION: i64 = 2;
 
 const SCHEMA: &str = r#"
 CREATE TABLE IF NOT EXISTS properties (key TEXT PRIMARY KEY, value TEXT);
@@ -90,6 +94,7 @@ CREATE TABLE IF NOT EXISTS fonts (
     monospaced INTEGER NOT NULL,
     glyph_count INTEGER NOT NULL,
     units_per_em INTEGER NOT NULL,
+    file_size INTEGER NOT NULL DEFAULT 0,
     duplicate INTEGER NOT NULL DEFAULT 0,
     corrupt TEXT,
     warnings TEXT NOT NULL DEFAULT '[]',
@@ -255,15 +260,34 @@ impl FontDatabase {
         }
         self.conn.execute_batch("PRAGMA foreign_keys=ON; PRAGMA synchronous=NORMAL;")?;
         self.conn.execute_batch(SCHEMA)?;
-        self.conn.execute(
-            "INSERT OR IGNORE INTO properties(key, value) VALUES ('schema_version', ?1)",
-            [SCHEMA_VERSION.to_string()],
-        )?;
+        self.migrate()?;
         self.conn.execute(
             "INSERT OR IGNORE INTO collections(name, is_favorites) SELECT ?1, 1 \
              WHERE NOT EXISTS (SELECT 1 FROM collections WHERE is_favorites = 1)",
             [FAVORITES_NAME],
         )?;
+        Ok(())
+    }
+
+    /// Brings a database written by an older AnyFont up to [`SCHEMA_VERSION`].
+    fn migrate(&self) -> Result<()> {
+        let stored: Option<i64> = self.property("schema_version")?.and_then(|v| v.parse().ok());
+        if stored.is_some_and(|v| v >= SCHEMA_VERSION) {
+            return Ok(());
+        }
+        // version 2: fonts.file_size, filled from the size of the face's first file location
+        let has_size: bool = self
+            .conn
+            .query_row("SELECT COUNT(*) FROM pragma_table_info('fonts') WHERE name = 'file_size'", [], |r| r.get::<_, i64>(0))?
+            > 0;
+        if !has_size {
+            self.conn.execute_batch("ALTER TABLE fonts ADD COLUMN file_size INTEGER NOT NULL DEFAULT 0;")?;
+        }
+        self.conn.execute(
+            "UPDATE fonts SET file_size = COALESCE((SELECT size FROM files WHERE files.sha = fonts.sha ORDER BY id LIMIT 1), 0)              WHERE file_size = 0",
+            [],
+        )?;
+        self.set_property("schema_version", &SCHEMA_VERSION.to_string())?;
         Ok(())
     }
 
@@ -805,7 +829,7 @@ manufacturer, designer, description, vendor_url, designer_url, license, license_
 outline, is_variable, color, weight_class, width_class, italic, oblique, fs_selection, mac_style, fs_type, \
 embedding, code_page1, code_page2, unicode1, unicode2, unicode3, unicode4, panose0, panose1, panose2, panose3, \
 panose4, panose5, panose6, panose7, panose8, panose9, vendor_id, symbol, vertical, monospaced, glyph_count, \
-units_per_em, duplicate, corrupt, warnings, remote_asset_url, remote_metadata_url, remote_provider";
+units_per_em, duplicate, corrupt, warnings, remote_asset_url, remote_metadata_url, remote_provider, file_size";
 
 fn row_to_font(r: &Row) -> rusqlite::Result<FontRecord> {
     let mut panose = [0u8; 10];
@@ -874,6 +898,7 @@ fn row_to_font(r: &Row) -> rusqlite::Result<FontRecord> {
             metadata_url: r.get::<_, Option<String>>(63).ok().flatten().unwrap_or_default(),
             provider: r.get::<_, Option<String>>(64).ok().flatten().unwrap_or_default(),
         }),
+        file_size: r.get::<_, i64>(65)?.max(0) as u64,
         ..Default::default()
     })
 }
@@ -890,10 +915,10 @@ pub(crate) fn insert_font(conn: &Connection, f: &FontRecord) -> Result<FontId> {
          fs_selection, mac_style, fs_type, embedding, code_page1, code_page2, unicode1, unicode2, unicode3, unicode4, \
          panose0, panose1, panose2, panose3, panose4, panose5, panose6, panose7, panose8, panose9, vendor_id, symbol, \
          vertical, monospaced, glyph_count, units_per_em, duplicate, corrupt, warnings, remote_asset_url, \
-         remote_metadata_url, remote_provider) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, \
+         remote_metadata_url, remote_provider, file_size) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11, ?12, ?13, ?14, \
          ?15, ?16, ?17, ?18, ?19, ?20, ?21, ?22, ?23, ?24, ?25, ?26, ?27, ?28, ?29, ?30, ?31, ?32, ?33, ?34, ?35, ?36, \
          ?37, ?38, ?39, ?40, ?41, ?42, ?43, ?44, ?45, ?46, ?47, ?48, ?49, ?50, ?51, ?52, ?53, ?54, ?55, ?56, ?57, ?58, \
-         ?59, ?60, ?61, ?62, ?63, ?64, ?65)",
+         ?59, ?60, ?61, ?62, ?63, ?64, ?65, ?66)",
         rusqlite::params_from_iter(
             [
                 rusqlite::types::Value::from(f.key.0.clone()),
@@ -961,6 +986,7 @@ pub(crate) fn insert_font(conn: &Connection, f: &FontRecord) -> Result<FontId> {
                 remote.map(|r| r.asset_url.clone()).into(),
                 remote.map(|r| r.metadata_url.clone()).into(),
                 remote.map(|r| r.provider.clone()).into(),
+                (f.file_size.min(i64::MAX as u64) as i64).into(),
             ],
         ),
     )?;
@@ -1119,11 +1145,43 @@ mod tests {
             instances: vec![NamedInstance { subfamily: "Light".into(), postscript_name: None, coordinates: vec![300.0, 100.0] }],
             localized_names: vec![LocalizedName { language: 0x411, family: Some("ベ".into()), ..Default::default() }],
             warnings: vec!["w".into()],
+            file_size: 76_595,
             ..Default::default()
         };
         let id = insert_font(db.connection(), &rec).unwrap();
         let back = db.load_fonts().unwrap().remove(0);
         let expected = FontRecord { id, features: vec!["liga".into()], ..rec };
         assert_eq!(back, expected);
+        assert_eq!(back.file_size, 76_595, "the File Size of the Font info tab survives a restart");
+    }
+
+    /// A version 1 database (no `fonts.file_size`) is migrated on open: the column is added, filled from
+    /// `files.size`, and the schema version is bumped.
+    #[test]
+    fn migrates_version_1_file_size() {
+        let dir = tempfile::tempdir().unwrap();
+        let path = dir.path().join("fonts.db");
+        {
+            let db = FontDatabase::open(&path).unwrap();
+            let rec = FontRecord { key: FontKey::new("abc", 0, None), sha: "abc".into(), family: "Algerian".into(), ..Default::default() };
+            insert_font(db.connection(), &rec).unwrap();
+            let c = db.connection();
+            c.execute(
+                "INSERT INTO files(path, size, mtime, sha, format) VALUES ('c:/windows/fonts/alger.ttf', 76595, 0, 'abc', 'ttf')",
+                [],
+            )
+            .unwrap();
+            // turn it back into a version 1 file
+            c.execute_batch("ALTER TABLE fonts DROP COLUMN file_size; UPDATE properties SET value = '1' WHERE key = 'schema_version';")
+                .unwrap();
+        }
+        let db = FontDatabase::open(&path).unwrap();
+        assert_eq!(db.property("schema_version").unwrap().as_deref(), Some(SCHEMA_VERSION.to_string().as_str()));
+        let f = db.load_fonts().unwrap().remove(0);
+        assert_eq!(f.file_size, 76_595);
+        assert_eq!(crate::format::file_size(f.file_size), "74.8 KB");
+        // opening again is a no-op
+        drop(db);
+        assert_eq!(FontDatabase::open(&path).unwrap().load_fonts().unwrap()[0].file_size, 76_595);
     }
 }

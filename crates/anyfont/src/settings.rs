@@ -19,7 +19,7 @@ pub const LEFT_PANEL_MIN: f32 = 240.0;
 pub const RIGHT_PANEL_DEFAULT: f32 = 271.0;
 pub const RIGHT_PANEL_MIN: f32 = 220.0;
 pub const RIGHT_PANEL_MAX: f32 = 600.0;
-pub const LIBRARIES_HEIGHT_DEFAULT: f32 = 209.0;
+pub const LIBRARIES_HEIGHT_DEFAULT: f32 = 208.0;
 pub const PREVIEW_MIN: f32 = 8.0;
 pub const PREVIEW_MAX: f32 = 86.0;
 pub const PREVIEW_DEFAULT: f32 = 36.0;
@@ -53,12 +53,14 @@ pub struct AppSettings {
 
 impl Default for AppSettings {
     fn default() -> Self {
-        let mut core = CoreSettings::default();
-        core.preview_size = PREVIEW_DEFAULT;
-        core.show_recent = false;
-        core.show_font_properties = false;
-        core.glyph_cell_size = GLYPH_CELL_DEFAULT;
-        core.ui_scale_enabled = true;
+        let mut core = CoreSettings {
+            preview_size: PREVIEW_DEFAULT,
+            show_recent: false,
+            show_font_properties: false,
+            glyph_cell_size: GLYPH_CELL_DEFAULT,
+            ui_scale_enabled: true,
+            ..CoreSettings::default()
+        };
         core.window.left_panel_width = LEFT_PANEL_DEFAULT;
         core.window.right_panel_width = RIGHT_PANEL_DEFAULT;
         core.window.right_panel_visible = false;
@@ -178,8 +180,7 @@ mod tests {
     fn round_trip_keeps_shell_and_core_fields() {
         let dir = std::env::temp_dir().join(format!("anyfont-settings-test-{}", std::process::id()));
         let p = dir.join("settings.json");
-        let mut s = AppSettings::default();
-        s.scheme = Scheme::Black;
+        let mut s = AppSettings { scheme: Scheme::Black, ..AppSettings::default() };
         s.core.preview_size = 50.0;
         s.set_collapsed("Folders", true);
         s.core.remember_sample("Hello");

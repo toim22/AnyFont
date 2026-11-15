@@ -82,13 +82,17 @@ pub fn window_ex<R>(ctx: &egui::Context, id: &str, title: &str, size: Vec2, clos
     let visuals = ctx.global_style().visuals.clone();
     let bg = visuals.window_fill;
     let border = if visuals.dark_mode { Color32::from_gray(0x48) } else { Color32::from_gray(0xA0) };
+    // Modal like the original's dialogs (the backdrop still takes every click and key meant for the main
+    // window), but the window behind is not dimmed: the original only draws the dialog with its drop shadow.
+    let shadow = egui::epaint::Shadow { offset: [0, 3], blur: 14, spread: 1, color: Color32::from_black_alpha(if visuals.dark_mode { 150 } else { 70 }) };
     let resp = egui::Modal::new(Id::unique(("anyfont_dlg", id)))
-        .backdrop_color(Color32::from_black_alpha(70))
-        .frame(Frame::new().fill(bg).stroke(Stroke::new(1.0, border)).corner_radius(0.0).inner_margin(0.0))
+        .backdrop_color(Color32::TRANSPARENT)
+        .frame(Frame::new().fill(bg).stroke(Stroke::new(1.0, border)).corner_radius(0.0).inner_margin(0.0).shadow(shadow))
         .show(ctx, |ui| {
             let (full, _) = ui.allocate_exact_size(size, Sense::hover());
             let title_rect = Rect::from_min_size(full.min, vec2(size.x, TITLE_H));
-            let text = ui.visuals().text_color();
+            // captured: the title and its × are #969696, the grey of the main window's idle title
+            let text = crate::theme::t().title_text_inactive;
             ui.painter().text(pos2(title_rect.left() + 12.0, title_rect.center().y), Align2::LEFT_CENTER, title, font(12.0), text);
             if closable && close_button(ui, Rect::from_min_max(pos2(title_rect.right() - 46.0, title_rect.top()), title_rect.right_bottom()), Id::unique(("anyfont_dlg_x", id))).clicked() {
                 dismissed = true;
@@ -115,7 +119,7 @@ pub fn close_button(ui: &mut Ui, r: Rect, id: Id) -> Response {
     }
     let c = r.center();
     let s = 5.0;
-    let color = if hot { Color32::WHITE } else { ui.visuals().text_color() };
+    let color = if hot { Color32::WHITE } else { crate::theme::t().title_text_inactive };
     let st = Stroke::new(1.0, color);
     ui.painter().line_segment([pos2(c.x - s, c.y - s), pos2(c.x + s, c.y + s)], st);
     ui.painter().line_segment([pos2(c.x - s, c.y + s), pos2(c.x + s, c.y - s)], st);
@@ -222,6 +226,9 @@ pub fn enter_pressed(ui: &Ui) -> bool {
 
 /// Opens a URL (or a local file) in the default browser.
 pub fn open_url(url: &str) -> bool {
+    if crate::testing::intercept(crate::testing::External::Url(url.to_string())) {
+        return true;
+    }
     #[cfg(windows)]
     {
         // ShellExecute, not `cmd /C start`: a URL keeps its `&` and `%` as they are

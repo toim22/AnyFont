@@ -218,7 +218,7 @@ impl About {
             close |= dlg::enter_pressed(ui);
         });
         if save {
-            if let Some(p) = rfd::FileDialog::new().set_title("Save System Info").add_filter("Text (*.txt)", &["txt"]).set_file_name("System Info.txt").save_file() {
+            if let Some(p) = crate::testing::pick(|| rfd::FileDialog::new().set_title("Save System Info").add_filter("Text (*.txt)", &["txt"]).set_file_name("System Info.txt").save_file()) {
                 let shown = p.display().to_string();
                 self.message = Some(match std::fs::write(&p, sysinfo::report()) {
                     Ok(()) => dlg::Message::new("System Info", format!("System info was saved to {shown}.")),

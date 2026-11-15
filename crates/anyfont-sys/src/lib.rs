@@ -43,6 +43,9 @@ pub const SANDBOX_ENV: &str = "ANYFONT_SANDBOX_ROOT";
 /// Optional `;`-separated list of fonts copied into a new sandbox (file names in `%WINDIR%\Fonts`
 /// or absolute paths). `none` seeds nothing. Default: [`DEFAULT_SANDBOX_SEED`].
 pub const SANDBOX_SEED_ENV: &str = "ANYFONT_SANDBOX_SEED";
+/// When set to `1`, the sandbox behaves as if the user cancelled the UAC prompt: installs for all users
+/// report [`FontOpError::ElevationCancelled`] (to try the "Install only for me" fallback).
+pub const SANDBOX_DECLINE_UAC_ENV: &str = "ANYFONT_SANDBOX_DECLINE_UAC";
 
 /// Where a font is registered.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]

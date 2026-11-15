@@ -84,6 +84,10 @@ struct PendingList {
     files: Vec<PathBuf>,
 }
 
+/// Phase A of a removal for one path: the registry entries, whether a reboot is needed, the files and
+/// what was unloaded.
+type PlannedRemoval = (Vec<Entry>, bool, Vec<PathBuf>, Unloaded);
+
 pub(crate) struct Engine<P: Platform> {
     pub p: P,
     /// Fonts loaded for the session by this process: (files, value name).
@@ -469,7 +473,7 @@ impl<P: Platform> Engine<P> {
             }
         };
         // Phase A for every path.
-        let mut plan: Vec<Result<(Vec<Entry>, bool, Vec<PathBuf>, Unloaded), FontOpError>> = Vec::new();
+        let mut plan: Vec<Result<PlannedRemoval, FontOpError>> = Vec::new();
         let mut cancelled_at = None;
         for (i, path) in paths.iter().enumerate() {
             if cancelled_at.is_none() && !progress(i, paths.len(), path) {

@@ -33,8 +33,9 @@ organize them without opening the Fonts folder or a single font file.
 
 - **Everything in one list.** Installed fonts and fonts in your own folders, side by side, with each font's name
   drawn in the font itself.
-- **Install without the risk.** Install a font for yourself only (no administrator rights) or for every user, and
-  uninstall it again with one click. Windows' own system fonts are protected.
+- **Install without the risk.** Install a font for every user of the PC with one Windows permission prompt, or, if
+  you'd rather not give that permission, only for yourself. Uninstall it again with one click. Windows' own system
+  fonts are protected.
 - **Organized your way.** Folders, collections and Favorites, filters, search, grouping by family and a list of the
   fonts you used recently.
 - **Fast and lightweight.** A single native Windows program written in Rust. No account, no sign-in, no subscription.
@@ -55,7 +56,8 @@ organize them without opening the Fonts folder or a single font file.
 - Find duplicate fonts, and find similar fonts by their PANOSE classification, with substitutions and exceptions.
 
 ### Install and clean up
-- Install and uninstall fonts for the current user or for all users.
+- Install fonts for all users (one Windows permission prompt per operation), or only for yourself when you cancel
+  that prompt; uninstall fonts installed either way.
 - Delete font files to the Recycle Bin, or open their location in Explorer.
 - Get more fonts: an online catalog of open-licence fonts (Google Fonts). Downloads go to the AnyFont Content
   folder (`Documents\AnyFont\Content\Fonts`), ready to install.

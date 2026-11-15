@@ -150,8 +150,8 @@ impl RealFontSystem {
         remote: impl FnOnce(Vec<PathBuf>) -> Result<Report<T>, FontOpError>,
     ) -> Report<T> {
         let entries = self.engine.entries().unwrap_or_default();
-        let (admin, user): (Vec<(usize, &PathBuf)>, Vec<(usize, &PathBuf)>) =
-            paths.iter().enumerate().partition(|(_, p)| self.needs_admin(&entries, p));
+        type Indexed<'a> = Vec<(usize, &'a PathBuf)>;
+        let (admin, user): (Indexed<'_>, Indexed<'_>) = paths.iter().enumerate().partition(|(_, p)| self.needs_admin(&entries, p));
         let mut slots: Vec<Option<FileResult<T>>> = vec![None; paths.len()];
         let mut out = Report::default();
         if !user.is_empty() {

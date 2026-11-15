@@ -350,7 +350,7 @@ fn parse(tsv: &str) -> Dict {
         }
         d.exact.insert(k, v);
     }
-    d.templates.sort_by(|a, b| b.weight.cmp(&a.weight));
+    d.templates.sort_by_key(|t| std::cmp::Reverse(t.weight));
     d
 }
 
@@ -361,9 +361,12 @@ fn dict() -> &'static Dict {
     D[l as usize].get_or_init(|| parse(l.tsv()))
 }
 
+/// Translations already looked up in one language (`None`: the string has no translation).
+type LookupTable = HashMap<String, Option<String>>;
+
 /// The translations already looked up, one table per language.
-fn cache() -> &'static Mutex<Vec<HashMap<String, Option<String>>>> {
-    static C: OnceLock<Mutex<Vec<HashMap<String, Option<String>>>>> = OnceLock::new();
+fn cache() -> &'static Mutex<Vec<LookupTable>> {
+    static C: OnceLock<Mutex<Vec<LookupTable>>> = OnceLock::new();
     C.get_or_init(|| Mutex::new((0..Lang::ALL.len()).map(|_| HashMap::new()).collect()))
 }
 

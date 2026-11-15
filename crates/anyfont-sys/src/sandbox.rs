@@ -215,6 +215,9 @@ impl Platform for SandboxPlatform {
 /// The sandbox [`FontSystem`].
 pub struct SandboxFontSystem {
     engine: Engine<SandboxPlatform>,
+    /// Behave like a process that is not elevated and whose UAC prompt the user cancels: every
+    /// all-users install reports `ElevationCancelled` (see [`SandboxFontSystem::set_decline_elevation`]).
+    decline_elevation: std::sync::atomic::AtomicBool,
 }
 
 impl SandboxFontSystem {
@@ -226,12 +229,24 @@ impl SandboxFontSystem {
         std::fs::create_dir_all(&p.dirs.all_users)?;
         std::fs::create_dir_all(&p.dirs.current_user)?;
         let fresh = !p.state_path().exists();
-        let sb = SandboxFontSystem { engine: Engine::new(p) };
+        let decline = std::env::var_os(crate::SANDBOX_DECLINE_UAC_ENV).is_some_and(|v| !v.is_empty() && v != "0");
+        let sb = SandboxFontSystem { engine: Engine::new(p), decline_elevation: std::sync::atomic::AtomicBool::new(decline) };
         if fresh {
             sb.engine.p.save(&State::default())?;
             sb.seed(&config)?;
         }
         Ok(sb)
+    }
+
+    /// Simulates a cancelled UAC prompt: from now on, installs for all users fail with
+    /// `FontOpError::ElevationCancelled` (nothing is copied), as the real backend reports when the user
+    /// answers No to the elevated helper. Also set by `ANYFONT_SANDBOX_DECLINE_UAC=1`.
+    pub fn set_decline_elevation(&self, decline: bool) {
+        self.decline_elevation.store(decline, std::sync::atomic::Ordering::Relaxed);
+    }
+
+    fn declines_elevation(&self) -> bool {
+        self.decline_elevation.load(std::sync::atomic::Ordering::Relaxed)
     }
 
     fn seed(&self, config: &SandboxConfig) -> io::Result<()> {
@@ -355,10 +370,17 @@ impl FontSystem for SandboxFontSystem {
     fn is_protected(&self, path: &Path) -> bool {
         self.engine.p.is_protected(path)
     }
-    fn needs_elevation(&self, _scope: Scope) -> bool {
-        false
+    fn needs_elevation(&self, scope: Scope) -> bool {
+        scope == Scope::AllUsers && self.declines_elevation()
     }
     fn install_with(&self, files: &[PathBuf], scope: Scope, used: UsedFontAction, progress: Progress<'_>) -> InstallReport {
+        if scope == Scope::AllUsers && self.declines_elevation() {
+            log::info!("sandbox: UAC prompt declined ({} file(s))", files.len());
+            return InstallReport {
+                results: files.iter().map(|p| crate::FileResult { path: p.clone(), result: Err(crate::FontOpError::ElevationCancelled) }).collect(),
+                ..Default::default()
+            };
+        }
         self.engine.install(files, scope, used, progress)
     }
     fn uninstall_with(&self, paths: &[PathBuf], used: UsedFontAction, progress: Progress<'_>) -> UninstallReport {

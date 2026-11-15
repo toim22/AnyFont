@@ -263,6 +263,9 @@ pub fn open_in_browser(url: &str) -> bool {
 
 /// Open Explorer with the file selected.
 fn show_in_explorer(path: &Path) {
+    if crate::testing::intercept(crate::testing::External::Explorer(path.to_path_buf())) {
+        return;
+    }
     #[cfg(windows)]
     {
         let _ = Command::new("explorer").arg(format!("/select,{}", path.display())).spawn();
@@ -332,7 +335,8 @@ fn send_to_relay(base: &str, body: &str, file: Option<&Path>) -> Result<String, 
     }
 }
 
-/// What to do with the relay's answer.
+/// What to do with the relay's answer (`Err(())`: fall back to the browser).
+#[allow(clippy::result_unit_err)]
 pub fn outcome(answer: Result<String, (u16, String)>) -> Result<Sent, ()> {
     match answer {
         Ok(url) => Ok(Sent::Created(url)),
@@ -549,13 +553,13 @@ impl BugReport {
             if dlg::button(ui, "Attach File...", true) {
                 let mut all: Vec<&str> = ATTACH_IMAGES.iter().chain(ATTACH_VIDEOS).chain(ATTACH_OTHERS).copied().collect();
                 all.sort_unstable();
-                let picked = rfd::FileDialog::new()
+                let picked = crate::testing::pick(|| rfd::FileDialog::new()
                     .set_title("Attach a File")
                     .add_filter("Files GitHub accepts", &all)
                     .add_filter("Images", ATTACH_IMAGES)
                     .add_filter("Videos", ATTACH_VIDEOS)
                     .add_filter("Archives (.zip, .gz, .tgz)", &["zip", "gz", "tgz"])
-                    .pick_file();
+                    .pick_file());
                 if let Some(p) = picked {
                     let size = std::fs::metadata(&p).map(|m| m.len()).unwrap_or(0);
                     self.attach_error = attach_problem(&p, size);

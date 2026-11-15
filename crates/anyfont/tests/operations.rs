@@ -251,3 +251,42 @@ fn f2_renames_a_collection() {
     settle(&mut h);
     assert!(h.state().library_names().iter().any(|n| n == "Serif"), "{:?}", h.state().library_names());
 }
+
+use anyfont_sys::FontSystem as _;
+
+/// Install is for all users (one UAC prompt per operation, like the original). When the user cancels the
+/// prompt, AnyFont offers to install only for the current user, which needs no administrator rights.
+#[test]
+fn cancelled_uac_offers_install_for_me() {
+    let env = Env::new();
+    let dir = env.font_folder("Extra", &["georgia.ttf"]);
+    let fs = env.sandbox();
+    fs.set_decline_elevation(true);
+    let mut h = harness(env.config_with(&fs), (1280.0, 800.0));
+    let before = fs.installed_fonts().unwrap();
+    h.state_mut().add_folder_path(&dir);
+    settle(&mut h);
+
+    // the UAC prompt is declined: nothing is installed, the fallback is offered
+    h.get_by_role_and_label(Role::Button, "Install").click();
+    finish_operation(&mut h);
+    assert_eq!(fs.installed_fonts().unwrap().len(), before.len());
+    assert_eq!(h.state().pending_dialogs(), 1);
+    // Cancel leaves everything as it was
+    h.get_by_role_and_label(Role::Button, "Cancel").click();
+    settle(&mut h);
+    assert_eq!(h.state().pending_dialogs(), 0);
+    assert_eq!(fs.installed_fonts().unwrap().len(), before.len());
+
+    // again, and this time "Install for me": a per-user install
+    h.get_by_role_and_label(Role::Button, "Install").click();
+    finish_operation(&mut h);
+    h.get_by_role_and_label(Role::Button, "Install for me").click();
+    finish_operation(&mut h);
+    let after = fs.installed_fonts().unwrap();
+    assert_eq!(after.len(), before.len() + 1);
+    let new = after.iter().find(|f| !before.iter().any(|b| b.path == f.path)).expect("the new font");
+    assert_eq!(new.scope, anyfont_sys::Scope::CurrentUser);
+    assert_eq!(h.state().pending_dialogs(), 0);
+    assert_eq!(h.state().face_states(), vec![("Georgia (Regular, Normal)".to_string(), true)]);
+}

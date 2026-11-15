@@ -182,7 +182,7 @@ fn all_users_install_uses_system_folder_and_relative_data() {
     let reg = registry_json(&sb);
     assert_eq!(reg["registry"][r"HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts"][&name]["Sz"], "consola.ttf");
     assert!(!sb.is_protected(&installed), "user-installed fonts are not protected");
-    let r = sb.uninstall(&[installed.clone()], UsedFontAction::Ask);
+    let r = sb.uninstall(std::slice::from_ref(&installed), UsedFontAction::Ask);
     assert_eq!(r.results[0].result.as_ref().unwrap().file, FileRemoval::Removed);
     assert!(!installed.exists());
 }
@@ -258,12 +258,12 @@ fn in_use_fonts_follow_the_used_font_action() {
     assert_eq!(sb.installed_fonts().unwrap().len(), 2);
 
     // Ignore: skip the busy one.
-    let r = sb.uninstall(&[ia.clone()], UsedFontAction::Ignore);
+    let r = sb.uninstall(std::slice::from_ref(&ia), UsedFontAction::Ignore);
     assert_eq!(r.results[0].result, Err(FontOpError::InUse));
 
     // Reboot later: unregistered now, file removal deferred. Per-user deletes cannot use
     // MOVEFILE_DELAY_UNTIL_REBOOT without admin rights -> remembered and done at the next start.
-    let r = sb.uninstall(&[ia.clone()], UsedFontAction::RebootLater);
+    let r = sb.uninstall(std::slice::from_ref(&ia), UsedFontAction::RebootLater);
     assert_eq!(r.results[0].result.as_ref().unwrap().file, FileRemoval::PendingReboot);
     assert!(r.reboot_required);
     assert!(sb.registrations(&ia).is_empty());
@@ -282,7 +282,7 @@ fn all_users_in_use_font_is_deleted_at_reboot() {
     let r = sb.install(&[src], Scope::AllUsers, UsedFontAction::Ask);
     let (_, inst) = installed_value(&r.results[0].result);
     sb.set_in_use(&inst, true);
-    let r = sb.uninstall(&[inst.clone()], UsedFontAction::RebootNow);
+    let r = sb.uninstall(std::slice::from_ref(&inst), UsedFontAction::RebootNow);
     assert!(r.reboot_required);
     assert_eq!(sb.pending_reboot(), vec![inst.clone()]);
     sb.reboot_now().unwrap();
@@ -337,7 +337,7 @@ fn delete_refuses_read_only_missing_and_busy_files() {
     assert_eq!(r.in_use, vec![busy.clone()]);
     assert!(ro.exists() && busy.exists());
     drop(held);
-    let r = sb.delete(&[busy.clone()], UsedFontAction::Ask);
+    let r = sb.delete(std::slice::from_ref(&busy), UsedFontAction::Ask);
     assert!(r.results[0].result.is_ok());
     assert!(!busy.exists());
 }

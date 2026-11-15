@@ -103,7 +103,7 @@ pub(crate) fn list(scope: Scope, kind: RegKind) -> io::Result<Vec<(String, RegDa
             continue;
         }
         let name = String::from_utf16_lossy(&name_buf[..name_len as usize]);
-        let words: Vec<u16> = data_buf[..data_len as usize].chunks_exact(2).map(|c| u16::from_le_bytes([c[0], c[1]])).collect();
+        let words: Vec<u16> = data_buf[..data_len as usize].as_chunks::<2>().0.iter().map(|c| u16::from_le_bytes(*c)).collect();
         let ty = REG_VALUE_TYPE(ty);
         let data = if ty == REG_MULTI_SZ {
             RegData::MultiSz(multi_sz(&words))

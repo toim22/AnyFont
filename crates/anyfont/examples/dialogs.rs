@@ -12,18 +12,7 @@
 //!
 //! Downloads from Get More go to `%TEMP%\AnyFont dialogs example\Fonts`, never to the real Content folder.
 
-#[path = "../src/about.rs"]
-mod about;
-#[path = "../src/bugreport.rs"]
-mod bugreport;
-#[path = "../src/getmore.rs"]
-mod getmore;
-#[path = "../src/help.rs"]
-mod help;
-#[path = "../src/matching.rs"]
-mod matching;
-#[path = "../src/updater.rs"]
-mod updater;
+use anyfont::{about, bugreport, getmore, help, matching, updater};
 
 use anyfont_core::{Catalog, FontDatabase};
 

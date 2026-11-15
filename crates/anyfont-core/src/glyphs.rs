@@ -1,16 +1,22 @@
 //! The Glyphs tab: glyph enumeration (encoded, alternates, unencoded) and the glyph filters.
 //!
-//! Order of the glyph list, as observed in the screenshots ("262 glyphs" for a font whose cmap maps fewer
-//! characters): every encoded glyph in code-point order, each immediately followed by the glyphs that GSUB
-//! single/alternate/ligature substitutions produce from it (alternates are not otherwise reachable), then
-//! every remaining glyph id that is not reachable at all (unencoded glyphs) in glyph-id order.
+//! Order of the glyph list, as observed in the screenshots of the original:
+//! - one cell per encoded **character**, in code-point order. Algerian maps 236 characters to 175 glyphs
+//!   (a-z share the A-Z glyphs, U+00A0 shares the space) and the capture shows "262 glyphs" with the
+//!   capitals repeated after the backquote: 236 characters + 26 unencoded glyphs;
+//! - each character is immediately followed by the glyphs that GSUB single/alternate/ligature substitutions
+//!   produce from its glyph, encoded or not (Bahnschrift: "0 ⁰ 0 0 1 ¹ 1 1 ½ ¼ 2 ² 2 2 …", "A ª B",
+//!   "986 glyphs" for a font of 961 glyphs). The same alternates are offered by the alternates pop-up
+//!   (`e4939644`, [`GlyphEntry::alternates`]);
+//! - then every glyph id that is not reachable at all (unencoded glyphs) in glyph-id order, without
+//!   `.notdef` and without empty glyphs (`.null`, `nonmarkingreturn`).
 //!
 //! Filters: the original groups glyphs by Unicode script (the "Common" group holds Currency,
 //! Mathematical Symbols, Marks, Numbers, Punctuation & Separators, Symbols) and by category (Uppercase,
 //! Lowercase, Other ...). Only (script, category) pairs present in the font are offered.
 
 use serde::{Deserialize, Serialize};
-use std::collections::{BTreeMap, BTreeSet, HashSet};
+use std::collections::{BTreeMap, BTreeSet};
 use ttf_parser::{GlyphId, LazyArray16};
 use unicode_general_category::{get_general_category, GeneralCategory};
 use unicode_script::{Script, UnicodeScript};
@@ -106,11 +112,14 @@ pub enum GlyphOrigin {
 pub struct GlyphEntry {
     /// Glyph id (`0` for Type 1 entries is valid too: they are indexed by name order).
     pub glyph_id: u16,
-    /// Code point (encoded glyphs; an alternate carries its base character for classification).
+    /// Code point (encoded glyphs; an alternate carries its base character for classification). The list
+    /// holds one entry per character, so a glyph mapped by two characters (A and a in an all-caps font, the
+    /// space and U+00A0) has two cells, as in the original.
     pub codepoint: Option<char>,
-    /// Further code points mapped to the same glyph (e.g. U+00A0 for the space glyph). The list holds one
-    /// entry per glyph, so "262 glyphs" is the number of glyphs.
-    pub other_codepoints: Vec<char>,
+    /// Encoded entries: the GSUB alternates of the glyph (depth-first, the same glyphs that follow the
+    /// entry in the list). The grid marks such cells and offers them in the alternates pop-up.
+    #[serde(default)]
+    pub alternates: Vec<u16>,
     /// Glyph name (`post`/CFF/Type 1), if any.
     pub name: Option<String>,
     /// Origin.
@@ -179,7 +188,7 @@ fn entry(gid: u16, cp: Option<char>, name: Option<&str>, origin: GlyphOrigin) ->
         (Some(c), _) => (script_group(c), GlyphCategory::of(c)),
         (None, _) => (UNENCODED_GROUP.to_string(), GlyphCategory::Other),
     };
-    GlyphEntry { glyph_id: gid, codepoint: cp, other_codepoints: Vec::new(), name: name.map(str::to_string), origin, script, category }
+    GlyphEntry { glyph_id: gid, codepoint: cp, alternates: Vec::new(), name: name.map(str::to_string), origin, script, category }
 }
 
 fn array_get(a: &LazyArray16<GlyphId>, i: u16) -> Option<GlyphId> {
@@ -279,46 +288,60 @@ pub fn enumerate_sfnt(data: &[u8], index: u32) -> Option<GlyphList> {
         }
     }
     let alternates = gsub_alternates(&face);
-    let encoded: HashSet<u16> = cmap.values().copied().collect();
-    let mut seen = vec![false; n as usize];
-    let mut entry_of: std::collections::HashMap<u16, usize> = std::collections::HashMap::new();
+    let mut reached = vec![false; n as usize];
+    reached[0] = true; // .notdef is never listed
     let mut list = GlyphList::default();
     let name_of = |g: u16| face.glyph_name(GlyphId(g)).map(str::to_string);
     for (&cp, &g) in &cmap {
         let ch = char::from_u32(cp);
-        if seen[g as usize] {
-            // a further character for an already listed glyph
-            if let (Some(&i), Some(c)) = (entry_of.get(&g), ch) {
-                list.glyphs[i].other_codepoints.push(c);
-            }
-            continue;
-        }
-        seen[g as usize] = true;
-        entry_of.insert(g, list.glyphs.len());
-        list.glyphs.push(entry(g, ch, name_of(g).as_deref(), GlyphOrigin::Encoded));
-        // depth-first: alternates of alternates follow their base
+        reached[g as usize] = true;
+        // depth-first: alternates of alternates follow their base; each glyph once per character
+        let mut chain: Vec<u16> = Vec::new();
         let mut stack: Vec<u16> = alternates.get(&g).cloned().unwrap_or_default();
         stack.reverse();
         while let Some(a) = stack.pop() {
-            // encoded glyphs keep their own place in code-point order
-            if seen[a as usize] || encoded.contains(&a) {
+            if a == g || chain.contains(&a) {
                 continue;
             }
-            seen[a as usize] = true;
-            list.glyphs.push(entry(a, ch, name_of(a).as_deref(), GlyphOrigin::Alternate));
+            chain.push(a);
             if let Some(more) = alternates.get(&a) {
                 for &m in more.iter().rev() {
                     stack.push(m);
                 }
             }
         }
+        let mut e = entry(g, ch, name_of(g).as_deref(), GlyphOrigin::Encoded);
+        e.alternates = chain.clone();
+        list.glyphs.push(e);
+        for a in chain {
+            reached[a as usize] = true;
+            list.glyphs.push(entry(a, ch, name_of(a).as_deref(), GlyphOrigin::Alternate));
+        }
     }
-    for g in 0..n {
-        if !seen[g as usize] {
+    for g in 1..n {
+        if !reached[g as usize] && !is_empty_glyph(&face, g) {
             list.glyphs.push(entry(g, None, name_of(g).as_deref(), GlyphOrigin::Unencoded));
         }
     }
     Some(list)
+}
+
+/// A glyph with nothing to draw (`.null`, `nonmarkingreturn`, unencoded spaces): no outline, no bitmap,
+/// no SVG and no colour layers.
+fn is_empty_glyph(face: &ttf_parser::Face, g: u16) -> bool {
+    struct Sink;
+    impl ttf_parser::OutlineBuilder for Sink {
+        fn move_to(&mut self, _: f32, _: f32) {}
+        fn line_to(&mut self, _: f32, _: f32) {}
+        fn quad_to(&mut self, _: f32, _: f32, _: f32, _: f32) {}
+        fn curve_to(&mut self, _: f32, _: f32, _: f32, _: f32, _: f32, _: f32) {}
+        fn close(&mut self) {}
+    }
+    let gid = GlyphId(g);
+    face.outline_glyph(gid, &mut Sink).is_none()
+        && face.glyph_raster_image(gid, u16::MAX).is_none()
+        && face.glyph_svg_image(gid).is_none()
+        && !face.is_color_glyph(gid)
 }
 
 /// Glyph list of a Type 1 font from its glyph names (Adobe Glyph List subset for the code points).
@@ -327,6 +350,9 @@ pub fn enumerate_type1(glyph_names: &[String]) -> GlyphList {
     let mut unencoded: Vec<(u16, &str)> = Vec::new();
     for (i, n) in glyph_names.iter().enumerate() {
         let gid = i.min(u16::MAX as usize) as u16;
+        if n == ".notdef" {
+            continue;
+        }
         match crate::type1::glyph_name_to_unicode(n) {
             Some(c) => encoded.push((c, gid, n)),
             None => unencoded.push((gid, n)),
@@ -381,7 +407,7 @@ mod tests {
         assert_eq!(caps[0], "U+0024");
         assert_eq!(caps[1], "U+0041");
         assert_eq!(l.glyphs.last().unwrap().origin, GlyphOrigin::Unencoded);
-        assert_eq!(l.count_text(), "6 glyphs");
+        assert_eq!(l.count_text(), "5 glyphs", ".notdef is not listed");
         let f = l.available_filters();
         assert_eq!(f[0].0, "Common");
         assert_eq!(f.last().unwrap().0, UNENCODED_GROUP);

@@ -12,9 +12,15 @@ use egui::{pos2, vec2, Align2, Id, Key, Modifiers, Rect, Sense, Stroke, Ui, Widg
 
 const TITLE_H: f32 = 34.0;
 const HEADER_H: f32 = 28.0;
-const ROW_H: f32 = 25.0;
+/// Library rows (the captured selection highlight of "My fonts" is 24 px tall).
+const ROW_H: f32 = 24.0;
+/// Caption centre of a library row, from its top (captured: cap height 4 px above the header's).
+const ROW_TEXT_Y: f32 = 10.5;
 const FILTER_HEADER_H: f32 = 23.0;
 const FILTER_ROW_H: f32 = 26.0;
+/// Room above and below the check boxes of an expanded filter group (captured: "Installed" 22 px below
+/// "Font Status", "Embedding Rights" 30 px below "Duplicates").
+const FILTER_GROUP_PAD: (f32, f32) = (1.0, 2.0);
 
 /// Section keys of `AppSettings::collapsed_sections`.
 const FOLDERS_KEY: &str = "Folders";
@@ -57,10 +63,8 @@ fn lines(app: &AnyFontApp) -> Vec<Line> {
     for e in &entries {
         match e.library {
             LibraryRef::MyFonts if !folders_collapsed => v.push(Line::Lib(e.clone())),
-            LibraryRef::Folder(_) if !folders_collapsed => {
-                if !e.path.as_deref().map(|p| app.is_content_folder(p)).unwrap_or(false) {
-                    v.push(Line::Lib(e.clone()));
-                }
+            LibraryRef::Folder(_) if !folders_collapsed && !e.path.as_deref().map(|p| app.is_content_folder(p)).unwrap_or(false) => {
+                v.push(Line::Lib(e.clone()));
             }
             _ => {}
         }
@@ -87,7 +91,7 @@ fn entry_caption(e: &LibraryEntry) -> (String, bool) {
 fn draw_libraries(app: &mut AnyFontApp, ui: &mut Ui, rect: Rect) {
     let ctx = ui.ctx().clone();
     let p = ui.painter_at(rect);
-    widgets::ui_text(&p, pos2(rect.left() + 9.0, rect.top() + 17.0), Align2::LEFT_CENTER, "Libraries", theme::bold(theme::UI_SIZE), t().text_strong);
+    widgets::ui_text(&p, pos2(rect.left() + 8.0, rect.top() + 17.0), Align2::LEFT_CENTER, "Libraries", theme::bold(theme::UI_SIZE), t().text_strong);
     let area = Rect::from_min_max(pos2(rect.left(), rect.top() + TITLE_H), pos2(rect.right() - 4.0, rect.bottom()));
     let lines = lines(app);
     let content_h: f32 = lines.iter().map(|l| if matches!(l, Line::Header(_)) { HEADER_H } else { ROW_H }).sum();
@@ -140,9 +144,9 @@ fn draw_libraries(app: &mut AnyFontApp, ui: &mut Ui, rect: Rect) {
                 if renaming {
                     rename_editor(app, ui, r);
                 } else if translate {
-                    widgets::ui_text(&clip, pos2(r.left() + 4.0, r.center().y), Align2::LEFT_CENTER, &cap, theme::body(theme::UI_SIZE), t().text);
+                    widgets::ui_text(&clip, pos2(r.left() + 4.0, r.top() + ROW_TEXT_Y), Align2::LEFT_CENTER, &cap, theme::body(theme::UI_SIZE), t().text);
                 } else {
-                    widgets::data_text(ui, &clip, pos2(r.left() + 4.0, r.center().y), Align2::LEFT_CENTER, &cap, theme::body(theme::UI_SIZE), t().text);
+                    widgets::data_text(ui, &clip, pos2(r.left() + 4.0, r.top() + ROW_TEXT_Y), Align2::LEFT_CENTER, &cap, theme::body(theme::UI_SIZE), t().text);
                 }
                 let a11y_name = if translate { crate::tr(&cap) } else { cap.clone() };
                 resp.widget_info(|| WidgetInfo::selected(Role::ListBoxOption, true, selected, a11y_name.clone()));
@@ -234,11 +238,9 @@ fn rename_editor(app: &mut AnyFontApp, ui: &mut Ui, r: Rect) {
     let enter = out.response.lost_focus() && ctx.input(|i| i.key_pressed(Key::Enter));
     if esc {
         app.cancel_rename();
-    } else if enter || (out.response.lost_focus() && !app.menu.is_open()) {
-        if !app.commit_rename() {
-            // refused (empty or duplicate name): the editor stays open
-            out.response.request_focus();
-        }
+    } else if (enter || (out.response.lost_focus() && !app.menu.is_open())) && !app.commit_rename() {
+        // refused (empty or duplicate name): the editor stays open
+        out.response.request_focus();
     }
 }
 
@@ -286,7 +288,7 @@ fn filter_collapsed(app: &AnyFontApp, g: FilterGroup) -> bool {
 
 fn draw_filters(app: &mut AnyFontApp, ui: &mut Ui, rect: Rect) {
     let p = ui.painter_at(rect);
-    widgets::ui_text(&p, pos2(rect.left() + 9.0, rect.top() + 15.0), Align2::LEFT_CENTER, "Filters", theme::bold(theme::UI_SIZE), t().text_strong);
+    widgets::ui_text(&p, pos2(rect.left() + 8.0, rect.top() + 14.0), Align2::LEFT_CENTER, "Filters", theme::bold(theme::UI_SIZE), t().text_strong);
     let active = !app.filters.is_empty();
     let fr = Rect::from_center_size(pos2(rect.left() + 226.0, rect.top() + 15.0), vec2(20.0, 20.0));
     let fr = if rect.width() < 240.0 { Rect::from_center_size(pos2(rect.right() - 14.0, rect.top() + 15.0), vec2(20.0, 20.0)) } else { fr };
@@ -301,13 +303,13 @@ fn draw_filters(app: &mut AnyFontApp, ui: &mut Ui, rect: Rect) {
         app.requery();
         app.select_first();
     }
-    let area = Rect::from_min_max(pos2(rect.left(), rect.top() + 32.0), pos2(rect.right() - 4.0, rect.bottom()));
+    let area = Rect::from_min_max(pos2(rect.left(), rect.top() + 33.0), pos2(rect.right() - 4.0, rect.bottom()));
     let groups = app.catalog.available_filters(&app.library);
     let mut content_h = 0.0;
     for g in &groups {
         content_h += FILTER_HEADER_H;
         if !filter_collapsed(app, g.group) {
-            content_h += g.options.len() as f32 * FILTER_ROW_H;
+            content_h += g.options.len() as f32 * FILTER_ROW_H + FILTER_GROUP_PAD.0 + FILTER_GROUP_PAD.1;
         }
     }
     let track = Rect::from_min_max(pos2(rect.right() - 10.0, area.top()), pos2(rect.right() - 3.0, area.bottom()));
@@ -333,6 +335,7 @@ fn draw_filters(app: &mut AnyFontApp, ui: &mut Ui, rect: Rect) {
         if collapsed {
             continue;
         }
+        y += FILTER_GROUP_PAD.0;
         for o in &g.options {
             let r = Rect::from_min_size(pos2(rect.left(), y), vec2(row_w, FILTER_ROW_H));
             y += FILTER_ROW_H;
@@ -344,6 +347,7 @@ fn draw_filters(app: &mut AnyFontApp, ui: &mut Ui, rect: Rect) {
                 toggle_opt = Some(*o);
             }
         }
+        y += FILTER_GROUP_PAD.1;
     }
     if let Some(g) = toggle_group {
         let key = format!("filter:{}", g.caption());

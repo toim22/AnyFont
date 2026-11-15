@@ -8,7 +8,7 @@ use crate::preview::{Content, Request};
 use crate::settings::{GLYPH_CELL_MAX, GLYPH_CELL_MIN};
 use crate::theme::{self, t};
 use crate::widgets;
-use anyfont_core::glyphs::{GlyphCategory, GlyphFilter, GlyphList};
+use anyfont_core::glyphs::{GlyphCategory, GlyphEntry, GlyphFilter, GlyphList, GlyphOrigin};
 use anyfont_core::model::{FontId, FontRecord};
 use egui::{pos2, vec2, Align2, Id, Rect, Sense, Stroke, Ui, WidgetInfo, Role};
 use std::collections::{BTreeSet, HashMap};
@@ -22,6 +22,10 @@ pub struct PropsState {
     loading: Option<Receiver<(FontId, Option<GlyphList>)>>,
     pub filters: BTreeSet<GlyphFilter>,
     selected_glyph: Option<usize>,
+    /// The glyph alternates pop-up (`e4939644`): index (in the shown list) of the cell it belongs to.
+    alt_popup: Option<usize>,
+    /// Scroll the grid so that this shown index is visible (set by a pick in the alternates pop-up).
+    scroll_to_glyph: Option<usize>,
     glyph_scroll: f32,
     filter_scroll: f32,
     filter_h: f32,
@@ -35,6 +39,7 @@ pub struct PropsState {
 impl PropsState {
     pub fn on_selection_changed(&mut self) {
         self.selected_glyph = None;
+        self.alt_popup = None;
     }
 
     /// Takes the glyph list computed on the worker thread.
@@ -44,6 +49,7 @@ impl PropsState {
                 if Some(id) == self.glyph_font {
                     self.glyphs = list;
                     self.glyph_scroll = 0.0;
+                    self.alt_popup = None;
                 }
                 self.loading = None;
                 ctx.request_repaint();
@@ -256,6 +262,14 @@ fn glyphs_tab(app: &mut AnyFontApp, ui: &mut Ui, body: Rect, strip: Rect) {
             } else {
                 let cols = ((grid.width() / cell).floor() as usize).max(1);
                 let rows = shown.len().div_ceil(cols);
+                if let Some(i) = app.props.scroll_to_glyph.take() {
+                    let top = (i / cols) as f32 * cell;
+                    if top < app.props.glyph_scroll {
+                        app.props.glyph_scroll = top;
+                    } else if top + cell > app.props.glyph_scroll + grid.height() {
+                        app.props.glyph_scroll = top + cell - grid.height();
+                    }
+                }
                 let mut gs = app.props.glyph_scroll;
                 widgets::vscroll(ui, Id::unique("glyph-grid-scroll"), grid, gtrack, rows as f32 * cell, &mut gs);
                 app.props.glyph_scroll = gs;
@@ -264,7 +278,16 @@ fn glyphs_tab(app: &mut AnyFontApp, ui: &mut Ui, body: Rect, strip: Rect) {
                 let first_row = (app.props.glyph_scroll / cell).floor() as usize;
                 let path = f.path().map(|p| p.to_path_buf()).unwrap_or_default();
                 let variations = crate::fontlist::variations(app, f);
+                let glyph_req = |gid: u16| Request {
+                    path: path.clone(),
+                    face_index: f.face_index,
+                    variations: variations.clone(),
+                    content: Content::Glyph(gid),
+                    px: (cell * 0.72 * ppp).round(),
+                    max_width: (cell * ppp) as u32,
+                };
                 let mut clicked: Option<(usize, bool)> = None;
+                let mut open_alternates: Option<(usize, Rect)> = None;
                 for row in first_row..rows {
                     let y = grid.top() + row as f32 * cell - app.props.glyph_scroll;
                     if y > grid.bottom() {
@@ -275,34 +298,38 @@ fn glyphs_tab(app: &mut AnyFontApp, ui: &mut Ui, body: Rect, strip: Rect) {
                         let Some(g) = shown.get(i) else { break };
                         let cr = Rect::from_min_size(pos2(grid.left() + col as f32 * cell, y), vec2(cell, cell));
                         let resp = ui.interact(cr.intersect(grid), Id::unique(("glyph", i)), Sense::click());
+                        // glyphs with alternates: a small triangle in the bottom-right corner opens the pop-up
+                        let tri = (g.origin == GlyphOrigin::Encoded && !g.alternates.is_empty()).then(|| {
+                            let tr = Rect::from_min_max(cr.max - vec2(11.0, 11.0), cr.max - vec2(1.0, 1.0));
+                            let tresp = ui.interact(tr.intersect(grid), Id::unique(("glyph-alternates", i)), Sense::click());
+                            (tr, tresp)
+                        });
+                        let hovered = resp.hovered() || tri.as_ref().is_some_and(|(_, t)| t.hovered());
                         let selected = app.props.selected_glyph == Some(i);
-                        if resp.hovered() {
+                        if hovered {
                             painter.rect_filled(cr, 0.0, t().row_hot);
                         }
                         if selected {
                             painter.hline(cr.x_range(), cr.top() + 0.5, Stroke::new(1.0, t().accent));
                             painter.hline(cr.x_range(), cr.bottom() - 0.5, Stroke::new(1.0, t().accent));
                         }
-                        if g.codepoint == Some(' ') {
-                            // the space: a green ⎵ marker
-                            let c = cr.center();
-                            let w2 = cell * 0.22;
-                            let st = Stroke::new(1.0, t().glyph_baseline);
-                            painter.line_segment([pos2(c.x - w2, c.y), pos2(c.x - w2, c.y + 4.0)], st);
-                            painter.line_segment([pos2(c.x - w2, c.y + 4.0), pos2(c.x + w2, c.y + 4.0)], st);
-                            painter.line_segment([pos2(c.x + w2, c.y + 4.0), pos2(c.x + w2, c.y)], st);
-                        } else {
-                            let req = Request {
-                                path: path.clone(),
-                                face_index: f.face_index,
-                                variations: variations.clone(),
-                                content: Content::Glyph(g.glyph_id),
-                                px: (cell * 0.72 * ppp).round(),
-                                max_width: (cell * ppp) as u32,
-                            };
-                            if let Some(Ok(pv)) = app.previews.get(&req) {
-                                let size = vec2(pv.size[0] as f32, pv.size[1] as f32) / ppp;
-                                painter.image(pv.texture.id(), Rect::from_center_size(cr.center(), size), Rect::from_min_max(pos2(0.0, 0.0), pos2(1.0, 1.0)), t().text);
+                        if g.origin == GlyphOrigin::Encoded && g.codepoint.is_some_and(char::is_whitespace) {
+                            // the space (and U+00A0 and the other blanks): a green marker
+                            space_marker(&painter, cr, cell);
+                        } else if let Some(Ok(pv)) = app.previews.get(&glyph_req(g.glyph_id)) {
+                            let size = vec2(pv.size[0] as f32, pv.size[1] as f32) / ppp;
+                            painter.image(pv.texture.id(), Rect::from_center_size(cr.center(), size), Rect::from_min_max(pos2(0.0, 0.0), pos2(1.0, 1.0)), t().text);
+                        }
+                        if let Some((tr, tresp)) = &tri {
+                            let open = app.props.alt_popup == Some(i);
+                            if hovered || selected || open {
+                                let color = if tresp.hovered() || open { t().accent } else { t().text_secondary };
+                                let pts = vec![pos2(tr.right(), tr.top() + 3.0), pos2(tr.right(), tr.bottom()), pos2(tr.left() + 3.0, tr.bottom())];
+                                painter.add(egui::Shape::convex_polygon(pts, color, Stroke::NONE));
+                            }
+                            tresp.widget_info(|| WidgetInfo::labeled(Role::Button, true, crate::tr("Show glyph alternates.")));
+                            if widgets::tooltip(tresp.clone(), "Show glyph alternates.", None).clicked() {
+                                open_alternates = Some((i, cr));
                             }
                         }
                         let name = g.caption();
@@ -320,8 +347,27 @@ fn glyphs_tab(app: &mut AnyFontApp, ui: &mut Ui, body: Rect, strip: Rect) {
                 }
                 if let Some((i, copy)) = clicked {
                     app.props.selected_glyph = Some(i);
+                    app.props.alt_popup = None;
                     if copy {
                         copy_glyph(&ctx, &shown[i]);
+                    }
+                }
+                if let Some((i, cr)) = open_alternates {
+                    app.props.selected_glyph = Some(i);
+                    app.props.alt_popup = if app.props.alt_popup == Some(i) { None } else { Some(i) };
+                    ctx.data_mut(|d| d.insert_temp(Id::unique("glyph-alternates-anchor"), cr));
+                }
+                if let Some(base) = app.props.alt_popup {
+                    let anchor = ctx.data(|d| d.get_temp::<Rect>(Id::unique("glyph-alternates-anchor")));
+                    match (shown.get(base), anchor) {
+                        (Some(g), Some(anchor)) if !g.alternates.is_empty() => {
+                            if let Some(pick) = alternates_popup(app, &ctx, &shown, base, anchor, cell, &glyph_req) {
+                                app.props.selected_glyph = Some(pick);
+                                app.props.scroll_to_glyph = Some(pick);
+                                app.props.alt_popup = None;
+                            }
+                        }
+                        _ => app.props.alt_popup = None,
                     }
                 }
                 if let Some(i) = app.props.selected_glyph {
@@ -346,6 +392,93 @@ fn glyphs_tab(app: &mut AnyFontApp, ui: &mut Ui, body: Rect, strip: Rect) {
     }
 }
 
+/// The green blank marker of the space cell (and of U+00A0 and the other blanks).
+fn space_marker(painter: &egui::Painter, cr: Rect, cell: f32) {
+    let c = cr.center();
+    let w2 = cell * 0.22;
+    let st = Stroke::new(1.0, t().glyph_baseline);
+    painter.line_segment([pos2(c.x - w2, c.y), pos2(c.x - w2, c.y + 4.0)], st);
+    painter.line_segment([pos2(c.x - w2, c.y + 4.0), pos2(c.x + w2, c.y + 4.0)], st);
+    painter.line_segment([pos2(c.x + w2, c.y + 4.0), pos2(c.x + w2, c.y)], st);
+}
+
+/// The glyph alternates pop-up (`e4939644`: a pop-up list box with a drop shadow, `AltGlyphsList` at the
+/// grid's cell size). It shows the glyph and its alternates in a row under the cell; a click picks one
+/// (selects it in the grid), Esc or a click outside closes it. Returns the shown index of the pick.
+fn alternates_popup(
+    app: &mut AnyFontApp,
+    ctx: &egui::Context,
+    shown: &[GlyphEntry],
+    base: usize,
+    anchor: Rect,
+    cell: f32,
+    glyph_req: &dyn Fn(u16) -> Request,
+) -> Option<usize> {
+    let g = &shown[base];
+    // the cells: the glyph itself, then its alternates, as they follow it in the grid
+    let mut items: Vec<(usize, u16)> = vec![(base, g.glyph_id)];
+    let mut k = base + 1;
+    for &a in &g.alternates {
+        while k < shown.len() && shown[k].origin == GlyphOrigin::Alternate && shown[k].glyph_id != a {
+            k += 1;
+        }
+        if k < shown.len() && shown[k].glyph_id == a {
+            items.push((k, a));
+            k += 1;
+        }
+    }
+    let screen = ctx.content_rect();
+    let per_row = (((screen.width() - 16.0) / cell).floor() as usize).clamp(1, 8);
+    let cols = items.len().min(per_row);
+    let rows = items.len().div_ceil(cols);
+    let size = vec2(cols as f32 * cell + 4.0, rows as f32 * cell + 4.0);
+    let mut pos = pos2(anchor.left(), anchor.bottom() + 1.0);
+    pos.x = pos.x.min(screen.right() - size.x - 2.0).max(screen.left() + 2.0);
+    if pos.y + size.y > screen.bottom() - 2.0 {
+        pos.y = anchor.top() - size.y - 1.0;
+    }
+    let ppp = ctx.pixels_per_point();
+    let mut pick = None;
+    let popup = Rect::from_min_size(pos, size);
+    egui::Area::new(Id::unique("glyph-alternates-popup")).order(egui::Order::Foreground).fixed_pos(pos).show(ctx, |ui| {
+        let (full, _) = ui.allocate_exact_size(size, Sense::hover());
+        let p = ui.painter();
+        p.add(ui.visuals().popup_shadow.as_shape(full, 0.0));
+        p.rect_filled(full, 0.0, t().menu_bg);
+        p.rect_stroke(full, 0.0, Stroke::new(1.0, t().menu_border), egui::StrokeKind::Inside);
+        for (n, (idx, gid)) in items.iter().enumerate() {
+            let cr = Rect::from_min_size(pos2(full.left() + 2.0 + (n % cols) as f32 * cell, full.top() + 2.0 + (n / cols) as f32 * cell), vec2(cell, cell));
+            let resp = ui.interact(cr, Id::unique(("glyph-alternate", n)), Sense::click());
+            let selected = app.props.selected_glyph == Some(*idx);
+            if resp.hovered() {
+                p.rect_filled(cr, 0.0, t().menu_hot);
+            }
+            if selected {
+                p.hline(cr.x_range(), cr.top() + 0.5, Stroke::new(1.0, t().accent));
+                p.hline(cr.x_range(), cr.bottom() - 0.5, Stroke::new(1.0, t().accent));
+            }
+            if let Some(Ok(pv)) = app.previews.get(&glyph_req(*gid)) {
+                let s = vec2(pv.size[0] as f32, pv.size[1] as f32) / ppp;
+                p.image(pv.texture.id(), Rect::from_center_size(cr.center(), s), Rect::from_min_max(pos2(0.0, 0.0), pos2(1.0, 1.0)), t().text);
+            }
+            let name = shown[*idx].caption();
+            resp.widget_info(|| WidgetInfo::selected(Role::ListBoxOption, true, selected, name.clone()));
+            if resp.clicked() {
+                pick = Some(*idx);
+            }
+        }
+    });
+    if pick.is_none() {
+        let outside_press = ctx.input(|i| {
+            i.pointer.any_pressed() && i.pointer.interact_pos().is_some_and(|p| !popup.contains(p) && !anchor.contains(p))
+        });
+        if outside_press || ctx.input(|i| i.key_pressed(egui::Key::Escape)) {
+            app.props.alt_popup = None;
+        }
+    }
+    pick
+}
+
 fn copy_glyph(ctx: &egui::Context, g: &anyfont_core::glyphs::GlyphEntry) {
     if let Some(c) = g.codepoint {
         ctx.copy_text(c.to_string());
@@ -357,17 +490,7 @@ const TRANSLATED_VALUES: [&str; 5] = ["Italic", "Font technology", "Weight", "Wi
 
 fn info_tab(app: &mut AnyFontApp, ui: &mut Ui, body: Rect) {
     let Some(f) = panel_font(app).and_then(|id| app.catalog.font(id)).cloned() else { return };
-    let mut rows = anyfont_core::catalog::font_info(&f, app.catalog.collections());
-    // a record read back from the database may not carry the size: take it from the file
-    if f.file_size == 0 {
-        if let Some(len) = f.path().and_then(|p| std::fs::metadata(p).ok()).map(|m| m.len()) {
-            for (k, v) in rows.iter_mut() {
-                if *k == "File Size" {
-                    *v = anyfont_core::format::file_size(len);
-                }
-            }
-        }
-    }
+    let rows = anyfont_core::catalog::font_info(&f, app.catalog.collections());
     let label_right = body.left() + 108.0;
     let value_left = body.left() + 118.0;
     let value_w = (body.right() - 12.0 - value_left).max(40.0);

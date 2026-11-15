@@ -1,0 +1,31 @@
+{
+  "i_am_a_disposable_machine": true,
+  "results": "set by run-real.ps1",
+  "fixtures": "set by run-real.ps1",
+  "work": "set by run-real.ps1",
+  "holders_script": "set by run-real.ps1",
+  "steps": [
+    { "op": "environment" },
+    { "op": "list_installed", "min": 20, "protected": ["arial.ttf", "segoeui.ttf"] },
+
+    { "op": "install", "font": "Tuffy.ttf", "scope": "CurrentUser" },
+    { "op": "check_installed", "font": "Tuffy.ttf", "scope": "CurrentUser", "family": "Tuffy" },
+    { "op": "uninstall", "font": "Tuffy.ttf", "scope": "CurrentUser" },
+    { "op": "check_not_installed", "font": "Tuffy.ttf", "scope": "CurrentUser" },
+
+    { "op": "install", "font": "Hack-Regular.ttf", "scope": "AllUsers" },
+    { "op": "check_installed", "font": "Hack-Regular.ttf", "scope": "AllUsers", "family": "Hack" },
+    { "op": "uninstall", "font": "Hack-Regular.ttf", "scope": "AllUsers" },
+    { "op": "check_not_installed", "font": "Hack-Regular.ttf", "scope": "AllUsers" },
+
+    { "op": "helper_install", "font": "Tuffy.ttf", "scope": "AllUsers" },
+    { "op": "check_installed", "font": "Tuffy.ttf", "scope": "AllUsers", "family": "Tuffy" },
+    { "op": "helper_uninstall", "font": "Tuffy.ttf", "scope": "AllUsers" },
+    { "op": "check_not_installed", "font": "Tuffy.ttf", "scope": "AllUsers" },
+
+    { "op": "delete_copy", "font": "Tuffy.ttf" },
+
+    { "op": "protected_refused", "font": "arial.ttf" },
+    { "op": "protected_refused", "font": "segoeui.ttf" }
+  ]
+}

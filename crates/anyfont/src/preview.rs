@@ -418,7 +418,7 @@ fn fill(pb: tiny_skia::PathBuilder, width: u32, height: u32, baseline: f32) -> O
         paint.anti_alias = true;
         pixmap.fill_path(&path, &paint, tiny_skia::FillRule::Winding, tiny_skia::Transform::identity(), None);
     }
-    let alpha: Vec<u8> = pixmap.data().chunks_exact(4).map(|p| p[3]).collect();
+    let alpha: Vec<u8> = pixmap.data().as_chunks::<4>().0.iter().map(|p| p[3]).collect();
     Some(Rendered { width, height, alpha, baseline })
 }
 

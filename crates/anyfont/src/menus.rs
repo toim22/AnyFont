@@ -172,7 +172,7 @@ pub fn menu_bar(ui: &mut egui::Ui, rect: Rect, state: &mut MenuState, frame: u64
         if hot {
             ui.painter().rect_filled(*b, 3.0, t().menu_bar_hot);
         }
-        widgets::caption_text(ui, ui.painter(), b.center(), Align2::CENTER_CENTER, cap, theme::body(theme::UI_SIZE), t().text, underline);
+        widgets::caption_text(ui, ui.painter(), b.center() - vec2(0.0, 1.0), Align2::CENTER_CENTER, cap, theme::body(theme::UI_SIZE), t().text, underline);
         widgets::a11y(&resp, Role::Button, true, cap);
         if resp.clicked() {
             if open_bar == Some(i) {

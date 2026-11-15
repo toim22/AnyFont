@@ -168,13 +168,10 @@ impl CommandLine {
 /// `None` = not a switch; `Some(None)` = empty switch; `Some(Some(sw))` = switch.
 fn parse_switch(arg: &str) -> Option<Option<Switch>> {
     let arg = arg.trim();
-    let rest = if let Some(r) = arg.strip_prefix('/') {
-        r
-    } else if let Some(r) = arg.strip_prefix('-') {
+    let rest = match arg.strip_prefix('/') {
+        Some(r) => r,
         // tolerate GNU-style "--name"
-        r.strip_prefix('-').unwrap_or(r)
-    } else {
-        return None;
+        None => arg.strip_prefix('-').map(|r| r.strip_prefix('-').unwrap_or(r))?,
     };
     let (name, value) = match rest.find(':') {
         Some(i) => (&rest[..i], Some(rest[i + 1..].trim().trim_matches('"').to_string())),

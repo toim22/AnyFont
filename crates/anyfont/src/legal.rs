@@ -39,6 +39,9 @@ pub fn print() -> bool {
     if std::fs::write(&path, text().replace('\n', "\r\n")).is_err() {
         return false;
     }
+    if crate::testing::intercept(crate::testing::External::Print(path.clone())) {
+        return true;
+    }
     #[cfg(windows)]
     {
         use windows::core::HSTRING;

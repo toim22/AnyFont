@@ -32,7 +32,7 @@ with the **?** button in the title bar.
   - [Font info tab](#font-info-tab)
   - [Variable font tab](#variable-font-tab)
 - [Installing, uninstalling and deleting fonts](#installing-uninstalling-and-deleting-fonts)
-  - [Installing fonts for you or for all users](#installing-fonts-for-you-or-for-all-users)
+  - [Installing fonts for all users or only for you](#installing-fonts-for-all-users-or-only-for-you)
   - [Uninstalling fonts](#uninstalling-fonts)
   - [Deleting font files](#deleting-font-files)
   - [Fonts that are in use: the restart prompt](#fonts-that-are-in-use-the-restart-prompt)
@@ -157,7 +157,7 @@ on every style of that family.
 
 | Command | When you can use it | What it does |
 |---|---|---|
-| **Install** | The selection contains a font that is not installed | Installs the selected fonts so that other programs can use them. See [Installing fonts](#installing-fonts-for-you-or-for-all-users). |
+| **Install** | The selection contains a font that is not installed | Installs the selected fonts so that other programs can use them. See [Installing fonts](#installing-fonts-for-all-users-or-only-for-you). |
 | **Uninstall** | The selection contains an installed font that is not a protected system font | Uninstalls the selected fonts. The files stay on your disk. See [Uninstalling fonts](#uninstalling-fonts). |
 | **Download** | The selection contains an online catalog font that is not downloaded yet | Downloads the font to the AnyFont Content folder. In this version, catalog fonts reach your font list only after you download them in [Get More](#get-more-the-free-online-font-catalog), so this command is usually greyed out: use Get More to download fonts. |
 | **Delete** | Same as Uninstall | Moves the selected font files to the Recycle Bin, after asking you to confirm. Installed fonts are uninstalled first. See [Deleting font files](#deleting-font-files). |
@@ -534,29 +534,31 @@ the font that is being processed; the button reads **Close** when the work is do
 When an operation finishes, Windows and your other programs are told that the fonts changed. Most programs
 notice new fonts right away; some only see them after you restart that program.
 
-### Installing fonts for you or for all users
+### Installing fonts for all users or only for you
 
 Select one or more fonts that are not installed (for example, in an added folder or fonts downloaded with Get
 More) and click **Install** on the toolbar, in the Font menu or in the right-click menu. To install every font of
 a folder or collection, right-click it in Libraries and choose **Install**.
 
-A font can be installed in two ways:
+AnyFont installs fonts **for all users**, so everyone who signs in to this PC can use them. This changes the
+Windows Fonts folder, so Windows shows its User Account Control prompt and asks for administrator permission, once
+for the whole operation, not once per font. (When AnyFont already runs as administrator there is no prompt.)
 
-| | For me | For all users |
+If you choose **No** in the Windows prompt, nothing is installed and AnyFont offers to install the fonts **only for
+you** instead. Click **Install for me** to do that, or **Cancel** to leave the fonts as they were.
+
+| | For all users (Install) | Only for you (Install for me) |
 |---|---|---|
-| Who can use the font | Only you, in your Windows account | Everyone who signs in to this PC |
-| Where the file goes | Your personal fonts folder | The Windows Fonts folder |
-| Administrator permission | Not needed | Needed: Windows shows its User Account Control prompt |
-
-When an operation needs administrator permission, Windows asks you once for the whole operation, not once per
-font. If you choose **No** in the Windows prompt, those fonts are left as they were and the rest of the operation
-still runs.
+| Who can use the font | Everyone who signs in to this PC | Only you, in your Windows account |
+| Where the file goes | The Windows Fonts folder | Your personal fonts folder |
+| Administrator permission | Needed: Windows shows its User Account Control prompt | Not needed |
 
 Notes:
 
 - If the same font is already installed, AnyFont doesn't install it twice. If an older file with the same font name
   is installed, the new one replaces it (protected system fonts are never replaced).
-- Type 1 fonts (`.pfb` with `.pfm`) can only be installed for all users, and both files must be in the same folder.
+- Type 1 fonts (`.pfb` with `.pfm`) can only be installed for all users, and both files must be in the same folder;
+  **Install for me** can't install them.
 - Installed fonts show a green bar in the list and match the **Installed** filter.
 
 ### Uninstalling fonts
@@ -1014,7 +1016,8 @@ them again if needed.
 
 **I installed a font, but it doesn't show up in another program.**
 Most programs only read the list of fonts when they start. Close the program completely and start it again. If you
-installed the font **for me** and another Windows user can't see it, install it **for all users** instead.
+installed the font **only for you** (you chose **Install for me** after cancelling the Windows prompt) and another
+Windows user can't see it, uninstall it and install it again, this time answering **Yes** in the Windows prompt.
 
 **I can't uninstall or delete a font: AnyFont says it is in use.**
 A program has the font open. Close the programs that might use it (word processors, design and layout programs,
@@ -1028,7 +1031,9 @@ can't be uninstalled either.
 
 **Windows asked me for administrator permission.**
 Installing a font for all users, or uninstalling or deleting a font in the Windows Fonts folder, changes Windows for
-everyone, so Windows asks first. Choose **No** to leave those fonts as they were.
+everyone, so Windows asks first. If you choose **No** when installing, AnyFont offers **Install for me**, which
+installs the fonts only for you and needs no permission. For Uninstall and Delete, **No** leaves those fonts as they
+were.
 
 **A font file doesn't appear in the list.**
 It may be damaged or in a format AnyFont doesn't support. Check **Corrupt** under **Filters ▸ Font Status** and look

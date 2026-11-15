@@ -1,0 +1,58 @@
+# Real-system end-to-end test on a disposable GitHub-hosted Windows runner: builds the setup, installs it silently,
+# starts AnyFont on the real font system, runs `anyfont.exe /SelfTest:` (per-user and all-users install of fixture
+# fonts, registry and Fonts folder checks, uninstall directly and through the elevated helper, Recycle Bin delete,
+# protected-font refusal), runs the silent uninstaller and checks the leftovers (tests/real-system/run-real.ps1).
+# The results (summary.json, selftest.json, logs, screenshots) are kept as the artifact "AnyFont-e2e-real".
+# It changes the runner's fonts, so it never runs anywhere else (docs/TESTING.md).
+name: E2E (real system)
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  e2e-real:
+    runs-on: windows-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Rust (stable, MSVC x64)
+        shell: pwsh
+        run: |
+          rustup toolchain install stable --profile minimal --target x86_64-pc-windows-msvc
+          rustup default stable
+          rustc --version
+
+      - uses: Swatinem/rust-cache@v2
+
+      # the installer's Windows 11 style needs Inno Setup 6.7 or later (see build.yml)
+      - name: Install Inno Setup 6.7+
+        shell: pwsh
+        run: choco upgrade innosetup -y --no-progress
+
+      # the same build as the release: build.bat makes the program, the portable .zip and the setup
+      - name: Build the setup
+        shell: cmd
+        run: build.bat
+
+      - name: Real-system test
+        shell: pwsh
+        run: |
+          $setup = Get-ChildItem dist\AnyFont-*-setup.exe | Select-Object -First 1
+          if (-not $setup) { throw "no setup in dist" }
+          tests\real-system\run-real.ps1 -Setup $setup.FullName -Results "$env:RUNNER_TEMP\e2e-real"
+          exit $LASTEXITCODE
+
+      - name: Upload the results
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: AnyFont-e2e-real
+          path: ${{ runner.temp }}/e2e-real/
+          if-no-files-found: warn
