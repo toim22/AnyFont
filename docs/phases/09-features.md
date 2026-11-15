@@ -55,3 +55,37 @@ Tests named `module::tests::x` are unit tests in `src/`. Tests named `integratio
 | `KEYWORDS_*` tables | search runs in memory over English and localised names |
 | Document-mapping columns (`DBDocumentID`, `DBTemporaryMapped`, `DBMappedRowId…`, `DBEmbedded`, `DBPartial`, `DBUserUploadedFont`) | they belong to the drawing application that hosts the original font manager |
 | The original PANOSE distance weights | not recoverable from the dossier. AnyFont's weighted metric is documented in Phase 04 §8 |
+
+## UI (`anyfont`)
+
+The shell's features, driven end to end through the real window. Tests named `startup::x`, `operations::x` and
+`screens::x` are in `crates/anyfont/tests/` (egui_kittest on a sandbox font system, en-US, see
+`docs/ARCHITECTURE.md`); the others are unit tests in `src/`. Run them with `cargo test -p anyfont`.
+`screens::*` also renders the main states to `target/ui-compare/` for comparison with the captures.
+
+| Feature | UI-SPEC / dossier | AnyFont | Test |
+|---|---|---|---|
+| Main window bands: custom title bar, menu bar, toolbar, Libraries / Filters, search row, font list, status bar; splitters | §1, §4 | `app::AnyFontApp::main_ui`, `titlebar`, `platform` (hit test, snap layouts, border colour) | `startup::main_window_shows_the_installed_fonts`, `screens::main_window_states`, `screens::restored_800x600_and_other_themes` |
+| Start-up: install helper, single instance (files forwarded), logging, crash hook and report offer, splash, `/NoSplash`, `/Lang:`, Shift resets the database | §11 #20; phase 10 | `main.rs`, `splash.rs`, `app::AnyFontApp::new` | manual (sandbox run) |
+| Menus File / Edit / Font / View / Help with icons, shortcuts, access keys, check items, submenus (Add to collection, Open font file location) | §2 | `menus.rs`, `commands::menu_items` | `screens::main_window_states`, `operations::view_menu_toggles_grouping_and_properties`, `operations::add_collection_rename_and_add_fonts` |
+| Toolbar with header/body tooltips, enable rules shared with the menus | §3, lead decision 1 | `toolbar.rs`, `Catalog::eligibility` | `operations::install_and_uninstall_in_the_sandbox`, `operations::delete_asks_and_removes_the_file` |
+| Libraries: My fonts, folders, collections, Favorites; Add Folder (refusals: missing, already added, subfolder); Remove with confirmation; inline rename (F2, Esc removes a new collection); drag fonts onto a collection | §5.1, §7.2, §11 #9 | `libraries.rs`, `commands::add_folder`, `add_collection`, `commit_rename`, `remove_library` | `operations::add_folder_opens_it_with_its_fonts`, `add_collection_rename_and_add_fonts`, `f2_renames_a_collection` |
+| Filters panel (groups, check rows, Clear filters), "(filtered)" status | §5.2 | `libraries::draw_filters` | `operations::filters_and_search_narrow_the_list` |
+| Search (live, flat list, Esc clears, suggestions); sample text combo (presets, history); empty states | §1.3, §5.3, §11 #10 | `fontlist::search_box`, `sample_combo`, `empty_state` | `operations::filters_and_search_narrow_the_list` |
+| Font list: family headers, faces drawn in their own font, installed bar, lock, technology icon, tooltip, selection (click, Ctrl, Shift, Ctrl+A, Ctrl+Shift+A), keyboard, type-ahead, MRU | §5.3, §8 | `fontlist::draw_list`, `keyboard`, `preview.rs` | `screens::main_window_states`, `preview::tests::*` |
+| Preview size control; View toggles (Group by family, recent, render in font, Latin names, filter list, properties) | §1.4, §2.7, §11 #1–#7 | `statusbar::size_control`, `commands::run` | `operations::view_menu_toggles_grouping_and_properties` |
+| Font properties: Glyphs (filters, grid in the font, copy), Font info (vendor URL), Variable font (axes drive the preview) | §5.4, §11 #8, #11 | `properties.rs` | `screens::main_window_states` |
+| Install / Uninstall / Delete with progress, reboot prompt, failures list, Delete confirmation | §7.2.10–12, §11 #15 | `dialogs.rs`, `ops.rs` | `operations::install_and_uninstall_in_the_sandbox`, `delete_asks_and_removes_the_file` |
+| Import / Export Folders and Collections; missing folders dialog; PANOSE results for missing fonts | §7.2.13, §11 #13 | `commands::import`, `export` | `operations::export_and_import_libraries`, `commands::tests::import_attrs` |
+| Options: UI scale, theme (Light, Medium, Dark, Black; Dark by default), window border, Font Matching modes and Exceptions | §7.2.4, lead decisions 5 and 8 | `options.rs`, `theme.rs` | `screens::main_window_states`, `operations::settings_stay_in_the_test_data_folder`, `settings::tests::*` |
+| Settings saved under the test / dev data folder (`ANYFONT_DATA_DIR`, sandbox) | brief | `settings::Paths` | `operations::settings_stay_in_the_test_data_folder`, `settings::tests::round_trip_keeps_shell_and_core_fields` |
+| 15 languages, access keys, templates | phase 08 | `i18n.rs`, `lib::fmt` | `i18n::tests::*`, `tests::fmt_fills_in_order` |
+| Accessibility names and roles for custom controls (menus, rows, check boxes, buttons, edit boxes) | brief | `widgets::a11y*` | every `operations::*` test finds its controls through the accessibility tree |
+
+### Not implemented in the shell
+
+| Item | Reason |
+|---|---|
+| Glyph alternates pop-up (§11 #11) | the glyph list already shows the alternates after their base glyph; the pop-up is left for later |
+| Toolbar overflow `»` (§11 #19) | the toolbar fits at the minimum window width (800 px) |
+| Per-user install choice | the spec has no control for it; installs go to all users (elevated helper) |

@@ -46,6 +46,8 @@ impl Theme {
 /// How updates are checked.
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, Serialize, Deserialize, Default)]
 pub enum UpdateMode {
+    /// Keep the product up to date: download new versions by itself, ask before installing.
+    KeepUpToDate,
     /// Never check.
     Never,
     /// Check and notify.

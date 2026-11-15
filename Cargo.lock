@@ -200,6 +200,7 @@ dependencies = [
  "image",
  "log",
  "parking_lot",
+ "raw-window-handle",
  "resvg",
  "rfd",
  "rustybuzz",

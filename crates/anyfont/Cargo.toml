@@ -4,6 +4,12 @@ version.workspace = true
 edition.workspace = true
 description = "AnyFont - font manager"
 
+# The application is a library (every module, the public app type for the headless end-to-end tests in
+# `tests/`) plus a thin `main.rs` that does the start-up sequence.
+[lib]
+name = "anyfont"
+path = "src/lib.rs"
+
 [[bin]]
 name = "anyfont"
 path = "src/main.rs"
@@ -29,6 +35,7 @@ log = { workspace = true }
 parking_lot = { workspace = true }
 ureq = { workspace = true }
 zip = { version = "9", default-features = false, features = ["deflate"] }
+raw-window-handle = "0.6"
 
 [target.'cfg(windows)'.dependencies]
 windows = { workspace = true, features = [
@@ -40,6 +47,8 @@ windows = { workspace = true, features = [
     "Win32_System_SystemInformation",
     "Win32_System_Threading",
     "Win32_System_ProcessStatus",
+    "Win32_UI_Controls",
+    "Win32_UI_Input_KeyboardAndMouse",
     "Win32_UI_Shell",
     "Win32_UI_WindowsAndMessaging",
 ] }
@@ -51,3 +60,4 @@ winresource = { workspace = true }
 egui_kittest = { workspace = true, features = ["wgpu", "snapshot", "eframe"] }
 anyfont-sys = { workspace = true, features = ["forbid-real-writes"] }
 tempfile = { workspace = true }
+image = { workspace = true }

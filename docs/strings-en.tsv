@@ -263,6 +263,15 @@ Total virtual memory
 Available virtual memory
 Total memory used by app
 GDI Object Count
+User Object Count
+Windows Directory
+TEMP directory
+Application directory
+Number of displays
+Display {}
+Resolution
+Color depth
+Refresh rate
 &Save
 Save System Info
 Text (*.txt)
@@ -339,6 +348,19 @@ My Library
 Downloaded
 Remote font catalog cannot connect to the internet.
 An error occurred while downloading the remote font catalog.
+Handwriting
+Monospace
+Popular
+Name
+Newest
+Clear
+No fonts found.
+1 style
+{} styles
+{} · 1 style
+{} · {} styles
+{} styles · {}
+Unable to download {}.
 #
 # --- PANOSE font matching ---------------------------------------------------------------------------------
 PANOSE Font Matching Preferences
@@ -367,10 +389,17 @@ Show &all fonts
 Make this substitution:
 &Permanent - keep these fonts
 Te&mporary - use original fonts
+Show fonts with the same code page
+Type
+PANOSE
+Exception
+The fonts below are not available on this computer. AnyFont suggests a substitute for each one. Select a font in the list to choose another substitute.
+AnyFont suggests an OpenType or TrueType replacement for each Type 1 font. The replacements take the place of the Type 1 fonts in your collections. Select a font in the list to choose another replacement.
 #
 # --- Type 1 fonts -----------------------------------------------------------------------------------------
 Type 1 fonts detected
 This document uses Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.
+These fonts use Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.
 Do not show again
 Replace fonts
 #
@@ -411,6 +440,7 @@ Check Now
 There is a new version of AnyFont available.
 New version: {}. Your version: {}.
 Click OK to install the new version.
+Later
 #
 # --- Report a Bug / Submit Ideas and Feedback (from AnyVector bugreport.rs, product name replaced) ---------
 Report a Bug
@@ -450,5 +480,27 @@ Images
 Videos
 Archives (.zip, .gz, .tgz)
 Images and videos up to 10 MB, other files up to 25 MB, of the types GitHub accepts. Put a font file (.ttf, .otf) in a .zip file.
+GitHub doesn't accept "{}" because it has no file type. Put it in a .zip file.
+GitHub doesn't accept .{} files. Put "{}" in a .zip file.
+"{}" is empty.
+"{}" is {}. GitHub accepts at most {} MB for this type.
+e.g. Sort the font list by date added
+e.g. The font list is empty after Add Folder
 Sending...
 Send
+# --- Shell (main window): progress, start-up, messages and accessibility names ---------------------------
+Deleting {}... {}%
+The font folders have changed.
+Initializing...
+Loading fonts...
+Version {}
+AnyFont closed unexpectedly the last time. Do you want to send a bug report?
+Insufficient Permissions
+Some fonts could not be processed:
+Font list
+Scroll bar
+# Developer inspectors (Ctrl+Alt+Shift+I)
+Inspectors
+Settings
+Inspection
+Memory
