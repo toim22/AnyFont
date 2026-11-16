@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="crates/anyfont/assets/logo.png" alt="AnyFont logo" width="200">
+</p>
+
 <h1 align="center">AnyFont</h1>
 
 <p align="center">
