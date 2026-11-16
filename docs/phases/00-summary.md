@@ -71,4 +71,4 @@ repository `https://github.com/toim22/AnyFont`. Its window, menus, toolbar, pane
 - No phase is skipped: every dossier folder `00-summary` … `14-gaps` has a page in `docs/phases/`.
 - Development and tests never change this PC's fonts: Install / Uninstall / Delete run against the sandbox backend
   (`ANYFONT_SANDBOX_ROOT`) or on a disposable GitHub runner (`docs/TESTING.md`).
-- No Claude/Anthropic attribution in commits, docs or code.
+- No AI-tool attribution in commits, docs or code.

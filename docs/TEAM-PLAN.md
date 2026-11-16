@@ -23,7 +23,7 @@ per phase, what the dossier says and how AnyFont implements it.
   not-installed fonts, which the user can then Install.
 - **Never change this PC's fonts while developing or testing.** Install/Uninstall/Delete are only ever run
   against the sandbox backend (`ANYFONT_SANDBOX_ROOT`, see `anyfont-sys`) or inside Windows Sandbox.
-- Never add Claude/Anthropic attribution anywhere (commits, docs, code comments). Do not commit or push –
+- No AI-tool attribution anywhere (commits, docs, code comments). Do not commit or push –
   the lead integrates and commits.
 - Rust stable (1.99), MSVC x64. `cargo build`/`cargo test` must stay green for your crate. Prefer crates
   already in `~/.cargo/registry` (egui/eframe 0.37 – patched copy in `vendor/egui` – ttf-parser 0.25,
