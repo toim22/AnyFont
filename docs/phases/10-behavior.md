@@ -35,7 +35,7 @@ Behaviour of the modes:
 - `DDE`, `Automation` and `Embedding` have no COM/DDE server in AnyFont. They start normally.
 - `Print`/`P` have no print feature (the original has none in this app either).
 - `NoUI` is reserved.
-- `NoSplash` is accepted. AnyFont has no splash screen.
+- `NoSplash` skips the splash screen (`crates/anyfont/src/splash.rs`).
 
 Files on the command line are font files or folders to show and install. They are forwarded to a running instance
 (section 5).

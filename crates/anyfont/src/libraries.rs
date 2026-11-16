@@ -210,6 +210,7 @@ fn rename_editor(app: &mut AnyFontApp, ui: &mut Ui, r: Rect) {
     let Some(rn) = app.rename.as_mut() else { return };
     let first = rn.started_frame + 1 >= app.frame_no;
     let inner = Rect::from_min_max(pos2(er.left() + 4.0, er.top() + 1.0), pos2(er.right() - 4.0, er.bottom() - 1.0));
+    let saved = crate::commands::before_right_click(&ctx, EditTarget::Rename, inner);
     let out = egui::TextEdit::singleline(&mut rn.text)
         .id(id)
         .frame(egui::Frame::NONE)
@@ -220,6 +221,7 @@ fn rename_editor(app: &mut AnyFontApp, ui: &mut Ui, r: Rect) {
         .font(theme::body(theme::UI_SIZE))
         .show(&mut ui.new_child(egui::UiBuilder::new().max_rect(inner)));
     widgets::a11y(&out.response, Role::TextInput, true, "Name:");
+    crate::commands::keep_selection(&ctx, EditTarget::Rename, saved);
     crate::commands::remember_selection(&ctx, EditTarget::Rename);
     if first {
         out.response.request_focus();

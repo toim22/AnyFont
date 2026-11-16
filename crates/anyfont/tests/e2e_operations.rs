@@ -189,10 +189,13 @@ fn install_a_whole_family_from_its_header() {
 
 // ------------------------------------------------------------------- progress dialog and Cancel
 
+/// Holds the operation while its flag is false.
+type Gate = Arc<(Mutex<bool>, Condvar)>;
+
 /// A font system that holds an operation at its second file until the test opens the gate.
 struct Gated {
     inner: Arc<SandboxFontSystem>,
-    gate: Arc<(Mutex<bool>, Condvar)>,
+    gate: Gate,
 }
 
 impl Gated {
@@ -259,7 +262,7 @@ impl FontSystem for Gated {
     }
 }
 
-fn gated_window<'a>(env: &Env) -> (H<'a>, Arc<SandboxFontSystem>, Arc<(Mutex<bool>, Condvar)>) {
+fn gated_window<'a>(env: &Env) -> (H<'a>, Arc<SandboxFontSystem>, Gate) {
     let fs = env.sandbox();
     let gate = Arc::new((Mutex::new(false), Condvar::new()));
     let sys: Arc<dyn FontSystem> = Arc::new(Gated { inner: fs.clone(), gate: gate.clone() });
@@ -272,7 +275,7 @@ fn gated_window<'a>(env: &Env) -> (H<'a>, Arc<SandboxFontSystem>, Arc<(Mutex<boo
     (h, fs, gate)
 }
 
-fn open_gate(gate: &Arc<(Mutex<bool>, Condvar)>, open: bool) {
+fn open_gate(gate: &Gate, open: bool) {
     *gate.0.lock().unwrap() = open;
     gate.1.notify_all();
 }
@@ -571,6 +574,30 @@ fn delete_in_use_asks_for_a_restart() {
     assert!(!fs.pending_reboot().is_empty());
     fs.simulate_reboot();
     assert!(!dir.join("Tuffy.ttf").exists(), "deleted at the restart");
+}
+
+/// Deleting an installed font whose files are both in use (the installed copy and the file in the folder): the
+/// reboot prompt lists the font once, not once per file.
+#[test]
+fn delete_of_an_installed_font_in_use_lists_it_once() {
+    let env = Env::new();
+    let fs = env.sandbox();
+    let (mut h, dir) = window(&env, &fs, "Held", &["Tuffy.ttf"]);
+    install_all(&mut h);
+    fs.set_in_use(&installed_copy(&fs, "Tuffy.ttf"), true);
+    fs.set_in_use(&dir.join("Tuffy.ttf"), true);
+    let first = h.state().face_states()[0].0.clone();
+    select(&mut h, &first);
+    button(&mut h, "Delete");
+    button(&mut h, "OK");
+    finish_operation(&mut h);
+    assert!(painted(&h).iter().any(|t| t.starts_with("The following font cannot be deleted because it is in use")), "{:?}", painted(&h));
+    let listed = painted(&h).iter().filter(|t| *t == "Tuffy Regular" || t.to_lowercase().ends_with("tuffy.ttf")).count();
+    assert_eq!(listed, 1, "listed once: {:?}", painted(&h));
+    button(&mut h, "Reboot later");
+    finish_operation(&mut h);
+    fs.simulate_reboot();
+    assert!(!dir.join("Tuffy.ttf").exists(), "deleted");
 }
 
 // ------------------------------------------------------------------------------- protected fonts

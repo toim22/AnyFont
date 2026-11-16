@@ -194,6 +194,7 @@ Change the glyph size in the Glyph Preview area.	グリフ プレビュー領域
 Multiple fonts are selected. To view a glyph set, choose only one font.	複数のフォントが選択されています。グリフ セットを表示するには、フォントを 1 つだけ選択してください。
 No matching glyphs	一致するグリフはありません
 Install or download the font to preview glyphs.	グリフをプレビューするには、フォントをインストールまたはダウンロードしてください。
+Show glyph alternates.	グリフの異体字を表示します。
 Family:	ファミリ:
 Sub-family:	サブファミリ:
 File Path:	ファイル パス:
@@ -244,6 +245,15 @@ Total virtual memory	合計仮想メモリ
 Available virtual memory	使用可能な仮想メモリ
 Total memory used by app	アプリケーションが使用している合計メモリ
 GDI Object Count	GDI オブジェクト数
+User Object Count	USER オブジェクト数
+Windows Directory	Windows ディレクトリ
+TEMP directory	TEMP ディレクトリ
+Application directory	アプリケーション ディレクトリ
+Number of displays	ディスプレイ数
+Display {}	ディスプレイ {}
+Resolution	解像度
+Color depth	色深度
+Refresh rate	リフレッシュ レート
 &Save	保存(&S)
 Save System Info	システム情報の保存
 Text (*.txt)	テキスト (*.txt)
@@ -315,6 +325,19 @@ My Library	マイ ライブラリ
 Downloaded	ダウンロード済み
 Remote font catalog cannot connect to the internet.	リモート フォント カタログがインターネットに接続できません。
 An error occurred while downloading the remote font catalog.	リモート フォント カタログのダウンロード中にエラーが発生しました。
+Handwriting	手書き
+Monospace	等幅
+Popular	人気
+Name	名前
+Newest	新着
+Clear	クリア
+No fonts found.	フォントが見つかりません。
+1 style	1 スタイル
+{} styles	{} スタイル
+{} · 1 style	{} · 1 スタイル
+{} · {} styles	{} · {} スタイル
+{} styles · {}	{} スタイル · {}
+Unable to download {}.	{} をダウンロードできません。
 # --- PANOSE font matching ---------------------------------------------------------------------------------
 PANOSE Font Matching Preferences	PANOSE フォント照合の設定
 &Text	テキスト(&X)
@@ -342,9 +365,16 @@ Show &all fonts	すべてのフォントを表示(&A)
 Make this substitution:	この置換を行う:
 &Permanent - keep these fonts	永続 - これらのフォントを保持(&P)
 Te&mporary - use original fonts	一時 - 元のフォントを使用(&M)
+Show fonts with the same code page	同じコード ページのフォントを表示
+Type	種類
+PANOSE	PANOSE
+Exception	例外
+The fonts below are not available on this computer. AnyFont suggests a substitute for each one. Select a font in the list to choose another substitute.	以下のフォントはこのコンピューターにありません。AnyFont がそれぞれの代替フォントを提案します。別の代替フォントを選ぶには、一覧でフォントを選択してください。
+AnyFont suggests an OpenType or TrueType replacement for each Type 1 font. The replacements take the place of the Type 1 fonts in your collections. Select a font in the list to choose another replacement.	AnyFont は Type 1 フォントごとに OpenType または TrueType の置き換えフォントを提案します。置き換えフォントは、コレクション内の Type 1 フォントの代わりに使用されます。別の置き換えフォントを選ぶには、一覧でフォントを選択してください。
 # --- Type 1 fonts -----------------------------------------------------------------------------------------
 Type 1 fonts detected	Type 1 フォントが検出されました
 This document uses Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.	このドキュメントでは Type 1 フォントが使用されていますが、今後サポートされなくなる可能性があります。問題を避けるため、TrueType (TTF) や OpenType (OTF) フォントなど、別のフォントを使用するようにテキストを更新することを検討してください。
+These fonts use Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.	これらのフォントは Type 1 フォントで、今後サポートされなくなる可能性があります。問題を避けるため、TrueType (TTF) や OpenType (OTF) フォントなど、別のフォントを使用するようにテキストを更新することを検討してください。
 Do not show again	今後表示しない
 Replace fonts	フォントの置換
 # --- Rename collection ------------------------------------------------------------------------------------
@@ -383,6 +413,7 @@ Check Now	今すぐ確認
 There is a new version of AnyFont available.	AnyFont の新しいバージョンが利用可能です。
 New version: {}. Your version: {}.	新しいバージョン: {}。現在のバージョン: {}。
 Click OK to install the new version.	新しいバージョンをインストールするには [OK] をクリックしてください。
+Later	後で
 # --- Report a Bug / Submit Ideas and Feedback (from AnyVector bugreport.rs, product name replaced) ---------
 Report a Bug	バグの報告
 Submit Ideas and Feedback	アイデアとフィードバックの送信
@@ -421,5 +452,29 @@ Images	イメージ
 Videos	ビデオ
 Archives (.zip, .gz, .tgz)	アーカイブ (.zip、.gz、.tgz)
 Images and videos up to 10 MB, other files up to 25 MB, of the types GitHub accepts. Put a font file (.ttf, .otf) in a .zip file.	GitHub で使える種類の、10 MB までの画像とビデオ、25 MB までのその他のファイル。フォント ファイル (.ttf、.otf) は .zip ファイルに入れてください。
+GitHub doesn't accept "{}" because it has no file type. Put it in a .zip file.	"{}" にはファイルの種類がないため、GitHub は受け付けません。.zip ファイルに入れてください。
+GitHub doesn't accept .{} files. Put "{}" in a .zip file.	GitHub は .{} ファイルを受け付けません。"{}" を .zip ファイルに入れてください。
+"{}" is empty.	"{}" は空です。
+"{}" is {}. GitHub accepts at most {} MB for this type.	"{}" は {} です。この種類で GitHub が受け付けるのは {} MB までです。
+e.g. Sort the font list by date added	例: フォント一覧を追加日で並べ替える
+e.g. The font list is empty after Add Folder	例: [フォルダの追加] の後にフォント一覧が空になる
 Sending...	送信中...
 Send	送信
+# --- Shell (main window): progress, start-up, messages and accessibility names ---------------------------
+Deleting {}... {}%	{} を削除しています... {}%
+The font folders have changed.	フォント フォルダが変更されました。
+Initializing...	初期化しています...
+Loading fonts...	フォントを読み込んでいます...
+Version {}	バージョン {}
+AnyFont closed unexpectedly the last time. Do you want to send a bug report?	前回、AnyFont が予期せず終了しました。バグ報告を送信しますか?
+Insufficient Permissions	アクセス許可が不足しています
+AnyFont could not get administrator permission to install the fonts for all users.\n\nDo you want to install them only for you? They will not be available to other users of this computer.	AnyFont は、すべてのユーザーにフォントをインストールするための管理者のアクセス許可を取得できませんでした。\n\n自分だけにインストールしますか? このコンピューターの他のユーザーは、これらのフォントを使用できません。
+&Install for me	自分だけにインストール(&I)
+Some fonts could not be processed:	一部のフォントを処理できませんでした:
+Font list	フォント一覧
+Scroll bar	スクロール バー
+# Developer inspectors (Ctrl+Alt+Shift+I)
+Inspectors	インスペクター
+Settings	設定
+Inspection	検査
+Memory	メモリ

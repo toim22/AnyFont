@@ -275,6 +275,29 @@ fn in_use_fonts_follow_the_used_font_action() {
     assert_eq!(sb.process_pending(), 0);
 }
 
+/// A font Windows holds for a moment right after its install is not "in use": the in-use check is retried
+/// (about 1.5 s on the real system) before the reboot prompt.
+#[test]
+fn a_font_held_for_a_moment_uninstalls_without_a_reboot() {
+    let (d, sb) = sandbox(&[]);
+    let src = font_copy("georgia.ttf", &d.path().join("m"), "georgia.ttf");
+    let r = sb.install(&[src], Scope::AllUsers, UsedFontAction::Ask);
+    let (_, inst) = installed_value(&r.results[0].result);
+    sb.set_in_use_briefly(&inst, 3);
+    let r = sb.uninstall(std::slice::from_ref(&inst), UsedFontAction::Ask);
+    assert!(r.results[0].result.is_ok(), "{:?}", r.results[0].result);
+    assert!(r.in_use.is_empty() && !r.reboot_required);
+    assert!(!inst.exists());
+    // held longer than the retries: in use
+    let src = font_copy("verdana.ttf", &d.path().join("n"), "verdana.ttf");
+    let r = sb.install(&[src], Scope::AllUsers, UsedFontAction::Ask);
+    let (_, inst) = installed_value(&r.results[0].result);
+    sb.set_in_use_briefly(&inst, 100);
+    let r = sb.uninstall(std::slice::from_ref(&inst), UsedFontAction::Ask);
+    assert_eq!(r.results[0].result, Err(FontOpError::InUse));
+    assert_eq!(r.in_use, vec![inst.clone()]);
+}
+
 #[test]
 fn all_users_in_use_font_is_deleted_at_reboot() {
     let (d, sb) = sandbox(&[]);

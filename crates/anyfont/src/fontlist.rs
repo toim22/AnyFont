@@ -205,6 +205,7 @@ fn sample_combo(app: &mut AnyFontApp, ui: &mut Ui, r: Rect) {
     let chev = Rect::from_min_max(pos2(r.right() - 20.0, r.top()), r.max);
     let edit_rect = Rect::from_min_max(pos2(r.left() + 6.0, r.top() + 1.0), pos2(chev.left(), r.bottom() - 1.0));
     let before = app.sample.clone();
+    let saved = crate::commands::before_right_click(&ctx, EditTarget::Sample, edit_rect);
     let out = egui::TextEdit::singleline(&mut app.sample)
         .id(id)
         .hint_text(egui::RichText::new("Enter sample text").font(theme::body(theme::UI_SIZE)))
@@ -216,6 +217,7 @@ fn sample_combo(app: &mut AnyFontApp, ui: &mut Ui, r: Rect) {
         .font(theme::body(theme::UI_SIZE))
         .show(&mut hint_ui(ui, edit_rect));
     widgets::a11y(&out.response, Role::TextInput, true, "Enter sample text");
+    crate::commands::keep_selection(&ctx, EditTarget::Sample, saved);
     crate::commands::remember_selection(&ctx, EditTarget::Sample);
     if out.response.gained_focus() {
         app.list.sample_before = Some(before.clone());
@@ -292,6 +294,7 @@ fn search_box(app: &mut AnyFontApp, ui: &mut Ui, r: Rect) {
     widgets::edit_frame(ui, r, focused, ui.rect_contains_pointer(r));
     let edit_rect = Rect::from_min_max(pos2(r.left() + 6.0, r.top() + 1.0), pos2(r.right() - 6.0, r.bottom() - 1.0));
     let before = app.search.clone();
+    let saved = crate::commands::before_right_click(&ctx, EditTarget::Search, edit_rect);
     let out = egui::TextEdit::singleline(&mut app.search)
         .id(id)
         .hint_text(egui::RichText::new("Search").font(theme::body(theme::UI_SIZE)))
@@ -303,6 +306,7 @@ fn search_box(app: &mut AnyFontApp, ui: &mut Ui, r: Rect) {
         .font(theme::body(theme::UI_SIZE))
         .show(&mut hint_ui(ui, edit_rect));
     widgets::a11y(&out.response, Role::TextInput, true, "Search");
+    crate::commands::keep_selection(&ctx, EditTarget::Search, saved);
     crate::commands::remember_selection(&ctx, EditTarget::Search);
     // Esc clears the box (the edit gives up the focus on that same Esc)
     if (out.response.has_focus() || out.response.lost_focus()) && ctx.input(|i| i.key_pressed(Key::Escape)) {
@@ -447,6 +451,7 @@ fn draw_list(app: &mut AnyFontApp, ui: &mut Ui, list: Rect, track: Rect) {
     let in_font = app.settings.core.render_name_in_font;
     let modifiers = ctx.input(|i| i.modifiers);
     let mut clicked: Option<(usize, Modifiers, bool)> = None;
+    let mut mru_touched = false;
     let mut drag_start: Option<usize> = None;
     let mut tooltip_row: Option<(usize, egui::Response)> = None;
     let rows = app.result.rows.clone();
@@ -540,16 +545,21 @@ fn draw_list(app: &mut AnyFontApp, ui: &mut Ui, list: Rect, track: Rect) {
                 }
             }
         }
+        // (egui reports the second click of a double-click as a click too: check the double-click first)
+        if resp.double_clicked() {
+            if let ListRow::Font { id, .. } = row {
+                if let Some(f) = app.catalog.font(*id) {
+                    match app.db.touch_mru(&f.key, app.settings.core.mru_size.max(1)) {
+                        Ok(_) => mru_touched = true,
+                        Err(e) => log::warn!("recently used fonts: {e}"),
+                    }
+                }
+            }
+        }
         if resp.clicked() {
             clicked = Some((i, modifiers, false));
         } else if resp.secondary_clicked() {
             clicked = Some((i, modifiers, true));
-        } else if resp.double_clicked() {
-            if let ListRow::Font { id, .. } = row {
-                if let Some(f) = app.catalog.font(*id) {
-                    let _ = app.db.touch_mru(&f.key, app.settings.core.mru_size.max(1));
-                }
-            }
         }
         if resp.drag_started() && matches!(row, ListRow::Font { .. } | ListRow::FamilyHeader { .. }) {
             drag_start = Some(i);
@@ -573,7 +583,11 @@ fn draw_list(app: &mut AnyFontApp, ui: &mut Ui, list: Rect, track: Rect) {
             click_row(app, i, m);
         }
     }
-    if let Some(i) = drag_start {
+    if mru_touched {
+        // the recently used fonts are part of the catalog (after the click: it uses this frame's row indices)
+        app.reload();
+    }
+    if let Some(i) = drag_start.filter(|_| !mru_touched) {
         let key = row_key(&rows[i]);
         if key.as_ref().map(|k| !app.sel.keys.contains(k)).unwrap_or(false) {
             click_row(app, i, Modifiers::NONE);

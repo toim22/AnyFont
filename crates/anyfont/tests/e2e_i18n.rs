@@ -288,8 +288,11 @@ fn problems(lang: Lang, kind: Kind) -> Vec<String> {
             };
             // (a caption is drawn from inside its control: when two controls with the same caption overlap – a
             // menu item over the toolbar button of the same command – the one holding the text's start owns it)
+            // (an open menu is drawn above the window: a menu item owns its caption over a toolbar button of the
+            // same command that lies under the popup)
             let mut owners: Vec<&Control> = place.controls.iter().filter(owns).collect();
-            owners.sort_by(|a, b| a.rect.area().total_cmp(&b.rect.area()));
+            let in_menu = |c: &Control| matches!(c.role, Role::MenuItem | Role::MenuItemCheckBox);
+            owners.sort_by(|a, b| in_menu(b).cmp(&in_menu(a)).then(a.rect.area().total_cmp(&b.rect.area())));
             let start = |c: &&&Control| c.rect.left() <= p.rect.left() + 1.0;
             if let Some(c) = owners.iter().find(start).or(owners.first()) {
                 let pad = if matches!(c.role, Role::MenuItem | Role::MenuItemCheckBox) { 36.0 } else { 0.0 };
@@ -328,20 +331,20 @@ macro_rules! lang_tests {
 
 lang_tests! {
     en_us => Lang::EnUs, [], [], [];
-    pt_br => Lang::PtBr, [#[ignore = "BUG-201: captions with an & access key are shown untranslated"]], [#[ignore = "BUG-202: Updates dialog: the update choice and its note are cut off"]], [#[ignore = "BUG-203: egui-native buttons expose the English key to screen readers"]];
-    zh_cn => Lang::ZhCn, [#[ignore = "BUG-201: captions with an & access key are shown untranslated"]], [], [#[ignore = "BUG-203: egui-native buttons expose the English key to screen readers"]];
-    zh_tw => Lang::ZhTw, [#[ignore = "BUG-201: captions with an & access key are shown untranslated"]], [], [#[ignore = "BUG-203: egui-native buttons expose the English key to screen readers"]];
-    cs_cz => Lang::CsCz, [#[ignore = "BUG-201: captions with an & access key are shown untranslated"]], [#[ignore = "BUG-202: Updates dialog: the update choice and its note are cut off"]], [#[ignore = "BUG-203: egui-native buttons expose the English key to screen readers"]];
-    nl_nl => Lang::NlNl, [#[ignore = "BUG-201: captions with an & access key are shown untranslated"]], [#[ignore = "BUG-202: Updates dialog: the update choice and its note are cut off"]], [#[ignore = "BUG-203: egui-native buttons expose the English key to screen readers"]];
-    fr_fr => Lang::FrFr, [#[ignore = "BUG-201: captions with an & access key are shown untranslated"]], [#[ignore = "BUG-202: Updates dialog: the update choice and its note are cut off"]], [#[ignore = "BUG-203: egui-native buttons expose the English key to screen readers"]];
-    de_de => Lang::DeDe, [#[ignore = "BUG-201: captions with an & access key are shown untranslated"]], [#[ignore = "BUG-202: Updates dialog: the update choice and its note are cut off"]], [#[ignore = "BUG-203: egui-native buttons expose the English key to screen readers"]];
-    it_it => Lang::ItIt, [#[ignore = "BUG-201: captions with an & access key are shown untranslated"]], [#[ignore = "BUG-202: Updates dialog: the update choice and its note are cut off"]], [#[ignore = "BUG-203: egui-native buttons expose the English key to screen readers"]];
-    ja_jp => Lang::JaJp, [#[ignore = "BUG-201: captions with an & access key are shown untranslated"]], [], [#[ignore = "BUG-203: egui-native buttons expose the English key to screen readers"]];
-    pl_pl => Lang::PlPl, [#[ignore = "BUG-201: captions with an & access key are shown untranslated"]], [#[ignore = "BUG-202: Updates dialog: the update choice and its note are cut off"]], [#[ignore = "BUG-203: egui-native buttons expose the English key to screen readers"]];
-    ru_ru => Lang::RuRu, [#[ignore = "BUG-201: captions with an & access key are shown untranslated"]], [#[ignore = "BUG-202: Updates dialog: the update choice and its note are cut off"]], [#[ignore = "BUG-203: egui-native buttons expose the English key to screen readers"]];
-    es_es => Lang::EsEs, [#[ignore = "BUG-201: captions with an & access key are shown untranslated"]], [#[ignore = "BUG-202: Updates dialog: the update choice and its note are cut off"]], [#[ignore = "BUG-203: egui-native buttons expose the English key to screen readers"]];
-    sv_se => Lang::SvSe, [#[ignore = "BUG-201: captions with an & access key are shown untranslated"]], [#[ignore = "BUG-202: Updates dialog: the update choice and its note are cut off"]], [#[ignore = "BUG-203: egui-native buttons expose the English key to screen readers"]];
-    tr_tr => Lang::TrTr, [#[ignore = "BUG-201: captions with an & access key are shown untranslated"]], [#[ignore = "BUG-202: Updates dialog: the update choice and its note are cut off"]], [#[ignore = "BUG-203: egui-native buttons expose the English key to screen readers"]];
+    pt_br => Lang::PtBr, [], [], [];
+    zh_cn => Lang::ZhCn, [], [], [];
+    zh_tw => Lang::ZhTw, [], [], [];
+    cs_cz => Lang::CsCz, [], [], [];
+    nl_nl => Lang::NlNl, [], [], [];
+    fr_fr => Lang::FrFr, [], [], [];
+    de_de => Lang::DeDe, [], [], [];
+    it_it => Lang::ItIt, [], [], [];
+    ja_jp => Lang::JaJp, [], [], [];
+    pl_pl => Lang::PlPl, [], [], [];
+    ru_ru => Lang::RuRu, [], [], [];
+    es_es => Lang::EsEs, [], [], [];
+    sv_se => Lang::SvSe, [], [], [];
+    tr_tr => Lang::TrTr, [], [], [];
 }
 
 #[test]

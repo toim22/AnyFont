@@ -52,12 +52,14 @@ impl<'a> Atoms<'a> {
         let mut string: Option<Cow<'_, str>> = None;
         for atom in &self.0 {
             if let AtomKind::Text(text) = &atom.kind {
+                // AnyFont patch: the translated text, as it is drawn
+                let shown = text.shown_text();
                 if let Some(string) = &mut string {
                     let string = string.to_mut();
                     string.push(' ');
-                    string.push_str(text.text());
+                    string.push_str(&shown);
                 } else {
-                    string = Some(Cow::Borrowed(text.text()));
+                    string = Some(shown);
                 }
             }
         }

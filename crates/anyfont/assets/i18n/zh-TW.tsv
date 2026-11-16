@@ -194,6 +194,7 @@ Change the glyph size in the Glyph Preview area.	變更字符預覽區域中的�
 Multiple fonts are selected. To view a glyph set, choose only one font.	已選取多個字型。若要檢視字符集，請只選擇一個字型。
 No matching glyphs	沒有相符的字符
 Install or download the font to preview glyphs.	安裝或下載字型以預覽字符。
+Show glyph alternates.	顯示替代字符。
 Family:	字型家族：
 Sub-family:	子家族：
 File Path:	檔案路徑：
@@ -244,6 +245,15 @@ Total virtual memory	虛擬記憶體總計
 Available virtual memory	可用虛擬記憶體
 Total memory used by app	應用程式使用的記憶體總計
 GDI Object Count	GDI 物件數
+User Object Count	USER 物件數
+Windows Directory	Windows 目錄
+TEMP directory	TEMP 目錄
+Application directory	應用程式目錄
+Number of displays	顯示器數目
+Display {}	顯示器 {}
+Resolution	解析度
+Color depth	色彩深度
+Refresh rate	重新整理頻率
 &Save	儲存(&S)
 Save System Info	儲存系統資訊
 Text (*.txt)	文字 (*.txt)
@@ -315,6 +325,19 @@ My Library	我的媒體櫃
 Downloaded	已下載
 Remote font catalog cannot connect to the internet.	遠端字型目錄無法連線至網際網路。
 An error occurred while downloading the remote font catalog.	下載遠端字型目錄時發生錯誤。
+Handwriting	手寫
+Monospace	等寬
+Popular	熱門
+Name	名稱
+Newest	最新
+Clear	清除
+No fonts found.	找不到字型。
+1 style	1 種樣式
+{} styles	{} 種樣式
+{} · 1 style	{} · 1 種樣式
+{} · {} styles	{} · {} 種樣式
+{} styles · {}	{} 種樣式 · {}
+Unable to download {}.	無法下載 {}。
 # --- PANOSE font matching ---------------------------------------------------------------------------------
 PANOSE Font Matching Preferences	PANOSE 字型比對偏好設定
 &Text	文字(&X)
@@ -342,9 +365,16 @@ Show &all fonts	顯示所有字型(&A)
 Make this substitution:	進行此替代：
 &Permanent - keep these fonts	永久 - 保留這些字型(&P)
 Te&mporary - use original fonts	暫時 - 使用原始字型(&M)
+Show fonts with the same code page	顯示具有相同字碼頁的字型
+Type	類型
+PANOSE	PANOSE
+Exception	例外
+The fonts below are not available on this computer. AnyFont suggests a substitute for each one. Select a font in the list to choose another substitute.	這部電腦上沒有下列字型。AnyFont 為每個字型建議一個替代字型。在清單中選取字型即可選擇其他替代字型。
+AnyFont suggests an OpenType or TrueType replacement for each Type 1 font. The replacements take the place of the Type 1 fonts in your collections. Select a font in the list to choose another replacement.	AnyFont 為每個 Type 1 字型建議一個 OpenType 或 TrueType 取代字型。取代字型會在您的集合中取代 Type 1 字型。在清單中選取字型即可選擇其他取代字型。
 # --- Type 1 fonts -----------------------------------------------------------------------------------------
 Type 1 fonts detected	偵測到 Type 1 字型
 This document uses Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.	此文件使用的 Type 1 字型未來可能不再受支援。為避免可能的問題，請考慮將文字改用其他字型，例如 TrueType (TTF) 或 OpenType (OTF) 字型。
+These fonts use Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.	這些字型是 Type 1 字型，未來可能不再受支援。為避免可能的問題，請考慮將文字改用其他字型，例如 TrueType (TTF) 或 OpenType (OTF) 字型。
 Do not show again	不要再顯示
 Replace fonts	取代字型
 # --- Rename collection ------------------------------------------------------------------------------------
@@ -383,6 +413,7 @@ Check Now	立即檢查
 There is a new version of AnyFont available.	AnyFont 有新版本可用。
 New version: {}. Your version: {}.	新版本：{}。您的版本：{}。
 Click OK to install the new version.	按一下「確定」以安裝新版本。
+Later	稍後
 # --- Report a Bug / Submit Ideas and Feedback (from AnyVector bugreport.rs, product name replaced) ---------
 Report a Bug	回報錯誤
 Submit Ideas and Feedback	提交想法與意見回饋
@@ -421,5 +452,29 @@ Images	影像
 Videos	影片
 Archives (.zip, .gz, .tgz)	壓縮檔 (.zip、.gz、.tgz)
 Images and videos up to 10 MB, other files up to 25 MB, of the types GitHub accepts. Put a font file (.ttf, .otf) in a .zip file.	GitHub 接受的類型中，影像和影片最大 10 MB，其他檔案最大 25 MB。請將字型檔案 (.ttf、.otf) 放入 .zip 檔案。
+GitHub doesn't accept "{}" because it has no file type. Put it in a .zip file.	GitHub 不接受「{}」，因為它沒有檔案類型。請將其放入 .zip 檔案。
+GitHub doesn't accept .{} files. Put "{}" in a .zip file.	GitHub 不接受 .{} 檔案。請將「{}」放入 .zip 檔案。
+"{}" is empty.	「{}」是空的。
+"{}" is {}. GitHub accepts at most {} MB for this type.	「{}」大小為 {}。此類型 GitHub 最多接受 {} MB。
+e.g. Sort the font list by date added	例如：依新增日期排序字型清單
+e.g. The font list is empty after Add Folder	例如：執行「新增資料夾」後字型清單是空的
 Sending...	正在傳送...
 Send	傳送
+# --- Shell (main window): progress, start-up, messages and accessibility names ---------------------------
+Deleting {}... {}%	正在刪除 {}... {}%
+The font folders have changed.	字型資料夾已變更。
+Initializing...	正在初始化...
+Loading fonts...	正在載入字型...
+Version {}	版本 {}
+AnyFont closed unexpectedly the last time. Do you want to send a bug report?	AnyFont 上次意外關閉。要傳送錯誤報告嗎？
+Insufficient Permissions	權限不足
+AnyFont could not get administrator permission to install the fonts for all users.\n\nDo you want to install them only for you? They will not be available to other users of this computer.	AnyFont 無法取得為所有使用者安裝字型所需的系統管理員權限。\n\n要只為您安裝這些字型嗎？這部電腦的其他使用者將無法使用這些字型。
+&Install for me	只為我安裝(&I)
+Some fonts could not be processed:	部分字型無法處理：
+Font list	字型清單
+Scroll bar	捲軸
+# Developer inspectors (Ctrl+Alt+Shift+I)
+Inspectors	檢查器
+Settings	設定
+Inspection	檢查
+Memory	記憶體

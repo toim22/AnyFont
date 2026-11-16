@@ -134,9 +134,8 @@ fn glyphs_tab_count_filters_selection_and_size() {
             .query_all(by().role(Role::CheckBox))
             .filter(|n| n.rect().left() > x)
             .filter_map(|n| {
-                // (matched without "&": see BUG-305)
                 let l = n.accesskit_node().label().unwrap_or_default();
-                labels.iter().find(|c| c.replace('&', "") == l).map(|c| (c.clone(), n.rect()))
+                labels.iter().find(|c| **c == l).map(|c| (c.clone(), n.rect()))
             })
             .collect();
         v.sort_by(|a, b| a.1.top().total_cmp(&b.1.top()));
@@ -372,7 +371,6 @@ fn variable_font_tab_named_instance_values() {
 }
 
 #[test]
-#[ignore = "BUG-305: the accessible name of a check row drops the & of its caption"]
 fn glyph_filter_names_keep_the_ampersand() {
     let _g = env_lock();
     let mut s = setup("Amp", &["Tuffy.ttf"]);

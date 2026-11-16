@@ -194,6 +194,7 @@ Change the glyph size in the Glyph Preview area.	Glif Önizleme alanındaki glif
 Multiple fonts are selected. To view a glyph set, choose only one font.	Birden çok yazı tipi seçili. Bir glif kümesini görüntülemek için yalnızca bir yazı tipi seçin.
 No matching glyphs	Eşleşen glif yok
 Install or download the font to preview glyphs.	Glifleri önizlemek için yazı tipini yükleyin veya indirin.
+Show glyph alternates.	Glif alternatiflerini göster.
 Family:	Aile:
 Sub-family:	Alt aile:
 File Path:	Dosya Yolu:
@@ -244,6 +245,15 @@ Total virtual memory	Toplam sanal bellek
 Available virtual memory	Kullanılabilir sanal bellek
 Total memory used by app	Uygulamanın kullandığı toplam bellek
 GDI Object Count	GDI Nesne Sayısı
+User Object Count	USER Nesne Sayısı
+Windows Directory	Windows Dizini
+TEMP directory	TEMP dizini
+Application directory	Uygulama dizini
+Number of displays	Ekran sayısı
+Display {}	Ekran {}
+Resolution	Çözünürlük
+Color depth	Renk derinliği
+Refresh rate	Yenileme hızı
 &Save	&Kaydet
 Save System Info	Sistem Bilgilerini Kaydet
 Text (*.txt)	Metin (*.txt)
@@ -315,6 +325,19 @@ My Library	Kitaplığım
 Downloaded	İndirilenler
 Remote font catalog cannot connect to the internet.	Uzak yazı tipi kataloğu İnternet'e bağlanamıyor.
 An error occurred while downloading the remote font catalog.	Uzak yazı tipi kataloğu indirilirken bir hata oluştu.
+Handwriting	El yazısı
+Monospace	Eş aralıklı
+Popular	Popüler
+Name	Ad
+Newest	En yeni
+Clear	Temizle
+No fonts found.	Yazı tipi bulunamadı.
+1 style	1 stil
+{} styles	{} stil
+{} · 1 style	{} · 1 stil
+{} · {} styles	{} · {} stil
+{} styles · {}	{} stil · {}
+Unable to download {}.	{} indirilemiyor.
 # --- PANOSE font matching ---------------------------------------------------------------------------------
 PANOSE Font Matching Preferences	PANOSE Yazı Tipi Eşleştirme Tercihleri
 &Text	&Metin
@@ -342,16 +365,23 @@ Show &all fonts	&Tüm yazı tiplerini göster
 Make this substitution:	Bu değiştirmeyi yap:
 &Permanent - keep these fonts	Ka&lıcı - bu yazı tiplerini koru
 Te&mporary - use original fonts	&Geçici - özgün yazı tiplerini kullan
+Show fonts with the same code page	Aynı kod sayfasına sahip yazı tiplerini göster
+Type	Tür
+PANOSE	PANOSE
+Exception	Özel durum
+The fonts below are not available on this computer. AnyFont suggests a substitute for each one. Select a font in the list to choose another substitute.	Aşağıdaki yazı tipleri bu bilgisayarda yok. AnyFont her biri için bir yedek önerir. Başka bir yedek seçmek için listeden bir yazı tipi seçin.
+AnyFont suggests an OpenType or TrueType replacement for each Type 1 font. The replacements take the place of the Type 1 fonts in your collections. Select a font in the list to choose another replacement.	AnyFont her Type 1 yazı tipi için bir OpenType veya TrueType yedeği önerir. Yedekler, koleksiyonlarınızda Type 1 yazı tiplerinin yerini alır. Başka bir yedek seçmek için listeden bir yazı tipi seçin.
 # --- Type 1 fonts -----------------------------------------------------------------------------------------
 Type 1 fonts detected	Type 1 yazı tipleri algılandı
 This document uses Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.	Bu belge, gelecekte desteklenmeyebilecek Type 1 yazı tiplerini kullanıyor. Olası sorunları önlemek için metni TrueType (TTF) veya OpenType (OTF) gibi farklı yazı tiplerini kullanacak şekilde güncellemeyi düşünün.
+These fonts use Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.	Bu yazı tipleri, gelecekte desteklenmeyebilecek Type 1 yazı tipleridir. Olası sorunları önlemek için metni TrueType (TTF) veya OpenType (OTF) gibi farklı yazı tiplerini kullanacak şekilde güncellemeyi düşünün.
 Do not show again	Bir daha gösterme
 Replace fonts	Yazı tiplerini değiştir
 # --- Rename collection ------------------------------------------------------------------------------------
 Name:	Ad:
 # --- Updates (from AnyVector updater.rs, product name replaced) -------------------------------------------
 Keep the product up to date (recommended)	Ürünü güncel tut (önerilir)
-Check for updates and let me choose when to install them	Güncelleştirmeleri denetle ve ne zaman yükleneceklerini bana bırak
+Check for updates and let me choose when to install them	Güncelleştirmeleri denetle, zamanı ben seçeyim
 Never check for updates	Güncelleştirmeleri hiçbir zaman denetleme
 Automatically downloads product updates, but prompts you before installing them.	Ürün güncelleştirmelerini otomatik olarak indirir, ancak yüklemeden önce size sorar.
 AnyFont tells you when a new version is available; you choose when to download and install it.	AnyFont yeni bir sürüm çıktığında size bildirir; ne zaman indirip yükleyeceğinize siz karar verirsiniz.
@@ -376,13 +406,14 @@ AnyFont closes to install it and starts again when it is done.	AnyFont yüklemek
 Error: {}	Hata: {}
 You are using AnyFont {}.	AnyFont {} sürümünü kullanıyorsunuz.
 The update will be installed when AnyFont closes.	Güncelleştirme AnyFont kapandığında yüklenecek.
-Allow product updates:	Ürün güncelleştirmelerine izin ver:
+Allow product updates:	Güncelleştirmelere izin ver:
 Release Notes	Sürüm Notları
 Install Now	Şimdi Yükle
 Check Now	Şimdi Denetle
 There is a new version of AnyFont available.	AnyFont'ün yeni bir sürümü kullanılabilir.
 New version: {}. Your version: {}.	Yeni sürüm: {}. Sizin sürümünüz: {}.
 Click OK to install the new version.	Yeni sürümü yüklemek için Tamam'a tıklayın.
+Later	Daha Sonra
 # --- Report a Bug / Submit Ideas and Feedback (from AnyVector bugreport.rs, product name replaced) ---------
 Report a Bug	Hata Bildir
 Submit Ideas and Feedback	Fikir ve Geri Bildirim Gönder
@@ -421,5 +452,29 @@ Images	Görüntüler
 Videos	Videolar
 Archives (.zip, .gz, .tgz)	Arşivler (.zip, .gz, .tgz)
 Images and videos up to 10 MB, other files up to 25 MB, of the types GitHub accepts. Put a font file (.ttf, .otf) in a .zip file.	GitHub'ın kabul ettiği türlerde, 10 MB'a kadar resim ve video, 25 MB'a kadar diğer dosyalar. Bir yazı tipi dosyasını (.ttf, .otf) bir .zip dosyasına koyun.
+GitHub doesn't accept "{}" because it has no file type. Put it in a .zip file.	GitHub "{}" dosyasını kabul etmiyor çünkü dosya türü yok. Bir .zip dosyasına koyun.
+GitHub doesn't accept .{} files. Put "{}" in a .zip file.	GitHub .{} dosyalarını kabul etmiyor. "{}" dosyasını bir .zip dosyasına koyun.
+"{}" is empty.	"{}" boş.
+"{}" is {}. GitHub accepts at most {} MB for this type.	"{}" {} boyutunda. GitHub bu tür için en fazla {} MB kabul ediyor.
+e.g. Sort the font list by date added	ör. Yazı tipi listesini eklenme tarihine göre sırala
+e.g. The font list is empty after Add Folder	ör. Klasör Ekle'den sonra yazı tipi listesi boş
 Sending...	Gönderiliyor...
 Send	Gönder
+# --- Shell (main window): progress, start-up, messages and accessibility names ---------------------------
+Deleting {}... {}%	{} siliniyor... %{}
+The font folders have changed.	Yazı tipi klasörleri değişti.
+Initializing...	Başlatılıyor...
+Loading fonts...	Yazı tipleri yükleniyor...
+Version {}	Sürüm {}
+AnyFont closed unexpectedly the last time. Do you want to send a bug report?	AnyFont geçen sefer beklenmedik şekilde kapandı. Hata raporu göndermek istiyor musunuz?
+Insufficient Permissions	Yetersiz İzinler
+AnyFont could not get administrator permission to install the fonts for all users.\n\nDo you want to install them only for you? They will not be available to other users of this computer.	AnyFont, yazı tiplerini tüm kullanıcılar için yüklemek üzere yönetici izni alamadı.\n\nBunları yalnızca kendiniz için yüklemek istiyor musunuz? Bu bilgisayarın diğer kullanıcıları bunları kullanamaz.
+&Install for me	&Yalnızca benim için yükle
+Some fonts could not be processed:	Bazı yazı tipleri işlenemedi:
+Font list	Yazı tipi listesi
+Scroll bar	Kaydırma çubuğu
+# Developer inspectors (Ctrl+Alt+Shift+I)
+Inspectors	Denetçiler
+Settings	Ayarlar
+Inspection	İnceleme
+Memory	Bellek

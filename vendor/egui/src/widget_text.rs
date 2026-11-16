@@ -667,6 +667,23 @@ impl WidgetText {
         }
     }
 
+    /// AnyFont patch: the text as it is shown, in the user interface language (what a screen reader
+    /// should say). A [`LayoutJob`] or a [`Galley`] is never translated.
+    pub fn shown_text(&self) -> std::borrow::Cow<'_, str> {
+        match self {
+            Self::Text(_) | Self::RichText(_) => {
+                let t = self.text();
+                let tr = crate::translate::translate(t.to_owned());
+                if tr == t {
+                    std::borrow::Cow::Borrowed(t)
+                } else {
+                    std::borrow::Cow::Owned(tr)
+                }
+            }
+            Self::LayoutJob(_) | Self::Galley(_) => std::borrow::Cow::Borrowed(self.text()),
+        }
+    }
+
     /// Map the contents based on the provided closure.
     ///
     /// - [`Self::Text`] => convert to [`RichText`] and call f

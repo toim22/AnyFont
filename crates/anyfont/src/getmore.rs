@@ -310,7 +310,8 @@ fn get_text(url: &str) -> Result<String, String> {
     get_bytes(url, 30).map(|b| String::from_utf8_lossy(&b).into_owned())
 }
 
-/// `%LOCALAPPDATA%\AnyFont`.
+/// `%LOCALAPPDATA%\AnyFont`, where the catalog and the previews are cached unless the window was given
+/// another folder (`Paths::cache_dir`: `ANYFONT_DATA_DIR`, the tests' data folder).
 pub fn cache_dir() -> PathBuf {
     dirs::data_local_dir().unwrap_or_else(std::env::temp_dir).join("AnyFont")
 }
@@ -324,12 +325,12 @@ type Loaded = Result<(Vec<Family>, bool), String>;
 
 /// Reads the catalog: the override, else the cache when it is less than a day old, else the web (written
 /// to the cache), else an older cache.
-fn load_catalog(force: bool) -> Loaded {
+fn load_catalog(force: bool, cache_dir: &Path) -> Loaded {
     if let Some(src) = catalog_override() {
         let text = if src.starts_with("http://") || src.starts_with("https://") { get_text(&src)? } else { std::fs::read_to_string(&src).map_err(|_| BAD_CATALOG.to_string())? };
         return parse_catalog(&text).map(|f| (f, false)).map_err(|_| BAD_CATALOG.to_string());
     }
-    let cache = cache_dir().join("catalog.json");
+    let cache = cache_dir.join("catalog.json");
     let fresh = std::fs::metadata(&cache).and_then(|m| m.modified()).ok().and_then(|t| t.elapsed().ok()).is_some_and(|age| age < MAX_AGE);
     if fresh && !force {
         if let Ok(f) = std::fs::read_to_string(&cache).map_err(|e| e.to_string()).and_then(|t| parse_catalog(&t)) {
@@ -338,7 +339,7 @@ fn load_catalog(force: bool) -> Loaded {
     }
     match get_text(CATALOG_URL).and_then(|t| parse_catalog(&t).map(|f| (f, t))) {
         Ok((f, text)) => {
-            let _ = std::fs::create_dir_all(cache_dir());
+            let _ = std::fs::create_dir_all(cache_dir);
             let tmp = cache.with_extension("tmp");
             if std::fs::write(&tmp, strip_guard(&text)).is_ok() {
                 let _ = std::fs::rename(&tmp, &cache);
@@ -353,8 +354,8 @@ fn load_catalog(force: bool) -> Loaded {
 }
 
 /// Fetches (or reads from the cache) the preview subset of a family.
-fn fetch_preview(f: &Family) -> Option<Vec<u8>> {
-    let dir = cache_dir().join("previews");
+fn fetch_preview(f: &Family, cache_dir: &Path) -> Option<Vec<u8>> {
+    let dir = cache_dir.join("previews");
     let path = dir.join(format!("{}.ttf", folder_name(&f.name)));
     if let Ok(b) = std::fs::read(&path) {
         if !b.is_empty() {
@@ -515,6 +516,8 @@ pub struct GetMore {
     textures: HashMap<String, Option<egui::TextureHandle>>,
     download: Option<Download>,
     scroll_to_top: bool,
+    /// Where the catalog and the previews are cached.
+    cache: PathBuf,
 }
 
 impl Default for GetMore {
@@ -525,7 +528,13 @@ impl Default for GetMore {
 
 impl GetMore {
     pub fn new() -> Self {
+        Self::with_cache_dir(cache_dir())
+    }
+
+    /// Caches the catalog and the previews in `cache` (the data folder of the window).
+    pub fn with_cache_dir(cache: PathBuf) -> Self {
         GetMore {
+            cache,
             open: false,
             families: vec![],
             stale: false,
@@ -571,8 +580,9 @@ impl GetMore {
         let (tx, rx) = channel();
         self.loading = Some(rx);
         self.error = None;
+        let cache = self.cache.clone();
         std::thread::spawn(move || {
-            let _ = tx.send(load_catalog(force));
+            let _ = tx.send(load_catalog(force, &cache));
         });
     }
 
@@ -615,9 +625,10 @@ impl GetMore {
             let (tx, rx) = channel::<Family>();
             let (rtx, rrx) = channel();
             let ctx = ctx.clone();
+            let cache = self.cache.clone();
             std::thread::spawn(move || {
                 while let Ok(f) = rx.recv() {
-                    let data = fetch_preview(&f);
+                    let data = fetch_preview(&f, &cache);
                     if rtx.send((f.name.clone(), data)).is_err() {
                         break;
                     }
@@ -1050,7 +1061,7 @@ mod tests {
         let path = std::env::temp_dir().join(format!("anyfont-catalog-test-{}.json", std::process::id()));
         std::fs::write(&path, CATALOG).unwrap();
         std::env::set_var("ANYFONT_CATALOG_URL", &path);
-        let r = load_catalog(false);
+        let r = load_catalog(false, &std::env::temp_dir().join(format!("anyfont-cache-test-{}", std::process::id())));
         std::env::remove_var("ANYFONT_CATALOG_URL");
         let _ = std::fs::remove_file(&path);
         let (f, stale) = r.unwrap();

@@ -88,7 +88,7 @@ Captions:
 |---|---|
 | open | `open(path)`, `open_in_memory()`, `path()`, `property/set_property` |
 | folders | `folders()` (sorted by name), `folder(id)`, `add_folder(path, recursive)` (an existing path returns the existing folder), `set_folder_enabled`, `set_folder_recursive`, `remove_folder` |
-| collections | `collections()` (natural sort: "Collection 1", "Collection 2", "Favorites"), `collection(id)`, `collection_by_name`, `favorites()` (always exists), `next_collection_name()` ("Collection N"), `create_collection(None \| Some(name))`, `rename_collection` (Favorites: `NotAllowed`; name taken: `DuplicateName`), `remove_collection` (Favorites is emptied, not deleted), `add_to_collection(id, &[FontKey]) -> new count`, `remove_from_collection`, `collection_fonts(id)` |
+| collections | `collections()` (natural sort: "Collection 1", "Collection 2", "Favorites"), `collection(id)`, `collection_by_name`, `favorites()` / `favorites_opt()` (created once with a new database; `None` after the user removed it, the `favorites_created` property keeps it from coming back), `ensure_favorites()` (import of a Favorites group), `next_collection_name()` ("Collection N"), `create_collection(None \| Some(name))`, `rename_collection` (Favorites: `NotAllowed`; name taken: `DuplicateName`), `remove_collection` (Favorites too), `add_to_collection(id, &[FontKey]) -> new count`, `remove_from_collection`, `collection_fonts(id)` |
 | recent | `touch_mru(&key, max)`, `mru()`, `clear_mru()` |
 | PANOSE | `panose_exceptions()`, `set_panose_exception`, `remove_panose_exception`, `substitutions()`, `set_substitution` (a `Temporary` one is not stored), `remove_substitution` |
 | installed set | `set_installed(&[InstalledFont])`, `installed()` (the scan sets it) |

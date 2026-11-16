@@ -117,7 +117,8 @@ impl AnyFontApp {
     }
 
     fn file_menu(&self) -> Vec<Item> {
-        let exportable = anyfont_core::exchange::has_exportable(&self.db).unwrap_or(false);
+        // the hidden Content folder is AnyFont's, not the user's: it is never exported (BUG-303)
+        let exportable = anyfont_core::exchange::has_exportable_except(&self.db, std::slice::from_ref(&self.content_dir)).unwrap_or(false);
         vec![
             Item::cmd("Add Folder...", Cmd::AddFolder).icon("add-folder"),
             Item::cmd("Add Collection", Cmd::AddCollection).icon("add-collection"),
@@ -249,7 +250,7 @@ impl AnyFontApp {
     /// The themed edit menu of the text boxes (UI-SPEC §6.3).
     fn edit_box_menu(&self, target: EditTarget) -> Vec<Item> {
         let text = self.edit_text(target).unwrap_or_default();
-        let sel = selection_of(target);
+        let sel = menu_selection(target);
         let has_sel = sel.map(|r| !r.is_empty()).unwrap_or(false);
         let undo = self.edit_undo.get(&target).map(|u| *u != text).unwrap_or(false);
         vec![
@@ -540,29 +541,83 @@ impl AnyFontApp {
         self.props.on_selection_changed();
     }
 
-    /// File ▸ Import with a chosen file (also used by the tests).
+    /// File ▸ Import with a chosen file (also used by the tests). The folders come first; the collections
+    /// are imported when those folders have been scanned, so fonts in them are found (BUG-304).
     pub fn import(&mut self, path: &Path) {
         let text = std::fs::read(path).map(|b| String::from_utf8_lossy(&b).into_owned()).unwrap_or_default();
-        match anyfont_core::exchange::import_file(&self.db, &self.catalog, path) {
+        match anyfont_core::exchange::import_file_parts(&self.db, &self.catalog, path, anyfont_core::exchange::ImportParts::Folders) {
             Ok(report) => {
-                log::info!("import {}: {report:?}", path.display());
-                let (missing_folders, missing_fonts) = import_missing(&text, &self.catalog);
-                self.reload();
-                self.start_scan(false);
+                log::info!("import {} (folders): {report:?}", path.display());
+                let missing_folders = import_missing_folders(&text);
                 if !missing_folders.is_empty() {
                     self.dialogs.push_back(Dialog::Missing { items: missing_folders });
                 }
-                if report.fonts_missing > 0 && self.settings.core.panose.mode.shows_results(false) {
-                    self.matching.open_results(missing_fonts);
+                self.pending_import = Some(path.to_path_buf());
+                if report.folders_added > 0 {
+                    self.reload();
+                    // `scan_finished` imports the collections
+                    self.start_scan(false);
+                } else if !self.scanning() {
+                    self.finish_import();
                 }
             }
             Err(e) => self.dialogs.push_back(Dialog::message("AnyFont", &crate::fmt("Error: {}", &[&e.to_string()]))),
         }
     }
 
+    /// The second half of File ▸ Import: the collections, with the fonts the database knows now; the
+    /// fonts still missing go to PANOSE Font Matching Results.
+    pub(crate) fn finish_import(&mut self) {
+        let Some(path) = self.pending_import.take() else { return };
+        match anyfont_core::exchange::import_file_parts(&self.db, &self.catalog, &path, anyfont_core::exchange::ImportParts::Collections) {
+            Ok(report) => {
+                log::info!("import {} (collections): {report:?}", path.display());
+                self.reload();
+                if !report.missing.is_empty() && self.settings.core.panose.mode.shows_results(false) {
+                    let mut names: Vec<String> = Vec::new();
+                    self.import_links.clear();
+                    for m in &report.missing {
+                        let name = m.name();
+                        if name.is_empty() {
+                            continue;
+                        }
+                        if !names.contains(&name) {
+                            names.push(name.clone());
+                        }
+                        self.import_links.push((name, m.collection));
+                    }
+                    if !names.is_empty() {
+                        // after "We can't find the following:", not on top of it
+                        self.pending_results = Some(names);
+                    }
+                }
+            }
+            Err(e) => self.dialogs.push_back(Dialog::message("AnyFont", &crate::fmt("Error: {}", &[&e.to_string()]))),
+        }
+    }
+
+    /// OK in Font Matching Results after an import: each chosen substitute takes its missing font's place in
+    /// the imported collections (BUG-102).
+    pub(crate) fn link_substitutes(&mut self, resolved: &[crate::matching::Resolved]) {
+        let links = std::mem::take(&mut self.import_links);
+        let mut changed = false;
+        for r in resolved {
+            let Some(key) = r.font.and_then(|id| self.catalog.font(id)).map(|f| f.key.clone()) else { continue };
+            for (_, c) in links.iter().filter(|(name, _)| *name == r.missing) {
+                match self.db.add_to_collection(*c, std::slice::from_ref(&key)) {
+                    Ok(_) => changed = true,
+                    Err(e) => log::warn!("linking {} into collection {c}: {e}", r.missing),
+                }
+            }
+        }
+        if changed {
+            self.reload();
+        }
+    }
+
     /// File ▸ Export to a chosen file (also used by the tests).
     pub fn export(&mut self, path: &Path) {
-        if let Err(e) = anyfont_core::exchange::export_file(&self.db, &self.catalog, &anyfont_core::exchange::ExportOptions::all(), path) {
+        if let Err(e) = anyfont_core::exchange::export_file(&self.db, &self.catalog, &anyfont_core::exchange::ExportOptions::all_except(std::slice::from_ref(&self.content_dir)), path) {
             self.dialogs.push_back(Dialog::message("AnyFont", &crate::fmt("Error: {}", &[&e.to_string()])));
         }
     }
@@ -572,7 +627,12 @@ impl AnyFontApp {
         let mut state = egui::text_edit::TextEditState::load(ctx, id).unwrap_or_default();
         let Some(before) = self.edit_text(target) else { return };
         let n = before.chars().count();
-        let range = state.cursor.char_range().map(|r| r.as_sorted_char_range()).map(|r| (r.start.0.min(n), r.end.0.min(n))).unwrap_or((n, n));
+        // the selection when the menu opened: clicking the menu took the focus from the box, which collapsed it
+        let range = take_menu_selection(target)
+            .or_else(|| state.cursor.char_range())
+            .map(|r| r.as_sorted_char_range())
+            .map(|r| (r.start.0.min(n), r.end.0.min(n)))
+            .unwrap_or((n, n));
         let selected: String = before.chars().skip(range.0).take(range.1 - range.0).collect();
         let replace = |text: &str, with: &str| -> (String, usize) {
             let head: String = text.chars().take(range.0).collect();
@@ -625,8 +685,59 @@ fn selection_of(target: EditTarget) -> Option<egui::text_selection::CCursorRange
 }
 
 thread_local! {
+    /// The selection of a text box when its edit menu opened (BUG-301).
+    static MENU_SEL: std::cell::RefCell<std::collections::HashMap<EditTarget, egui::text_selection::CCursorRange>> = Default::default();
+}
+
+/// Keeps the selection of a text box as its edit menu opens: the menu's Cut, Copy and Delete act on it,
+/// although the text box gives up its focus (and egui its selection) when the menu is clicked.
+pub(crate) fn snapshot_selection(target: EditTarget) {
+    MENU_SEL.with(|m| {
+        let mut m = m.borrow_mut();
+        match selection_of(target) {
+            Some(r) => m.insert(target, r),
+            None => m.remove(&target),
+        };
+    });
+}
+
+/// The selection the open edit menu acts on.
+fn menu_selection(target: EditTarget) -> Option<egui::text_selection::CCursorRange> {
+    MENU_SEL.with(|m| m.borrow().get(&target).copied()).or_else(|| selection_of(target))
+}
+
+fn take_menu_selection(target: EditTarget) -> Option<egui::text_selection::CCursorRange> {
+    MENU_SEL.with(|m| m.borrow_mut().remove(&target))
+}
+
+thread_local! {
     /// The last known selection of each text box (updated while drawing them).
     pub(crate) static EDIT_SEL: std::cell::RefCell<std::collections::HashMap<EditTarget, egui::text_selection::CCursorRange>> = Default::default();
+}
+
+/// The state of a text box before the right mouse button reaches it, while that button presses, holds or
+/// releases over `rect`: egui's text edit puts the cursor under any pointer button, which collapses the
+/// selection the edit menu acts on (BUG-301). Hand it to [`keep_selection`] after drawing the box.
+pub(crate) fn before_right_click(ctx: &egui::Context, target: EditTarget, rect: egui::Rect) -> Option<egui::text_edit::TextEditState> {
+    use egui::PointerButton::{Primary, Secondary};
+    let right = ctx.input(|i| {
+        let p = &i.pointer;
+        (p.button_pressed(Secondary) || p.button_down(Secondary) || p.button_released(Secondary))
+            && !p.button_down(Primary)
+            && p.interact_pos().is_some_and(|q| rect.contains(q))
+    });
+    if right {
+        egui::text_edit::TextEditState::load(ctx, target.id())
+    } else {
+        None
+    }
+}
+
+/// Puts back the state [`before_right_click`] saved (the selection survives the right click).
+pub(crate) fn keep_selection(ctx: &egui::Context, target: EditTarget, saved: Option<egui::text_edit::TextEditState>) {
+    if let Some(s) = saved {
+        s.store(ctx, target.id());
+    }
 }
 
 /// Remembers the selection of a text box (called after drawing it).
@@ -640,11 +751,9 @@ pub(crate) fn remember_selection(ctx: &egui::Context, target: EditTarget) {
     }
 }
 
-/// Missing folders (paths that do not exist) and missing fonts ("Family Style" of `<font>` elements that
-/// no listed face matches) of an import file.
-fn import_missing(xml: &str, catalog: &anyfont_core::Catalog) -> (Vec<String>, Vec<String>) {
+/// Missing folders (paths that do not exist) of an import file.
+fn import_missing_folders(xml: &str) -> Vec<String> {
     let mut folders = Vec::new();
-    let mut fonts = Vec::new();
     let mut rest = xml;
     while let Some(i) = rest.find('<') {
         rest = &rest[i + 1..];
@@ -656,21 +765,10 @@ fn import_missing(xml: &str, catalog: &anyfont_core::Catalog) -> (Vec<String>, V
                     folders.push(p);
                 }
             }
-        } else if let Some(t) = tag.strip_prefix("font ") {
-            if let Some(family) = attr(t, "DBFamily") {
-                let sub = attr(t, "DBSubFamily").unwrap_or_default();
-                let found = catalog.fonts().iter().any(|f| f.family.eq_ignore_ascii_case(family.trim()) && (sub.is_empty() || f.subfamily.eq_ignore_ascii_case(sub.trim())));
-                if !found {
-                    let name = if sub.is_empty() { family } else { format!("{family} {sub}") };
-                    if !fonts.contains(&name) {
-                        fonts.push(name);
-                    }
-                }
-            }
         }
         rest = &rest[end.min(rest.len())..];
     }
-    (folders, fonts)
+    folders
 }
 
 fn attr(tag: &str, name: &str) -> Option<String> {

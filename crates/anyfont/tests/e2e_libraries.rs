@@ -163,7 +163,7 @@ fn add_folder_from_the_menu_and_the_toolbar_with_its_refusals() {
     }
     let path = dir.display().to_string();
     let painted = painted(&h);
-    assert!(painted.iter().any(|t| *t == path), "the folder's path in its tooltip: {painted:?}");
+    assert!(painted.contains(&path), "the folder's path in its tooltip: {painted:?}");
 }
 
 // ----------------------------------------------------------------------------- collections, editor
@@ -395,7 +395,6 @@ fn favorites_add_remove_and_remove_favorites_itself() {
 /// UI-SPEC §13 lead decision 2: "Favorites can be removed, as in the original; it is not re-created
 /// automatically" (and §2.4 #4: Remove Folder or Collection is enabled for Favorites).
 #[test]
-#[ignore = "BUG-306: Remove Folder or Collection on Favorites only empties it; Favorites stays in Libraries"]
 fn removing_favorites_removes_it_for_good() {
     let env = Env::new();
     let dir = env.fixture_folder("Faces", &["Tuffy.ttf", "Hack-Regular.ttf"]);
@@ -626,18 +625,18 @@ fn export_and_import_folders_and_collections() {
     click_menu(&mut h, "File", "Import Folders and Collections...");
     assert!(has_label(&h, "We can't find the following:"), "the missing folder is reported");
     let lost_path = lost.display().to_string();
-    assert!(painted(&h).iter().any(|t| *t == lost_path), "the missing folder's path is listed: {:?}", painted(&h));
+    assert!(painted(&h).contains(&lost_path), "the missing folder's path is listed: {:?}", painted(&h));
     assert!(!painted(&h).iter().any(|t| *t == keep.display().to_string()), "only the missing folder");
-    // the PANOSE results window opened over it (BUG-304): Cancel it first
-    if h.query_by_role_and_label(Role::Button, "Cancel").is_some() {
-        h.get_by_role_and_label(Role::Button, "Cancel").click();
-        settle(&mut h);
-    }
+    // the collection's font is in "Kept", which is scanned before the collections are imported: no PANOSE
+    // results window over the message (BUG-304)
+    assert!(!painted(&h).iter().any(|t| t == "PANOSE Font Matching Results"), "{:?}", painted(&h));
     ok(&mut h);
     assert_eq!(h.state().pending_dialogs(), 0);
+    assert!(!painted(&h).iter().any(|t| t == "PANOSE Font Matching Results"), "{:?}", painted(&h));
     assert!(has_lib(&h, "Kept"), "{:?}", names(&h));
     assert!(has_lib(&h, "Exported"), "{:?}", names(&h));
-    // (the collection's fonts: see BUG-304, `import_does_not_report_fonts_of_the_imported_folders_as_missing`)
+    open_lib(&mut h, "Exported");
+    assert_eq!(h.state().font_count(), 1);
     open_lib(&mut h, "Kept");
     assert_eq!(h.state().font_count(), 2);
 }
@@ -645,7 +644,6 @@ fn export_and_import_folders_and_collections() {
 /// File ▸ Export writes AnyFont's own (hidden) content folder with the user's folders; imported into another
 /// profile it shows up as a user folder named "Fonts".
 #[test]
-#[ignore = "BUG-303: Export includes the hidden content folder, which Import then adds as a user folder"]
 fn export_leaves_out_the_content_folder() {
     let env = Env::new();
     let keep = env.fixture_folder("Mine", &["Tuffy.ttf"]);
@@ -673,7 +671,6 @@ fn export_leaves_out_the_content_folder() {
 /// Import of folders and collections into a fresh profile: the collection's fonts are in the imported
 /// folders, so nothing is "missing", no PANOSE results window opens, and the collection keeps its fonts.
 #[test]
-#[ignore = "BUG-304: Import resolves collection fonts before scanning the imported folders (PANOSE results, empty collection)"]
 fn import_does_not_report_fonts_of_the_imported_folders_as_missing() {
     let env = Env::new();
     let keep = env.fixture_folder("Mine", &["Tuffy.ttf"]);

@@ -104,9 +104,15 @@ impl Policy {
 pub fn mode_ui(ui: &mut egui::Ui, mode: &mut UpdateMode) -> bool {
     let mut changed = false;
     let cur = Policy::of(*mode);
-    ui.horizontal(|ui| {
-        ui.label("Allow product updates:");
-        egui::ComboBox::from_id_salt("anyfont_update_mode").selected_text(cur.caption()).width(330.0).show_ui(ui, |ui| {
+    // the label above the combo box, and the combo box as wide as the dialog: the choices are long sentences,
+    // longer still in most translations (BUG-202)
+    ui.label("Allow product updates:");
+    let width = ui.available_width().max(120.0);
+    egui::ComboBox::from_id_salt("anyfont_update_mode")
+        .selected_text(cur.caption())
+        .width(width)
+        .wrap_mode(egui::TextWrapMode::Truncate)
+        .show_ui(ui, |ui| {
             for p in Policy::available() {
                 if ui.selectable_label(p == cur, p.caption()).clicked() && p != cur {
                     if let Some(m) = p.to_mode() {
@@ -117,8 +123,7 @@ pub fn mode_ui(ui: &mut egui::Ui, mode: &mut UpdateMode) -> bool {
             }
         })
         .response
-        .accessible_name("Allow product updates:");
-    });
+        .accessible_name(crate::i18n::t("Allow product updates:"));
     dlg::note(ui, Policy::of(*mode).note());
     changed
 }
@@ -591,8 +596,8 @@ impl Updater {
                 ui.add_space(6.0);
                 dlg::heading(ui, &format!("You are using AnyFont {}.", current_version()));
                 ui.add_space(2.0);
-                // the mode setting keeps the bottom of the area
-                let room = 78.0;
+                // the mode setting keeps the bottom of the area: label, combo box and a note of up to three lines
+                let room = 118.0;
                 self.status_ui(ui, room);
                 ui.add_space((ui.available_height() - room).max(0.0));
                 dlg::separator(ui);

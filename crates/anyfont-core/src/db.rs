@@ -24,6 +24,9 @@ use std::path::{Path, PathBuf};
 /// Name of the collection that always exists.
 pub const FAVORITES_NAME: &str = "Favorites";
 
+/// `properties` key set when Favorites has been created (once, with a new database).
+pub const FAVORITES_CREATED: &str = "favorites_created";
+
 /// Schema version stored in `properties`.
 ///
 /// - 1: first release layout.
@@ -261,11 +264,13 @@ impl FontDatabase {
         self.conn.execute_batch("PRAGMA foreign_keys=ON; PRAGMA synchronous=NORMAL;")?;
         self.conn.execute_batch(SCHEMA)?;
         self.migrate()?;
-        self.conn.execute(
-            "INSERT OR IGNORE INTO collections(name, is_favorites) SELECT ?1, 1 \
-             WHERE NOT EXISTS (SELECT 1 FROM collections WHERE is_favorites = 1)",
-            [FAVORITES_NAME],
-        )?;
+        // Favorites is created once, with the database. The user may remove it (UI-SPEC §13, lead decision 2),
+        // and then it stays removed: the marker says it was created already (BUG-306). A database of an older
+        // AnyFont always has Favorites, so it only gets the marker.
+        if self.property(FAVORITES_CREATED)?.is_none() {
+            self.ensure_favorites()?;
+            self.set_property(FAVORITES_CREATED, "1")?;
+        }
         Ok(())
     }
 
@@ -409,11 +414,34 @@ impl FontDatabase {
             .optional()?)
     }
 
-    /// The Favorites collection (always exists).
+    /// The Favorites collection. An error once the user has removed it; see [`Self::favorites_opt`].
     pub fn favorites(&self) -> Result<Collection> {
-        Ok(self.conn.query_row("SELECT id, name, is_favorites FROM collections WHERE is_favorites = 1", [], |r| {
-            Ok(Collection { id: r.get(0)?, name: r.get(1)?, is_favorites: true })
-        })?)
+        self.favorites_opt()?.ok_or_else(|| CoreError::NotAllowed("Favorites was removed".into()))
+    }
+
+    /// The Favorites collection, `None` when the user has removed it.
+    pub fn favorites_opt(&self) -> Result<Option<Collection>> {
+        Ok(self
+            .conn
+            .query_row("SELECT id, name, is_favorites FROM collections WHERE is_favorites = 1", [], |r| {
+                Ok(Collection { id: r.get(0)?, name: r.get(1)?, is_favorites: true })
+            })
+            .optional()?)
+    }
+
+    /// The Favorites collection, created again when it was removed (an import of a file that has
+    /// Favorites, the user's explicit choice).
+    pub fn ensure_favorites(&self) -> Result<Collection> {
+        if let Some(c) = self.favorites_opt()? {
+            return Ok(c);
+        }
+        // names are unique: a user collection called "Favorites" becomes Favorites
+        if let Some(c) = self.collection_by_name(FAVORITES_NAME)? {
+            self.conn.execute("UPDATE collections SET is_favorites = 1 WHERE id = ?1", [c.id])?;
+            return Ok(Collection { is_favorites: true, ..c });
+        }
+        self.conn.execute("INSERT INTO collections(name, is_favorites) VALUES (?1, 1)", [FAVORITES_NAME])?;
+        Ok(Collection { id: self.conn.last_insert_rowid(), name: FAVORITES_NAME.to_string(), is_favorites: true })
     }
 
     /// Default name of a new collection: "Collection N" with the smallest free N >= 1.
@@ -472,15 +500,14 @@ impl FontDatabase {
         Ok(())
     }
 
-    /// Removes a collection (Remove Folder or Collection). Favorites always exists: removing it empties it.
+    /// Removes a collection (Remove Folder or Collection). Favorites too, as in the original; it is not
+    /// created again at the next start (UI-SPEC §13, lead decision 2).
     pub fn remove_collection(&self, id: CollectionId) -> Result<()> {
-        let c = self.collection(id)?.ok_or_else(|| CoreError::NotAllowed("unknown collection".into()))?;
-        if c.is_favorites {
-            self.conn.execute("DELETE FROM collection_fonts WHERE collection_id = ?1", [id])?;
-        } else {
-            self.conn.execute("DELETE FROM collection_fonts WHERE collection_id = ?1", [id])?;
-            self.conn.execute("DELETE FROM collections WHERE id = ?1", [id])?;
+        if self.collection(id)?.is_none() {
+            return Err(CoreError::NotAllowed("unknown collection".into()));
         }
+        self.conn.execute("DELETE FROM collection_fonts WHERE collection_id = ?1", [id])?;
+        self.conn.execute("DELETE FROM collections WHERE id = ?1", [id])?;
         Ok(())
     }
 
@@ -1073,9 +1100,40 @@ mod tests {
         assert_eq!(db.add_to_collection(fav.id, &[k.clone(), k.clone()]).unwrap(), 1);
         db.remove_collection(fav.id).unwrap();
         assert!(db.collection_fonts(fav.id).unwrap().is_empty(), "removing Favorites empties it");
-        assert!(db.favorites().is_ok());
+        assert!(db.favorites_opt().unwrap().is_none(), "and removes it");
+        assert!(db.collection(fav.id).unwrap().is_none());
         db.rename_collection(c2.id, "Display faces").unwrap();
         assert_eq!(db.collection(c2.id).unwrap().unwrap().name, "Display faces");
+    }
+
+    /// Favorites is created with a new database only: once removed, it stays removed (BUG-306).
+    #[test]
+    fn removed_favorites_is_not_created_again() {
+        let dir = tempfile::tempdir().unwrap();
+        let path = dir.path().join("fonts.db");
+        {
+            let db = FontDatabase::open(&path).unwrap();
+            let fav = db.favorites().unwrap();
+            assert_eq!(db.property(FAVORITES_CREATED).unwrap().as_deref(), Some("1"));
+            db.remove_collection(fav.id).unwrap();
+        }
+        let db = FontDatabase::open(&path).unwrap();
+        assert!(db.favorites_opt().unwrap().is_none(), "not re-created at the next start");
+        assert!(db.collections().unwrap().is_empty());
+        // an import of Favorites brings it back, once
+        let fav = db.ensure_favorites().unwrap();
+        assert_eq!((fav.name.as_str(), fav.is_favorites), (FAVORITES_NAME, true));
+        assert_eq!(db.ensure_favorites().unwrap().id, fav.id);
+        drop(db);
+        // a database of an older AnyFont (Favorites, no marker) keeps its Favorites and gets the marker
+        let old = dir.path().join("old.db");
+        {
+            let db = FontDatabase::open(&old).unwrap();
+            db.connection().execute("DELETE FROM properties WHERE key = ?1", [FAVORITES_CREATED]).unwrap();
+        }
+        let db = FontDatabase::open(&old).unwrap();
+        assert!(db.favorites_opt().unwrap().is_some());
+        assert_eq!(db.property(FAVORITES_CREATED).unwrap().as_deref(), Some("1"));
     }
 
     #[test]

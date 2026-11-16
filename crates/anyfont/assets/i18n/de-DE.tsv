@@ -194,6 +194,7 @@ Change the glyph size in the Glyph Preview area.	Glyphengröße im Bereich der G
 Multiple fonts are selected. To view a glyph set, choose only one font.	Es sind mehrere Schriftarten ausgewählt. Wählen Sie nur eine Schriftart aus, um einen Glyphensatz anzuzeigen.
 No matching glyphs	Keine passenden Glyphen
 Install or download the font to preview glyphs.	Installieren Sie die Schriftart oder laden Sie sie herunter, um eine Vorschau der Glyphen anzuzeigen.
+Show glyph alternates.	Glyphenalternativen anzeigen.
 Family:	Familie:
 Sub-family:	Unterfamilie:
 File Path:	Dateipfad:
@@ -244,6 +245,15 @@ Total virtual memory	Virtueller Speicher gesamt
 Available virtual memory	Verfügbarer virtueller Speicher
 Total memory used by app	Von der Anwendung belegter Speicher
 GDI Object Count	Anzahl GDI-Objekte
+User Object Count	Anzahl USER-Objekte
+Windows Directory	Windows-Verzeichnis
+TEMP directory	TEMP-Verzeichnis
+Application directory	Anwendungsverzeichnis
+Number of displays	Anzahl der Bildschirme
+Display {}	Bildschirm {}
+Resolution	Auflösung
+Color depth	Farbtiefe
+Refresh rate	Bildwiederholfrequenz
 &Save	&Speichern
 Save System Info	Systeminfo speichern
 Text (*.txt)	Text (*.txt)
@@ -315,6 +325,19 @@ My Library	Meine Bibliothek
 Downloaded	Heruntergeladen
 Remote font catalog cannot connect to the internet.	Der Remote-Schriftartkatalog kann keine Verbindung zum Internet herstellen.
 An error occurred while downloading the remote font catalog.	Beim Herunterladen des Remote-Schriftartkatalogs ist ein Fehler aufgetreten.
+Handwriting	Handschrift
+Monospace	Nichtproportional
+Popular	Beliebt
+Name	Name
+Newest	Neueste
+Clear	Löschen
+No fonts found.	Keine Schriftarten gefunden.
+1 style	1 Stil
+{} styles	{} Stile
+{} · 1 style	{} · 1 Stil
+{} · {} styles	{} · {} Stile
+{} styles · {}	{} Stile · {}
+Unable to download {}.	{} kann nicht heruntergeladen werden.
 # --- PANOSE font matching ---------------------------------------------------------------------------------
 PANOSE Font Matching Preferences	Einstellungen für die PANOSE-Schriftartzuordnung
 &Text	&Text
@@ -342,16 +365,23 @@ Show &all fonts	&Alle Schriftarten anzeigen
 Make this substitution:	Diese Ersetzung vornehmen:
 &Permanent - keep these fonts	&Dauerhaft - diese Schriftarten beibehalten
 Te&mporary - use original fonts	&Temporär - Originalschriftarten verwenden
+Show fonts with the same code page	Schriftarten mit derselben Codepage anzeigen
+Type	Typ
+PANOSE	PANOSE
+Exception	Ausnahme
+The fonts below are not available on this computer. AnyFont suggests a substitute for each one. Select a font in the list to choose another substitute.	Die folgenden Schriftarten sind auf diesem Computer nicht verfügbar. AnyFont schlägt für jede einen Ersatz vor. Wählen Sie eine Schriftart in der Liste aus, um einen anderen Ersatz zu wählen.
+AnyFont suggests an OpenType or TrueType replacement for each Type 1 font. The replacements take the place of the Type 1 fonts in your collections. Select a font in the list to choose another replacement.	AnyFont schlägt für jede Type 1-Schriftart einen OpenType- oder TrueType-Ersatz vor. Die Ersatzschriftarten treten in Ihren Sammlungen an die Stelle der Type 1-Schriftarten. Wählen Sie eine Schriftart in der Liste aus, um einen anderen Ersatz zu wählen.
 # --- Type 1 fonts -----------------------------------------------------------------------------------------
 Type 1 fonts detected	Type 1-Schriftarten erkannt
 This document uses Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.	Dieses Dokument verwendet Type 1-Schriftarten, die in Zukunft möglicherweise nicht mehr unterstützt werden. Um mögliche Probleme zu vermeiden, sollten Sie den Text auf andere Schriftarten umstellen, z. B. TrueType- (TTF) oder OpenType-Schriftarten (OTF).
+These fonts use Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.	Diese Schriftarten sind Type 1-Schriftarten, die in Zukunft möglicherweise nicht mehr unterstützt werden. Um mögliche Probleme zu vermeiden, sollten Sie den Text auf andere Schriftarten umstellen, z. B. TrueType- (TTF) oder OpenType-Schriftarten (OTF).
 Do not show again	Nicht mehr anzeigen
 Replace fonts	Schriftarten ersetzen
 # --- Rename collection ------------------------------------------------------------------------------------
 Name:	Name:
 # --- Updates (from AnyVector updater.rs, product name replaced) -------------------------------------------
 Keep the product up to date (recommended)	Produkt auf dem neuesten Stand halten (empfohlen)
-Check for updates and let me choose when to install them	Nach Updates suchen und mich entscheiden lassen, wann sie installiert werden
+Check for updates and let me choose when to install them	Nach Updates suchen, Zeitpunkt selbst wählen
 Never check for updates	Nie nach Updates suchen
 Automatically downloads product updates, but prompts you before installing them.	Lädt Produktupdates automatisch herunter, fragt aber vor der Installation nach.
 AnyFont tells you when a new version is available; you choose when to download and install it.	AnyFont meldet, wenn eine neue Version verfügbar ist; Sie entscheiden, wann sie heruntergeladen und installiert wird.
@@ -383,6 +413,7 @@ Check Now	Jetzt suchen
 There is a new version of AnyFont available.	Eine neue Version von AnyFont ist verfügbar.
 New version: {}. Your version: {}.	Neue Version: {}. Ihre Version: {}.
 Click OK to install the new version.	Klicken Sie auf „OK“, um die neue Version zu installieren.
+Later	Später
 # --- Report a Bug / Submit Ideas and Feedback (from AnyVector bugreport.rs, product name replaced) ---------
 Report a Bug	Fehler melden
 Submit Ideas and Feedback	Ideen und Feedback senden
@@ -421,5 +452,29 @@ Images	Bilder
 Videos	Videos
 Archives (.zip, .gz, .tgz)	Archive (.zip, .gz, .tgz)
 Images and videos up to 10 MB, other files up to 25 MB, of the types GitHub accepts. Put a font file (.ttf, .otf) in a .zip file.	Bilder und Videos bis 10 MB, andere Dateien bis 25 MB, in den von GitHub akzeptierten Typen. Legen Sie eine Schriftartdatei (.ttf, .otf) in eine .zip-Datei.
+GitHub doesn't accept "{}" because it has no file type. Put it in a .zip file.	GitHub akzeptiert „{}“ nicht, weil die Datei keinen Dateityp hat. Legen Sie sie in eine .zip-Datei.
+GitHub doesn't accept .{} files. Put "{}" in a .zip file.	GitHub akzeptiert keine .{}-Dateien. Legen Sie „{}“ in eine .zip-Datei.
+"{}" is empty.	„{}“ ist leer.
+"{}" is {}. GitHub accepts at most {} MB for this type.	„{}“ ist {} groß. GitHub akzeptiert für diesen Typ höchstens {} MB.
+e.g. Sort the font list by date added	z. B. Schriftartenliste nach Hinzufügedatum sortieren
+e.g. The font list is empty after Add Folder	z. B. Die Schriftartenliste ist nach „Ordner hinzufügen“ leer
 Sending...	Wird gesendet...
 Send	Senden
+# --- Shell (main window): progress, start-up, messages and accessibility names ---------------------------
+Deleting {}... {}%	{} wird gelöscht... {} %
+The font folders have changed.	Die Schriftartordner wurden geändert.
+Initializing...	Initialisierung...
+Loading fonts...	Schriftarten werden geladen...
+Version {}	Version {}
+AnyFont closed unexpectedly the last time. Do you want to send a bug report?	AnyFont wurde beim letzten Mal unerwartet beendet. Möchten Sie einen Fehlerbericht senden?
+Insufficient Permissions	Unzureichende Berechtigungen
+AnyFont could not get administrator permission to install the fonts for all users.\n\nDo you want to install them only for you? They will not be available to other users of this computer.	AnyFont konnte keine Administratorberechtigung erhalten, um die Schriftarten für alle Benutzer zu installieren.\n\nMöchten Sie sie nur für sich installieren? Sie sind dann für andere Benutzer dieses Computers nicht verfügbar.
+&Install for me	Nur für mich &installieren
+Some fonts could not be processed:	Einige Schriftarten konnten nicht verarbeitet werden:
+Font list	Schriftartenliste
+Scroll bar	Bildlaufleiste
+# Developer inspectors (Ctrl+Alt+Shift+I)
+Inspectors	Inspektoren
+Settings	Einstellungen
+Inspection	Inspektion
+Memory	Speicher

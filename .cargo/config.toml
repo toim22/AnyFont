@@ -1,0 +1,6 @@
+# Link the C runtime statically: anyfont.exe must start on a Windows where no program has installed the Visual C++
+# redistributable (VCRUNTIME140.dll), a fresh Windows or Windows Sandbox (docs/QA-BUGS.md, BUG-401). Every cargo
+# command in this repository uses it: build.bat, CI and the tests. A RUSTFLAGS environment variable would replace
+# these flags, so build.bat and CI add the flag to it when it is set.
+[target.x86_64-pc-windows-msvc]
+rustflags = ["-C", "target-feature=+crt-static"]

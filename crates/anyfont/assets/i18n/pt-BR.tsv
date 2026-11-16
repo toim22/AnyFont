@@ -194,6 +194,7 @@ Change the glyph size in the Glyph Preview area.	Alterar o tamanho do glifo na �
 Multiple fonts are selected. To view a glyph set, choose only one font.	Várias fontes estão selecionadas. Para ver um conjunto de glifos, escolha apenas uma fonte.
 No matching glyphs	Nenhum glifo correspondente
 Install or download the font to preview glyphs.	Instale ou baixe a fonte para visualizar os glifos.
+Show glyph alternates.	Mostrar alternativas do glifo.
 Family:	Família:
 Sub-family:	Subfamília:
 File Path:	Caminho do arquivo:
@@ -244,6 +245,15 @@ Total virtual memory	Memória virtual total
 Available virtual memory	Memória virtual disponível
 Total memory used by app	Memória total usada pelo aplicativo
 GDI Object Count	Contagem de objetos GDI
+User Object Count	Contagem de objetos USER
+Windows Directory	Pasta do Windows
+TEMP directory	Pasta TEMP
+Application directory	Pasta do aplicativo
+Number of displays	Número de monitores
+Display {}	Monitor {}
+Resolution	Resolução
+Color depth	Profundidade de cor
+Refresh rate	Taxa de atualização
 &Save	&Salvar
 Save System Info	Salvar informações do sistema
 Text (*.txt)	Texto (*.txt)
@@ -315,6 +325,19 @@ My Library	Minha biblioteca
 Downloaded	Baixadas
 Remote font catalog cannot connect to the internet.	O catálogo de fontes remoto não consegue se conectar à Internet.
 An error occurred while downloading the remote font catalog.	Ocorreu um erro ao baixar o catálogo de fontes remoto.
+Handwriting	Escrita à mão
+Monospace	Monoespaçada
+Popular	Populares
+Name	Nome
+Newest	Mais recentes
+Clear	Limpar
+No fonts found.	Nenhuma fonte encontrada.
+1 style	1 estilo
+{} styles	{} estilos
+{} · 1 style	{} · 1 estilo
+{} · {} styles	{} · {} estilos
+{} styles · {}	{} estilos · {}
+Unable to download {}.	Não foi possível baixar {}.
 # --- PANOSE font matching ---------------------------------------------------------------------------------
 PANOSE Font Matching Preferences	Preferências de correspondência de fontes PANOSE
 &Text	&Texto
@@ -342,16 +365,23 @@ Show &all fonts	Mostrar &todas as fontes
 Make this substitution:	Fazer esta substituição:
 &Permanent - keep these fonts	&Permanente - manter estas fontes
 Te&mporary - use original fonts	Te&mporária - usar as fontes originais
+Show fonts with the same code page	Mostrar fontes com a mesma página de código
+Type	Tipo
+PANOSE	PANOSE
+Exception	Exceção
+The fonts below are not available on this computer. AnyFont suggests a substitute for each one. Select a font in the list to choose another substitute.	As fontes abaixo não estão disponíveis neste computador. O AnyFont sugere uma substituta para cada uma. Selecione uma fonte na lista para escolher outra substituta.
+AnyFont suggests an OpenType or TrueType replacement for each Type 1 font. The replacements take the place of the Type 1 fonts in your collections. Select a font in the list to choose another replacement.	O AnyFont sugere uma substituta OpenType ou TrueType para cada fonte Type 1. As substitutas ocupam o lugar das fontes Type 1 nas suas coleções. Selecione uma fonte na lista para escolher outra substituta.
 # --- Type 1 fonts -----------------------------------------------------------------------------------------
 Type 1 fonts detected	Fontes Type 1 detectadas
 This document uses Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.	Este documento usa fontes Type 1, que podem deixar de ter suporte no futuro. Para evitar possíveis problemas, considere atualizar o texto para usar outras fontes, como fontes TrueType (TTF) ou OpenType (OTF).
+These fonts use Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.	Estas fontes são fontes Type 1, que podem deixar de ter suporte no futuro. Para evitar possíveis problemas, considere atualizar o texto para usar outras fontes, como fontes TrueType (TTF) ou OpenType (OTF).
 Do not show again	Não mostrar novamente
 Replace fonts	Substituir fontes
 # --- Rename collection ------------------------------------------------------------------------------------
 Name:	Nome:
 # --- Updates (from AnyVector updater.rs, product name replaced) -------------------------------------------
 Keep the product up to date (recommended)	Manter o produto atualizado (recomendado)
-Check for updates and let me choose when to install them	Verificar se há atualizações e deixar que eu escolha quando instalá-las
+Check for updates and let me choose when to install them	Verificar atualizações e eu escolho quando instalar
 Never check for updates	Nunca verificar se há atualizações
 Automatically downloads product updates, but prompts you before installing them.	Baixa automaticamente as atualizações do produto, mas pergunta antes de instalá-las.
 AnyFont tells you when a new version is available; you choose when to download and install it.	O AnyFont avisa quando uma nova versão está disponível; você escolhe quando baixar e instalar.
@@ -376,13 +406,14 @@ AnyFont closes to install it and starts again when it is done.	O AnyFont fecha p
 Error: {}	Erro: {}
 You are using AnyFont {}.	Você está usando o AnyFont {}.
 The update will be installed when AnyFont closes.	A atualização será instalada quando o AnyFont fechar.
-Allow product updates:	Permitir atualizações do produto:
+Allow product updates:	Permitir atualizações:
 Release Notes	Notas da versão
 Install Now	Instalar agora
 Check Now	Verificar agora
 There is a new version of AnyFont available.	Há uma nova versão do AnyFont disponível.
 New version: {}. Your version: {}.	Nova versão: {}. Sua versão: {}.
 Click OK to install the new version.	Clique em OK para instalar a nova versão.
+Later	Mais tarde
 # --- Report a Bug / Submit Ideas and Feedback (from AnyVector bugreport.rs, product name replaced) ---------
 Report a Bug	Relatar um bug
 Submit Ideas and Feedback	Enviar ideias e comentários
@@ -421,5 +452,29 @@ Images	Imagens
 Videos	Vídeos
 Archives (.zip, .gz, .tgz)	Arquivos compactados (.zip, .gz, .tgz)
 Images and videos up to 10 MB, other files up to 25 MB, of the types GitHub accepts. Put a font file (.ttf, .otf) in a .zip file.	Imagens e vídeos de até 10 MB, outros arquivos de até 25 MB, dos tipos aceitos pelo GitHub. Coloque um arquivo de fonte (.ttf, .otf) em um arquivo .zip.
+GitHub doesn't accept "{}" because it has no file type. Put it in a .zip file.	O GitHub não aceita "{}" porque ele não tem tipo de arquivo. Coloque-o em um arquivo .zip.
+GitHub doesn't accept .{} files. Put "{}" in a .zip file.	O GitHub não aceita arquivos .{}. Coloque "{}" em um arquivo .zip.
+"{}" is empty.	"{}" está vazio.
+"{}" is {}. GitHub accepts at most {} MB for this type.	"{}" tem {}. O GitHub aceita no máximo {} MB para este tipo.
+e.g. Sort the font list by date added	ex.: Classificar a lista de fontes por data de adição
+e.g. The font list is empty after Add Folder	ex.: A lista de fontes fica vazia depois de Adicionar pasta
 Sending...	Enviando...
 Send	Enviar
+# --- Shell (main window): progress, start-up, messages and accessibility names ---------------------------
+Deleting {}... {}%	Excluindo {}... {}%
+The font folders have changed.	As pastas de fontes foram alteradas.
+Initializing...	Inicializando...
+Loading fonts...	Carregando fontes...
+Version {}	Versão {}
+AnyFont closed unexpectedly the last time. Do you want to send a bug report?	O AnyFont foi fechado inesperadamente da última vez. Deseja enviar um relatório de bug?
+Insufficient Permissions	Permissões insuficientes
+AnyFont could not get administrator permission to install the fonts for all users.\n\nDo you want to install them only for you? They will not be available to other users of this computer.	O AnyFont não conseguiu obter permissão de administrador para instalar as fontes para todos os usuários.\n\nDeseja instalá-las somente para você? Elas não estarão disponíveis para outros usuários deste computador.
+&Install for me	&Instalar só para mim
+Some fonts could not be processed:	Algumas fontes não puderam ser processadas:
+Font list	Lista de fontes
+Scroll bar	Barra de rolagem
+# Developer inspectors (Ctrl+Alt+Shift+I)
+Inspectors	Inspetores
+Settings	Configurações
+Inspection	Inspeção
+Memory	Memória

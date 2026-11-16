@@ -71,6 +71,9 @@ pub(crate) struct State {
     protected: Vec<PathBuf>,
     /// Files the tests declare as held open by another application.
     in_use: Vec<PathBuf>,
+    /// Files held for the next N in-use checks only (as Windows holds a font it has just loaded).
+    #[serde(default)]
+    in_use_briefly: Vec<(PathBuf, u32)>,
     /// `MoveFileEx(DELAY_UNTIL_REBOOT)` stand-in.
     pending_reboot: Vec<PathBuf>,
     /// (original path, stored path) of recycled files.
@@ -174,7 +177,20 @@ impl Platform for SandboxPlatform {
         is_directly_in(&self.dirs.all_users, path) && crate::protect::is_critical_font(path)
     }
     fn is_in_use(&self, path: &Path) -> bool {
+        if self.read(|s| s.in_use_briefly.iter().any(|(p, n)| *n > 0 && same_path(p, path))) {
+            let _ = self.update(|s| {
+                for (_, n) in s.in_use_briefly.iter_mut().filter(|(p, _)| same_path(p, path)) {
+                    *n = n.saturating_sub(1);
+                }
+                s.in_use_briefly.retain(|(_, n)| *n > 0);
+            });
+            return true;
+        }
         self.read(|s| s.in_use.iter().any(|p| same_path(p, path))) || crate::protect::is_open_elsewhere(path)
+    }
+    fn in_use_retry_ms(&self) -> &'static [u64] {
+        // the same retries, without the wait
+        &[1, 1, 1, 1, 1, 1]
     }
     fn delete_on_reboot(&self, path: &Path) -> io::Result<()> {
         // Like the real backend: MOVEFILE_DELAY_UNTIL_REBOOT needs administrator rights, which the
@@ -302,6 +318,15 @@ impl SandboxFontSystem {
         });
     }
 
+    /// Declare a file as held for the next `checks` in-use checks only, as Windows (its font cache) holds a
+    /// font it has just loaded for about a second.
+    pub fn set_in_use_briefly(&self, path: &Path, checks: u32) {
+        let _ = self.engine.p.update(|s| {
+            s.in_use_briefly.retain(|(p, _)| !same_path(p, path));
+            s.in_use_briefly.push((path.to_path_buf(), checks));
+        });
+    }
+
     /// Mark a file as a protected system font (tests).
     pub fn set_protected(&self, path: &Path) {
         let _ = self.engine.p.update(|s| s.protected.push(path.to_path_buf()));
@@ -322,6 +347,7 @@ impl SandboxFontSystem {
         let _ = self.engine.p.update(|s| {
             s.pending_reboot.clear();
             s.in_use.clear();
+            s.in_use_briefly.clear();
         });
     }
 

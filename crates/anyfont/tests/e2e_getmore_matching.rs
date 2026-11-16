@@ -313,7 +313,6 @@ fn set_mode(h: &mut H<'_>, label: &str) {
 }
 
 #[test]
-#[ignore = "BUG-102: Font Matching Results OK never links the substitute into the imported collection (take_resolved is never called)"]
 fn import_with_missing_fonts_links_the_chosen_substitute() {
     let env = Env::new();
     let mut h = harness(env.config(), SIZE);

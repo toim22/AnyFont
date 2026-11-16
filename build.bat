@@ -31,6 +31,10 @@ if /i "%~1"=="clean" (
 
 where cargo >nul 2>nul || (echo [error] cargo not found. Install Rust from https://rustup.rs & exit /b 1)
 
+rem the C runtime is linked statically (.cargo\config.toml), so anyfont.exe starts on a Windows without the Visual C++
+rem runtime (BUG-401). A RUSTFLAGS variable replaces the flags of config.toml: add the flag to it.
+if defined RUSTFLAGS set "RUSTFLAGS=%RUSTFLAGS% -C target-feature=+crt-static"
+
 if /i "%~1"=="debug" (
   cargo build --workspace || goto :fail
   echo.

@@ -126,6 +126,13 @@ pub struct AnyFontApp {
     pub(crate) db_ready: bool,
     rescan_after: bool,
     sync_scan: bool,
+    /// File ▸ Import: the file whose collections are imported once the scan of its folders ends (BUG-304).
+    pub(crate) pending_import: Option<PathBuf>,
+    /// Missing fonts of the last import ("Family Style") and the collections that wanted them: the
+    /// substitutes chosen in Font Matching Results are linked there (BUG-102).
+    pub(crate) import_links: Vec<(String, anyfont_core::model::CollectionId)>,
+    /// Missing fonts waiting for the dialogs in front of them (We can't find the following:) to close.
+    pub(crate) pending_results: Option<Vec<String>>,
     pub(crate) watcher: Watcher,
     pub(crate) op: Option<Running>,
     pub(crate) op_flow: Option<dialogs::OpFlow>,
@@ -245,6 +252,8 @@ impl AnyFontApp {
         settings.scheme = cfg.scheme;
         settings.core.update_mode = anyfont_core::settings::UpdateMode::Never;
         let mut app = AnyFontApp::build(&cc.egui_ctx, fs, paths, settings, cfg.language, true, Arc::new(Mutex::new(None)));
+        // the Updates dialog shows the mode of the settings, as after the real start-up (`on_startup`)
+        app.updater.set_mode(app.settings.core.update_mode);
         app.sync_scan = cfg.synchronous_scan;
         app.pending_files = cfg.files;
         app.start_scan(false);
@@ -300,6 +309,7 @@ impl AnyFontApp {
             }
         };
         let watcher = Watcher::start(ctx.clone(), Duration::from_secs(3));
+        let cache_dir = paths.cache_dir.clone();
         let mut app = AnyFontApp {
             fs,
             paths,
@@ -330,6 +340,9 @@ impl AnyFontApp {
             db_ready: false,
             rescan_after: false,
             sync_scan: false,
+            pending_import: None,
+            import_links: Vec::new(),
+            pending_results: None,
             watcher,
             op: None,
             op_flow: None,
@@ -343,7 +356,7 @@ impl AnyFontApp {
             props: properties::PropsState::default(),
             about: crate::about::About::new(),
             bugreport: crate::bugreport::BugReport::new(),
-            getmore: crate::getmore::GetMore::new(),
+            getmore: crate::getmore::GetMore::with_cache_dir(cache_dir),
             matching: crate::matching::Matching::new(),
             updater: crate::updater::Updater::new(),
             updater_out,
@@ -558,6 +571,11 @@ impl AnyFontApp {
         self.scan = Some(anyfont_core::scan::spawn_scan(req));
     }
 
+    /// True while a scan runs on its thread.
+    pub(crate) fn scanning(&self) -> bool {
+        self.scan.is_some()
+    }
+
     fn poll_scan(&mut self) {
         let Some(h) = &self.scan else { return };
         let mut finished = false;
@@ -607,6 +625,9 @@ impl AnyFontApp {
         if self.rescan_after {
             self.rescan_after = false;
             self.start_scan(false);
+        } else if self.pending_import.is_some() {
+            // the imported folders are scanned: their fonts can be linked now
+            self.finish_import();
         }
     }
 
@@ -958,8 +979,16 @@ impl AnyFontApp {
             self.ensure_content_folder();
             self.start_scan(false);
         }
+        if self.dialogs.is_empty() && !self.matching.is_open() {
+            if let Some(missing) = self.pending_results.take() {
+                self.matching.open_results(missing);
+            }
+        }
         if self.matching.ui(ctx, &mut self.db, &self.catalog) {
             self.reload();
+        }
+        if let Some(resolved) = self.matching.take_resolved() {
+            self.link_substitutes(&resolved);
         }
         if let Some(req) = self.updater.ui(ctx) {
             match req {

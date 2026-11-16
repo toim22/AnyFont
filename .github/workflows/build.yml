@@ -57,6 +57,13 @@ jobs:
                                'dist\AnyFont-*-win-x64.zip', 'dist\AnyFont-*-setup.exe') {
             if (-not (Test-Path $pattern)) { throw "missing: $pattern" }
           }
+          # BUG-401: the C runtime is linked statically (.cargo/config.toml): anyfont.exe imports no VCRUNTIME140,
+          # MSVCP140, UCRT (api-ms-win-crt-*) DLL, which a fresh Windows lacks
+          $vs = & "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -property installationPath
+          $dumpbin = Get-ChildItem "$vs\VC\Tools\MSVC\*\bin\Hostx64\x64\dumpbin.exe" | Select-Object -Last 1
+          if (-not $dumpbin) { throw "dumpbin.exe not found under $vs" }
+          $crt = & $dumpbin.FullName /nologo /dependents dist\AnyFont\anyfont.exe | Select-String -Pattern '(?i)\b(vcruntime\d+(_\d)?|msvcp\d+|ucrtbase|api-ms-win-crt-[a-z0-9-]+)\.dll'
+          if ($crt) { throw "anyfont.exe needs the Visual C++ runtime: $(($crt | ForEach-Object { $_.Line.Trim() }) -join ', ')" }
           Get-ChildItem dist\AnyFont-* -File | ForEach-Object {
             "{0}  {1}" -f (Get-FileHash $_.FullName -Algorithm SHA256).Hash, $_.Name
           } | Tee-Object dist\SHA256SUMS.txt

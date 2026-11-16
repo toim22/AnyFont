@@ -8,24 +8,28 @@ remove its `#[ignore]` and close the entry below (or delete it).
 IDs are grouped by area: 1xx services dialogs, 2xx window chrome / i18n, 3xx main window content, 4xx real system
 (found in a Windows Sandbox run; now tested on GitHub Actions, `e2e-real.yml`). Line numbers are those of the code when the bug was found.
 
-| ID | Area | Title | Test |
-|---|---|---|---|
-| BUG-101 | Report a Bug | Fields are cut by Unicode characters, but the relay counts UTF-16 units | `e2e_bugreport::non_bmp_title_is_cut_to_the_relay_limit` |
-| BUG-102 | Font matching | OK in Font Matching Results never puts the substitute into the imported collection | `e2e_getmore_matching::import_with_missing_fonts_links_the_chosen_substitute` |
-| BUG-201 | i18n | Captions with an `&` access key are shown in English in every other language | `e2e_i18n::untranslated::<lang>` (14 tests) |
-| BUG-202 | i18n | Updates dialog: the update-mode choice and its note are cut off | `e2e_i18n::overflow::<lang>` (11 tests) |
-| BUG-203 | i18n / accessibility | Plain egui buttons give screen readers the English text | `e2e_i18n::a11y::<lang>` (14 tests) |
-| BUG-301 | Edit boxes | Right-clicking a text box clears its selection: Cut, Copy and Delete are always disabled | `e2e_filters_list::edit_box_menu_cut_copy_delete_with_a_selection` |
-| BUG-302 | Font list | Double-clicking a font row never records it as recently used | `e2e_filters_list::recently_used_fonts_after_a_double_click` |
-| BUG-303 | Export | Export includes AnyFont's hidden content folder | `e2e_libraries::export_leaves_out_the_content_folder` |
-| BUG-304 | Import | Import looks for a collection's fonts before the imported folders are scanned | `e2e_libraries::import_does_not_report_fonts_of_the_imported_folders_as_missing` |
-| BUG-305 | Accessibility | A check box's accessible name loses every `&` of its caption | `e2e_properties_options::glyph_filter_names_keep_the_ampersand` |
-| BUG-306 | Libraries | Removing Favorites only empties it; Favorites stays in Libraries | `e2e_libraries::removing_favorites_removes_it_for_good` |
-| BUG-401 | Setup / start-up | AnyFont does not start on a Windows without the Visual C++ runtime (VCRUNTIME140.dll) | `e2e-real.yml` check "runs on a Windows without the Visual C++ runtime" (`tests/real-system/run-real.ps1`) |
+**Status:** every bug below is **fixed in round 2**; their tests run with the others (no `#[ignore]` is left).
+
+| ID | Area | Title | Test | Status |
+|---|---|---|---|---|
+| BUG-101 | Report a Bug | Fields are cut by Unicode characters, but the relay counts UTF-16 units | `e2e_bugreport::non_bmp_title_is_cut_to_the_relay_limit` | Fixed in round 2 |
+| BUG-102 | Font matching | OK in Font Matching Results never puts the substitute into the imported collection | `e2e_getmore_matching::import_with_missing_fonts_links_the_chosen_substitute` | Fixed in round 2 |
+| BUG-201 | i18n | Captions with an `&` access key are shown in English in every other language | `e2e_i18n::untranslated::<lang>` (14 tests) | Fixed in round 2 |
+| BUG-202 | i18n | Updates dialog: the update-mode choice and its note are cut off | `e2e_i18n::overflow::<lang>` (11 tests) | Fixed in round 2 |
+| BUG-203 | i18n / accessibility | Plain egui buttons give screen readers the English text | `e2e_i18n::a11y::<lang>` (14 tests) | Fixed in round 2 |
+| BUG-301 | Edit boxes | Right-clicking a text box clears its selection: Cut, Copy and Delete are always disabled | `e2e_filters_list::edit_box_menu_cut_copy_delete_with_a_selection` | Fixed in round 2 |
+| BUG-302 | Font list | Double-clicking a font row never records it as recently used | `e2e_filters_list::recently_used_fonts_after_a_double_click` | Fixed in round 2 |
+| BUG-303 | Export | Export includes AnyFont's hidden content folder | `e2e_libraries::export_leaves_out_the_content_folder` | Fixed in round 2 |
+| BUG-304 | Import | Import looks for a collection's fonts before the imported folders are scanned | `e2e_libraries::import_does_not_report_fonts_of_the_imported_folders_as_missing` | Fixed in round 2 |
+| BUG-305 | Accessibility | A check box's accessible name loses every `&` of its caption | `e2e_properties_options::glyph_filter_names_keep_the_ampersand` | Fixed in round 2 |
+| BUG-306 | Libraries | Removing Favorites only empties it; Favorites stays in Libraries | `e2e_libraries::removing_favorites_removes_it_for_good` | Fixed in round 2 |
+| BUG-401 | Setup / start-up | AnyFont does not start on a Windows without the Visual C++ runtime (VCRUNTIME140.dll) | `e2e-real.yml` check "runs on a Windows without the Visual C++ runtime" (`tests/real-system/run-real.ps1`) | Fixed in round 2 |
 
 ---
 
 ## BUG-101 – bug report fields are cut by Unicode characters, the relay counts UTF-16 units
+
+**Fixed in round 2:** `clip()` counts UTF-16 code units (`char::len_utf16`) like the relay's `String.length` and never splits a character (unit test in `bugreport.rs`).
 
 - **Steps:** Help ▸ Report a Bug..., type a title of 150 × 😀 (or any text with characters outside the BMP), fill the
   rest, Send.
@@ -38,6 +42,8 @@ IDs are grouped by area: 1xx services dialogs, 2xx window chrome / i18n, 3xx mai
 
 ## BUG-102 – Font Matching Results: OK never links the substitute into the imported collection
 
+**Fixed in round 2:** the import remembers which collection wanted each missing font (`ImportReport::missing`, core); after OK, `services()` takes `Matching::take_resolved()` and `link_substitutes` adds each chosen face to those collections.
+
 - **Steps:** Options ▸ Font Matching = Text. File ▸ Import a libraries XML whose collection references a face that
   is not on this PC. In PANOSE Font Matching Results choose "Substitute font with:" Arial, OK.
 - **Expected:** the collection contains Arial (status "Imported: 1 fonts" / the collection lists 1 font).
@@ -47,6 +53,8 @@ IDs are grouped by area: 1xx services dialogs, 2xx window chrome / i18n, 3xx mai
   substitutes are never added to the collection).
 
 ## BUG-201 – captions with an `&` access key are shown untranslated (all 14 non-English languages)
+
+**Fixed in round 2:** the dictionary also files every key under its plain form (`&File` → `File`, `i18n::strip_access_key`), so `caption()` and the global translator find it, as AnyVector's plain keys do.
 
 - **Steps:** start with `/Lang:pt-BR` (or any other language); look at the menu bar, File ▸ Exit, Help ▸ Check for
   Updates..., Options ▸ Reset to Default, Options ▸ PANOSE ▸ Exceptions.
@@ -61,6 +69,8 @@ IDs are grouped by area: 1xx services dialogs, 2xx window chrome / i18n, 3xx mai
 
 ## BUG-202 – Updates dialog text is cut off (cs, nl, fr, de, it, pl, ru, es, sv, tr, pt-BR)
 
+**Fixed in round 2:** `updater::mode_ui` puts the label above a combo box as wide as the dialog (truncating, never wider) and leaves room for a three-line note; checked in all languages, de-DE, ru-RU, pl-PL, fr-FR included.
+
 - **Steps:** language pt-BR, Help ▸ Check for Updates...
 - **Expected:** the "Allow product updates:" combo and the note under it fit inside the dialog.
 - **Actual:** "Verificar se há atualizações e deixar que eu escolha quando instalá-las" runs past the dialog's right
@@ -70,6 +80,8 @@ IDs are grouped by area: 1xx services dialogs, 2xx window chrome / i18n, 3xx mai
   wrap.
 
 ## BUG-203 – plain egui buttons expose the English text to screen readers (all 14 non-English languages)
+
+**Fixed in round 2:** patched egui (`vendor/egui`, "AnyFont patch"): `Atoms::text` (the accessibility label of buttons, check boxes, radio buttons) uses `WidgetText::shown_text`, the translated text that is drawn.
 
 - **Steps:** any language; open About, Report a Bug, Get More or PANOSE Exceptions; read the accessibility tree
   (Narrator / UI Automation).
@@ -82,6 +94,8 @@ IDs are grouped by area: 1xx services dialogs, 2xx window chrome / i18n, 3xx mai
 
 ## BUG-301 – right-clicking a text box clears its selection: Cut, Copy and Delete always disabled
 
+**Fixed in round 2:** the text box state is saved before a right-button press reaches the TextEdit and put back after it (`commands::before_right_click` / `keep_selection`), and the edit menu keeps the selection it opened with (`snapshot_selection`), since clicking the menu takes the focus and egui then collapses the selection.
+
 - **Steps:** type "georgia" in Search, right-click ▸ Select All, then right-click Search again.
 - **Expected:** Cut, Copy and Delete enabled.
 - **Actual:** all three disabled (and Copy would copy nothing).
@@ -93,6 +107,8 @@ IDs are grouped by area: 1xx services dialogs, 2xx window chrome / i18n, 3xx mai
 
 ## BUG-302 – double-clicking a font row never records it as recently used
 
+**Fixed in round 2:** the double-click is checked before the click, `touch_mru` is followed by a reload (the MRU list is part of the catalog). The test's double-click helper now sends both clicks in one frame (kittest's 0.25 s frames put the queued clicks 0.5 s apart, past egui's 0.3 s double-click delay).
+
 - **Steps:** double-click a font row; View ▸ Show recently used fonts.
 - **Expected:** the font appears in the recently used list.
 - **Actual:** the database's MRU list stays empty.
@@ -101,6 +117,8 @@ IDs are grouped by area: 1xx services dialogs, 2xx window chrome / i18n, 3xx mai
   also not re-queried after `touch_mru`.
 
 ## BUG-303 – Export includes the hidden AnyFont Content folder
+
+**Fixed in round 2:** `ExportOptions::skip_folders` / `has_exportable_except` (core); the shell passes its content folder to both, so it is neither exported nor counted for File ▸ Export.
 
 - **Steps:** add a folder, File ▸ Export Folders and Collections...; import the file in another profile.
 - **Expected:** only the user's folders and collections are exported.
@@ -111,6 +129,8 @@ IDs are grouped by area: 1xx services dialogs, 2xx window chrome / i18n, 3xx mai
 
 ## BUG-304 – Import resolves a collection's fonts before the imported folders are scanned
 
+**Fixed in round 2:** File ▸ Import adds the folders first (`ImportParts::Folders`), scans them and imports the collections when the scan ends (`finish_import`); Font Matching Results opens only after "We can't find the following:" is closed.
+
 - **Steps:** export a folder plus a collection of fonts from that folder; import the file into a fresh profile.
 - **Expected:** the collection gets its fonts; nothing is reported missing.
 - **Actual:** PANOSE Font Matching Results lists the fonts (e.g. "Tuffy Regular") as missing and the collection
@@ -120,6 +140,8 @@ IDs are grouped by area: 1xx services dialogs, 2xx window chrome / i18n, 3xx mai
 
 ## BUG-305 – a check box's accessible name drops every `&` of its caption
 
+**Fixed in round 2:** `widgets::a11y_label` strips only the access-key marker (`&` before a letter; `&&` → `&`; `& ` stays); check rows of font data are labelled as drawn.
+
 - **Steps:** select Tuffy, Font properties ▸ Glyphs; read the accessible names of the Common filter rows.
 - **Expected:** "Punctuation & Separators".
 - **Actual:** "Punctuation  Separators" (double space). The drawn text is right.
@@ -128,6 +150,8 @@ IDs are grouped by area: 1xx services dialogs, 2xx window chrome / i18n, 3xx mai
   or script name containing `&`.
 
 ## BUG-306 – removing Favorites only empties it; it stays in Libraries
+
+**Fixed in round 2:** `remove_collection` deletes Favorites like any collection; Favorites is created only with a new database (property `favorites_created`), so it is not re-created at the next start; importing a Favorites group re-creates it (`ensure_favorites`).
 
 - **Steps:** add a font to Favorites (Font ▸ Add to collection ▸ Favorites); right-click Favorites in Libraries ▸
   Remove Folder or Collection; Yes. Close and start AnyFont again.
@@ -141,6 +165,8 @@ IDs are grouped by area: 1xx services dialogs, 2xx window chrome / i18n, 3xx mai
   "Favorites was removed" marker is needed.
 
 ## BUG-401 – AnyFont does not start on a Windows without the Visual C++ runtime
+
+**Fixed in round 2:** `.cargo/config.toml` links the CRT statically (`+crt-static`); `dumpbin /dependents target\release\anyfont.exe` lists no VCRUNTIME140 / MSVCP140 / api-ms-win-crt-* any more. `build.bat` adds the flag when a `RUSTFLAGS` variable would override the config, and the CI build checks the imports with dumpbin.
 
 - **Steps:** on a Windows where no program has installed the Visual C++ 2015–2022 redistributable (a fresh
   Windows, or Windows Sandbox), run `AnyFont-0.1.0-setup.exe`, then start AnyFont from the Start menu.
@@ -160,19 +186,30 @@ IDs are grouped by area: 1xx services dialogs, 2xx window chrome / i18n, 3xx mai
 
 ## Observations (not filed as bugs)
 
+Round 2: the in-use retry, the reboot prompt, `new_for_test`'s update mode, the Get More cache and the Legal Notices
+temporary file are fixed (each noted below); the test-mode zoom quirk is left as it is (harmless: test mode only).
+
 - **Test mode zoom:** with `TestConfig`, a UI scale of 100 % is never applied to the zoom (`app.rs` ~741), so after
-  Options ▸ Reset to Default the zoom keeps its previous value in the headless tests only.
+  Options ▸ Reset to Default the zoom keeps its previous value in the headless tests only. *Left as is: it only
+  affects test mode, where the zoom is not set by the user.*
 - **`new_for_test` and the updater:** the test window sets updates to Never in its settings but does not pass the
   mode to the updater, so the Updates dialog shows "let me choose" there; the real start-up path is right.
+  *Fixed in round 2: `new_for_test` hands the settings' mode to the updater.*
 - **Reboot prompt lists a font twice** when an installed font that is in use is deleted (once per file: the
-  installed copy and the source).
+  installed copy and the source). *Fixed in round 2: the prompt lists each font name once
+  (`e2e_operations::delete_of_an_installed_font_in_use_lists_it_once`).*
 - **Get More cache** lives in the real `%LOCALAPPDATA%\AnyFont` (`getmore.rs` ~314) even when `ANYFONT_DATA_DIR`
-  redirects the settings; the tests write nothing there but may read cached previews.
+  redirects the settings; the tests write nothing there but may read cached previews. *Fixed in round 2:
+  `Paths::cache_dir` (`<ANYFONT_DATA_DIR>\cache`, the tests' data folder) is given to `GetMore`.*
 - **Legal Notices ▸ Print** writes `%TEMP%\AnyFont Legal Notices.txt` before printing, and an up-to-date update
-  check deletes `%TEMP%\AnyFont Updates`; the tests point `TMP`/`TEMP` at their own folder.
+  check deletes `%TEMP%\AnyFont Updates`; the tests point `TMP`/`TEMP` at their own folder. *Round 2: the printed
+  file is deleted two minutes after Print (the printing program opens it in its own time); removing old setups
+  from `%TEMP%\AnyFont Updates` is intended.*
 - **A font installed for all users is "in use" for about a second.** In Windows Sandbox, an all-users font
   uninstalled right after its install (the self-test, and through the helper) is reported in use. Retried after
   1 s, it uninstalls fine; by the time Restart Manager is asked, nobody holds it, so Windows (the font cache) holds
   it briefly. A user who installs and at once uninstalls would see the reboot prompt for nothing. A short retry in
   the uninstall's in-use check (`anyfont-sys` `engine.rs` ~432, `protect::is_open_elsewhere`) would avoid that.
+  *Fixed in round 2: a file found in use is checked again for about 1.5 s (`Platform::in_use_retry_ms`) before it
+  counts as in use (sandbox test `a_font_held_for_a_moment_uninstalls_without_a_reboot`).*
 - By design (UI-SPEC): Open font file location is disabled for more than one selected font.

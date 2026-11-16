@@ -204,9 +204,10 @@ impl About {
                         let w = g.size().x;
                         p.galley(pos2(gx, r.center().y - g.size().y / 2.0), g, text);
                         p.text(pos2(gx + w, r.center().y), Align2::LEFT_CENTER, ":", f.clone(), text);
-                        // the value is data: a LayoutJob is not translated
+                        // the value is data: a LayoutJob is not translated (but the words Yes and No are)
                         let vr = Rect::from_min_max(pos2(r.left() + 171.0, r.top()), r.max);
-                        let job = egui::text::LayoutJob::simple_singleline(v.clone(), f.clone(), text);
+                        let v = if v == "Yes" || v == "No" { crate::tr(v) } else { v.clone() };
+                        let job = egui::text::LayoutJob::simple_singleline(v, f.clone(), text);
                         let vg = ui.painter().layout_job(job);
                         ui.painter().with_clip_rect(vr).galley(pos2(vr.left(), r.center().y - vg.size().y / 2.0), vg, text);
                     }

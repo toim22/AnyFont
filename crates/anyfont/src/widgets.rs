@@ -35,12 +35,16 @@ pub fn caption_parts(caption: &str) -> (String, Option<usize>) {
     let mut it = c.chars().peekable();
     while let Some(ch) = it.next() {
         if ch == '&' {
-            if it.peek() == Some(&'&') {
-                out.push('&');
-                it.next();
-                continue;
+            match it.peek() {
+                Some('&') => {
+                    out.push('&');
+                    it.next();
+                }
+                // "Punctuation & Separators": a literal `&`
+                None => out.push('&'),
+                Some(n) if n.is_whitespace() => out.push('&'),
+                Some(_) => key = Some(out.chars().count()),
             }
-            key = Some(out.chars().count());
             continue;
         }
         out.push(ch);
@@ -74,15 +78,22 @@ pub fn caption_width(ui: &Ui, caption: &str, font: FontId) -> f32 {
     data_galley(ui, &text, font, Color32::WHITE).size().x
 }
 
+/// What a screen reader says for a caption: its translation without the access-key marker (`&&` and a
+/// literal `&` stay one `&`).
+pub fn a11y_label(caption: &str) -> String {
+    // a translation comes back without its marker already
+    crate::i18n::translator(caption).unwrap_or_else(|| crate::i18n::strip_access_key(caption))
+}
+
 /// Sets the accessibility info of a custom control.
 pub fn a11y(resp: &Response, kind: Role, enabled: bool, label: &str) {
-    let label = crate::i18n::t(label).replace('&', "");
+    let label = a11y_label(label);
     resp.widget_info(|| WidgetInfo::labeled(kind, enabled, label.clone()));
 }
 
 /// Same for a check box / toggle.
 pub fn a11y_checked(resp: &Response, kind: Role, enabled: bool, label: &str, checked: bool) {
-    let label = crate::i18n::t(label).replace('&', "");
+    let label = a11y_label(label);
     resp.widget_info(|| WidgetInfo::selected(kind, enabled, checked, label.clone()));
 }
 
@@ -185,7 +196,13 @@ pub fn check_row(ui: &mut Ui, rect: Rect, id: egui::Id, label: &str, checked: bo
     } else {
         data_text(ui, &p, tp, Align2::LEFT_CENTER, label, theme::body(theme::UI_SIZE), t().text);
     }
-    a11y_checked(&resp, Role::CheckBox, true, label, checked);
+    if translate {
+        a11y_checked(&resp, Role::CheckBox, true, label, checked);
+    } else {
+        // font data (a script or family name): said as it is drawn
+        let label = label.to_string();
+        resp.widget_info(|| WidgetInfo::selected(Role::CheckBox, true, checked, label.clone()));
+    }
     resp
 }
 

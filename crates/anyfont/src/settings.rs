@@ -147,6 +147,8 @@ pub struct Paths {
     pub db_file: PathBuf,
     /// Downloaded fonts (AnyFont Content folder).
     pub content_dir: PathBuf,
+    /// Get More's cache (the font catalog, previews): `%LOCALAPPDATA%\AnyFont`.
+    pub cache_dir: PathBuf,
 }
 
 impl Paths {
@@ -159,6 +161,7 @@ impl Paths {
             settings_file: app.settings_dir.join("settings.json"),
             db_file: app.data_dir.join("fonts.db"),
             content_dir: app.content_fonts_dir.clone(),
+            cache_dir: app.data_dir.clone(),
         }
     }
 
@@ -168,6 +171,7 @@ impl Paths {
             settings_file: dir.join("settings").join("settings.json"),
             db_file: dir.join("data").join("fonts.db"),
             content_dir,
+            cache_dir: dir.join("cache"),
         }
     }
 }

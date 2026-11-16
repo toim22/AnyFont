@@ -194,6 +194,7 @@ Change the glyph size in the Glyph Preview area.	Ändra glyfstorleken i området
 Multiple fonts are selected. To view a glyph set, choose only one font.	Flera teckensnitt är markerade. Välj bara ett teckensnitt om du vill visa en glyfuppsättning.
 No matching glyphs	Inga matchande glyfer
 Install or download the font to preview glyphs.	Installera eller hämta teckensnittet för att förhandsgranska glyfer.
+Show glyph alternates.	Visa alternativa glyfer.
 Family:	Familj:
 Sub-family:	Underfamilj:
 File Path:	Filsökväg:
@@ -244,6 +245,15 @@ Total virtual memory	Totalt virtuellt minne
 Available virtual memory	Tillgängligt virtuellt minne
 Total memory used by app	Totalt minne som används av programmet
 GDI Object Count	Antal GDI-objekt
+User Object Count	Antal USER-objekt
+Windows Directory	Windows-katalog
+TEMP directory	TEMP-katalog
+Application directory	Programkatalog
+Number of displays	Antal bildskärmar
+Display {}	Bildskärm {}
+Resolution	Upplösning
+Color depth	Färgdjup
+Refresh rate	Uppdateringsfrekvens
 &Save	&Spara
 Save System Info	Spara systeminformation
 Text (*.txt)	Text (*.txt)
@@ -315,6 +325,19 @@ My Library	Mitt bibliotek
 Downloaded	Hämtade
 Remote font catalog cannot connect to the internet.	Fjärrkatalogen för teckensnitt kan inte ansluta till Internet.
 An error occurred while downloading the remote font catalog.	Ett fel uppstod när fjärrkatalogen för teckensnitt hämtades.
+Handwriting	Handskrift
+Monospace	Fast teckenbredd
+Popular	Populära
+Name	Namn
+Newest	Nyaste
+Clear	Rensa
+No fonts found.	Inga teckensnitt hittades.
+1 style	1 stil
+{} styles	{} stilar
+{} · 1 style	{} · 1 stil
+{} · {} styles	{} · {} stilar
+{} styles · {}	{} stilar · {}
+Unable to download {}.	Det gick inte att hämta {}.
 # --- PANOSE font matching ---------------------------------------------------------------------------------
 PANOSE Font Matching Preferences	Inställningar för PANOSE-teckensnittsmatchning
 &Text	&Text
@@ -342,16 +365,23 @@ Show &all fonts	&Visa alla teckensnitt
 Make this substitution:	Gör den här ersättningen:
 &Permanent - keep these fonts	&Permanent - behåll de här teckensnitten
 Te&mporary - use original fonts	T&illfälligt - använd de ursprungliga teckensnitten
+Show fonts with the same code page	Visa teckensnitt med samma teckentabell
+Type	Typ
+PANOSE	PANOSE
+Exception	Undantag
+The fonts below are not available on this computer. AnyFont suggests a substitute for each one. Select a font in the list to choose another substitute.	Teckensnitten nedan finns inte på den här datorn. AnyFont föreslår en ersättning för vart och ett. Markera ett teckensnitt i listan om du vill välja en annan ersättning.
+AnyFont suggests an OpenType or TrueType replacement for each Type 1 font. The replacements take the place of the Type 1 fonts in your collections. Select a font in the list to choose another replacement.	AnyFont föreslår en OpenType- eller TrueType-ersättning för varje Type 1-teckensnitt. Ersättningarna tar Type 1-teckensnittens plats i dina samlingar. Markera ett teckensnitt i listan om du vill välja en annan ersättning.
 # --- Type 1 fonts -----------------------------------------------------------------------------------------
 Type 1 fonts detected	Type 1-teckensnitt identifierades
 This document uses Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.	Det här dokumentet använder Type 1-teckensnitt, som kanske inte stöds i framtiden. Undvik eventuella problem genom att överväga att uppdatera texten så att den använder andra teckensnitt, till exempel TrueType (TTF) eller OpenType (OTF).
+These fonts use Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.	De här teckensnitten är Type 1-teckensnitt, som kanske inte stöds i framtiden. Undvik eventuella problem genom att överväga att uppdatera texten så att den använder andra teckensnitt, till exempel TrueType (TTF) eller OpenType (OTF).
 Do not show again	Visa inte igen
 Replace fonts	Ersätt teckensnitt
 # --- Rename collection ------------------------------------------------------------------------------------
 Name:	Namn:
 # --- Updates (from AnyVector updater.rs, product name replaced) -------------------------------------------
 Keep the product up to date (recommended)	Håll produkten uppdaterad (rekommenderas)
-Check for updates and let me choose when to install them	Sök efter uppdateringar och låt mig välja när de ska installeras
+Check for updates and let me choose when to install them	Sök uppdateringar, jag väljer när de installeras
 Never check for updates	Sök aldrig efter uppdateringar
 Automatically downloads product updates, but prompts you before installing them.	Hämtar produktuppdateringar automatiskt, men frågar innan de installeras.
 AnyFont tells you when a new version is available; you choose when to download and install it.	AnyFont meddelar dig när en ny version finns. Du väljer när den ska hämtas och installeras.
@@ -383,6 +413,7 @@ Check Now	Sök nu
 There is a new version of AnyFont available.	Det finns en ny version av AnyFont.
 New version: {}. Your version: {}.	Ny version: {}. Din version: {}.
 Click OK to install the new version.	Klicka på OK för att installera den nya versionen.
+Later	Senare
 # --- Report a Bug / Submit Ideas and Feedback (from AnyVector bugreport.rs, product name replaced) ---------
 Report a Bug	Rapportera ett fel
 Submit Ideas and Feedback	Skicka idéer och feedback
@@ -421,5 +452,29 @@ Images	Bilder
 Videos	Videor
 Archives (.zip, .gz, .tgz)	Arkiv (.zip, .gz, .tgz)
 Images and videos up to 10 MB, other files up to 25 MB, of the types GitHub accepts. Put a font file (.ttf, .otf) in a .zip file.	Bilder och videor upp till 10 MB, andra filer upp till 25 MB, av de typer som GitHub godtar. Lägg en teckensnittsfil (.ttf, .otf) i en .zip-fil.
+GitHub doesn't accept "{}" because it has no file type. Put it in a .zip file.	GitHub godtar inte "{}" eftersom den saknar filtyp. Lägg den i en .zip-fil.
+GitHub doesn't accept .{} files. Put "{}" in a .zip file.	GitHub godtar inte .{}-filer. Lägg "{}" i en .zip-fil.
+"{}" is empty.	"{}" är tom.
+"{}" is {}. GitHub accepts at most {} MB for this type.	"{}" är {}. GitHub godtar högst {} MB för den här typen.
+e.g. Sort the font list by date added	t.ex. Sortera teckensnittslistan efter datum då de lades till
+e.g. The font list is empty after Add Folder	t.ex. Teckensnittslistan är tom efter Lägg till mapp
 Sending...	Skickar...
 Send	Skicka
+# --- Shell (main window): progress, start-up, messages and accessibility names ---------------------------
+Deleting {}... {}%	Tar bort {}... {} %
+The font folders have changed.	Teckensnittsmapparna har ändrats.
+Initializing...	Initierar...
+Loading fonts...	Läser in teckensnitt...
+Version {}	Version {}
+AnyFont closed unexpectedly the last time. Do you want to send a bug report?	AnyFont avslutades oväntat förra gången. Vill du skicka en felrapport?
+Insufficient Permissions	Otillräcklig behörighet
+AnyFont could not get administrator permission to install the fonts for all users.\n\nDo you want to install them only for you? They will not be available to other users of this computer.	AnyFont fick inte administratörsbehörighet för att installera teckensnitten för alla användare.\n\nVill du bara installera dem för dig? De blir inte tillgängliga för andra användare av den här datorn.
+&Install for me	&Installera bara för mig
+Some fonts could not be processed:	Vissa teckensnitt kunde inte bearbetas:
+Font list	Teckensnittslista
+Scroll bar	Rullningslist
+# Developer inspectors (Ctrl+Alt+Shift+I)
+Inspectors	Inspektörer
+Settings	Inställningar
+Inspection	Inspektion
+Memory	Minne

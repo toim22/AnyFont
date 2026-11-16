@@ -194,6 +194,7 @@ Change the glyph size in the Glyph Preview area.	Modifier la taille du glyphe da
 Multiple fonts are selected. To view a glyph set, choose only one font.	Plusieurs polices sont sélectionnées. Pour afficher un jeu de glyphes, choisissez une seule police.
 No matching glyphs	Aucun glyphe correspondant
 Install or download the font to preview glyphs.	Installez ou téléchargez la police pour afficher un aperçu des glyphes.
+Show glyph alternates.	Afficher les variantes du glyphe.
 Family:	Famille :
 Sub-family:	Sous-famille :
 File Path:	Chemin du fichier :
@@ -244,6 +245,15 @@ Total virtual memory	Mémoire virtuelle totale
 Available virtual memory	Mémoire virtuelle disponible
 Total memory used by app	Mémoire totale utilisée par l'application
 GDI Object Count	Nombre d'objets GDI
+User Object Count	Nombre d'objets USER
+Windows Directory	Répertoire Windows
+TEMP directory	Répertoire TEMP
+Application directory	Répertoire de l'application
+Number of displays	Nombre d'écrans
+Display {}	Écran {}
+Resolution	Résolution
+Color depth	Profondeur de couleur
+Refresh rate	Taux de rafraîchissement
 &Save	&Enregistrer
 Save System Info	Enregistrer les informations système
 Text (*.txt)	Texte (*.txt)
@@ -315,6 +325,19 @@ My Library	Ma bibliothèque
 Downloaded	Téléchargées
 Remote font catalog cannot connect to the internet.	Le catalogue de polices distant ne peut pas se connecter à Internet.
 An error occurred while downloading the remote font catalog.	Une erreur s'est produite lors du téléchargement du catalogue de polices distant.
+Handwriting	Écriture manuscrite
+Monospace	Chasse fixe
+Popular	Populaires
+Name	Nom
+Newest	Plus récentes
+Clear	Effacer
+No fonts found.	Aucune police trouvée.
+1 style	1 style
+{} styles	{} styles
+{} · 1 style	{} · 1 style
+{} · {} styles	{} · {} styles
+{} styles · {}	{} styles · {}
+Unable to download {}.	Impossible de télécharger {}.
 # --- PANOSE font matching ---------------------------------------------------------------------------------
 PANOSE Font Matching Preferences	Préférences de correspondance des polices PANOSE
 &Text	&Texte
@@ -342,16 +365,23 @@ Show &all fonts	&Afficher toutes les polices
 Make this substitution:	Effectuer cette substitution :
 &Permanent - keep these fonts	Per&manent - conserver ces polices
 Te&mporary - use original fonts	&Temporaire - utiliser les polices d'origine
+Show fonts with the same code page	Afficher les polices de la même page de codes
+Type	Type
+PANOSE	PANOSE
+Exception	Exception
+The fonts below are not available on this computer. AnyFont suggests a substitute for each one. Select a font in the list to choose another substitute.	Les polices ci-dessous ne sont pas disponibles sur cet ordinateur. AnyFont suggère une police de substitution pour chacune. Sélectionnez une police dans la liste pour choisir une autre substitution.
+AnyFont suggests an OpenType or TrueType replacement for each Type 1 font. The replacements take the place of the Type 1 fonts in your collections. Select a font in the list to choose another replacement.	AnyFont suggère une police de remplacement OpenType ou TrueType pour chaque police Type 1. Les polices de remplacement prennent la place des polices Type 1 dans vos collections. Sélectionnez une police dans la liste pour choisir un autre remplacement.
 # --- Type 1 fonts -----------------------------------------------------------------------------------------
 Type 1 fonts detected	Polices Type 1 détectées
 This document uses Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.	Ce document utilise des polices Type 1, qui pourraient ne plus être prises en charge à l'avenir. Pour éviter d'éventuels problèmes, envisagez de modifier le texte pour utiliser d'autres polices, comme des polices TrueType (TTF) ou OpenType (OTF).
+These fonts use Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.	Ces polices sont des polices Type 1, qui pourraient ne plus être prises en charge à l'avenir. Pour éviter d'éventuels problèmes, envisagez de modifier le texte pour utiliser d'autres polices, comme des polices TrueType (TTF) ou OpenType (OTF).
 Do not show again	Ne plus afficher
 Replace fonts	Remplacer les polices
 # --- Rename collection ------------------------------------------------------------------------------------
 Name:	Nom :
 # --- Updates (from AnyVector updater.rs, product name replaced) -------------------------------------------
 Keep the product up to date (recommended)	Garder le produit à jour (recommandé)
-Check for updates and let me choose when to install them	Rechercher les mises à jour et me laisser choisir quand les installer
+Check for updates and let me choose when to install them	Rechercher les mises à jour, installer quand je veux
 Never check for updates	Ne jamais rechercher de mises à jour
 Automatically downloads product updates, but prompts you before installing them.	Télécharge automatiquement les mises à jour produit, mais vous demande confirmation avant de les installer.
 AnyFont tells you when a new version is available; you choose when to download and install it.	AnyFont vous prévient lorsqu'une nouvelle version est disponible ; vous choisissez quand la télécharger et l'installer.
@@ -376,13 +406,14 @@ AnyFont closes to install it and starts again when it is done.	AnyFont se ferme 
 Error: {}	Erreur : {}
 You are using AnyFont {}.	Vous utilisez AnyFont {}.
 The update will be installed when AnyFont closes.	La mise à jour sera installée à la fermeture d'AnyFont.
-Allow product updates:	Autoriser les mises à jour de produit :
+Allow product updates:	Autoriser les mises à jour :
 Release Notes	Notes de version
 Install Now	Installer maintenant
 Check Now	Rechercher maintenant
 There is a new version of AnyFont available.	Une nouvelle version d'AnyFont est disponible.
 New version: {}. Your version: {}.	Nouvelle version : {}. Votre version : {}.
 Click OK to install the new version.	Cliquez sur OK pour installer la nouvelle version.
+Later	Plus tard
 # --- Report a Bug / Submit Ideas and Feedback (from AnyVector bugreport.rs, product name replaced) ---------
 Report a Bug	Signaler un bogue
 Submit Ideas and Feedback	Envoyer des idées et commentaires
@@ -421,5 +452,29 @@ Images	Images
 Videos	Vidéos
 Archives (.zip, .gz, .tgz)	Archives (.zip, .gz, .tgz)
 Images and videos up to 10 MB, other files up to 25 MB, of the types GitHub accepts. Put a font file (.ttf, .otf) in a .zip file.	Images et vidéos jusqu'à 10 Mo, autres fichiers jusqu'à 25 Mo, des types acceptés par GitHub. Placez un fichier de police (.ttf, .otf) dans un fichier .zip.
+GitHub doesn't accept "{}" because it has no file type. Put it in a .zip file.	GitHub n'accepte pas « {} », car il n'a pas de type de fichier. Placez-le dans un fichier .zip.
+GitHub doesn't accept .{} files. Put "{}" in a .zip file.	GitHub n'accepte pas les fichiers .{}. Placez « {} » dans un fichier .zip.
+"{}" is empty.	« {} » est vide.
+"{}" is {}. GitHub accepts at most {} MB for this type.	« {} » fait {}. GitHub accepte au plus {} Mo pour ce type.
+e.g. Sort the font list by date added	ex. : Trier la liste des polices par date d'ajout
+e.g. The font list is empty after Add Folder	ex. : La liste des polices est vide après Ajouter un dossier
 Sending...	Envoi...
 Send	Envoyer
+# --- Shell (main window): progress, start-up, messages and accessibility names ---------------------------
+Deleting {}... {}%	Suppression de {}... {} %
+The font folders have changed.	Les dossiers de polices ont changé.
+Initializing...	Initialisation...
+Loading fonts...	Chargement des polices...
+Version {}	Version {}
+AnyFont closed unexpectedly the last time. Do you want to send a bug report?	AnyFont s'est fermé de manière inattendue la dernière fois. Voulez-vous envoyer un rapport de bogue ?
+Insufficient Permissions	Autorisations insuffisantes
+AnyFont could not get administrator permission to install the fonts for all users.\n\nDo you want to install them only for you? They will not be available to other users of this computer.	AnyFont n'a pas pu obtenir l'autorisation d'administrateur pour installer les polices pour tous les utilisateurs.\n\nVoulez-vous les installer uniquement pour vous ? Elles ne seront pas disponibles pour les autres utilisateurs de cet ordinateur.
+&Install for me	&Installer pour moi
+Some fonts could not be processed:	Certaines polices n'ont pas pu être traitées :
+Font list	Liste des polices
+Scroll bar	Barre de défilement
+# Developer inspectors (Ctrl+Alt+Shift+I)
+Inspectors	Inspecteurs
+Settings	Paramètres
+Inspection	Inspection
+Memory	Mémoire

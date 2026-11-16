@@ -1,6 +1,8 @@
 > **AnyFont (inherited from AnyVector):** this is egui 0.37.0 from crates.io (MIT OR Apache-2.0) with one change: `src/translate.rs`, a
 > global text translator (`egui::set_text_translator`) applied where `WidgetText` and `Painter::text`/`layout`
 > lay out text. AnyVector uses it for its user interface languages. Search for "AnyVector patch".
+> AnyFont adds one more: `WidgetText::shown_text`, used by `Atoms::text`, so the accessibility label of a
+> button, check box or radio button is the translated text that is drawn. Search for "AnyFont patch".
 
 # 🖌 egui: an easy-to-use GUI in pure Rust
 

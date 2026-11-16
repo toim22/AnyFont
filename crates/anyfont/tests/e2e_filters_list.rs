@@ -523,16 +523,16 @@ fn view_toggles_group_recent_render_and_filter_list() {
 fn double_click(h: &mut H<'_>, p: egui::Pos2) {
     h.hover_at(p);
     h.step();
-    h.drag_at(p);
-    h.drop_at(p);
-    h.drag_at(p);
-    h.drop_at(p);
+    // Both clicks in one frame: queued events run one frame each, and a harness frame is 0.25 s, so four
+    // queued events put 0.5 s between the two releases, more than egui's double-click delay (0.3 s).
+    let button = |pressed| egui::Event::PointerButton { pos: p, button: egui::PointerButton::Primary, pressed, modifiers: egui::Modifiers::NONE };
+    h.input_mut().events.extend([button(true), button(false), button(true), button(false)]);
+    h.step();
     settle(h);
 }
 
 /// Show recently used fonts: a double-clicked face is listed again at the top.
 #[test]
-#[ignore = "BUG-302: a double-click on a font row never records it as recently used"]
 fn recently_used_fonts_after_a_double_click() {
     let _g = env_lock();
     let mut s = small();
@@ -934,7 +934,6 @@ fn edit_box_context_menu_enable_states_and_commands() {
 /// Cut, Copy and Delete of the edit box menu act on the selected text: right-clicking the selection opens
 /// the menu with them enabled.
 #[test]
-#[ignore = "BUG-301: right-clicking a text box collapses its selection, so Cut/Copy/Delete are always disabled"]
 fn edit_box_menu_cut_copy_delete_with_a_selection() {
     let _g = env_lock();
     let mut s = small();

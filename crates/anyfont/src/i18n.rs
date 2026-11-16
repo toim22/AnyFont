@@ -348,6 +348,12 @@ fn parse(tsv: &str) -> Dict {
                 d.templates.push(Template { parts, out: v.clone(), weight, numbers_only });
             }
         }
+        // menu captions keep their access key in the key ("&File"); the drawn text and the accessibility
+        // label look the caption up without it ("File")
+        let plain = strip_access_key(&k);
+        if plain != k {
+            d.exact.entry(plain).or_insert_with(|| v.clone());
+        }
         d.exact.insert(k, v);
     }
     d.templates.sort_by_key(|t| std::cmp::Reverse(t.weight));
@@ -384,7 +390,32 @@ fn plain_value(v: &str) -> String {
         s.extend(&chars[i + 4..]);
         v = s;
     }
-    v.replace('&', "").replace('\u{1}', "&")
+    strip_access_key(&v).replace('\u{1}', "&")
+}
+
+/// `s` without its access-key marker: `&&` is a literal `&`, an `&` before a letter marks the access key and
+/// goes, an `&` before a space or at the end ("Punctuation & Separators") is a literal `&` and stays.
+pub fn strip_access_key(s: &str) -> String {
+    if !s.contains('&') {
+        return s.to_string();
+    }
+    let mut out = String::with_capacity(s.len());
+    let mut it = s.chars().peekable();
+    while let Some(c) = it.next() {
+        if c != '&' {
+            out.push(c);
+            continue;
+        }
+        match it.peek() {
+            Some('&') => {
+                out.push('&');
+                it.next();
+            }
+            Some(n) if !n.is_whitespace() => {}
+            _ => out.push('&'),
+        }
+    }
+    out
 }
 
 fn exact(d: &Dict, s: &str) -> Option<String> {
@@ -543,8 +574,8 @@ pub fn caption(text: &str) -> String {
     if lang() == Lang::EnUs {
         return text.to_string();
     }
-    let plain = text.replace("&&", "\u{1}").replace('&', "").replace('\u{1}', "&");
-    if let Some(v) = dict().exact.get(&plain) {
+    let plain = strip_access_key(text);
+    if let Some(v) = dict().exact.get(text).or_else(|| dict().exact.get(&plain)) {
         if v.contains('&') {
             return v.clone();
         }
@@ -563,6 +594,7 @@ fn access_key(text: &str) -> Option<char> {
         if c == '&' {
             match it.next() {
                 Some('&') => continue,
+                Some(c) if c.is_whitespace() => continue,
                 other => return other,
             }
         }
@@ -659,6 +691,29 @@ mod tests {
         assert_eq!(with_access_key("Objeto", Some('j')), "Ob&jeto");
         assert_eq!(access_key("Lay&out"), Some('o'));
         assert_eq!(access_key("Black && White"), None);
+        assert_eq!(access_key("Punctuation & Separators"), None);
+    }
+
+    #[test]
+    fn access_key_markers() {
+        assert_eq!(strip_access_key("&File"), "File");
+        assert_eq!(strip_access_key("E&xit"), "Exit");
+        assert_eq!(strip_access_key("Black && White"), "Black & White");
+        assert_eq!(strip_access_key("Punctuation & Separators"), "Punctuation & Separators");
+        assert_eq!(strip_access_key("A &"), "A &");
+        assert_eq!(plain_value("Preto & branco"), "Preto & branco");
+    }
+
+    /// Keys with an access key ("&File") are found by their plain text too (BUG-201).
+    #[test]
+    fn captions_with_access_keys_translate() {
+        let d = parse("&File\t&Arquivo\nE&xit\tSai&r\nCheck for &Updates...\tVerificar &atualizações...\nPunctuation & Separators\tPontuação e separadores\n");
+        assert_eq!(lookup(&d, "File").as_deref(), Some("Arquivo"));
+        assert_eq!(lookup(&d, "&File").as_deref(), Some("Arquivo"));
+        assert_eq!(lookup(&d, "Exit").as_deref(), Some("Sair"));
+        assert_eq!(lookup(&d, "Check for Updates...").as_deref(), Some("Verificar atualizações..."));
+        assert_eq!(lookup(&d, "Punctuation & Separators").as_deref(), Some("Pontuação e separadores"));
+        assert_eq!(d.exact.get("Exit").map(String::as_str), Some("Sai&r"));
     }
 
     #[test]

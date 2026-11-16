@@ -194,6 +194,7 @@ Change the glyph size in the Glyph Preview area.	Изменить размер �
 Multiple fonts are selected. To view a glyph set, choose only one font.	Выбрано несколько шрифтов. Чтобы просмотреть набор глифов, выберите только один шрифт.
 No matching glyphs	Нет подходящих глифов
 Install or download the font to preview glyphs.	Установите или загрузите шрифт, чтобы просмотреть глифы.
+Show glyph alternates.	Показать альтернативные глифы.
 Family:	Семейство:
 Sub-family:	Подсемейство:
 File Path:	Путь к файлу:
@@ -244,6 +245,15 @@ Total virtual memory	Всего виртуальной памяти
 Available virtual memory	Доступно виртуальной памяти
 Total memory used by app	Всего памяти использует приложение
 GDI Object Count	Число объектов GDI
+User Object Count	Число объектов USER
+Windows Directory	Папка Windows
+TEMP directory	Папка TEMP
+Application directory	Папка приложения
+Number of displays	Число дисплеев
+Display {}	Дисплей {}
+Resolution	Разрешение
+Color depth	Глубина цвета
+Refresh rate	Частота обновления
 &Save	&Сохранить
 Save System Info	Сохранить сведения о системе
 Text (*.txt)	Текст (*.txt)
@@ -315,6 +325,19 @@ My Library	Моя библиотека
 Downloaded	Загруженные
 Remote font catalog cannot connect to the internet.	Удаленный каталог шрифтов не может подключиться к Интернету.
 An error occurred while downloading the remote font catalog.	При загрузке удаленного каталога шрифтов произошла ошибка.
+Handwriting	Рукописный
+Monospace	Моноширинный
+Popular	Популярные
+Name	Имя
+Newest	Новые
+Clear	Очистить
+No fonts found.	Шрифты не найдены.
+1 style	1 стиль
+{} styles	Стилей: {}
+{} · 1 style	{} · 1 стиль
+{} · {} styles	{} · стилей: {}
+{} styles · {}	Стилей: {} · {}
+Unable to download {}.	Не удалось загрузить {}.
 # --- PANOSE font matching ---------------------------------------------------------------------------------
 PANOSE Font Matching Preferences	Параметры подбора шрифтов PANOSE
 &Text	&Текст
@@ -342,16 +365,23 @@ Show &all fonts	Показать &все шрифты
 Make this substitution:	Выполнить эту замену:
 &Permanent - keep these fonts	&Постоянно - сохранить эти шрифты
 Te&mporary - use original fonts	Вр&еменно - использовать исходные шрифты
+Show fonts with the same code page	Показать шрифты с той же кодовой страницей
+Type	Тип
+PANOSE	PANOSE
+Exception	Исключение
+The fonts below are not available on this computer. AnyFont suggests a substitute for each one. Select a font in the list to choose another substitute.	Указанные ниже шрифты отсутствуют на этом компьютере. AnyFont предлагает замену для каждого из них. Чтобы выбрать другую замену, выберите шрифт в списке.
+AnyFont suggests an OpenType or TrueType replacement for each Type 1 font. The replacements take the place of the Type 1 fonts in your collections. Select a font in the list to choose another replacement.	AnyFont предлагает замену в формате OpenType или TrueType для каждого шрифта Type 1. Заменяющие шрифты занимают место шрифтов Type 1 в ваших коллекциях. Чтобы выбрать другую замену, выберите шрифт в списке.
 # --- Type 1 fonts -----------------------------------------------------------------------------------------
 Type 1 fonts detected	Обнаружены шрифты Type 1
 This document uses Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.	В этом документе используются шрифты Type 1, поддержка которых в будущем может быть прекращена. Чтобы избежать возможных проблем, рекомендуется перевести текст на другие шрифты, например TrueType (TTF) или OpenType (OTF).
+These fonts use Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.	Это шрифты Type 1, поддержка которых в будущем может быть прекращена. Чтобы избежать возможных проблем, рекомендуется перевести текст на другие шрифты, например TrueType (TTF) или OpenType (OTF).
 Do not show again	Больше не показывать
 Replace fonts	Заменить шрифты
 # --- Rename collection ------------------------------------------------------------------------------------
 Name:	Имя:
 # --- Updates (from AnyVector updater.rs, product name replaced) -------------------------------------------
-Keep the product up to date (recommended)	Поддерживать продукт в актуальном состоянии (рекомендуется)
-Check for updates and let me choose when to install them	Проверять обновления и давать мне выбрать время установки
+Keep the product up to date (recommended)	Обновлять автоматически (рекомендуется)
+Check for updates and let me choose when to install them	Проверять обновления, установка по выбору
 Never check for updates	Никогда не проверять обновления
 Automatically downloads product updates, but prompts you before installing them.	Автоматически загружает обновления продукта, но спрашивает перед установкой.
 AnyFont tells you when a new version is available; you choose when to download and install it.	AnyFont сообщает о выходе новой версии; вы сами выбираете, когда загрузить и установить ее.
@@ -376,13 +406,14 @@ AnyFont closes to install it and starts again when it is done.	AnyFont закр�
 Error: {}	Ошибка: {}
 You are using AnyFont {}.	Вы используете AnyFont {}.
 The update will be installed when AnyFont closes.	Обновление будет установлено при закрытии AnyFont.
-Allow product updates:	Разрешить обновления продукта:
+Allow product updates:	Разрешить обновления:
 Release Notes	Заметки о выпуске
 Install Now	Установить
 Check Now	Проверить
 There is a new version of AnyFont available.	Доступна новая версия AnyFont.
 New version: {}. Your version: {}.	Новая версия: {}. Ваша версия: {}.
 Click OK to install the new version.	Нажмите «ОК», чтобы установить новую версию.
+Later	Позже
 # --- Report a Bug / Submit Ideas and Feedback (from AnyVector bugreport.rs, product name replaced) ---------
 Report a Bug	Сообщить об ошибке
 Submit Ideas and Feedback	Отправить идеи и отзывы
@@ -421,5 +452,29 @@ Images	Изображения
 Videos	Видео
 Archives (.zip, .gz, .tgz)	Архивы (.zip, .gz, .tgz)
 Images and videos up to 10 MB, other files up to 25 MB, of the types GitHub accepts. Put a font file (.ttf, .otf) in a .zip file.	Изображения и видео до 10 МБ, другие файлы до 25 МБ, тех типов, которые принимает GitHub. Поместите файл шрифта (.ttf, .otf) в файл .zip.
+GitHub doesn't accept "{}" because it has no file type. Put it in a .zip file.	GitHub не принимает «{}», так как у файла нет типа. Поместите его в файл .zip.
+GitHub doesn't accept .{} files. Put "{}" in a .zip file.	GitHub не принимает файлы .{}. Поместите «{}» в файл .zip.
+"{}" is empty.	Файл «{}» пуст.
+"{}" is {}. GitHub accepts at most {} MB for this type.	Размер «{}» — {}. Для этого типа GitHub принимает не более {} МБ.
+e.g. Sort the font list by date added	например, Сортировка списка шрифтов по дате добавления
+e.g. The font list is empty after Add Folder	например, Список шрифтов пуст после команды «Добавить папку»
 Sending...	Отправка...
 Send	Отправить
+# --- Shell (main window): progress, start-up, messages and accessibility names ---------------------------
+Deleting {}... {}%	Удаление {}... {}%
+The font folders have changed.	Папки шрифтов изменились.
+Initializing...	Инициализация...
+Loading fonts...	Загрузка шрифтов...
+Version {}	Версия {}
+AnyFont closed unexpectedly the last time. Do you want to send a bug report?	В прошлый раз AnyFont неожиданно закрылся. Отправить отчет об ошибке?
+Insufficient Permissions	Недостаточно прав
+AnyFont could not get administrator permission to install the fonts for all users.\n\nDo you want to install them only for you? They will not be available to other users of this computer.	AnyFont не удалось получить права администратора для установки шрифтов для всех пользователей.\n\nУстановить их только для вас? Они не будут доступны другим пользователям этого компьютера.
+&Install for me	&Установить только для меня
+Some fonts could not be processed:	Не удалось обработать некоторые шрифты:
+Font list	Список шрифтов
+Scroll bar	Полоса прокрутки
+# Developer inspectors (Ctrl+Alt+Shift+I)
+Inspectors	Инспекторы
+Settings	Настройки
+Inspection	Проверка
+Memory	Память

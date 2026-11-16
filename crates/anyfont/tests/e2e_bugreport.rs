@@ -24,7 +24,7 @@ const LIMITS: [(&str, usize); 7] = [("title", 200), ("text", 8000), ("more", 400
 
 fn is_version(v: &str) -> bool {
     // ^\d+\.\d+\.\d+([-.+][0-9A-Za-z.-]+)?$
-    let (core, rest) = match v.find(|c: char| c == '-' || c == '+') {
+    let (core, rest) = match v.find(['-', '+']) {
         Some(i) => (&v[..i], Some(&v[i + 1..])),
         None => (v, None),
     };
@@ -363,7 +363,6 @@ fn long_ascii_fields_are_cut_to_the_relay_limits() {
 }
 
 #[test]
-#[ignore = "BUG-101: report fields are cut by Unicode characters, the relay counts UTF-16 units (emoji title refused)"]
 fn non_bmp_title_is_cut_to_the_relay_limit() {
     let _lock = env_lock();
     let (env, srv, _v) = world(Some(created("https://github.com/toim22/AnyFont/issues/7")));

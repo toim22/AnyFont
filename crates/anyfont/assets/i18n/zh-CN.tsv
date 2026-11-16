@@ -194,6 +194,7 @@ Change the glyph size in the Glyph Preview area.	更改字形预览区域中字�
 Multiple fonts are selected. To view a glyph set, choose only one font.	选择了多个字体。若要查看字形集，请只选择一个字体。
 No matching glyphs	没有匹配的字形
 Install or download the font to preview glyphs.	安装或下载该字体以预览字形。
+Show glyph alternates.	显示替代字形。
 Family:	字体系列：
 Sub-family:	子系列：
 File Path:	文件路径：
@@ -244,6 +245,15 @@ Total virtual memory	总虚拟内存
 Available virtual memory	可用虚拟内存
 Total memory used by app	应用程序使用的总内存
 GDI Object Count	GDI 对象数
+User Object Count	USER 对象数
+Windows Directory	Windows 目录
+TEMP directory	TEMP 目录
+Application directory	应用程序目录
+Number of displays	显示器数目
+Display {}	显示器 {}
+Resolution	分辨率
+Color depth	颜色深度
+Refresh rate	刷新率
 &Save	保存(&S)
 Save System Info	保存系统信息
 Text (*.txt)	文本 (*.txt)
@@ -315,6 +325,19 @@ My Library	我的库
 Downloaded	已下载
 Remote font catalog cannot connect to the internet.	远程字体目录无法连接到互联网。
 An error occurred while downloading the remote font catalog.	下载远程字体目录时出错。
+Handwriting	手写
+Monospace	等宽
+Popular	热门
+Name	名称
+Newest	最新
+Clear	清除
+No fonts found.	未找到字体。
+1 style	1 种样式
+{} styles	{} 种样式
+{} · 1 style	{} · 1 种样式
+{} · {} styles	{} · {} 种样式
+{} styles · {}	{} 种样式 · {}
+Unable to download {}.	无法下载 {}。
 # --- PANOSE font matching ---------------------------------------------------------------------------------
 PANOSE Font Matching Preferences	PANOSE 字体匹配首选项
 &Text	文本(&T)
@@ -342,9 +365,16 @@ Show &all fonts	显示所有字体(&A)
 Make this substitution:	进行此替换：
 &Permanent - keep these fonts	永久 - 保留这些字体(&P)
 Te&mporary - use original fonts	临时 - 使用原始字体(&M)
+Show fonts with the same code page	显示具有相同代码页的字体
+Type	类型
+PANOSE	PANOSE
+Exception	例外
+The fonts below are not available on this computer. AnyFont suggests a substitute for each one. Select a font in the list to choose another substitute.	此计算机上没有下列字体。AnyFont 为每种字体建议了一种替代字体。在列表中选择一种字体可选择其他替代字体。
+AnyFont suggests an OpenType or TrueType replacement for each Type 1 font. The replacements take the place of the Type 1 fonts in your collections. Select a font in the list to choose another replacement.	AnyFont 为每种 Type 1 字体建议一种 OpenType 或 TrueType 替换字体。替换字体将在您的集合中取代 Type 1 字体。在列表中选择一种字体可选择其他替换字体。
 # --- Type 1 fonts -----------------------------------------------------------------------------------------
 Type 1 fonts detected	检测到 Type 1 字体
 This document uses Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.	此文档使用的 Type 1 字体将来可能不再受支持。为避免潜在问题，请考虑将文本改用其他字体，例如 TrueType (TTF) 或 OpenType (OTF) 字体。
+These fonts use Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.	这些字体是 Type 1 字体，将来可能不再受支持。为避免潜在问题，请考虑将文本改用其他字体，例如 TrueType (TTF) 或 OpenType (OTF) 字体。
 Do not show again	不再显示
 Replace fonts	替换字体
 # --- Rename collection ------------------------------------------------------------------------------------
@@ -383,6 +413,7 @@ Check Now	立即检查
 There is a new version of AnyFont available.	有新版本的 AnyFont 可用。
 New version: {}. Your version: {}.	新版本：{}。您的版本：{}。
 Click OK to install the new version.	单击“确定”安装新版本。
+Later	稍后
 # --- Report a Bug / Submit Ideas and Feedback (from AnyVector bugreport.rs, product name replaced) ---------
 Report a Bug	报告错误
 Submit Ideas and Feedback	提交想法和反馈
@@ -421,5 +452,29 @@ Images	图像
 Videos	视频
 Archives (.zip, .gz, .tgz)	压缩文件 (.zip、.gz、.tgz)
 Images and videos up to 10 MB, other files up to 25 MB, of the types GitHub accepts. Put a font file (.ttf, .otf) in a .zip file.	GitHub 接受的类型中，图像和视频最大 10 MB，其他文件最大 25 MB。请将字体文件 (.ttf、.otf) 放入 .zip 文件。
+GitHub doesn't accept "{}" because it has no file type. Put it in a .zip file.	GitHub 不接受“{}”，因为它没有文件类型。请将其放入 .zip 文件。
+GitHub doesn't accept .{} files. Put "{}" in a .zip file.	GitHub 不接受 .{} 文件。请将“{}”放入 .zip 文件。
+"{}" is empty.	“{}”为空。
+"{}" is {}. GitHub accepts at most {} MB for this type.	“{}”大小为 {}。此类型 GitHub 最多接受 {} MB。
+e.g. Sort the font list by date added	例如：按添加日期对字体列表排序
+e.g. The font list is empty after Add Folder	例如：执行“添加文件夹”后字体列表为空
 Sending...	正在发送...
 Send	发送
+# --- Shell (main window): progress, start-up, messages and accessibility names ---------------------------
+Deleting {}... {}%	正在删除 {}... {}%
+The font folders have changed.	字体文件夹已更改。
+Initializing...	正在初始化...
+Loading fonts...	正在加载字体...
+Version {}	版本 {}
+AnyFont closed unexpectedly the last time. Do you want to send a bug report?	AnyFont 上次意外关闭。是否要发送错误报告？
+Insufficient Permissions	权限不足
+AnyFont could not get administrator permission to install the fonts for all users.\n\nDo you want to install them only for you? They will not be available to other users of this computer.	AnyFont 无法获得为所有用户安装字体所需的管理员权限。\n\n是否仅为您安装这些字体？此计算机的其他用户将无法使用这些字体。
+&Install for me	仅为我安装(&I)
+Some fonts could not be processed:	部分字体无法处理：
+Font list	字体列表
+Scroll bar	滚动条
+# Developer inspectors (Ctrl+Alt+Shift+I)
+Inspectors	检查器
+Settings	设置
+Inspection	检查
+Memory	内存

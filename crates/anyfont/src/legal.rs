@@ -32,13 +32,23 @@ pub fn reflow(text: &str) -> String {
     out
 }
 
+/// How long the printed file stays in the temporary folder: the program that prints it opens it in its own
+/// time.
+const PRINT_FILE_LIFETIME: std::time::Duration = std::time::Duration::from_secs(120);
+
 /// Print: the text goes to a file in the temporary folder, which Windows prints with the program
-/// registered for text files (the "print" verb, Notepad by default) on the default printer.
+/// registered for text files (the "print" verb, Notepad by default) on the default printer. The file is
+/// deleted a while later.
 pub fn print() -> bool {
     let path = std::env::temp_dir().join("AnyFont Legal Notices.txt");
     if std::fs::write(&path, text().replace('\n', "\r\n")).is_err() {
         return false;
     }
+    let file = path.clone();
+    let _ = std::thread::Builder::new().name("anyfont-print-cleanup".into()).spawn(move || {
+        std::thread::sleep(PRINT_FILE_LIFETIME);
+        let _ = std::fs::remove_file(&file);
+    });
     if crate::testing::intercept(crate::testing::External::Print(path.clone())) {
         return true;
     }

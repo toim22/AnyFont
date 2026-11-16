@@ -284,9 +284,16 @@ pub fn gh(args: &[&str]) -> Option<std::process::Output> {
     cmd.output().ok()
 }
 
-/// At most `max` characters of `s`, as the relay counts them.
+/// At most `max` characters of `s`, as the relay counts them: UTF-16 code units (JavaScript's
+/// `String.length`), so a character outside the BMP (an emoji) counts twice. Never splits a character.
 fn clip(s: &str, max: usize) -> String {
-    s.chars().take(max).collect()
+    let mut units = 0;
+    s.chars()
+        .take_while(|c| {
+            units += c.len_utf16();
+            units <= max
+        })
+        .collect()
 }
 
 /// The report as the relay reads it (`services/issue-relay/src/report.ts`), cut to its limits.
@@ -641,6 +648,9 @@ mod tests {
         assert_eq!((v["kind"].as_str(), v["expected"].as_str()), (Some("idea"), Some("")));
         assert_eq!(v["title"].as_str().unwrap().chars().count(), 200);
         assert_eq!(v["system"].as_str().unwrap().chars().count(), 600);
+        // the relay counts UTF-16 units: an emoji is two (BUG-101)
+        assert_eq!(clip(&"\u{1F600}".repeat(150), 200).chars().count(), 100);
+        assert_eq!(clip(&format!("a{}", "\u{1F600}".repeat(150)), 200).encode_utf16().count(), 199);
     }
 
     #[test]

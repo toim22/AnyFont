@@ -44,6 +44,11 @@ pub(crate) trait Platform: Send + Sync {
     fn is_protected(&self, path: &Path) -> bool;
     /// Held open by another process (`SystemIO::File::IsOpenElsewhere`).
     fn is_in_use(&self, path: &Path) -> bool;
+    /// The pauses (ms) before checking a font that is in use again: Windows itself (the font cache) holds a font
+    /// it has just loaded for about a second, which is no reason to ask for a restart. About 1.5 s in all.
+    fn in_use_retry_ms(&self) -> &'static [u64] {
+        &[150, 200, 250, 300, 300, 300]
+    }
     fn is_read_only(&self, path: &Path) -> bool {
         std::fs::metadata(path).map(|m| m.permissions().readonly()).unwrap_or(false)
     }
@@ -347,7 +352,7 @@ impl<P: Platform> Engine<P> {
             let removed = self.p.remove_font_resource(&old.spec());
             let old_owned: Vec<PathBuf> =
                 old.files.iter().filter(|f| self.in_fonts_dir(f) && !dests.iter().any(|d| same_path(d, f))).cloned().collect();
-            let busy = old_owned.iter().any(|f| self.p.is_in_use(f));
+            let busy = old_owned.iter().any(|f| self.held(f));
             if busy {
                 match used {
                     UsedFontAction::RebootNow | UsedFontAction::RebootLater => {
@@ -429,8 +434,23 @@ impl<P: Platform> Engine<P> {
                 }
             }
         }
-        let busy = removing.iter().any(|f| self.p.is_in_use(f));
+        let busy = removing.iter().any(|f| self.held(f));
         Unloaded { reload: reloaded, busy }
+    }
+
+    /// In use by someone else, still after the retries of [`Platform::in_use_retry_ms`].
+    fn held(&self, path: &Path) -> bool {
+        if !self.p.is_in_use(path) {
+            return false;
+        }
+        for ms in self.p.in_use_retry_ms() {
+            std::thread::sleep(std::time::Duration::from_millis(*ms));
+            if !self.p.is_in_use(path) {
+                log::info!("{} was in use for a moment only", path.display());
+                return false;
+            }
+        }
+        true
     }
 
     fn reload(&self, u: &Unloaded) {

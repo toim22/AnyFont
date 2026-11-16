@@ -194,6 +194,7 @@ Change the glyph size in the Glyph Preview area.	Zmień rozmiar glifu w obszarze
 Multiple fonts are selected. To view a glyph set, choose only one font.	Wybrano wiele czcionek. Aby wyświetlić zestaw glifów, wybierz tylko jedną czcionkę.
 No matching glyphs	Brak pasujących glifów
 Install or download the font to preview glyphs.	Zainstaluj lub pobierz czcionkę, aby wyświetlić podgląd glifów.
+Show glyph alternates.	Pokaż alternatywy glifu.
 Family:	Rodzina:
 Sub-family:	Podrodzina:
 File Path:	Ścieżka pliku:
@@ -244,6 +245,15 @@ Total virtual memory	Całkowita pamięć wirtualna
 Available virtual memory	Dostępna pamięć wirtualna
 Total memory used by app	Całkowita pamięć używana przez aplikację
 GDI Object Count	Liczba obiektów GDI
+User Object Count	Liczba obiektów USER
+Windows Directory	Katalog Windows
+TEMP directory	Katalog TEMP
+Application directory	Katalog aplikacji
+Number of displays	Liczba ekranów
+Display {}	Ekran {}
+Resolution	Rozdzielczość
+Color depth	Głębia kolorów
+Refresh rate	Częstotliwość odświeżania
 &Save	&Zapisz
 Save System Info	Zapisz informacje o systemie
 Text (*.txt)	Tekst (*.txt)
@@ -315,6 +325,19 @@ My Library	Moja biblioteka
 Downloaded	Pobrane
 Remote font catalog cannot connect to the internet.	Zdalny katalog czcionek nie może połączyć się z Internetem.
 An error occurred while downloading the remote font catalog.	Wystąpił błąd podczas pobierania zdalnego katalogu czcionek.
+Handwriting	Odręczna
+Monospace	O stałej szerokości
+Popular	Popularne
+Name	Nazwa
+Newest	Najnowsze
+Clear	Wyczyść
+No fonts found.	Nie znaleziono czcionek.
+1 style	1 styl
+{} styles	Liczba stylów: {}
+{} · 1 style	{} · 1 styl
+{} · {} styles	{} · liczba stylów: {}
+{} styles · {}	Liczba stylów: {} · {}
+Unable to download {}.	Nie można pobrać czcionki {}.
 # --- PANOSE font matching ---------------------------------------------------------------------------------
 PANOSE Font Matching Preferences	Preferencje dopasowywania czcionek PANOSE
 &Text	&Tekst
@@ -342,16 +365,23 @@ Show &all fonts	Pokaż &wszystkie czcionki
 Make this substitution:	Wykonaj to zastąpienie:
 &Permanent - keep these fonts	&Trwale - zachowaj te czcionki
 Te&mporary - use original fonts	Ty&mczasowo - użyj oryginalnych czcionek
+Show fonts with the same code page	Pokaż czcionki z tą samą stroną kodową
+Type	Typ
+PANOSE	PANOSE
+Exception	Wyjątek
+The fonts below are not available on this computer. AnyFont suggests a substitute for each one. Select a font in the list to choose another substitute.	Poniższe czcionki nie są dostępne na tym komputerze. AnyFont proponuje zamiennik dla każdej z nich. Zaznacz czcionkę na liście, aby wybrać inny zamiennik.
+AnyFont suggests an OpenType or TrueType replacement for each Type 1 font. The replacements take the place of the Type 1 fonts in your collections. Select a font in the list to choose another replacement.	AnyFont proponuje zamiennik OpenType lub TrueType dla każdej czcionki Type 1. Zamienniki zajmują miejsce czcionek Type 1 w Twoich kolekcjach. Zaznacz czcionkę na liście, aby wybrać inny zamiennik.
 # --- Type 1 fonts -----------------------------------------------------------------------------------------
 Type 1 fonts detected	Wykryto czcionki Type 1
 This document uses Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.	Ten dokument używa czcionek Type 1, które w przyszłości mogą nie być obsługiwane. Aby uniknąć ewentualnych problemów, rozważ zmianę tekstu na inne czcionki, na przykład TrueType (TTF) lub OpenType (OTF).
+These fonts use Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.	Te czcionki to czcionki Type 1, które w przyszłości mogą nie być obsługiwane. Aby uniknąć ewentualnych problemów, rozważ zmianę tekstu na inne czcionki, na przykład TrueType (TTF) lub OpenType (OTF).
 Do not show again	Nie pokazuj ponownie
 Replace fonts	Zamień czcionki
 # --- Rename collection ------------------------------------------------------------------------------------
 Name:	Nazwa:
 # --- Updates (from AnyVector updater.rs, product name replaced) -------------------------------------------
 Keep the product up to date (recommended)	Aktualizuj produkt na bieżąco (zalecane)
-Check for updates and let me choose when to install them	Sprawdzaj aktualizacje i pozwól mi wybrać, kiedy je zainstalować
+Check for updates and let me choose when to install them	Sprawdzaj aktualizacje, ja wybiorę czas instalacji
 Never check for updates	Nigdy nie sprawdzaj aktualizacji
 Automatically downloads product updates, but prompts you before installing them.	Automatycznie pobiera aktualizacje produktu, ale pyta przed ich zainstalowaniem.
 AnyFont tells you when a new version is available; you choose when to download and install it.	AnyFont informuje o dostępności nowej wersji; Ty decydujesz, kiedy ją pobrać i zainstalować.
@@ -376,13 +406,14 @@ AnyFont closes to install it and starts again when it is done.	AnyFont zamknie s
 Error: {}	Błąd: {}
 You are using AnyFont {}.	Używasz programu AnyFont {}.
 The update will be installed when AnyFont closes.	Aktualizacja zostanie zainstalowana po zamknięciu programu AnyFont.
-Allow product updates:	Zezwalaj na aktualizacje produktu:
+Allow product updates:	Zezwalaj na aktualizacje:
 Release Notes	Informacje o wersji
 Install Now	Zainstaluj teraz
 Check Now	Sprawdź teraz
 There is a new version of AnyFont available.	Dostępna jest nowa wersja programu AnyFont.
 New version: {}. Your version: {}.	Nowa wersja: {}. Twoja wersja: {}.
 Click OK to install the new version.	Kliknij OK, aby zainstalować nową wersję.
+Later	Później
 # --- Report a Bug / Submit Ideas and Feedback (from AnyVector bugreport.rs, product name replaced) ---------
 Report a Bug	Zgłoś błąd
 Submit Ideas and Feedback	Prześlij pomysły i opinie
@@ -421,5 +452,29 @@ Images	Obrazy
 Videos	Wideo
 Archives (.zip, .gz, .tgz)	Archiwa (.zip, .gz, .tgz)
 Images and videos up to 10 MB, other files up to 25 MB, of the types GitHub accepts. Put a font file (.ttf, .otf) in a .zip file.	Obrazy i wideo do 10 MB, inne pliki do 25 MB, w typach akceptowanych przez GitHub. Umieść plik czcionki (.ttf, .otf) w pliku .zip.
+GitHub doesn't accept "{}" because it has no file type. Put it in a .zip file.	GitHub nie akceptuje pliku „{}”, ponieważ nie ma on typu. Umieść go w pliku .zip.
+GitHub doesn't accept .{} files. Put "{}" in a .zip file.	GitHub nie akceptuje plików .{}. Umieść „{}” w pliku .zip.
+"{}" is empty.	Plik „{}” jest pusty.
+"{}" is {}. GitHub accepts at most {} MB for this type.	Plik „{}” ma {}. GitHub akceptuje dla tego typu najwyżej {} MB.
+e.g. Sort the font list by date added	np. Sortuj listę czcionek według daty dodania
+e.g. The font list is empty after Add Folder	np. Lista czcionek jest pusta po użyciu polecenia Dodaj folder
 Sending...	Wysyłanie...
 Send	Wyślij
+# --- Shell (main window): progress, start-up, messages and accessibility names ---------------------------
+Deleting {}... {}%	Usuwanie {}... {}%
+The font folders have changed.	Foldery czcionek zostały zmienione.
+Initializing...	Inicjowanie...
+Loading fonts...	Wczytywanie czcionek...
+Version {}	Wersja {}
+AnyFont closed unexpectedly the last time. Do you want to send a bug report?	Ostatnim razem AnyFont został nieoczekiwanie zamknięty. Czy chcesz wysłać zgłoszenie błędu?
+Insufficient Permissions	Niewystarczające uprawnienia
+AnyFont could not get administrator permission to install the fonts for all users.\n\nDo you want to install them only for you? They will not be available to other users of this computer.	AnyFont nie mógł uzyskać uprawnień administratora, aby zainstalować czcionki dla wszystkich użytkowników.\n\nCzy chcesz zainstalować je tylko dla siebie? Nie będą one dostępne dla innych użytkowników tego komputera.
+&Install for me	&Zainstaluj tylko dla mnie
+Some fonts could not be processed:	Nie można przetworzyć niektórych czcionek:
+Font list	Lista czcionek
+Scroll bar	Pasek przewijania
+# Developer inspectors (Ctrl+Alt+Shift+I)
+Inspectors	Inspektory
+Settings	Ustawienia
+Inspection	Inspekcja
+Memory	Pamięć

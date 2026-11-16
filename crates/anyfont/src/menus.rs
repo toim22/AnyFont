@@ -125,6 +125,9 @@ pub struct MenuState {
 
 impl MenuState {
     pub fn open(&mut self, source: Source, pos: Pos2, keyboard: bool, frame: u64) {
+        if let Source::Edit(t) = source {
+            crate::commands::snapshot_selection(t);
+        }
         self.open = Some(Open { source, pos, path: Vec::new(), hot: vec![None], keyboard, opened_frame: frame });
         self.bar_focus = None;
     }

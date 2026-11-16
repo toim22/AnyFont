@@ -332,15 +332,21 @@ pub fn show(app: &mut AnyFontApp, ctx: &egui::Context) {
         }
         Dialog::Reboot { kind, files } => {
             let kind = *kind;
-            let one = files.len() == 1;
+            let names = app.op_flow.as_ref().map(|f| f.names.clone()).unwrap_or_default();
+            // one line per font: a font's files (its installed copy and the file in a folder) share its name
+            let mut items: Vec<String> = Vec::new();
+            for name in files.iter().map(|p| names.get(p).cloned().unwrap_or_else(|| p.display().to_string())) {
+                if !items.contains(&name) {
+                    items.push(name);
+                }
+            }
+            let one = items.len() == 1;
             let text = match (kind, one) {
                 (OpKind::Delete, true) => "The following font cannot be deleted because it is in use by one or more applications. To delete this font, you must first restart your computer.\n\nDo you want to restart your computer now?",
                 (OpKind::Delete, false) => "The following fonts cannot be deleted because they are in use by one or more applications. To delete these fonts, you must first restart your computer.\n\nDo you want to restart your computer now?\n\nClick Ignore to continue without deleting the listed fonts.",
                 (_, true) => "The following font cannot be uninstalled because it is in use by one or more applications. To uninstall this font, you must first restart your computer.\n\nDo you want to restart your computer now?",
                 (_, false) => "The following fonts cannot be uninstalled because they are in use by one or more applications. To uninstall these fonts, you must first restart your computer.\n\nDo you want to restart your computer now?\n\nClick Ignore to continue without uninstalling the listed fonts.",
             };
-            let names = app.op_flow.as_ref().map(|f| f.names.clone()).unwrap_or_default();
-            let items: Vec<String> = files.iter().map(|p| names.get(p).cloned().unwrap_or_else(|| p.display().to_string())).collect();
             let (choice, dismissed) = dlg::window(ctx, "reboot-prompt", &crate::tr("AnyFont"), vec2(520.0, 330.0), |ui| {
                 let (top, bar) = dlg::split_bottom(ui, dlg::BUTTON_H);
                 dlg::at(ui, top, |ui| {

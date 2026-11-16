@@ -50,7 +50,7 @@ the UI connection can use it at the same time.
 | `font_axes(font_id, ord, tag, name, min, def, max, value, hidden)` | `FONTVARIABLEAXES` | `value` is the instance coordinate. `hidden` comes from the attribute flag |
 | `font_instances(font_id, ord, subfamily, postscript_name, coordinates)` | (in `FONTVARIABLEAXES` rows per instance) | every named instance of the file |
 | `folders(path NOCASE UNIQUE, enabled, recursive)` | `FONTFOLDERS` | `recursive` is an AnyFont addition |
-| `collections(name NOCASE UNIQUE, is_favorites)` | `GROUPS` | Favorites always exists |
+| `collections(name NOCASE UNIQUE, is_favorites)` | `GROUPS` | Favorites is created once, with a new database (property `favorites_created`); the user may remove it |
 | `collection_fonts(collection_id, font_key, added_at)` | `GROUPLINKS` | stores the content key, not the row id, so collections survive a cache rebuild |
 | `mru(font_key, used_at)` | (in-memory list in the original) | View > Show recent |
 | `panose_exceptions(missing, substitute)` | `PanosePreferences.xml` | exception list |

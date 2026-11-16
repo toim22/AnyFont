@@ -25,7 +25,7 @@ Tests named `module::tests::x` are unit tests in `src/`. Tests named `integratio
 | Identical copies are one font (copy of an installed font shows as installed) | `DBShaID` + `DBPaths`; temp-folder screenshots | content-hash `FontKey`, `files` table | `integration::incremental_rescan_…` |
 | Libraries: My fonts, user folders (optional recursion), collections | catalog §1; `FONTFOLDERS`, `GROUPS`; screenshots | `Catalog::library_fonts`, `libraries`, `Folder::contains` | `db::tests::folder_membership`, `catalog::tests::*` |
 | Add Folder / Remove Folder | `FontDS.OnAddFolder`, `RemoveFolderOrCollection` | `FontDatabase::add_folder`, `remove_folder`, `set_folder_enabled/recursive` | `db::tests::folders_mru_panose_persist` |
-| Collections: Favorites always exists; "Collection N" default names; rename; remove (Favorites is emptied) | `GROUPS`/`GROUPLINKS`; toolbar-states (Remove enabled for Favorites) | `create_collection`, `next_collection_name`, `rename_collection`, `remove_collection`, `add/remove_to_collection` | `db::tests::favorites_and_collection_names` |
+| Collections: Favorites created with a new database, removable for good (UI-SPEC §13 #2); "Collection N" default names; rename; remove (Favorites too) | `GROUPS`/`GROUPLINKS`; toolbar-states (Remove enabled for Favorites) | `create_collection`, `next_collection_name`, `rename_collection`, `remove_collection`, `add/remove_to_collection` | `db::tests::favorites_and_collection_names` |
 | Status text "My fonts: 681 fonts", "(filtered)", folder name | status bar screenshots | `format::status_text`, `QueryResult::status_text` | `catalog::tests::*` |
 | Group by family; header only for 2+ faces; style count; Arial Black under Arial | font list screenshots | `Catalog::query` | `catalog::tests::grouped_list_and_status` |
 | Search (flat list) | search screenshots | `Catalog::query` | `catalog::tests::search_is_flat_and_filters_mark_filtered` |
@@ -86,6 +86,6 @@ The shell's features, driven end to end through the real window. Tests named `st
 
 | Item | Reason |
 |---|---|
-| Glyph alternates pop-up (§11 #11) | the glyph list already shows the alternates after their base glyph; the pop-up is left for later |
+| Glyph alternates pop-up (§11 #11) | implemented: corner triangle on cells with alternates opens the pop-up (`properties.rs` `alternates_popup`); the grid also lists alternates after their base glyph, as the original does |
 | Toolbar overflow `»` (§11 #19) | the toolbar fits at the minimum window width (800 px) |
 | Per-user install choice | the spec has no control for it; installs go to all users (elevated helper) |

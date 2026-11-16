@@ -194,6 +194,7 @@ Change the glyph size in the Glyph Preview area.	Změnit velikost glyfu v oblast
 Multiple fonts are selected. To view a glyph set, choose only one font.	Je vybráno více písem. Chcete-li zobrazit sadu glyfů, vyberte pouze jedno písmo.
 No matching glyphs	Žádné odpovídající glyfy
 Install or download the font to preview glyphs.	Chcete-li zobrazit náhled glyfů, nainstalujte nebo stáhněte písmo.
+Show glyph alternates.	Zobrazí alternativy glyfu.
 Family:	Rodina:
 Sub-family:	Podrodina:
 File Path:	Cesta k souboru:
@@ -244,6 +245,15 @@ Total virtual memory	Celková virtuální paměť
 Available virtual memory	Dostupná virtuální paměť
 Total memory used by app	Celková paměť používaná aplikací
 GDI Object Count	Počet objektů GDI
+User Object Count	Počet objektů USER
+Windows Directory	Složka Windows
+TEMP directory	Složka TEMP
+Application directory	Složka aplikace
+Number of displays	Počet displejů
+Display {}	Displej {}
+Resolution	Rozlišení
+Color depth	Barevná hloubka
+Refresh rate	Obnovovací frekvence
 &Save	&Uložit
 Save System Info	Uložit informace o systému
 Text (*.txt)	Text (*.txt)
@@ -315,6 +325,19 @@ My Library	Moje knihovna
 Downloaded	Stažené
 Remote font catalog cannot connect to the internet.	Vzdálený katalog písem se nemůže připojit k Internetu.
 An error occurred while downloading the remote font catalog.	Při stahování vzdáleného katalogu písem došlo k chybě.
+Handwriting	Ručně psaná
+Monospace	Neproporcionální
+Popular	Oblíbené
+Name	Název
+Newest	Nejnovější
+Clear	Vymazat
+No fonts found.	Nebyla nalezena žádná písma.
+1 style	1 styl
+{} styles	Počet stylů: {}
+{} · 1 style	{} · 1 styl
+{} · {} styles	{} · počet stylů: {}
+{} styles · {}	Počet stylů: {} · {}
+Unable to download {}.	Písmo {} nelze stáhnout.
 # --- PANOSE font matching ---------------------------------------------------------------------------------
 PANOSE Font Matching Preferences	Předvolby párování písem PANOSE
 &Text	&Text
@@ -342,16 +365,23 @@ Show &all fonts	Zobrazit &všechna písma
 Make this substitution:	Provést toto nahrazení:
 &Permanent - keep these fonts	&Trvale - ponechat tato písma
 Te&mporary - use original fonts	&Dočasně - použít původní písma
+Show fonts with the same code page	Zobrazit písma se stejnou znakovou stránkou
+Type	Typ
+PANOSE	PANOSE
+Exception	Výjimka
+The fonts below are not available on this computer. AnyFont suggests a substitute for each one. Select a font in the list to choose another substitute.	Následující písma nejsou v tomto počítači k dispozici. AnyFont pro každé z nich navrhuje náhradu. Chcete-li zvolit jinou náhradu, vyberte písmo v seznamu.
+AnyFont suggests an OpenType or TrueType replacement for each Type 1 font. The replacements take the place of the Type 1 fonts in your collections. Select a font in the list to choose another replacement.	AnyFont pro každé písmo Type 1 navrhuje náhradu ve formátu OpenType nebo TrueType. Náhradní písma zaujmou ve vašich kolekcích místo písem Type 1. Chcete-li zvolit jinou náhradu, vyberte písmo v seznamu.
 # --- Type 1 fonts -----------------------------------------------------------------------------------------
 Type 1 fonts detected	Byla zjištěna písma Type 1
 This document uses Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.	Tento dokument používá písma Type 1, která v budoucnu nemusí být podporována. Abyste předešli možným potížím, zvažte úpravu textu tak, aby používal jiná písma, například TrueType (TTF) nebo OpenType (OTF).
+These fonts use Type 1 fonts, which may not be supported in the future. To avoid potential issues, consider updating the text to use different fonts, such as TrueType (TTF) or OpenType (OTF) fonts.	Tato písma jsou písma Type 1, která v budoucnu nemusí být podporována. Abyste předešli možným potížím, zvažte úpravu textu tak, aby používal jiná písma, například TrueType (TTF) nebo OpenType (OTF).
 Do not show again	Znovu nezobrazovat
 Replace fonts	Nahradit písma
 # --- Rename collection ------------------------------------------------------------------------------------
 Name:	Název:
 # --- Updates (from AnyVector updater.rs, product name replaced) -------------------------------------------
 Keep the product up to date (recommended)	Udržovat produkt aktuální (doporučeno)
-Check for updates and let me choose when to install them	Vyhledávat aktualizace a nechat mě zvolit, kdy je nainstalovat
+Check for updates and let me choose when to install them	Hledat aktualizace a nechat mě zvolit čas instalace
 Never check for updates	Nikdy nevyhledávat aktualizace
 Automatically downloads product updates, but prompts you before installing them.	Automaticky stahuje aktualizace produktu, ale před instalací se zeptá.
 AnyFont tells you when a new version is available; you choose when to download and install it.	AnyFont vás upozorní, když je k dispozici nová verze; vy zvolíte, kdy ji stáhnout a nainstalovat.
@@ -383,6 +413,7 @@ Check Now	Zkontrolovat nyní
 There is a new version of AnyFont available.	K dispozici je nová verze aplikace AnyFont.
 New version: {}. Your version: {}.	Nová verze: {}. Vaše verze: {}.
 Click OK to install the new version.	Kliknutím na OK nainstalujete novou verzi.
+Later	Později
 # --- Report a Bug / Submit Ideas and Feedback (from AnyVector bugreport.rs, product name replaced) ---------
 Report a Bug	Nahlásit chybu
 Submit Ideas and Feedback	Odeslat nápady a zpětnou vazbu
@@ -421,5 +452,29 @@ Images	Obrázky
 Videos	Videa
 Archives (.zip, .gz, .tgz)	Archivy (.zip, .gz, .tgz)
 Images and videos up to 10 MB, other files up to 25 MB, of the types GitHub accepts. Put a font file (.ttf, .otf) in a .zip file.	Obrázky a videa do 10 MB, ostatní soubory do 25 MB, v typech, které GitHub přijímá. Soubor písma (.ttf, .otf) vložte do souboru .zip.
+GitHub doesn't accept "{}" because it has no file type. Put it in a .zip file.	GitHub nepřijímá „{}“, protože nemá typ souboru. Vložte ho do souboru .zip.
+GitHub doesn't accept .{} files. Put "{}" in a .zip file.	GitHub nepřijímá soubory .{}. Vložte „{}“ do souboru .zip.
+"{}" is empty.	„{}“ je prázdný.
+"{}" is {}. GitHub accepts at most {} MB for this type.	„{}“ má {}. GitHub pro tento typ přijímá nejvýše {} MB.
+e.g. Sort the font list by date added	např. Seřadit seznam písem podle data přidání
+e.g. The font list is empty after Add Folder	např. Seznam písem je po příkazu Přidat složku prázdný
 Sending...	Odesílání...
 Send	Odeslat
+# --- Shell (main window): progress, start-up, messages and accessibility names ---------------------------
+Deleting {}... {}%	Odstraňování {}... {} %
+The font folders have changed.	Složky písem se změnily.
+Initializing...	Inicializace...
+Loading fonts...	Načítání písem...
+Version {}	Verze {}
+AnyFont closed unexpectedly the last time. Do you want to send a bug report?	Aplikace AnyFont byla minule neočekávaně ukončena. Chcete odeslat hlášení chyby?
+Insufficient Permissions	Nedostatečná oprávnění
+AnyFont could not get administrator permission to install the fonts for all users.\n\nDo you want to install them only for you? They will not be available to other users of this computer.	Aplikace AnyFont nezískala oprávnění správce k instalaci písem pro všechny uživatele.\n\nChcete je nainstalovat jen pro sebe? Ostatním uživatelům tohoto počítače nebudou k dispozici.
+&Install for me	&Instalovat jen pro mě
+Some fonts could not be processed:	Některá písma nelze zpracovat:
+Font list	Seznam písem
+Scroll bar	Posuvník
+# Developer inspectors (Ctrl+Alt+Shift+I)
+Inspectors	Inspektory
+Settings	Nastavení
+Inspection	Kontrola
+Memory	Paměť
